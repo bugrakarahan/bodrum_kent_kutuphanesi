@@ -1,0 +1,297 @@
+---
+import { getT, navRoutes, getEquivalentLanguageUrl, type Lang } from '../utils/i18n';
+
+export interface Props {
+  lang?: Lang;
+  currentPath?: string;
+}
+
+const { lang = 'tr', currentPath = Astro.url.pathname } = Astro.props;
+const t = getT(lang);
+
+// Helper to normalize path for active route comparison
+const normalizePath = (path: string) => {
+  const p = path.replace(/\/$/, '') || '/';
+  return p;
+};
+
+const activePath = normalizePath(currentPath);
+
+const links = navRoutes.map((route) => {
+  const href = lang === 'tr' ? route.pathTr : route.pathEn;
+  const label = t.nav[route.key];
+  const normalizedHref = normalizePath(href);
+  
+  // Exact match for root, prefix match or exact match for nested routes
+  const isActive = normalizedHref === '/' || normalizedHref === '/en'
+    ? activePath === normalizedHref
+    : activePath === normalizedHref || activePath.startsWith(`${normalizedHref}/`);
+
+  return { href, label, isActive };
+});
+
+const targetLang: Lang = lang === 'tr' ? 'en' : 'tr';
+const switchLangUrl = getEquivalentLanguageUrl(currentPath, targetLang);
+const homeUrl = lang === 'tr' ? '/' : '/en';
+---
+
+<header class="sticky top-0 z-40 w-full bg-parchment/90 backdrop-blur-md border-b border-sand h-20 transition-all duration-300">
+  <div class="max-w-[1280px] mx-auto h-full px-5 md:px-12 flex items-center justify-between gap-4">
+    
+    <!-- Brand / Logo -->
+    <a 
+      href={homeUrl} 
+      class="group flex items-center gap-3 focus:outline-none focus-visible:ring-2 focus-visible:ring-olive rounded-sm py-1"
+      aria-label={`${t.siteTitle} - ${t.nav.home}`}
+    >
+      <span class="font-serif text-2xl sm:text-3xl italic font-normal text-ink tracking-tight group-hover:text-olive transition-colors duration-200">
+        {t.siteTitle}
+      </span>
+    </a>
+
+    <!-- Desktop Navigation -->
+    <nav class="hidden lg:flex items-center gap-6 xl:gap-8" aria-label="Ana Menü">
+      {links.map((link) => (
+        <a
+          href={link.href}
+          class={`text-sm xl:text-[15px] transition-all duration-200 ${
+            link.isActive
+              ? 'border-b-2 border-ink pb-1 font-semibold text-ink'
+              : 'text-ink/80 hover:text-ink hover:border-b-2 hover:border-sand pb-1 font-medium'
+          }`}
+          aria-current={link.isActive ? 'page' : undefined}
+        >
+          {link.label}
+        </a>
+      ))}
+    </nav>
+
+    <!-- Desktop Utility Actions: Search & Language Switcher -->
+    <div class="hidden lg:flex items-center gap-3">
+      <!-- Search Trigger Button -->
+      <button
+        type="button"
+        data-search-trigger
+        class="flex items-center gap-2 px-3 py-1.5 rounded border border-sand bg-surface-container-low/80 hover:bg-surface-container hover:border-ink/30 text-ink/80 hover:text-ink transition-all text-xs focus:outline-none focus-visible:ring-2 focus-visible:ring-olive cursor-pointer"
+        aria-label={t.search.title}
+        title={`${t.search.title} (⌘K)`}
+      >
+        <span class="material-symbols-outlined text-[18px] text-ink/70">search</span>
+        <span class="hidden xl:inline text-xs text-ink/70">{t.search.title}</span>
+        <kbd class="font-mono text-[10px] bg-parchment border border-sand px-1.5 py-0.5 rounded text-stone-gray shadow-xs">
+          ⌘K
+        </kbd>
+      </button>
+
+      <!-- Language Switcher Toggle -->
+      <a
+        href={switchLangUrl}
+        class="flex items-center text-xs tracking-wider font-medium text-ink border border-sand hover:border-ink/40 bg-surface-container-low/60 hover:bg-surface-container-low px-2.5 py-1.5 rounded transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-olive"
+        title={lang === 'tr' ? 'Switch to English' : 'Türkçe\'ye geç'}
+        aria-label={lang === 'tr' ? 'Switch website to English' : 'Web sitesini Türkçe\'ye çevir'}
+      >
+        <span class={lang === 'tr' ? 'font-bold text-ink' : 'text-stone-gray hover:text-ink'}>TR</span>
+        <span class="mx-1 text-sand">|</span>
+        <span class={lang === 'en' ? 'font-bold text-ink' : 'text-stone-gray hover:text-ink'}>EN</span>
+      </a>
+    </div>
+
+    <!-- Mobile Action Buttons -->
+    <div class="flex lg:hidden items-center gap-2">
+      <!-- Mobile Search Button -->
+      <button
+        type="button"
+        data-search-trigger
+        class="p-2 rounded border border-sand bg-surface-container-low/80 text-ink hover:bg-surface-container transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-olive"
+        aria-label={t.search.title}
+      >
+        <span class="material-symbols-outlined text-[22px]">search</span>
+      </button>
+
+      <!-- Mobile Language Switcher Link -->
+      <a
+        href={switchLangUrl}
+        class="px-2 py-1 text-xs font-semibold rounded border border-sand bg-surface-container-low/80 text-ink hover:bg-surface-container transition-colors"
+        aria-label={lang === 'tr' ? 'Switch to English' : 'Türkçe\'ye geç'}
+      >
+        {lang === 'tr' ? 'EN' : 'TR'}
+      </a>
+
+      <!-- Mobile Menu Hamburger Button -->
+      <button
+        type="button"
+        id="mobile-menu-btn"
+        class="p-2 rounded border border-sand bg-surface-container-low/80 text-ink hover:bg-surface-container transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-olive"
+        aria-label="Menüyü aç"
+        aria-expanded="false"
+        aria-controls="mobile-drawer"
+      >
+        <span class="material-symbols-outlined text-[24px] transition-transform duration-200" id="mobile-menu-icon">menu</span>
+      </button>
+    </div>
+
+  </div>
+</header>
+
+<!-- Mobile Navigation Drawer Backdrop & Modal Panel -->
+<div 
+  id="mobile-drawer-backdrop" 
+  class="fixed inset-0 z-50 bg-ink/40 backdrop-blur-xs opacity-0 pointer-events-none transition-opacity duration-300 lg:hidden"
+  aria-hidden="true"
+></div>
+
+<aside
+  id="mobile-drawer"
+  class="fixed top-0 right-0 z-50 w-[85%] max-w-sm h-full bg-surface-bright border-l border-sand shadow-2xl flex flex-col transform translate-x-full transition-transform duration-300 ease-in-out lg:hidden"
+  aria-label="Mobil Menü"
+  aria-hidden="true"
+>
+  <!-- Drawer Header -->
+  <div class="h-20 px-6 border-b border-sand flex items-center justify-between bg-parchment">
+    <span class="font-serif italic text-xl text-ink">
+      {t.siteTitle}
+    </span>
+    <button
+      type="button"
+      id="mobile-drawer-close"
+      class="p-2 rounded border border-sand text-ink hover:bg-surface-container transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-olive"
+      aria-label="Menüyü kapat"
+    >
+      <span class="material-symbols-outlined text-[22px]">close</span>
+    </button>
+  </div>
+
+  <!-- Drawer Body Navigation Links -->
+  <div class="flex-1 overflow-y-auto px-6 py-6 flex flex-col gap-2">
+    <p class="text-[11px] uppercase tracking-wider text-stone-gray font-semibold mb-2">
+      {lang === 'tr' ? 'Menü' : 'Menu'}
+    </p>
+
+    {links.map((link) => (
+      <a
+        href={link.href}
+        class={`py-3 px-3 rounded flex items-center justify-between text-base transition-colors ${
+          link.isActive
+            ? 'bg-surface-container font-semibold text-ink border-l-4 border-ink'
+            : 'text-ink/80 hover:bg-surface-container-low hover:text-ink'
+        }`}
+        aria-current={link.isActive ? 'page' : undefined}
+      >
+        <span>{link.label}</span>
+        {link.isActive && (
+          <span class="material-symbols-outlined text-[18px] text-ink">arrow_forward</span>
+        )}
+      </a>
+    ))}
+
+    <div class="my-4 border-t border-sand/70"></div>
+
+    <!-- Mobile Drawer Search Trigger -->
+    <button
+      type="button"
+      data-search-trigger
+      class="w-full flex items-center justify-between px-3 py-3 rounded border border-sand bg-surface-container-low text-ink/80 hover:text-ink hover:bg-surface-container transition-colors text-sm"
+    >
+      <span class="flex items-center gap-2">
+        <span class="material-symbols-outlined text-[20px] text-ink/70">search</span>
+        <span>{t.search.title}</span>
+      </span>
+      <kbd class="font-mono text-[10px] bg-parchment border border-sand px-1.5 py-0.5 rounded text-stone-gray">
+        ⌘K
+      </kbd>
+    </button>
+
+    <!-- Language Selector in Drawer -->
+    <div class="mt-4 pt-4 border-t border-sand/70">
+      <p class="text-[11px] uppercase tracking-wider text-stone-gray font-semibold mb-2">
+        {lang === 'tr' ? 'Dil Seçimi / Language' : 'Language / Dil Seçimi'}
+      </p>
+      <div class="grid grid-cols-2 gap-2">
+        <a
+          href={lang === 'tr' ? currentPath : getEquivalentLanguageUrl(currentPath, 'tr')}
+          class={`py-2 px-3 text-center text-xs font-semibold rounded border transition-colors ${
+            lang === 'tr'
+              ? 'bg-ink text-white border-ink'
+              : 'bg-surface-container-low border-sand text-ink/70 hover:bg-surface-container'
+          }`}
+        >
+          Türkçe (TR)
+        </a>
+        <a
+          href={lang === 'en' ? currentPath : getEquivalentLanguageUrl(currentPath, 'en')}
+          class={`py-2 px-3 text-center text-xs font-semibold rounded border transition-colors ${
+            lang === 'en'
+              ? 'bg-ink text-white border-ink'
+              : 'bg-surface-container-low border-sand text-ink/70 hover:bg-surface-container'
+          }`}
+        >
+          English (EN)
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Drawer Footer Info -->
+  <div class="p-6 border-t border-sand bg-surface-container-low text-xs text-stone-gray flex flex-col gap-1">
+    <span class="font-serif italic text-ink font-semibold">{t.siteTitle}</span>
+    <span>{t.footer.address}</span>
+  </div>
+</aside>
+
+<script>
+  function setupMobileMenu() {
+    const menuBtn = document.getElementById('mobile-menu-btn');
+    const closeBtn = document.getElementById('mobile-drawer-close');
+    const drawer = document.getElementById('mobile-drawer');
+    const backdrop = document.getElementById('mobile-drawer-backdrop');
+
+    if (!menuBtn || !drawer || !backdrop) return;
+
+    function openDrawer() {
+      drawer?.classList.remove('translate-x-full');
+      drawer?.setAttribute('aria-hidden', 'false');
+      backdrop?.classList.remove('opacity-0', 'pointer-events-none');
+      backdrop?.classList.add('opacity-100');
+      menuBtn?.setAttribute('aria-expanded', 'true');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeDrawer() {
+      drawer?.classList.add('translate-x-full');
+      drawer?.setAttribute('aria-hidden', 'true');
+      backdrop?.classList.add('opacity-0', 'pointer-events-none');
+      backdrop?.classList.remove('opacity-100');
+      menuBtn?.setAttribute('aria-expanded', 'false');
+      document.body.style.overflow = '';
+    }
+
+    menuBtn.addEventListener('click', () => {
+      const isOpen = drawer.getAttribute('aria-hidden') === 'false';
+      if (isOpen) {
+        closeDrawer();
+      } else {
+        openDrawer();
+      }
+    });
+
+    closeBtn?.addEventListener('click', closeDrawer);
+    backdrop.addEventListener('click', closeDrawer);
+
+    window.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && drawer.getAttribute('aria-hidden') === 'false') {
+        closeDrawer();
+      }
+    });
+
+    // Close drawer when mobile nav links or search are clicked
+    drawer.querySelectorAll('a, button[data-search-trigger]').forEach((el) => {
+      el.addEventListener('click', () => {
+        closeDrawer();
+      });
+    });
+  }
+
+  // Setup on page load and support Astro View Transitions
+  setupMobileMenu();
+  document.addEventListener('astro:page-load', setupMobileMenu);
+</script>

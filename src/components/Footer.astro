@@ -1,0 +1,196 @@
+---
+import { getT, navRoutes, type Lang } from '../utils/i18n';
+
+export interface Props {
+  lang?: Lang;
+}
+
+const { lang = 'tr' } = Astro.props;
+const t = getT(lang);
+const currentYear = new Date().getFullYear();
+
+const links = navRoutes.map((route) => ({
+  href: lang === 'tr' ? route.pathTr : route.pathEn,
+  label: t.nav[route.key]
+}));
+---
+
+<footer class="bg-surface-container-high border-t border-sand py-16 px-5 md:px-12 text-ink">
+  <div class="max-w-[1280px] mx-auto">
+    <!-- Top 4 Columns Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-8 pb-12 border-b border-sand">
+      
+      <!-- Column 1: Institutional Brand & Ex Libris -->
+      <div class="flex flex-col gap-4">
+        <a 
+          href={lang === 'tr' ? '/' : '/en'} 
+          class="font-serif text-2xl italic tracking-tight text-ink hover:text-olive transition-colors inline-block"
+        >
+          {t.siteTitle}
+        </a>
+        <p class="text-sm text-ink/75 leading-relaxed">
+          {t.footer.missionSnippet}
+        </p>
+        
+        <!-- Ex Libris Motif / Emblem -->
+        <div class="mt-2 pt-2 flex items-center gap-3 text-stone-gray">
+          <div class="w-10 h-10 rounded-full border border-sand bg-parchment flex items-center justify-center shadow-2xs">
+            <svg class="w-5 h-5 text-olive" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18a8.967 8.967 0 00-6 2.292m0-14.25v14.25" />
+            </svg>
+          </div>
+          <div class="text-[11px] uppercase tracking-widest leading-tight">
+            <span class="font-serif italic font-semibold text-ink block">EX LIBRIS</span>
+            <span class="text-stone-gray font-mono">BODRUM • 2019</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Column 2: Navigation Links -->
+      <div class="flex flex-col gap-4">
+        <h3 class="font-serif text-lg italic text-ink font-semibold tracking-tight">
+          {t.footer.navigation}
+        </h3>
+        <ul class="space-y-2.5 text-sm" role="list">
+          {links.map((link) => (
+            <li>
+              <a
+                href={link.href}
+                class="text-ink/75 hover:text-ink hover:underline decoration-sand underline-offset-4 transition-colors inline-block"
+              >
+                {link.label}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <!-- Column 3: Social Media & Contact -->
+      <div class="flex flex-col gap-4">
+        <h3 class="font-serif text-lg italic text-ink font-semibold tracking-tight">
+          {t.footer.socialMedia}
+        </h3>
+        <ul class="space-y-3 text-sm" role="list">
+          <li>
+            <a
+              href="https://instagram.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="group flex items-center gap-2.5 text-ink/75 hover:text-ink transition-colors"
+            >
+              <span class="w-7 h-7 rounded border border-sand bg-parchment flex items-center justify-center group-hover:border-ink/40 transition-colors">
+                <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                  <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                  <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                </svg>
+              </span>
+              <span>Instagram</span>
+            </a>
+          </li>
+          <li>
+            <a
+              href="https://youtube.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="group flex items-center gap-2.5 text-ink/75 hover:text-ink transition-colors"
+            >
+              <span class="w-7 h-7 rounded border border-sand bg-parchment flex items-center justify-center group-hover:border-ink/40 transition-colors">
+                <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+                </svg>
+              </span>
+              <span>YouTube</span>
+            </a>
+          </li>
+          <li>
+            <a
+              href="https://facebook.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="group flex items-center gap-2.5 text-ink/75 hover:text-ink transition-colors"
+            >
+              <span class="w-7 h-7 rounded border border-sand bg-parchment flex items-center justify-center group-hover:border-ink/40 transition-colors">
+                <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+                </svg>
+              </span>
+              <span>Facebook</span>
+            </a>
+          </li>
+          <li class="pt-2">
+            <a
+              href="mailto:bilgi@bodrumkentkutuphanesi.org"
+              class="flex items-center gap-2 text-xs font-mono text-ink/80 hover:text-olive break-all transition-colors"
+            >
+              <span class="material-symbols-outlined text-[16px] text-stone-gray shrink-0">mail</span>
+              <span>bilgi@bodrumkentkutuphanesi.org</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Column 4: Campus & Visiting -->
+      <div class="flex flex-col gap-4">
+        <h3 class="font-serif text-lg italic text-ink font-semibold tracking-tight">
+          {t.footer.campusAndVisit}
+        </h3>
+        <div class="space-y-2.5 text-sm text-ink/75">
+          <p class="flex items-start gap-2">
+            <span class="material-symbols-outlined text-[18px] text-stone-gray shrink-0 mt-0.5">location_on</span>
+            <span>{t.footer.address}</span>
+          </p>
+          <p class="flex items-start gap-2">
+            <span class="material-symbols-outlined text-[18px] text-stone-gray shrink-0 mt-0.5">schedule</span>
+            <span>{t.footer.openingHours}</span>
+          </p>
+          <p class="text-xs text-stone-gray pl-6">
+            {t.footer.closedMondays}
+          </p>
+        </div>
+
+        <div class="mt-1">
+          <a
+            href={lang === 'tr' ? '/iletisim' : '/en/contact'}
+            class="inline-flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wider text-ink hover:text-olive transition-colors"
+          >
+            <span>{lang === 'tr' ? 'Yol Tarifi ve İletişim' : 'Directions & Contact'}</span>
+            <span class="material-symbols-outlined text-[14px]">arrow_forward</span>
+          </a>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Bottom Bar: Copyright & Legal Links -->
+    <div class="pt-8 flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-stone-gray">
+      <div>
+        <p>© {currentYear} {t.siteTitle}. {t.footer.rightsReserved}</p>
+      </div>
+
+      <div class="flex flex-wrap items-center gap-4 sm:gap-6">
+        <a 
+          href={lang === 'tr' ? '/iletisim#kvkk' : '/en/contact#kvkk'} 
+          class="hover:text-ink transition-colors"
+        >
+          {t.footer.kvkk}
+        </a>
+        <span class="text-sand hidden sm:inline">•</span>
+        <a 
+          href={lang === 'tr' ? '/iletisim#gizlilik' : '/en/contact#privacy'} 
+          class="hover:text-ink transition-colors"
+        >
+          {t.footer.privacy}
+        </a>
+        <span class="text-sand hidden sm:inline">•</span>
+        <a 
+          href={lang === 'tr' ? '/iletisim#cerezler' : '/en/contact#cookies'} 
+          class="hover:text-ink transition-colors"
+        >
+          {t.footer.cookies}
+        </a>
+      </div>
+    </div>
+
+  </div>
+</footer>

@@ -41,8 +41,41 @@ export const translations = {
     rareCollection: "Nadir Koleksiyon",
     rareCollectionSubtitle: "İlk Baskılar ve Elyazmaları",
     rareCollectionDesc: "Kütüphanemizin özel odasında sergilenen, Balıkçı’nın kendi eliyle düzelttiği taslaklar ve yayınlandığı dönemde ses getiren ilk baskı nüshaları araştırmacıların ziyaretine açıktır.",
-    quotesText: "Yokuş başına geldiğinde Bodrum'u göreceksin, sanma ki sen geldiğin gibi gideceksin. Senden öncekiler de böyleydiler; akıllarını hep Bodrum'da bırakıp gittiler...",
-    quotesAuthor: "Cevat Şakir Kabaağaçlı"
+    quotesText: "Yokuş başına geldiğinde Bodrum'u görecein, sanma ki sen geldiğin gibi gideceksin. Senden öncekiler de böyleydiler; akıllarını hep Bodrum'da bırakıp gittiler...",
+    quotesAuthor: "Cevat Şakir Kabaağaçlı",
+    nav: {
+      home: "Ana Sayfa",
+      about: "Hakkımızda",
+      events: "Etkinlikler",
+      talks: "Söyleşiler",
+      fisherman: "Halikarnas Balıkçısı",
+      contact: "İletişim"
+    },
+    footer: {
+      navigation: "Navigasyon",
+      socialMedia: "Sosyal Medya",
+      campusAndVisit: "Yerleşke & Ziyaret",
+      address: "Kızılağaç, Bodrum / Muğla",
+      openingHours: "Salı – Pazar: 09:00 – 19:00",
+      closedMondays: "Pazartesi günleri kapalıdır.",
+      missionSnippet: "Bodrum’un kültürel ve edebi mirasını koruyan, Halikarnas Balıkçısı’nın mavi hümanizmasını geleceğe taşıyan yaşayan kent kütüphanesi.",
+      kvkk: "KVKK Aydınlatma Metni",
+      privacy: "Gizlilik Politikası",
+      cookies: "Çerez Politikası",
+      rightsReserved: "Tüm hakları saklıdır."
+    },
+    search: {
+      title: "Arama",
+      placeholder: "Kütüphane, etkinlik veya eser ara...",
+      all: "Tümü",
+      events: "Etkinlikler",
+      books: "Eserler",
+      talks: "Söyleşiler",
+      pages: "Sayfalar",
+      noResults: "Aramanızla eşleşen sonuç bulunamadı.",
+      popularSearches: "Popüler Aramalar",
+      keyboardHint: "Seçmek için Enter, gezinmek için ↑↓, kapatmak için ESC"
+    }
   },
   en: {
     siteTitle: "Bodrum City Library",
@@ -87,7 +120,40 @@ export const translations = {
     rareCollectionSubtitle: "First Editions & Manuscripts",
     rareCollectionDesc: "Curated drafts corrected by the author himself and seminal first editions displayed in our special archival room for scholars and researchers.",
     quotesText: "When you reach the top of the hill, you will see Bodrum. Don't think you will leave as you came. Those before you were the same; they all left their minds behind in Bodrum...",
-    quotesAuthor: "Cevat Sakir Kabaagacli"
+    quotesAuthor: "Cevat Sakir Kabaagacli",
+    nav: {
+      home: "Home",
+      about: "About Us",
+      events: "Events",
+      talks: "Talks",
+      fisherman: "Fisherman of Halicarnassus",
+      contact: "Contact"
+    },
+    footer: {
+      navigation: "Navigation",
+      socialMedia: "Social Media",
+      campusAndVisit: "Campus & Visiting",
+      address: "Kizilagac, Bodrum / Mugla, Turkiye",
+      openingHours: "Tuesday – Sunday: 09:00 – 19:00",
+      closedMondays: "Closed on Mondays.",
+      missionSnippet: "A living city library dedicated to preserving Bodrum's cultural and literary heritage, carrying the blue humanism of the Fisherman of Halicarnassus into the future.",
+      kvkk: "Personal Data Protection (KVKK)",
+      privacy: "Privacy Policy",
+      cookies: "Cookie Policy",
+      rightsReserved: "All rights reserved."
+    },
+    search: {
+      title: "Search",
+      placeholder: "Search library (events, books, talks...)",
+      all: "All",
+      events: "Events",
+      books: "Works & Books",
+      talks: "Talks & Recordings",
+      pages: "Pages",
+      noResults: "No results matched your search query.",
+      popularSearches: "Popular Searches",
+      keyboardHint: "Enter to select, ↑↓ to navigate, ESC to close"
+    }
   }
 };
 
@@ -103,4 +169,39 @@ export function getRelativeLocaleUrl(lang: Lang, path: string) {
     return cleanPath;
   }
   return `/en${cleanPath === '/' ? '' : cleanPath}`;
+}
+
+export const navRoutes = [
+  { key: 'home', pathTr: '/', pathEn: '/en' },
+  { key: 'about', pathTr: '/hakkimizda', pathEn: '/en/about' },
+  { key: 'events', pathTr: '/etkinlikler', pathEn: '/en/events' },
+  { key: 'talks', pathTr: '/soylesiler', pathEn: '/en/talks' },
+  { key: 'fisherman', pathTr: '/halikarnas-balikcisi', pathEn: '/en/fisherman-of-halicarnassus' },
+  { key: 'contact', pathTr: '/iletisim', pathEn: '/en/contact' }
+] as const;
+
+export function getEquivalentLanguageUrl(pathname: string, targetLang: 'tr' | 'en'): string {
+  const cleanPath = pathname.replace(/\/$/, '') || '/';
+
+  if (targetLang === 'en') {
+    if (cleanPath === '/' || cleanPath === '') return '/en';
+    if (cleanPath === '/hakkimizda') return '/en/about';
+    if (cleanPath === '/etkinlikler') return '/en/events';
+    if (cleanPath === '/soylesiler') return '/en/talks';
+    if (cleanPath === '/halikarnas-balikcisi') return '/en/fisherman-of-halicarnassus';
+    if (cleanPath === '/iletisim') return '/en/contact';
+    if (cleanPath.startsWith('/en')) return cleanPath;
+    return `/en${cleanPath}`;
+  } else {
+    // targetLang === 'tr'
+    if (cleanPath === '/en' || cleanPath === '/en/') return '/';
+    if (cleanPath === '/en/about') return '/hakkimizda';
+    if (cleanPath === '/en/events') return '/etkinlikler';
+    if (cleanPath === '/en/talks') return '/soylesiler';
+    if (cleanPath === '/en/fisherman-of-halicarnassus') return '/halikarnas-balikcisi';
+    if (cleanPath === '/en/contact') return '/iletisim';
+    if (cleanPath.startsWith('/en/')) return cleanPath.replace(/^\/en/, '') || '/';
+    if (cleanPath === '/en') return '/';
+    return cleanPath;
+  }
 }

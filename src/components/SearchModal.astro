@@ -1,0 +1,488 @@
+---
+import { getCollection } from 'astro:content';
+import { getT, navRoutes, type Lang } from '../utils/i18n';
+
+export interface Props {
+  lang?: Lang;
+}
+
+const { lang = 'tr' } = Astro.props;
+const t = getT(lang);
+
+// Fetch content items from collections for the search index
+let eventsData: any[] = [];
+let booksData: any[] = [];
+let talksData: any[] = [];
+
+try {
+  eventsData = await getCollection('events');
+} catch (e) {
+  // fallback if collection not initialized
+}
+
+try {
+  booksData = await getCollection('books');
+} catch (e) {
+  // fallback
+}
+
+try {
+  talksData = await getCollection('talks');
+} catch (e) {
+  // fallback
+}
+
+// Build Search Index
+export interface SearchItem {
+  id: string;
+  type: 'event' | 'book' | 'talk' | 'page';
+  typeLabel: string;
+  title: string;
+  subtitle?: string;
+  summary: string;
+  url: string;
+  date?: string;
+  isRare?: boolean;
+}
+
+const searchIndex: SearchItem[] = [];
+
+// 1. Pages
+navRoutes.forEach((route) => {
+  const isTr = lang === 'tr';
+  searchIndex.push({
+    id: `page-${route.key}`,
+    type: 'page',
+    typeLabel: isTr ? 'Sayfa' : 'Page',
+    title: t.nav[route.key],
+    subtitle: isTr ? 'Kütüphane Bölümü' : 'Library Section',
+    summary: isTr ? `${t.siteTitle} bünyesindeki ${t.nav[route.key]} sayfası.` : `${t.siteTitle} - ${t.nav[route.key]} page.`,
+    url: isTr ? route.pathTr : route.pathEn
+  });
+});
+
+// 2. Events
+eventsData.forEach((item) => {
+  const data = item.data;
+  const isTr = lang === 'tr';
+  searchIndex.push({
+    id: `event-${data.id}`,
+    type: 'event',
+    typeLabel: isTr ? (data.categoryLabelTr || 'Etkinlik') : (data.categoryLabelEn || 'Event'),
+    title: isTr ? data.title : data.titleEn,
+    subtitle: isTr ? `${data.displayDateTr} • ${data.locationTr}` : `${data.displayDateEn} • ${data.locationEn}`,
+    summary: isTr ? data.summaryTr : data.summaryEn,
+    url: isTr ? `/etkinlikler#${data.id}` : `/en/events#${data.id}`,
+    date: data.date
+  });
+});
+
+// 3. Books
+booksData.forEach((item) => {
+  const data = item.data;
+  const isTr = lang === 'tr';
+  searchIndex.push({
+    id: `book-${data.id}`,
+    type: 'book',
+    typeLabel: isTr ? (data.isRare ? 'Nadir Eser' : 'Eser / Kitap') : (data.isRare ? 'Rare Edition' : 'Book / Work'),
+    title: data.title,
+    subtitle: data.originalYear ? (isTr ? `İlk Baskı Yılı: ${data.originalYear}` : `Original Year: ${data.originalYear}`) : undefined,
+    summary: isTr ? data.summaryTr : data.summaryEn,
+    url: isTr ? `/halikarnas-balikcisi#${data.id}` : `/en/fisherman-of-halicarnassus#${data.id}`,
+    isRare: data.isRare
+  });
+});
+
+// 4. Talks
+talksData.forEach((item) => {
+  const data = item.data;
+  const isTr = lang === 'tr';
+  searchIndex.push({
+    id: `talk-${data.id}`,
+    type: 'talk',
+    typeLabel: isTr ? 'Söyleşi' : 'Talk',
+    title: isTr ? data.titleTr : data.titleEn,
+    subtitle: isTr ? `${data.guestTr} (${data.roleTr}) • ${data.duration}` : `${data.guestEn} (${data.roleEn}) • ${data.duration}`,
+    summary: isTr ? data.summaryTr : data.summaryEn,
+    url: isTr ? `/soylesiler#${data.id}` : `/en/talks#${data.id}`,
+    date: data.date
+  });
+});
+
+const popularKeywords = lang === 'tr'
+  ? ['Halikarnas Balıkçısı', 'Mavi Sürgün', 'Nadir Koleksiyon', 'Edebiyat', 'Söyleşiler', 'Pedasa']
+  : ['Fisherman of Halicarnassus', 'Blue Exile', 'Rare Collection', 'Literature', 'Talks', 'Pedasa'];
+---
+
+<!-- Search Modal Container -->
+<div
+  id="search-modal-backdrop"
+  class="fixed inset-0 z-50 bg-ink/60 backdrop-blur-xs flex items-start justify-center pt-12 sm:pt-20 px-4 opacity-0 pointer-events-none transition-opacity duration-200"
+  role="dialog"
+  aria-modal="true"
+  aria-labelledby="search-modal-title"
+>
+  <div
+    id="search-modal-container"
+    class="w-full max-w-2xl bg-surface-bright rounded-md border border-sand shadow-2xl overflow-hidden flex flex-col max-h-[80vh] transform scale-95 transition-transform duration-200"
+  >
+    <!-- Modal Header with Input -->
+    <div class="p-4 border-b border-sand bg-parchment flex items-center gap-3">
+      <span class="material-symbols-outlined text-stone-gray text-[22px] shrink-0">search</span>
+      <input
+        type="search"
+        id="search-modal-input"
+        class="w-full bg-transparent text-ink placeholder:text-stone-gray text-base focus:outline-none font-medium"
+        placeholder={t.search.placeholder}
+        autocomplete="off"
+        spellcheck="false"
+      />
+      <button
+        type="button"
+        id="search-modal-close"
+        class="p-1 rounded text-stone-gray hover:text-ink hover:bg-surface-container transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-olive"
+        aria-label="Kapat"
+      >
+        <span class="material-symbols-outlined text-[20px]">close</span>
+      </button>
+    </div>
+
+    <!-- Category Filter Chips -->
+    <div class="px-4 py-2.5 bg-surface-container-low border-b border-sand/70 flex items-center gap-1.5 overflow-x-auto no-scrollbar text-xs">
+      <button
+        type="button"
+        data-filter="all"
+        class="search-filter-chip active px-2.5 py-1 rounded border border-ink bg-ink text-white font-medium transition-colors shrink-0"
+      >
+        {t.search.all}
+      </button>
+      <button
+        type="button"
+        data-filter="event"
+        class="search-filter-chip px-2.5 py-1 rounded border border-sand bg-parchment text-ink/75 hover:text-ink hover:bg-surface-container font-medium transition-colors shrink-0"
+      >
+        {t.search.events}
+      </button>
+      <button
+        type="button"
+        data-filter="book"
+        class="search-filter-chip px-2.5 py-1 rounded border border-sand bg-parchment text-ink/75 hover:text-ink hover:bg-surface-container font-medium transition-colors shrink-0"
+      >
+        {t.search.books}
+      </button>
+      <button
+        type="button"
+        data-filter="talk"
+        class="search-filter-chip px-2.5 py-1 rounded border border-sand bg-parchment text-ink/75 hover:text-ink hover:bg-surface-container font-medium transition-colors shrink-0"
+      >
+        {t.search.talks}
+      </button>
+      <button
+        type="button"
+        data-filter="page"
+        class="search-filter-chip px-2.5 py-1 rounded border border-sand bg-parchment text-ink/75 hover:text-ink hover:bg-surface-container font-medium transition-colors shrink-0"
+      >
+        {t.search.pages}
+      </button>
+    </div>
+
+    <!-- Results Area -->
+    <div id="search-modal-results" class="flex-1 overflow-y-auto p-3 space-y-1.5 min-h-[160px]">
+      <!-- Results populated via client JS -->
+    </div>
+
+    <!-- Empty / Initial States -->
+    <div id="search-modal-initial" class="p-6 text-center">
+      <p class="text-xs uppercase tracking-wider text-stone-gray font-semibold mb-3">
+        {t.search.popularSearches}
+      </p>
+      <div class="flex flex-wrap items-center justify-center gap-2">
+        {popularKeywords.map((kw) => (
+          <button
+            type="button"
+            data-search-keyword={kw}
+            class="popular-search-badge px-3 py-1 text-xs rounded-full border border-sand bg-surface-container-low hover:bg-surface-container text-ink transition-colors"
+          >
+            {kw}
+          </button>
+        ))}
+      </div>
+    </div>
+
+    <div id="search-modal-empty" class="hidden p-8 text-center text-stone-gray">
+      <span class="material-symbols-outlined text-4xl mb-2 text-stone-gray/60 block">search_off</span>
+      <p class="text-sm font-medium text-ink">{t.search.noResults}</p>
+    </div>
+
+    <!-- Footer Shortcuts -->
+    <div class="px-4 py-2.5 bg-surface-container border-t border-sand flex items-center justify-between text-[11px] text-stone-gray">
+      <div class="flex items-center gap-3">
+        <span class="hidden sm:inline-flex items-center gap-1">
+          <kbd class="px-1.5 py-0.5 bg-parchment border border-sand rounded font-mono">↑</kbd>
+          <kbd class="px-1.5 py-0.5 bg-parchment border border-sand rounded font-mono">↓</kbd>
+          <span>{lang === 'tr' ? 'Gezin' : 'Navigate'}</span>
+        </span>
+        <span class="hidden sm:inline-flex items-center gap-1">
+          <kbd class="px-1.5 py-0.5 bg-parchment border border-sand rounded font-mono">↵</kbd>
+          <span>{lang === 'tr' ? 'Seç' : 'Select'}</span>
+        </span>
+      </div>
+      <div class="flex items-center gap-1">
+        <kbd class="px-1.5 py-0.5 bg-parchment border border-sand rounded font-mono">ESC</kbd>
+        <span>{lang === 'tr' ? 'Kapat' : 'Close'}</span>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- Search Index Injection -->
+<script is:inline id="search-data" type="application/json" set:html={JSON.stringify(searchIndex)} />
+
+<script>
+  function setupSearchModal() {
+    const backdrop = document.getElementById('search-modal-backdrop');
+    const container = document.getElementById('search-modal-container');
+    const input = document.getElementById('search-modal-input') as HTMLInputElement | null;
+    const closeBtn = document.getElementById('search-modal-close');
+    const resultsContainer = document.getElementById('search-modal-results');
+    const initialView = document.getElementById('search-modal-initial');
+    const emptyView = document.getElementById('search-modal-empty');
+    const filterChips = document.querySelectorAll<HTMLButtonElement>('.search-filter-chip');
+    const dataScript = document.getElementById('search-data');
+
+    if (!backdrop || !container || !input || !resultsContainer || !dataScript) return;
+
+    let searchData: Array<{
+      id: string;
+      type: string;
+      typeLabel: string;
+      title: string;
+      subtitle?: string;
+      summary: string;
+      url: string;
+      date?: string;
+      isRare?: boolean;
+    }> = [];
+
+    try {
+      searchData = JSON.parse(dataScript.textContent || '[]');
+    } catch (e) {
+      console.error('Failed to parse search data index', e);
+    }
+
+    let activeFilter = 'all';
+    let selectedIndex = -1;
+
+    function openModal() {
+      backdrop?.classList.remove('opacity-0', 'pointer-events-none');
+      backdrop?.classList.add('opacity-100');
+      container?.classList.remove('scale-95');
+      container?.classList.add('scale-100');
+      document.body.style.overflow = 'hidden';
+      setTimeout(() => {
+        input?.focus();
+      }, 50);
+    }
+
+    function closeModal() {
+      backdrop?.classList.add('opacity-0', 'pointer-events-none');
+      backdrop?.classList.remove('opacity-100');
+      container?.classList.add('scale-95');
+      container?.classList.remove('scale-100');
+      document.body.style.overflow = '';
+      if (input) input.value = '';
+      renderResults('');
+    }
+
+    // Bind triggers
+    document.querySelectorAll('[data-search-trigger]').forEach((el) => {
+      el.addEventListener('click', (e) => {
+        e.preventDefault();
+        openModal();
+      });
+    });
+
+    closeBtn?.addEventListener('click', closeModal);
+    backdrop.addEventListener('click', (e) => {
+      if (e.target === backdrop) closeModal();
+    });
+
+    // Global shortcut Cmd+K / Ctrl+K / Escape
+    window.addEventListener('keydown', (e) => {
+      if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === 'k') {
+        e.preventDefault();
+        const isOpen = backdrop.classList.contains('opacity-100');
+        if (isOpen) {
+          closeModal();
+        } else {
+          openModal();
+        }
+      } else if (e.key === 'Escape' && backdrop.classList.contains('opacity-100')) {
+        e.preventDefault();
+        closeModal();
+      }
+    });
+
+    // Popular Keywords click
+    document.querySelectorAll<HTMLButtonElement>('[data-search-keyword]').forEach((btn) => {
+      btn.addEventListener('click', () => {
+        const kw = btn.getAttribute('data-search-keyword') || '';
+        if (input) {
+          input.value = kw;
+          input.focus();
+          renderResults(kw);
+        }
+      });
+    });
+
+    // Filter chip clicks
+    filterChips.forEach((chip) => {
+      chip.addEventListener('click', () => {
+        filterChips.forEach((c) => {
+          c.classList.remove('bg-ink', 'text-white', 'border-ink');
+          c.classList.add('bg-parchment', 'text-ink/75', 'border-sand');
+        });
+        chip.classList.remove('bg-parchment', 'text-ink/75', 'border-sand');
+        chip.classList.add('bg-ink', 'text-white', 'border-ink');
+        activeFilter = chip.getAttribute('data-filter') || 'all';
+        renderResults(input.value);
+      });
+    });
+
+    function normalizeTurkish(str: string) {
+      return str
+        .toLowerCase()
+        .replace(/ğ/g, 'g')
+        .replace(/ü/g, 'u')
+        .replace(/ş/g, 's')
+        .replace(/ı/g, 'i')
+        .replace(/ö/g, 'o')
+        .replace(/ç/g, 'c');
+    }
+
+    function renderResults(query: string) {
+      const q = query.trim();
+      const qNorm = normalizeTurkish(q);
+
+      if (!q) {
+        if (resultsContainer) resultsContainer.innerHTML = '';
+        initialView?.classList.remove('hidden');
+        emptyView?.classList.add('hidden');
+        selectedIndex = -1;
+        return;
+      }
+
+      initialView?.classList.add('hidden');
+
+      const filtered = searchData.filter((item) => {
+        if (activeFilter !== 'all' && item.type !== activeFilter) {
+          return false;
+        }
+        const titleNorm = normalizeTurkish(item.title || '');
+        const summaryNorm = normalizeTurkish(item.summary || '');
+        const subtitleNorm = normalizeTurkish(item.subtitle || '');
+        return titleNorm.includes(qNorm) || summaryNorm.includes(qNorm) || subtitleNorm.includes(qNorm);
+      });
+
+      if (filtered.length === 0) {
+        if (resultsContainer) resultsContainer.innerHTML = '';
+        emptyView?.classList.remove('hidden');
+        selectedIndex = -1;
+        return;
+      }
+
+      emptyView?.classList.add('hidden');
+      selectedIndex = -1;
+
+      if (resultsContainer) {
+        resultsContainer.innerHTML = filtered
+          .map((item, idx) => {
+            const badgeBg =
+              item.type === 'event'
+                ? 'bg-amber-100 text-amber-900 border-amber-300'
+                : item.type === 'book'
+                ? 'bg-emerald-100 text-emerald-900 border-emerald-300'
+                : item.type === 'talk'
+                ? 'bg-blue-100 text-blue-900 border-blue-300'
+                : 'bg-stone-200 text-stone-900 border-stone-300';
+
+            return `
+              <a
+                href="${item.url}"
+                data-result-index="${idx}"
+                class="search-result-item block p-3 rounded border border-transparent hover:border-sand hover:bg-surface-container-low transition-colors group cursor-pointer"
+              >
+                <div class="flex items-start justify-between gap-3">
+                  <div class="flex-1 min-w-0">
+                    <div class="flex items-center gap-2 mb-1">
+                      <span class="px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wider rounded border ${badgeBg}">
+                        ${item.typeLabel}
+                      </span>
+                      ${item.subtitle ? `<span class="text-xs text-stone-gray truncate">${item.subtitle}</span>` : ''}
+                    </div>
+                    <h4 class="text-sm font-semibold text-ink group-hover:text-olive transition-colors truncate">
+                      ${item.title}
+                    </h4>
+                    <p class="text-xs text-ink/70 line-clamp-2 mt-0.5">
+                      ${item.summary}
+                    </p>
+                  </div>
+                  <span class="material-symbols-outlined text-stone-gray group-hover:text-ink text-[18px] shrink-0 mt-2">
+                    arrow_forward
+                  </span>
+                </div>
+              </a>
+            `;
+          })
+          .join('');
+
+        // Add click listener to close modal on navigation
+        resultsContainer.querySelectorAll('a').forEach((link) => {
+          link.addEventListener('click', () => {
+            closeModal();
+          });
+        });
+      }
+    }
+
+    input.addEventListener('input', (e) => {
+      renderResults((e.target as HTMLInputElement).value);
+    });
+
+    // Keyboard navigation in search results
+    input.addEventListener('keydown', (e) => {
+      const items = resultsContainer.querySelectorAll<HTMLAnchorElement>('.search-result-item');
+      if (items.length === 0) return;
+
+      if (e.key === 'ArrowDown') {
+        e.preventDefault();
+        selectedIndex = (selectedIndex + 1) % items.length;
+        updateSelection(items);
+      } else if (e.key === 'ArrowUp') {
+        e.preventDefault();
+        selectedIndex = (selectedIndex - 1 + items.length) % items.length;
+        updateSelection(items);
+      } else if (e.key === 'Enter') {
+        if (selectedIndex >= 0 && items[selectedIndex]) {
+          e.preventDefault();
+          items[selectedIndex].click();
+        }
+      }
+    });
+
+    function updateSelection(items: NodeListOf<HTMLAnchorElement>) {
+      items.forEach((item, idx) => {
+        if (idx === selectedIndex) {
+          item.classList.add('bg-surface-container', 'border-sand');
+          item.scrollIntoView({ block: 'nearest' });
+        } else {
+          item.classList.remove('bg-surface-container', 'border-sand');
+        }
+      });
+    }
+  }
+
+  setupSearchModal();
+  document.addEventListener('astro:page-load', setupSearchModal);
+</script>
