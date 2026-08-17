@@ -1,0 +1,752 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { getCollection } from 'astro:content';
+import { getT } from '../../utils/i18n';
+
+const lang = 'en';
+const t = getT(lang);
+
+// Fetch events from Content Collections
+const allEvents = await getCollection('events');
+
+// Separate upcoming and past events
+const upcomingEvents = allEvents
+  .filter((e) => !e.data.isPast)
+  .sort((a, b) => new Date(a.data.date).getTime() - new Date(b.data.date).getTime());
+
+const pastEvents = allEvents
+  .filter((e) => e.data.isPast)
+  .sort((a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime());
+
+const featuredEvent = upcomingEvents.find((e) => e.data.featured) || upcomingEvents[0];
+const sideEvents = upcomingEvents.filter((e) => e.data.id !== featuredEvent?.data.id);
+---
+
+<Layout
+  title={`Events & Workshops | ${t.siteTitle}`}
+  description="Bodrum City Library cultural calendar, literature panels, historical symposiums, children workshops, and open public lectures."
+  lang={lang}
+  currentPath="/en/events"
+>
+  <!-- 1. Hero Section -->
+  <section class="relative min-h-[65vh] flex items-center py-20 md:py-28 px-margin-mobile md:px-margin-desktop overflow-hidden border-b border-sand bg-surface-bright">
+    <!-- Atmospheric Ambient Background Layer -->
+    <div class="absolute inset-0 z-0 opacity-25 pointer-events-none">
+      <div
+        class="w-full h-full bg-cover bg-center filter contrast-110"
+        style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDQ_kg3bbgJ4ynOz1o7DQcY3YaIdeG_zUESiNKW-81FsNfEZqrXlPi-ZAYWzb2FYdKriB4ESdIgn04zGCTSrnOaQAobk2tEQSDMKK4TlQhdPdjUJk74KLsSusQUSR9nHe1QycFJgHdfJUQSr8eFa2k0wQHdX3j1D5aQBbxg9mUEAGpQs_UGA_l1geAuKfbBil5Wy-_VugN7cjAepbQ_HoOugyaLOfsfF-vsYSCOhY75Ao3sAvwHFdv3nGJYn9whKvXn8vnrP8j4yEE');"
+      ></div>
+      <div class="absolute inset-0 bg-gradient-to-r from-parchment via-parchment/85 to-parchment/60"></div>
+    </div>
+
+    <!-- Ex Libris Watermark Flourish -->
+    <div class="absolute -top-10 -right-10 md:top-8 md:right-12 ex-libris-watermark select-none pointer-events-none">
+      <span class="material-symbols-outlined text-[260px] md:text-[380px] text-olive leading-none">event_note</span>
+    </div>
+
+    <!-- Hero Content -->
+    <div class="relative z-10 max-w-container-max mx-auto w-full">
+      <div class="max-w-3xl">
+        <!-- Overline Badge -->
+        <div class="inline-flex items-center gap-2 px-3.5 py-1.5 bg-secondary-container/80 border border-sand text-ink text-xs font-semibold tracking-[0.2em] uppercase mb-6 rounded">
+          <span class="w-2 h-2 rounded-full bg-olive animate-pulse"></span>
+          <span>EVENTS & WORKSHOPS</span>
+        </div>
+
+        <!-- Headline -->
+        <h1 class="font-serif text-4xl sm:text-5xl md:text-6xl lg:text-7xl text-ink font-normal leading-[1.12] tracking-tight mb-6 text-balance">
+          Bodrum Events in the Light of Knowledge
+        </h1>
+
+        <!-- Subtitle Card -->
+        <div class="bg-parchment/95 backdrop-blur-sm border border-sand p-6 md:p-8 rounded shadow-sm max-w-2xl">
+          <p class="font-sans text-base md:text-lg text-secondary leading-relaxed text-balance">
+            From literary panels to philosophical symposia, children's creative sessions to ancient history conferences; join our gatherings shaping the cultural pulse of Bodrum.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 2. Sticky Filter & Search Bar -->
+  <section class="sticky top-16 md:top-20 z-30 bg-surface-bright/95 backdrop-blur-md border-b border-sand py-4 px-margin-mobile md:px-margin-desktop transition-all shadow-sm">
+    <div class="max-w-container-max mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
+      
+      <!-- Category Filter Pills -->
+      <div class="flex items-center gap-2 overflow-x-auto w-full md:w-auto pb-2 md:pb-0 scrollbar-none" id="event-filters">
+        <button
+          type="button"
+          data-category-filter="all"
+          class="event-filter-btn px-4 py-2 rounded-full text-xs font-semibold uppercase tracking-wider transition-all cursor-pointer bg-ink text-parchment shadow-sm whitespace-nowrap active-filter"
+        >
+          All Events
+        </button>
+        <button
+          type="button"
+          data-category-filter="workshop"
+          class="event-filter-btn px-4 py-2 rounded-full text-xs font-semibold uppercase tracking-wider transition-all cursor-pointer bg-sand/50 text-ink hover:bg-sand/80 whitespace-nowrap"
+        >
+          Workshops
+        </button>
+        <button
+          type="button"
+          data-category-filter="conference"
+          class="event-filter-btn px-4 py-2 rounded-full text-xs font-semibold uppercase tracking-wider transition-all cursor-pointer bg-sand/50 text-ink hover:bg-sand/80 whitespace-nowrap"
+        >
+          Conferences
+        </button>
+        <button
+          type="button"
+          data-category-filter="kids"
+          class="event-filter-btn px-4 py-2 rounded-full text-xs font-semibold uppercase tracking-wider transition-all cursor-pointer bg-sand/50 text-ink hover:bg-sand/80 whitespace-nowrap"
+        >
+          Kids Programs
+        </button>
+        <button
+          type="button"
+          data-category-filter="talk"
+          class="event-filter-btn px-4 py-2 rounded-full text-xs font-semibold uppercase tracking-wider transition-all cursor-pointer bg-sand/50 text-ink hover:bg-sand/80 whitespace-nowrap"
+        >
+          Talks
+        </button>
+      </div>
+
+      <!-- Live Search Input -->
+      <div class="w-full md:w-72 relative shrink-0">
+        <span class="material-symbols-outlined text-[18px] text-stone-gray absolute left-3.5 top-1/2 -translate-y-1/2 pointer-events-none">
+          search
+        </span>
+        <input
+          type="search"
+          id="event-search-input"
+          placeholder="Search events or venues..."
+          class="w-full pl-10 pr-4 py-2 bg-parchment border border-sand rounded-full text-xs text-ink placeholder:text-stone-gray/70 focus:outline-none focus:border-olive focus:ring-1 focus:ring-olive transition-all shadow-inner"
+          aria-label="Search events"
+        />
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Empty State Notification (Hidden by default) -->
+  <div id="no-events-message" class="hidden max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop py-20 text-center">
+    <div class="w-16 h-16 rounded-full bg-sand/40 border border-sand mx-auto flex items-center justify-center text-stone-gray mb-4">
+      <span class="material-symbols-outlined text-[32px]">event_busy</span>
+    </div>
+    <h3 class="font-serif text-2xl text-ink font-semibold mb-2">No Matching Events Found</h3>
+    <p class="font-sans text-sm text-secondary max-w-md mx-auto mb-6">
+      No event records matched your search query or selected category. Try clearing your filters.
+    </p>
+    <button
+      type="button"
+      id="reset-filters-btn"
+      class="px-5 py-2.5 bg-ink text-parchment text-xs font-semibold uppercase tracking-wider rounded-sm hover:bg-olive transition-colors cursor-pointer"
+    >
+      Reset Filters
+    </button>
+  </div>
+
+  <!-- 3. Upcoming Events Section -->
+  <section id="upcoming-events-section" class="py-20 md:py-28 px-margin-mobile md:px-margin-desktop bg-surface-container-low border-b border-sand">
+    <div class="max-w-container-max mx-auto">
+      
+      <!-- Section Header -->
+      <div class="flex items-center justify-between mb-12 pb-4 border-b border-sand">
+        <div>
+          <span class="font-sans text-xs uppercase tracking-[0.2em] text-olive font-semibold block mb-1">
+            CURRENT PROGRAM
+          </span>
+          <h2 class="font-serif text-3xl sm:text-4xl text-ink font-normal">
+            Upcoming Events
+          </h2>
+        </div>
+        <span class="font-mono text-xs font-semibold text-stone-gray px-3 py-1 bg-parchment border border-sand rounded-full">
+          {upcomingEvents.length} Events
+        </span>
+      </div>
+
+      <!-- Bento Layout: Featured (8-Col) + Side (4-Col) -->
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
+        
+        <!-- Featured Event Card (8-Col) -->
+        {featuredEvent && (
+          <article
+            class="event-card lg:col-span-8 bg-parchment border border-sand rounded overflow-hidden flex flex-col justify-between group hover:shadow-lg transition-all duration-300 relative"
+            data-category={featuredEvent.data.category}
+            data-title={`${featuredEvent.data.titleEn} ${featuredEvent.data.summaryEn} ${featuredEvent.data.locationEn} ${featuredEvent.data.categoryLabelEn}`.toLowerCase()}
+          >
+            <div>
+              <!-- Image Banner with Overlay -->
+              <div class="relative aspect-[16/9] md:aspect-[21/10] overflow-hidden bg-sand/30">
+                <img
+                  src={featuredEvent.data.image}
+                  alt={featuredEvent.data.titleEn}
+                  class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                  loading="eager"
+                />
+                <div class="absolute inset-0 bg-gradient-to-t from-ink/80 via-ink/20 to-transparent"></div>
+
+                <!-- Floating Badges -->
+                <div class="absolute top-4 left-4 flex flex-wrap gap-2">
+                  <span class="bg-olive text-parchment font-mono text-xs font-semibold px-3 py-1 uppercase tracking-wider rounded-sm shadow">
+                    FEATURED
+                  </span>
+                  <span class="bg-ink/90 backdrop-blur-sm text-parchment font-mono text-xs font-semibold px-3 py-1 uppercase tracking-wider rounded-sm shadow">
+                    {featuredEvent.data.displayDateEn}
+                  </span>
+                </div>
+
+                <div class="absolute bottom-4 left-4 right-4 flex items-center justify-between text-parchment text-xs font-medium">
+                  <span class="inline-flex items-center gap-1 bg-black/40 backdrop-blur-sm px-2.5 py-1 rounded">
+                    <span class="material-symbols-outlined text-[15px] text-olive">location_on</span>
+                    {featuredEvent.data.locationEn}
+                  </span>
+                  <span class="inline-flex items-center gap-1 bg-black/40 backdrop-blur-sm px-2.5 py-1 rounded uppercase tracking-wider">
+                    {featuredEvent.data.categoryLabelEn}
+                  </span>
+                </div>
+              </div>
+
+              <!-- Content Body -->
+              <div class="p-6 md:p-8">
+                <h3 class="font-serif text-2xl sm:text-3xl md:text-4xl font-semibold text-ink leading-tight mb-4 group-hover:text-olive transition-colors">
+                  {featuredEvent.data.titleEn}
+                </h3>
+                <p class="font-sans text-base text-secondary leading-relaxed mb-6">
+                  {featuredEvent.data.summaryEn}
+                </p>
+              </div>
+            </div>
+
+            <!-- Card Action Footer -->
+            <div class="px-6 pb-6 md:px-8 md:pb-8 pt-4 border-t border-sand/60 flex flex-wrap items-center justify-between gap-4">
+              <button
+                type="button"
+                class="event-register-btn px-6 py-3 bg-ink hover:bg-olive text-parchment font-sans font-semibold text-xs uppercase tracking-widest transition-colors rounded-sm shadow-sm flex items-center gap-2 cursor-pointer"
+                data-event-title={featuredEvent.data.titleEn}
+              >
+                <span>Register</span>
+                <span class="material-symbols-outlined text-[16px]">how_to_reg</span>
+              </button>
+
+              <button
+                type="button"
+                class="event-detail-btn px-5 py-3 border border-sand hover:border-ink text-ink font-sans font-semibold text-xs uppercase tracking-widest transition-colors rounded-sm flex items-center gap-1.5 cursor-pointer"
+                data-event-title={featuredEvent.data.titleEn}
+                data-event-date={featuredEvent.data.displayDateEn}
+                data-event-category={featuredEvent.data.categoryLabelEn}
+                data-event-location={featuredEvent.data.locationEn}
+                data-event-summary={featuredEvent.data.summaryEn}
+                data-event-image={featuredEvent.data.image}
+              >
+                <span>Details</span>
+                <span class="material-symbols-outlined text-[16px]">info</span>
+              </button>
+            </div>
+          </article>
+        )}
+
+        <!-- Side Event Cards (4-Col) -->
+        <div class="lg:col-span-4 flex flex-col gap-6">
+          {sideEvents.map((event) => (
+            <article
+              class="event-card bg-parchment border border-sand rounded overflow-hidden flex flex-col justify-between group hover:shadow-md transition-all duration-300 flex-1"
+              data-category={event.data.category}
+              data-title={`${event.data.titleEn} ${event.data.summaryEn} ${event.data.locationEn} ${event.data.categoryLabelEn}`.toLowerCase()}
+            >
+              <div>
+                <!-- Side Card Thumbnail -->
+                <div class="relative aspect-[16/9] overflow-hidden bg-sand/30">
+                  <img
+                    src={event.data.image}
+                    alt={event.data.titleEn}
+                    class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                    loading="lazy"
+                  />
+                  <!-- Floating Date Badge -->
+                  <div class="absolute top-3 left-3 bg-ink text-parchment font-mono text-[11px] font-semibold px-2.5 py-1 uppercase tracking-wider rounded-sm shadow">
+                    {event.data.displayDateEn}
+                  </div>
+                  <div class="absolute bottom-3 right-3 bg-parchment/90 backdrop-blur-sm text-ink font-sans text-[11px] font-semibold px-2 py-0.5 uppercase tracking-wider rounded-sm">
+                    {event.data.categoryLabelEn}
+                  </div>
+                </div>
+
+                <!-- Side Card Content -->
+                <div class="p-5">
+                  <div class="flex items-center gap-1 text-xs text-stone-gray mb-2">
+                    <span class="material-symbols-outlined text-[14px] text-olive">location_on</span>
+                    <span>{event.data.locationEn}</span>
+                  </div>
+                  <h4 class="font-serif text-lg font-semibold text-ink leading-snug mb-2 group-hover:text-olive transition-colors">
+                    {event.data.titleEn}
+                  </h4>
+                  <p class="font-sans text-xs text-secondary leading-relaxed line-clamp-2">
+                    {event.data.summaryEn}
+                  </p>
+                </div>
+              </div>
+
+              <!-- Side Card Footer -->
+              <div class="px-5 pb-5 pt-3 border-t border-sand/60 flex items-center justify-between gap-2">
+                <button
+                  type="button"
+                  class="event-register-btn px-4 py-2 bg-ink hover:bg-olive text-parchment font-sans font-semibold text-[11px] uppercase tracking-wider transition-colors rounded-sm cursor-pointer flex items-center gap-1"
+                  data-event-title={event.data.titleEn}
+                >
+                  <span>Register</span>
+                  <span class="material-symbols-outlined text-[14px]">how_to_reg</span>
+                </button>
+
+                <button
+                  type="button"
+                  class="event-detail-btn px-3 py-2 border border-sand hover:border-ink text-ink font-sans font-semibold text-[11px] uppercase tracking-wider transition-colors rounded-sm cursor-pointer"
+                  data-event-title={event.data.titleEn}
+                  data-event-date={event.data.displayDateEn}
+                  data-event-category={event.data.categoryLabelEn}
+                  data-event-location={event.data.locationEn}
+                  data-event-summary={event.data.summaryEn}
+                  data-event-image={event.data.image}
+                >
+                  Details
+                </button>
+              </div>
+            </article>
+          ))}
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- 4. Past Events Section -->
+  <section id="past-events-section" class="py-20 md:py-28 px-margin-mobile md:px-margin-desktop bg-parchment border-b border-sand">
+    <div class="max-w-container-max mx-auto">
+      
+      <!-- Section Header -->
+      <div class="flex flex-col sm:flex-row sm:items-end justify-between mb-12 pb-4 border-b border-sand gap-4">
+        <div>
+          <span class="font-sans text-xs uppercase tracking-[0.2em] text-olive font-semibold block mb-1">
+            ARCHIVE & RETROSPECTIVES
+          </span>
+          <h2 class="font-serif text-3xl sm:text-4xl text-ink font-normal">
+            Past Events
+          </h2>
+          <p class="font-sans text-sm text-secondary mt-1">
+            Completed sessions, digital recordings, and symposium bulletins.
+          </p>
+        </div>
+        <span class="font-mono text-xs font-semibold text-stone-gray px-3 py-1 bg-surface-container-low border border-sand rounded-full shrink-0">
+          {pastEvents.length} Records
+        </span>
+      </div>
+
+      <!-- 3-Column Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {pastEvents.map((event) => (
+          <article
+            class="event-card bg-surface-container-low border border-sand rounded overflow-hidden flex flex-col justify-between group hover:shadow-md transition-all duration-300"
+            data-category={event.data.category}
+            data-title={`${event.data.titleEn} ${event.data.summaryEn} ${event.data.locationEn} ${event.data.categoryLabelEn}`.toLowerCase()}
+          >
+            <div>
+              <!-- Past Event Image -->
+              <div class="relative aspect-[16/10] overflow-hidden bg-sand/30">
+                <img
+                  src={event.data.image}
+                  alt={event.data.titleEn}
+                  class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500"
+                  loading="lazy"
+                />
+                <!-- Floating Date -->
+                <div class="absolute top-3 left-3 bg-stone-gray/90 text-parchment font-mono text-[11px] font-semibold px-2.5 py-1 uppercase tracking-wider rounded-sm shadow">
+                  {event.data.displayDateEn}
+                </div>
+                <div class="absolute bottom-3 right-3 bg-parchment/95 text-ink font-sans text-[11px] font-semibold px-2 py-0.5 uppercase tracking-wider rounded-sm">
+                  {event.data.categoryLabelEn}
+                </div>
+              </div>
+
+              <!-- Past Event Body -->
+              <div class="p-6">
+                <div class="flex items-center gap-1 text-xs text-stone-gray mb-2">
+                  <span class="material-symbols-outlined text-[14px] text-olive">location_on</span>
+                  <span>{event.data.locationEn}</span>
+                </div>
+                <h3 class="font-serif text-xl font-semibold text-ink leading-snug mb-3 group-hover:text-olive transition-colors">
+                  {event.data.titleEn}
+                </h3>
+                <p class="font-sans text-sm text-secondary leading-relaxed line-clamp-3">
+                  {event.data.summaryEn}
+                </p>
+              </div>
+            </div>
+
+            <!-- Past Actions Toolbar -->
+            <div class="p-4 bg-surface-container border-t border-sand/60 grid grid-cols-3 gap-2 text-center">
+              <button
+                type="button"
+                class="past-action-btn py-2 px-1 rounded bg-parchment border border-sand hover:border-olive hover:text-olive text-ink font-mono text-[10px] font-semibold uppercase tracking-wider transition-colors flex flex-col items-center gap-1 cursor-pointer"
+                data-action="recording"
+                data-title={event.data.titleEn}
+                title="View Event Recording"
+              >
+                <span class="material-symbols-outlined text-[16px] text-olive">smart_display</span>
+                <span>RECORDING</span>
+              </button>
+
+              <button
+                type="button"
+                class="past-action-btn py-2 px-1 rounded bg-parchment border border-sand hover:border-olive hover:text-olive text-ink font-mono text-[10px] font-semibold uppercase tracking-wider transition-colors flex flex-col items-center gap-1 cursor-pointer"
+                data-action="gallery"
+                data-title={event.data.titleEn}
+                title="View Photo Gallery"
+              >
+                <span class="material-symbols-outlined text-[16px] text-olive">photo_library</span>
+                <span>GALLERY</span>
+              </button>
+
+              <button
+                type="button"
+                class="past-action-btn py-2 px-1 rounded bg-parchment border border-sand hover:border-olive hover:text-olive text-ink font-mono text-[10px] font-semibold uppercase tracking-wider transition-colors flex flex-col items-center gap-1 cursor-pointer"
+                data-action="bulletin"
+                data-title={event.data.titleEn}
+                title="Download Summary Bulletin"
+              >
+                <span class="material-symbols-outlined text-[16px] text-olive">article</span>
+                <span>BULLETIN</span>
+              </button>
+            </div>
+          </article>
+        ))}
+      </div>
+
+    </div>
+  </section>
+
+  <!-- 5. Event Detail Modal -->
+  <div
+    id="event-detail-modal"
+    class="fixed inset-0 z-50 bg-ink/80 backdrop-blur-sm flex items-center justify-center p-4 opacity-0 pointer-events-none transition-opacity duration-300"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="modal-event-title"
+  >
+    <div class="bg-parchment border border-sand rounded-md max-w-xl w-full max-h-[90vh] overflow-y-auto shadow-2xl flex flex-col">
+      <div class="relative aspect-video w-full bg-sand/30 overflow-hidden">
+        <img id="modal-event-image" src="" alt="" class="w-full h-full object-cover" />
+        <button
+          type="button"
+          id="close-event-modal"
+          class="absolute top-3 right-3 w-8 h-8 rounded-full bg-ink/80 text-parchment flex items-center justify-center hover:bg-olive transition-colors cursor-pointer"
+          aria-label="Close modal"
+        >
+          <span class="material-symbols-outlined text-[20px]">close</span>
+        </button>
+      </div>
+
+      <div class="p-6 md:p-8 flex-1">
+        <div class="flex items-center justify-between gap-2 mb-3">
+          <span id="modal-event-category" class="font-sans text-xs font-semibold uppercase tracking-widest text-olive"></span>
+          <span id="modal-event-date" class="font-mono text-xs font-semibold text-stone-gray px-2 py-0.5 bg-surface-container border border-sand rounded"></span>
+        </div>
+
+        <h3 id="modal-event-title" class="font-serif text-2xl md:text-3xl font-semibold text-ink mb-4"></h3>
+
+        <div class="flex items-center gap-1.5 text-xs text-stone-gray mb-4 pb-4 border-b border-sand">
+          <span class="material-symbols-outlined text-[16px] text-olive">location_on</span>
+          <span id="modal-event-location" class="font-medium text-ink"></span>
+        </div>
+
+        <p id="modal-event-summary" class="font-sans text-sm md:text-base text-secondary leading-relaxed mb-6"></p>
+
+        <div class="pt-4 border-t border-sand flex items-center justify-between">
+          <button
+            type="button"
+            id="modal-register-btn"
+            class="px-6 py-3 bg-ink hover:bg-olive text-parchment font-sans font-semibold text-xs uppercase tracking-widest transition-colors rounded-sm shadow-sm flex items-center gap-2 cursor-pointer"
+          >
+            <span>Register for Event</span>
+            <span class="material-symbols-outlined text-[16px]">how_to_reg</span>
+          </button>
+          <button
+            type="button"
+            id="modal-close-bottom-btn"
+            class="px-4 py-2.5 text-stone-gray hover:text-ink text-xs font-semibold uppercase tracking-wider transition-colors cursor-pointer"
+          >
+            Close
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 6. Newsletter Subscription Section -->
+  <section class="py-20 md:py-28 px-margin-mobile md:px-margin-desktop bg-surface-container relative overflow-hidden">
+    <div class="absolute -bottom-12 -left-12 ex-libris-watermark pointer-events-none select-none">
+      <span class="material-symbols-outlined text-[280px] text-olive leading-none">mail</span>
+    </div>
+
+    <div class="max-w-4xl mx-auto relative z-10 text-center">
+      <span class="font-sans text-xs uppercase tracking-[0.2em] text-olive font-semibold block mb-3">
+        CULTURE NEWSLETTER
+      </span>
+      <h2 class="font-serif text-3xl sm:text-4xl md:text-5xl text-ink leading-tight mb-6">
+        {t.subscribeNewsletter}
+      </h2>
+      <p class="font-sans text-base md:text-lg text-secondary leading-relaxed max-w-2xl mx-auto mb-10">
+        {t.newsletterDesc}
+      </p>
+
+      <!-- Newsletter Form -->
+      <form id="events-newsletter-form" class="max-w-xl mx-auto flex flex-col sm:flex-row gap-3">
+        <input
+          type="email"
+          id="events-newsletter-email"
+          name="email"
+          required
+          placeholder="Enter your email address..."
+          class="flex-1 px-5 py-4 bg-surface-bright border border-sand text-ink text-sm placeholder:text-stone-gray/70 focus:outline-none focus:border-olive focus:ring-1 focus:ring-olive rounded-sm shadow-sm"
+          aria-label="Your email address"
+        />
+        <button
+          type="submit"
+          class="px-8 py-4 bg-ink text-parchment font-sans font-semibold text-xs tracking-widest uppercase hover:bg-olive transition-colors rounded-sm shadow-sm shrink-0 flex items-center justify-center gap-2 cursor-pointer"
+        >
+          <span>{t.subscribeButton}</span>
+          <span class="material-symbols-outlined text-[16px]">send</span>
+        </button>
+      </form>
+
+      <p class="font-sans text-xs text-stone-gray mt-4">
+        We respect your privacy. You can unsubscribe at any time.
+      </p>
+    </div>
+  </section>
+
+  <!-- Client-side Filtering & Interactivity Script -->
+  <script>
+    function setupEventsInteractivity() {
+      const filterButtons = document.querySelectorAll<HTMLButtonElement>('.event-filter-btn');
+      const searchInput = document.getElementById('event-search-input') as HTMLInputElement | null;
+      const eventCards = document.querySelectorAll<HTMLElement>('.event-card');
+      const noEventsMsg = document.getElementById('no-events-message');
+      const upcomingSection = document.getElementById('upcoming-events-section');
+      const pastSection = document.getElementById('past-events-section');
+      const resetBtn = document.getElementById('reset-filters-btn');
+
+      let currentCategory = 'all';
+      let currentQuery = '';
+
+      function filterEvents() {
+        let visibleCount = 0;
+        let visibleUpcoming = 0;
+        let visiblePast = 0;
+
+        eventCards.forEach((card) => {
+          const category = card.getAttribute('data-category') || '';
+          const title = card.getAttribute('data-title') || '';
+
+          const matchesCategory = currentCategory === 'all' || category === currentCategory;
+          const matchesQuery = !currentQuery || title.includes(currentQuery);
+
+          if (matchesCategory && matchesQuery) {
+            card.style.display = '';
+            visibleCount++;
+            if (card.closest('#upcoming-events-section')) visibleUpcoming++;
+            if (card.closest('#past-events-section')) visiblePast++;
+          } else {
+            card.style.display = 'none';
+          }
+        });
+
+        // Toggle sections visibility if no child cards are visible
+        if (upcomingSection) {
+          upcomingSection.style.display = visibleUpcoming > 0 ? '' : 'none';
+        }
+        if (pastSection) {
+          pastSection.style.display = visiblePast > 0 ? '' : 'none';
+        }
+
+        // Toggle Empty state
+        if (noEventsMsg) {
+          if (visibleCount === 0) {
+            noEventsMsg.classList.remove('hidden');
+          } else {
+            noEventsMsg.classList.add('hidden');
+          }
+        }
+      }
+
+      // Filter button click handler
+      filterButtons.forEach((btn) => {
+        btn.addEventListener('click', () => {
+          filterButtons.forEach((b) => {
+            b.classList.remove('bg-ink', 'text-parchment', 'active-filter');
+            b.classList.add('bg-sand/50', 'text-ink');
+          });
+          btn.classList.remove('bg-sand/50', 'text-ink');
+          btn.classList.add('bg-ink', 'text-parchment', 'active-filter');
+
+          currentCategory = btn.getAttribute('data-category-filter') || 'all';
+          filterEvents();
+        });
+      });
+
+      // Search input handler
+      if (searchInput) {
+        searchInput.addEventListener('input', (e) => {
+          currentQuery = (e.target as HTMLInputElement).value.trim().toLowerCase();
+          filterEvents();
+        });
+      }
+
+      // Reset button handler
+      if (resetBtn) {
+        resetBtn.addEventListener('click', () => {
+          currentCategory = 'all';
+          currentQuery = '';
+          if (searchInput) searchInput.value = '';
+
+          filterButtons.forEach((b) => {
+            if (b.getAttribute('data-category-filter') === 'all') {
+              b.classList.remove('bg-sand/50', 'text-ink');
+              b.classList.add('bg-ink', 'text-parchment', 'active-filter');
+            } else {
+              b.classList.remove('bg-ink', 'text-parchment', 'active-filter');
+              b.classList.add('bg-sand/50', 'text-ink');
+            }
+          });
+
+          filterEvents();
+        });
+      }
+
+      // Event Registration Buttons
+      document.querySelectorAll('.event-register-btn').forEach((btn) => {
+        btn.addEventListener('click', (e) => {
+          e.stopPropagation();
+          const title = btn.getAttribute('data-event-title') || 'Event';
+          if (typeof (window as any).showToast === 'function') {
+            (window as any).showToast(`Your registration for "${title}" has been successfully received. Thank you!`, 'success');
+          }
+        });
+      });
+
+      // Past Event Action Buttons
+      document.querySelectorAll('.past-action-btn').forEach((btn) => {
+        btn.addEventListener('click', (e) => {
+          e.stopPropagation();
+          const action = btn.getAttribute('data-action');
+          const title = btn.getAttribute('data-title') || 'Event';
+
+          if (typeof (window as any).showToast === 'function') {
+            if (action === 'recording') {
+              (window as any).showToast(`Loading archival recording for "${title}"...`, 'info');
+            } else if (action === 'gallery') {
+              (window as any).showToast(`Photo gallery for "${title}" will be available soon.`, 'info');
+            } else if (action === 'bulletin') {
+              (window as any).showToast(`Downloading summary bulletin for "${title}" as PDF.`, 'success');
+            }
+          }
+        });
+      });
+
+      // Event Detail Modal
+      const modal = document.getElementById('event-detail-modal');
+      const modalImage = document.getElementById('modal-event-image') as HTMLImageElement | null;
+      const modalCategory = document.getElementById('modal-event-category');
+      const modalDate = document.getElementById('modal-event-date');
+      const modalTitle = document.getElementById('modal-event-title');
+      const modalLocation = document.getElementById('modal-event-location');
+      const modalSummary = document.getElementById('modal-event-summary');
+      const modalRegisterBtn = document.getElementById('modal-register-btn');
+      const closeBtn = document.getElementById('close-event-modal');
+      const closeBottomBtn = document.getElementById('modal-close-bottom-btn');
+
+      let currentModalEventTitle = '';
+
+      function openModal(data: {
+        title: string;
+        date: string;
+        category: string;
+        location: string;
+        summary: string;
+        image: string;
+      }) {
+        if (!modal) return;
+        currentModalEventTitle = data.title;
+        if (modalImage) modalImage.src = data.image;
+        if (modalCategory) modalCategory.textContent = data.category;
+        if (modalDate) modalDate.textContent = data.date;
+        if (modalTitle) modalTitle.textContent = data.title;
+        if (modalLocation) modalLocation.textContent = data.location;
+        if (modalSummary) modalSummary.textContent = data.summary;
+
+        modal.classList.remove('opacity-0', 'pointer-events-none');
+        modal.classList.add('opacity-100');
+        document.body.style.overflow = 'hidden';
+      }
+
+      function closeModal() {
+        if (!modal) return;
+        modal.classList.add('opacity-0', 'pointer-events-none');
+        modal.classList.remove('opacity-100');
+        document.body.style.overflow = '';
+      }
+
+      document.querySelectorAll('.event-detail-btn').forEach((btn) => {
+        btn.addEventListener('click', (e) => {
+          e.stopPropagation();
+          openModal({
+            title: btn.getAttribute('data-event-title') || '',
+            date: btn.getAttribute('data-event-date') || '',
+            category: btn.getAttribute('data-event-category') || '',
+            location: btn.getAttribute('data-event-location') || '',
+            summary: btn.getAttribute('data-event-summary') || '',
+            image: btn.getAttribute('data-event-image') || ''
+          });
+        });
+      });
+
+      closeBtn?.addEventListener('click', closeModal);
+      closeBottomBtn?.addEventListener('click', closeModal);
+      modal?.addEventListener('click', (e) => {
+        if (e.target === modal) closeModal();
+      });
+
+      if (modalRegisterBtn) {
+        modalRegisterBtn.addEventListener('click', () => {
+          if (typeof (window as any).showToast === 'function') {
+            (window as any).showToast(`Your registration for "${currentModalEventTitle}" has been successfully received. Thank you!`, 'success');
+          }
+          closeModal();
+        });
+      }
+
+      // Newsletter Form
+      const newsletterForm = document.getElementById('events-newsletter-form') as HTMLFormElement | null;
+      const newsletterInput = document.getElementById('events-newsletter-email') as HTMLInputElement | null;
+
+      if (newsletterForm && newsletterInput) {
+        newsletterForm.addEventListener('submit', (e) => {
+          e.preventDefault();
+          const email = newsletterInput.value.trim();
+          if (email && email.includes('@')) {
+            if (typeof (window as any).showToast === 'function') {
+              (window as any).showToast('Your newsletter subscription has been successfully completed. Thank you!', 'success');
+            }
+            newsletterInput.value = '';
+          } else {
+            if (typeof (window as any).showToast === 'function') {
+              (window as any).showToast('Please enter a valid email address.', 'error');
+            }
+          }
+        });
+      }
+    }
+
+    setupEventsInteractivity();
+    document.addEventListener('astro:page-load', setupEventsInteractivity);
+  </script>
+</Layout>

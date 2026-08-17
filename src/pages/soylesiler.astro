@@ -1,0 +1,603 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { getCollection } from 'astro:content';
+import { getT } from '../utils/i18n';
+
+const lang = 'tr';
+const t = getT(lang);
+
+// Fetch all talks sorted by date descending
+const allTalks = await getCollection('talks');
+const sortedTalks = allTalks.sort(
+  (a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime()
+);
+
+const featuredTalk = sortedTalks.find((item) => item.data.featured) || sortedTalks[0];
+const sideTalks = sortedTalks.filter((item) => item.data.id !== featuredTalk?.data.id).slice(0, 2);
+const remainingTalks = sortedTalks.filter(
+  (item) => item.data.id !== featuredTalk?.data.id && !sideTalks.some((st) => st.data.id === item.data.id)
+);
+
+// Map categories to Turkish labels
+const categoryLabels: Record<string, string> = {
+  author: 'Yazar & Edebiyatçı',
+  historian: 'Tarihçi & Araştırmacı',
+  artist: 'Sanatçı & Mimar',
+  archaeologist: 'Arkeolog'
+};
+---
+
+<Layout
+  title={`Söyleşiler & Dijital Arşiv | ${t.siteTitle}`}
+  description="Bodrum Kent Kütüphanesi söyleşi kayıtları, yazarlar, tarihçiler, sanatçılar ve arkeologlarla gerçekleştirilen açık oturumlar ve video arşivi."
+  lang={lang}
+  currentPath="/soylesiler"
+>
+  <!-- 1. Hero Section -->
+  <section class="relative min-h-[60vh] flex items-center py-20 md:py-28 px-margin-mobile md:px-margin-desktop overflow-hidden border-b border-sand bg-surface-bright">
+    <!-- Ambient Background Layer -->
+    <div class="absolute inset-0 z-0 opacity-25 pointer-events-none">
+      <div
+        class="w-full h-full bg-cover bg-center filter contrast-110"
+        style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAOlA5DV8-ECZIaar4ymQ3aQ-Z1S2JVDOfLXZr80GvJTUIr6Rj0uy5iNyzAZHd9ged1EtHBe6bRS7OHr5QSDu9GSRUW7lClWtEfPfp4UzfUHh7bW5FZeKKvbFdKgUot5YPWm4kYvrM5z_YDhi0c8MyvLwlc-ILZuBcPNckeoGYhE3l1iJVT-jnCKz8kcOd-dve4YidF4GtUfqBVRM-Qqwc-tR_6PcTr6LALyjlqxeWt43hMrGpPfz90CknyFgJU7PNsT2IKGvmw9Wg');"
+      ></div>
+      <div class="absolute inset-0 bg-gradient-to-r from-parchment via-parchment/90 to-parchment/60"></div>
+    </div>
+
+    <!-- Ex Libris Watermark Stamp -->
+    <div class="absolute -top-10 -right-10 md:top-8 md:right-12 ex-libris-watermark select-none pointer-events-none">
+      <span class="material-symbols-outlined text-[260px] md:text-[380px] text-olive leading-none">smart_display</span>
+    </div>
+
+    <!-- Hero Content -->
+    <div class="relative z-10 max-w-container-max mx-auto w-full">
+      <div class="max-w-3xl">
+        <!-- Overline Badge -->
+        <div class="inline-flex items-center gap-2 px-3.5 py-1.5 bg-secondary-container/80 border border-sand text-ink text-xs font-semibold tracking-[0.2em] uppercase mb-6 rounded">
+          <span class="w-2 h-2 rounded-full bg-olive animate-pulse"></span>
+          <span>DİJİTAL ARŞİV & VİDEO KAYITLARI</span>
+        </div>
+
+        <!-- Headline -->
+        <h1 class="font-serif text-4xl sm:text-5xl md:text-6xl lg:text-7xl text-ink font-normal leading-[1.12] tracking-tight mb-6 text-balance">
+          Kültür ve Sanat Söyleşileri
+        </h1>
+
+        <!-- Subtitle Card -->
+        <div class="bg-parchment/95 backdrop-blur-sm border border-sand p-6 md:p-8 rounded shadow-sm max-w-2xl">
+          <p class="font-sans text-base md:text-lg text-secondary leading-relaxed text-balance">
+            Bodrum’un edebi, tarihi ve sanatsal belleğini oluşturan ustalar, bilim insanları ve araştırmacılarla gerçekleştirdiğimiz derinlikli sohbetlerin video kayıtları.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 2. Category Filter & Search Bar -->
+  <section class="sticky top-16 md:top-20 z-30 bg-surface-bright/95 backdrop-blur-md border-b border-sand py-4 px-margin-mobile md:px-margin-desktop transition-all shadow-sm">
+    <div class="max-w-container-max mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
+      
+      <!-- Category Filter Pills -->
+      <div class="flex items-center gap-2 overflow-x-auto w-full md:w-auto pb-2 md:pb-0 scrollbar-none" id="talk-filters">
+        <button
+          type="button"
+          data-category-filter="all"
+          class="talk-filter-btn px-4 py-2 rounded-full text-xs font-semibold uppercase tracking-wider transition-all cursor-pointer bg-ink text-parchment shadow-sm whitespace-nowrap active-filter"
+        >
+          Hepsi
+        </button>
+        <button
+          type="button"
+          data-category-filter="author"
+          class="talk-filter-btn px-4 py-2 rounded-full text-xs font-semibold uppercase tracking-wider transition-all cursor-pointer bg-sand/50 text-ink hover:bg-sand/80 whitespace-nowrap"
+        >
+          Yazarlar
+        </button>
+        <button
+          type="button"
+          data-category-filter="historian"
+          class="talk-filter-btn px-4 py-2 rounded-full text-xs font-semibold uppercase tracking-wider transition-all cursor-pointer bg-sand/50 text-ink hover:bg-sand/80 whitespace-nowrap"
+        >
+          Tarihçiler
+        </button>
+        <button
+          type="button"
+          data-category-filter="artist"
+          class="talk-filter-btn px-4 py-2 rounded-full text-xs font-semibold uppercase tracking-wider transition-all cursor-pointer bg-sand/50 text-ink hover:bg-sand/80 whitespace-nowrap"
+        >
+          Sanatçılar
+        </button>
+        <button
+          type="button"
+          data-category-filter="archaeologist"
+          class="talk-filter-btn px-4 py-2 rounded-full text-xs font-semibold uppercase tracking-wider transition-all cursor-pointer bg-sand/50 text-ink hover:bg-sand/80 whitespace-nowrap"
+        >
+          Arkeologlar
+        </button>
+      </div>
+
+      <!-- Live Search Input -->
+      <div class="w-full md:w-72 relative shrink-0">
+        <span class="material-symbols-outlined text-[18px] text-stone-gray absolute left-3.5 top-1/2 -translate-y-1/2 pointer-events-none">
+          search
+        </span>
+        <input
+          type="search"
+          id="talk-search-input"
+          placeholder="Konuşmacı veya konu ara..."
+          class="w-full pl-10 pr-4 py-2 bg-parchment border border-sand rounded-full text-xs text-ink placeholder:text-stone-gray/70 focus:outline-none focus:border-olive focus:ring-1 focus:ring-olive transition-all shadow-inner"
+          aria-label="Söyleşi ara"
+        />
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Empty State Message (Hidden by default) -->
+  <div id="no-talks-message" class="hidden max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop py-20 text-center">
+    <div class="w-16 h-16 rounded-full bg-sand/40 border border-sand mx-auto flex items-center justify-center text-stone-gray mb-4">
+      <span class="material-symbols-outlined text-[32px]">videocam_off</span>
+    </div>
+    <h3 class="font-serif text-2xl text-ink font-semibold mb-2">Eşleşen Söyleşi Bulunamadı</h3>
+    <p class="font-sans text-sm text-secondary max-w-md mx-auto mb-6">
+      Arama kriterleriniz veya seçtiğiniz kategori ile eşleşen bir video kaydı bulunamadı. Filtreleri sıfırlayabilirsiniz.
+    </p>
+    <button
+      type="button"
+      id="reset-talk-filters-btn"
+      class="px-5 py-2.5 bg-ink text-parchment text-xs font-semibold uppercase tracking-wider rounded-sm hover:bg-olive transition-colors cursor-pointer"
+    >
+      Filtreleri Sıfırla
+    </button>
+  </div>
+
+  <!-- 3. Primary Video Bento Grid Section -->
+  <section id="featured-talks-section" class="py-20 md:py-28 px-margin-mobile md:px-margin-desktop bg-surface-container-low border-b border-sand">
+    <div class="max-w-container-max mx-auto">
+      
+      <!-- Section Header -->
+      <div class="flex items-center justify-between mb-12 pb-4 border-b border-sand">
+        <div>
+          <span class="font-sans text-xs uppercase tracking-[0.2em] text-olive font-semibold block mb-1">
+            GÜNCEL YAYINLAR
+          </span>
+          <h2 class="font-serif text-3xl sm:text-4xl text-ink font-normal">
+            Öne Çıkan Oturumlar
+          </h2>
+        </div>
+        <span class="font-mono text-xs font-semibold text-stone-gray px-3 py-1 bg-parchment border border-sand rounded-full">
+          {sortedTalks.length} Video Kayıt
+        </span>
+      </div>
+
+      <!-- Bento Grid: Featured (8-Col) + Side List (4-Col) -->
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
+        
+        <!-- Large Featured Video Card (8-Col) -->
+        {featuredTalk && (
+          <article
+            class="talk-card lg:col-span-8 bg-parchment border border-sand rounded overflow-hidden flex flex-col justify-between group hover:shadow-lg transition-all duration-300 relative"
+            data-category={featuredTalk.data.category}
+            data-title={`${featuredTalk.data.titleTr} ${featuredTalk.data.guestTr} ${featuredTalk.data.roleTr} ${featuredTalk.data.summaryTr}`.toLowerCase()}
+          >
+            <div>
+              <!-- 16:9 Thumbnail with Interactive Play Button Trigger -->
+              <div
+                class="relative aspect-video overflow-hidden bg-black cursor-pointer group/thumb"
+                data-youtube-id={featuredTalk.data.youtubeId}
+                data-video-title={featuredTalk.data.titleTr}
+                data-video-subtitle={`${featuredTalk.data.guestTr} • ${featuredTalk.data.roleTr}`}
+                role="button"
+                tabindex="0"
+                aria-label={`Videoyu İzle: ${featuredTalk.data.titleTr}`}
+              >
+                <img
+                  src={featuredTalk.data.thumbnail}
+                  alt={featuredTalk.data.titleTr}
+                  class="w-full h-full object-cover opacity-90 group-hover/thumb:opacity-100 transition-all duration-700 group-hover/thumb:scale-105"
+                  loading="eager"
+                />
+                <div class="absolute inset-0 bg-ink/25 group-hover/thumb:bg-ink/10 transition-colors"></div>
+
+                <!-- Featured Badge -->
+                <div class="absolute top-4 left-4 flex gap-2">
+                  <span class="bg-olive text-parchment font-mono text-xs font-semibold px-3 py-1 uppercase tracking-wider rounded-sm shadow">
+                    ÖNE ÇIKAN YAYIN
+                  </span>
+                  <span class="bg-ink/80 backdrop-blur-sm text-parchment font-mono text-xs font-semibold px-2.5 py-1 uppercase tracking-wider rounded-sm">
+                    {featuredTalk.data.date}
+                  </span>
+                </div>
+
+                <!-- Play Button Center Overlay -->
+                <div class="absolute inset-0 flex items-center justify-center">
+                  <div class="w-18 h-18 sm:w-20 sm:h-20 rounded-full bg-parchment/90 backdrop-blur-sm text-ink flex items-center justify-center shadow-2xl transition-transform duration-300 group-hover/thumb:scale-110 group-hover/thumb:bg-olive group-hover/thumb:text-parchment">
+                    <span class="material-symbols-outlined text-[36px] sm:text-[42px] ml-1">play_arrow</span>
+                  </div>
+                </div>
+
+                <!-- Duration Badge -->
+                <div class="absolute bottom-4 right-4 bg-ink/85 backdrop-blur-sm text-parchment font-mono text-xs px-3 py-1.5 rounded flex items-center gap-1.5">
+                  <span class="material-symbols-outlined text-[15px]">schedule</span>
+                  <span>{featuredTalk.data.duration}</span>
+                </div>
+              </div>
+
+              <!-- Content Body -->
+              <div class="p-6 md:p-8">
+                <!-- Guest & Category Metas -->
+                <div class="flex flex-wrap items-center gap-2 mb-3">
+                  <span class="font-sans text-xs font-semibold uppercase tracking-widest text-olive">
+                    {featuredTalk.data.roleTr}
+                  </span>
+                  <span class="text-stone-gray text-xs">•</span>
+                  <span class="font-serif italic text-base text-ink font-semibold">
+                    {featuredTalk.data.guestTr}
+                  </span>
+                </div>
+
+                <h3 class="font-serif text-2xl sm:text-3xl md:text-4xl font-semibold text-ink leading-tight mb-4 group-hover:text-olive transition-colors">
+                  {featuredTalk.data.titleTr}
+                </h3>
+
+                <p class="font-sans text-base text-secondary leading-relaxed mb-4">
+                  {featuredTalk.data.summaryTr}
+                </p>
+              </div>
+            </div>
+
+            <!-- Card Footer Toolbar -->
+            <div class="px-6 pb-6 md:px-8 md:pb-8 pt-4 border-t border-sand/60 flex flex-wrap items-center justify-between gap-4">
+              <button
+                type="button"
+                data-youtube-id={featuredTalk.data.youtubeId}
+                data-video-title={featuredTalk.data.titleTr}
+                data-video-subtitle={`${featuredTalk.data.guestTr} • ${featuredTalk.data.roleTr}`}
+                class="inline-flex items-center gap-2.5 px-6 py-3 bg-ink hover:bg-olive text-parchment font-sans font-semibold text-xs uppercase tracking-widest transition-colors rounded-sm shadow-sm cursor-pointer group/btn"
+              >
+                <span class="material-symbols-outlined text-[18px] text-olive group-hover/btn:text-parchment">smart_display</span>
+                <span>{t.watchOnYoutube}</span>
+                <span class="material-symbols-outlined text-[14px]">north_east</span>
+              </button>
+
+              <span class="text-xs font-mono text-stone-gray">
+                Arşiv No: #{featuredTalk.data.id.toUpperCase()}
+              </span>
+            </div>
+          </article>
+        )}
+
+        <!-- Side Video List (4-Col with 2 Cards) -->
+        <div class="lg:col-span-4 flex flex-col gap-6">
+          {sideTalks.map((talk) => (
+            <article
+              class="talk-card bg-parchment border border-sand rounded overflow-hidden flex flex-col justify-between group hover:shadow-md transition-all duration-300 flex-1"
+              data-category={talk.data.category}
+              data-title={`${talk.data.titleTr} ${talk.data.guestTr} ${talk.data.roleTr} ${talk.data.summaryTr}`.toLowerCase()}
+            >
+              <div>
+                <!-- Side Thumbnail with Play Trigger -->
+                <div
+                  class="relative aspect-[16/9] overflow-hidden bg-black cursor-pointer group/subthumb"
+                  data-youtube-id={talk.data.youtubeId}
+                  data-video-title={talk.data.titleTr}
+                  data-video-subtitle={`${talk.data.guestTr} • ${talk.data.roleTr}`}
+                  role="button"
+                  tabindex="0"
+                  aria-label={`Videoyu İzle: ${talk.data.titleTr}`}
+                >
+                  <img
+                    src={talk.data.thumbnail}
+                    alt={talk.data.titleTr}
+                    class="w-full h-full object-cover opacity-90 group-hover/subthumb:opacity-100 transition-transform duration-500 group-hover/subthumb:scale-105"
+                    loading="lazy"
+                  />
+                  <!-- Small Play Overlay -->
+                  <div class="absolute inset-0 flex items-center justify-center">
+                    <div class="w-12 h-12 rounded-full bg-parchment/90 backdrop-blur-sm text-ink flex items-center justify-center shadow transition-transform group-hover/subthumb:scale-110 group-hover/subthumb:bg-olive group-hover/subthumb:text-parchment">
+                      <span class="material-symbols-outlined text-[24px] ml-0.5">play_arrow</span>
+                    </div>
+                  </div>
+                  <!-- Duration Badge -->
+                  <div class="absolute bottom-2.5 right-2.5 bg-ink/80 text-parchment font-mono text-[11px] px-2 py-0.5 rounded">
+                    {talk.data.duration}
+                  </div>
+                </div>
+
+                <!-- Side Body -->
+                <div class="p-5">
+                  <div class="flex items-center gap-1.5 text-xs text-stone-gray mb-1.5">
+                    <span class="font-sans font-semibold uppercase tracking-wider text-olive">{talk.data.roleTr}</span>
+                    <span>•</span>
+                    <span>{talk.data.guestTr}</span>
+                  </div>
+                  <h4 class="font-serif text-lg font-semibold text-ink leading-snug mb-2 group-hover:text-olive transition-colors">
+                    {talk.data.titleTr}
+                  </h4>
+                  <p class="font-sans text-xs text-secondary leading-relaxed line-clamp-2">
+                    {talk.data.summaryTr}
+                  </p>
+                </div>
+              </div>
+
+              <!-- Side Footer -->
+              <div class="px-5 pb-5 pt-3 border-t border-sand/60 flex items-center justify-between">
+                <button
+                  type="button"
+                  data-youtube-id={talk.data.youtubeId}
+                  data-video-title={talk.data.titleTr}
+                  data-video-subtitle={`${talk.data.guestTr} • ${talk.data.roleTr}`}
+                  class="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-ink hover:text-olive transition-colors cursor-pointer"
+                >
+                  <span>{t.watchOnYoutube}</span>
+                  <span class="material-symbols-outlined text-[13px]">north_east</span>
+                </button>
+                <span class="font-mono text-[11px] text-stone-gray">{talk.data.date}</span>
+              </div>
+            </article>
+          ))}
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- 4. Secondary Row: Tüm Arşiv Kayıtları (3-Column Grid) -->
+  <section id="archived-talks-section" class="py-20 md:py-28 px-margin-mobile md:px-margin-desktop bg-parchment border-b border-sand">
+    <div class="max-w-container-max mx-auto">
+      
+      <!-- Section Header -->
+      <div class="flex flex-col sm:flex-row sm:items-end justify-between mb-12 pb-4 border-b border-sand gap-4">
+        <div>
+          <span class="font-sans text-xs uppercase tracking-[0.2em] text-olive font-semibold block mb-1">
+            ARŞİV KOLEKSİYONU
+          </span>
+          <h2 class="font-serif text-3xl sm:text-4xl text-ink font-normal">
+            Geçmiş Oturumlar & Kayıtlar
+          </h2>
+          <p class="font-sans text-sm text-secondary mt-1">
+            Kütüphanemizin video kütüphanesinde yer alan tüm açık oturum ve panel kayıtları.
+          </p>
+        </div>
+      </div>
+
+      <!-- 3-Column Video Cards -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {remainingTalks.map((talk) => (
+          <article
+            class="talk-card bg-surface-container-low border border-sand rounded overflow-hidden flex flex-col justify-between group hover:shadow-md transition-all duration-300"
+            data-category={talk.data.category}
+            data-title={`${talk.data.titleTr} ${talk.data.guestTr} ${talk.data.roleTr} ${talk.data.summaryTr}`.toLowerCase()}
+          >
+            <div>
+              <!-- Video Thumbnail -->
+              <div
+                class="relative aspect-[16/10] overflow-hidden bg-black cursor-pointer group/cardthumb"
+                data-youtube-id={talk.data.youtubeId}
+                data-video-title={talk.data.titleTr}
+                data-video-subtitle={`${talk.data.guestTr} • ${talk.data.roleTr}`}
+                role="button"
+                tabindex="0"
+                aria-label={`Videoyu İzle: ${talk.data.titleTr}`}
+              >
+                <img
+                  src={talk.data.thumbnail}
+                  alt={talk.data.titleTr}
+                  class="w-full h-full object-cover opacity-90 group-hover/cardthumb:opacity-100 transition-all duration-500 group-hover/cardthumb:scale-105"
+                  loading="lazy"
+                />
+                <!-- Play Overlay -->
+                <div class="absolute inset-0 flex items-center justify-center">
+                  <div class="w-12 h-12 rounded-full bg-parchment/90 backdrop-blur-sm text-ink flex items-center justify-center shadow transition-transform group-hover/cardthumb:scale-110 group-hover/cardthumb:bg-olive group-hover/cardthumb:text-parchment">
+                    <span class="material-symbols-outlined text-[24px] ml-0.5">play_arrow</span>
+                  </div>
+                </div>
+                <!-- Duration Badge -->
+                <div class="absolute bottom-3 right-3 bg-ink/80 text-parchment font-mono text-[11px] px-2 py-0.5 rounded">
+                  {talk.data.duration}
+                </div>
+                <!-- Category Badge -->
+                <div class="absolute top-3 left-3 bg-parchment/95 text-ink font-sans text-[11px] font-semibold px-2.5 py-1 uppercase tracking-wider rounded-sm shadow">
+                  {categoryLabels[talk.data.category] || talk.data.category}
+                </div>
+              </div>
+
+              <!-- Card Body -->
+              <div class="p-6">
+                <div class="flex items-center gap-1.5 text-xs text-stone-gray mb-2">
+                  <span class="font-semibold text-olive uppercase tracking-wider">{talk.data.roleTr}</span>
+                  <span>•</span>
+                  <span class="text-ink font-medium">{talk.data.guestTr}</span>
+                </div>
+                <h3 class="font-serif text-xl font-semibold text-ink leading-snug mb-3 group-hover:text-olive transition-colors">
+                  {talk.data.titleTr}
+                </h3>
+                <p class="font-sans text-sm text-secondary leading-relaxed line-clamp-3 mb-4">
+                  {talk.data.summaryTr}
+                </p>
+              </div>
+            </div>
+
+            <!-- Card Action Footer -->
+            <div class="p-4 bg-surface-container border-t border-sand/60 flex items-center justify-between">
+              <button
+                type="button"
+                data-youtube-id={talk.data.youtubeId}
+                data-video-title={talk.data.titleTr}
+                data-video-subtitle={`${talk.data.guestTr} • ${talk.data.roleTr}`}
+                class="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-ink hover:text-olive transition-colors cursor-pointer"
+              >
+                <span class="material-symbols-outlined text-[16px] text-olive">smart_display</span>
+                <span>{t.watchOnYoutube}</span>
+              </button>
+              <span class="font-mono text-[11px] text-stone-gray">{talk.data.date}</span>
+            </div>
+          </article>
+        ))}
+      </div>
+
+    </div>
+  </section>
+
+  <!-- 5. Newsletter Subscription Section -->
+  <section class="py-20 md:py-28 px-margin-mobile md:px-margin-desktop bg-surface-container relative overflow-hidden">
+    <div class="absolute -bottom-12 -left-12 ex-libris-watermark pointer-events-none select-none">
+      <span class="material-symbols-outlined text-[280px] text-olive leading-none">play_circle</span>
+    </div>
+
+    <div class="max-w-4xl mx-auto relative z-10 text-center">
+      <span class="font-sans text-xs uppercase tracking-[0.2em] text-olive font-semibold block mb-3">
+        DİJİTAL YAYIN BÜLTENİ
+      </span>
+      <h2 class="font-serif text-3xl sm:text-4xl md:text-5xl text-ink leading-tight mb-6">
+        Yeni Söyleşilerden Haberdar Olun
+      </h2>
+      <p class="font-sans text-base md:text-lg text-secondary leading-relaxed max-w-2xl mx-auto mb-10">
+        Bodrum Kent Kütüphanesi video arşivine eklenen yeni kayıtlar, özel oturumlar ve röportaj duyuruları için bültenimize abone olun.
+      </p>
+
+      <!-- Newsletter Form -->
+      <form id="talks-newsletter-form" class="max-w-xl mx-auto flex flex-col sm:flex-row gap-3">
+        <input
+          type="email"
+          id="talks-newsletter-email"
+          name="email"
+          required
+          placeholder="E-posta adresinizi yazınız..."
+          class="flex-1 px-5 py-4 bg-surface-bright border border-sand text-ink text-sm placeholder:text-stone-gray/70 focus:outline-none focus:border-olive focus:ring-1 focus:ring-olive rounded-sm shadow-sm"
+          aria-label="E-posta adresiniz"
+        />
+        <button
+          type="submit"
+          class="px-8 py-4 bg-ink text-parchment font-sans font-semibold text-xs tracking-widest uppercase hover:bg-olive transition-colors rounded-sm shadow-sm shrink-0 flex items-center justify-center gap-2 cursor-pointer"
+        >
+          <span>{t.subscribeButton}</span>
+          <span class="material-symbols-outlined text-[16px]">send</span>
+        </button>
+      </form>
+
+      <p class="font-sans text-xs text-stone-gray mt-4">
+        Gizliliğinize saygı duyuyoruz. İstediğiniz an bülten aboneliğinden çıkabilirsiniz.
+      </p>
+    </div>
+  </section>
+
+  <!-- Client-side Filtering Script -->
+  <script>
+    function setupTalksInteractivity() {
+      const filterButtons = document.querySelectorAll<HTMLButtonElement>('.talk-filter-btn');
+      const searchInput = document.getElementById('talk-search-input') as HTMLInputElement | null;
+      const talkCards = document.querySelectorAll<HTMLElement>('.talk-card');
+      const noTalksMsg = document.getElementById('no-talks-message');
+      const featuredSection = document.getElementById('featured-talks-section');
+      const archivedSection = document.getElementById('archived-talks-section');
+      const resetBtn = document.getElementById('reset-talk-filters-btn');
+
+      let currentCategory = 'all';
+      let currentQuery = '';
+
+      function filterTalks() {
+        let visibleCount = 0;
+        let visibleFeatured = 0;
+        let visibleArchived = 0;
+
+        talkCards.forEach((card) => {
+          const category = card.getAttribute('data-category') || '';
+          const title = card.getAttribute('data-title') || '';
+
+          const matchesCategory = currentCategory === 'all' || category === currentCategory;
+          const matchesQuery = !currentQuery || title.includes(currentQuery);
+
+          if (matchesCategory && matchesQuery) {
+            card.style.display = '';
+            visibleCount++;
+            if (card.closest('#featured-talks-section')) visibleFeatured++;
+            if (card.closest('#archived-talks-section')) visibleArchived++;
+          } else {
+            card.style.display = 'none';
+          }
+        });
+
+        if (featuredSection) {
+          featuredSection.style.display = visibleFeatured > 0 ? '' : 'none';
+        }
+        if (archivedSection) {
+          archivedSection.style.display = visibleArchived > 0 ? '' : 'none';
+        }
+
+        if (noTalksMsg) {
+          if (visibleCount === 0) {
+            noTalksMsg.classList.remove('hidden');
+          } else {
+            noTalksMsg.classList.add('hidden');
+          }
+        }
+      }
+
+      filterButtons.forEach((btn) => {
+        btn.addEventListener('click', () => {
+          filterButtons.forEach((b) => {
+            b.classList.remove('bg-ink', 'text-parchment', 'active-filter');
+            b.classList.add('bg-sand/50', 'text-ink');
+          });
+          btn.classList.remove('bg-sand/50', 'text-ink');
+          btn.classList.add('bg-ink', 'text-parchment', 'active-filter');
+
+          currentCategory = btn.getAttribute('data-category-filter') || 'all';
+          filterTalks();
+        });
+      });
+
+      if (searchInput) {
+        searchInput.addEventListener('input', (e) => {
+          currentQuery = (e.target as HTMLInputElement).value.trim().toLowerCase();
+          filterTalks();
+        });
+      }
+
+      if (resetBtn) {
+        resetBtn.addEventListener('click', () => {
+          currentCategory = 'all';
+          currentQuery = '';
+          if (searchInput) searchInput.value = '';
+
+          filterButtons.forEach((b) => {
+            if (b.getAttribute('data-category-filter') === 'all') {
+              b.classList.remove('bg-sand/50', 'text-ink');
+              b.classList.add('bg-ink', 'text-parchment', 'active-filter');
+            } else {
+              b.classList.remove('bg-ink', 'text-parchment', 'active-filter');
+              b.classList.add('bg-sand/50', 'text-ink');
+            }
+          });
+
+          filterTalks();
+        });
+      }
+
+      // Newsletter Form
+      const newsletterForm = document.getElementById('talks-newsletter-form') as HTMLFormElement | null;
+      const newsletterInput = document.getElementById('talks-newsletter-email') as HTMLInputElement | null;
+
+      if (newsletterForm && newsletterInput) {
+        newsletterForm.addEventListener('submit', (e) => {
+          e.preventDefault();
+          const email = newsletterInput.value.trim();
+          if (email && email.includes('@')) {
+            if (typeof (window as any).showToast === 'function') {
+              (window as any).showToast('Söyleşi bülteni aboneliğiniz başarıyla tamamlandı. Teşekkür ederiz!', 'success');
+            }
+            newsletterInput.value = '';
+          } else {
+            if (typeof (window as any).showToast === 'function') {
+              (window as any).showToast('Lütfen geçerli bir e-posta adresi giriniz.', 'error');
+            }
+          }
+        });
+      }
+    }
+
+    setupTalksInteractivity();
+    document.addEventListener('astro:page-load', setupTalksInteractivity);
+  </script>
+</Layout>
