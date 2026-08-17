@@ -8,6 +8,7 @@ export const translations = {
     talks: "Söyleşiler",
     fisherman: "Halikarnas Balıkçısı",
     contact: "İletişim",
+    support: "Sponsorluk & Destek",
     allEvents: "Tüm Etkinlikler",
     upcomingEvents: "Yaklaşan Etkinlikler",
     pastEvents: "Geçmiş Etkinlikler",
@@ -41,7 +42,7 @@ export const translations = {
     rareCollection: "Nadir Koleksiyon",
     rareCollectionSubtitle: "İlk Baskılar ve Elyazmaları",
     rareCollectionDesc: "Kütüphanemizin özel odasında sergilenen, Balıkçı’nın kendi eliyle düzelttiği taslaklar ve yayınlandığı dönemde ses getiren ilk baskı nüshaları araştırmacıların ziyaretine açıktır.",
-    quotesText: "Yokuş başına geldiğinde Bodrum'u görecein, sanma ki sen geldiğin gibi gideceksin. Senden öncekiler de böyleydiler; akıllarını hep Bodrum'da bırakıp gittiler...",
+    quotesText: "Yokuş başına geldiğinde Bodrum'u göreceksin, sanma ki sen geldiğin gibi gideceksin. Senden öncekiler de böyleydiler; akıllarını hep Bodrum'da bırakıp gittiler...",
     quotesAuthor: "Cevat Şakir Kabaağaçlı",
     nav: {
       home: "Ana Sayfa",
@@ -49,6 +50,7 @@ export const translations = {
       events: "Etkinlikler",
       talks: "Söyleşiler",
       fisherman: "Halikarnas Balıkçısı",
+      support: "Sponsorluk & Destek",
       contact: "İletişim"
     },
     footer: {
@@ -86,6 +88,7 @@ export const translations = {
     talks: "Talks & Recordings",
     fisherman: "The Fisherman of Halicarnassus",
     contact: "Contact",
+    support: "Sponsorship & Support",
     allEvents: "All Events",
     upcomingEvents: "Upcoming Events",
     pastEvents: "Past Events",
@@ -127,6 +130,7 @@ export const translations = {
       events: "Events",
       talks: "Talks",
       fisherman: "Fisherman of Halicarnassus",
+      support: "Sponsorship & Support",
       contact: "Contact"
     },
     footer: {
@@ -177,6 +181,7 @@ export const navRoutes = [
   { key: 'events', pathTr: '/etkinlikler', pathEn: '/en/events' },
   { key: 'talks', pathTr: '/soylesiler', pathEn: '/en/talks' },
   { key: 'fisherman', pathTr: '/halikarnas-balikcisi', pathEn: '/en/fisherman-of-halicarnassus' },
+  { key: 'support', pathTr: '/destek', pathEn: '/en/support' },
   { key: 'contact', pathTr: '/iletisim', pathEn: '/en/contact' }
 ] as const;
 
@@ -189,6 +194,7 @@ export function getEquivalentLanguageUrl(pathname: string, targetLang: 'tr' | 'e
     if (cleanPath === '/etkinlikler') return '/en/events';
     if (cleanPath === '/soylesiler') return '/en/talks';
     if (cleanPath === '/halikarnas-balikcisi') return '/en/fisherman-of-halicarnassus';
+    if (cleanPath === '/destek') return '/en/support';
     if (cleanPath === '/iletisim') return '/en/contact';
     if (cleanPath.startsWith('/en')) return cleanPath;
     return `/en${cleanPath}`;
@@ -199,6 +205,7 @@ export function getEquivalentLanguageUrl(pathname: string, targetLang: 'tr' | 'e
     if (cleanPath === '/en/events') return '/etkinlikler';
     if (cleanPath === '/en/talks') return '/soylesiler';
     if (cleanPath === '/en/fisherman-of-halicarnassus') return '/halikarnas-balikcisi';
+    if (cleanPath === '/en/support') return '/destek';
     if (cleanPath === '/en/contact') return '/iletisim';
     if (cleanPath.startsWith('/en/')) return cleanPath.replace(/^\/en/, '') || '/';
     if (cleanPath === '/en') return '/';

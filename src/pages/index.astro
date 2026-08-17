@@ -44,10 +44,21 @@ const latestTalks = allTalks
     <!-- Hero Content Container -->
     <div class="relative z-10 max-w-container-max mx-auto w-full">
       <div class="max-w-4xl">
-        <!-- Overline Badge -->
-        <div class="inline-flex items-center gap-2.5 px-3.5 py-1.5 bg-secondary-container/60 border border-sand text-ink text-xs font-semibold tracking-widest uppercase mb-6 rounded">
-          <span class="w-2 h-2 rounded-full bg-olive animate-pulse"></span>
-          <span>Kültür & Bellek Girişimi</span>
+        <!-- Overline Badge & Launch Announcement -->
+        <div class="flex flex-wrap items-center gap-3 mb-6">
+          <div class="inline-flex items-center gap-2.5 px-3.5 py-1.5 bg-secondary-container/60 border border-sand text-ink text-xs font-semibold tracking-widest uppercase rounded">
+            <span class="w-2 h-2 rounded-full bg-olive animate-pulse"></span>
+            <span>Kültür & Bellek Girişimi</span>
+          </div>
+
+          <a
+            href="/destek"
+            class="inline-flex items-center gap-2 px-3.5 py-1.5 bg-olive text-white text-xs font-semibold tracking-wider uppercase rounded hover:bg-ink transition-colors shadow-xs"
+          >
+            <span class="material-symbols-outlined text-sm">campaign</span>
+            <span>4-5 Eylül Açılış Lansmanı & Sponsorluk</span>
+            <span class="material-symbols-outlined text-xs">arrow_forward</span>
+          </a>
         </div>
 
         <!-- Headline -->
@@ -70,6 +81,13 @@ const latestTalks = allTalks
           >
             <span>{t.exploreEvents}</span>
             <span class="material-symbols-outlined text-[18px] transition-transform group-hover:translate-x-1">arrow_forward</span>
+          </a>
+
+          <a
+            href="/destek"
+            class="inline-flex items-center justify-center px-8 py-4 bg-olive/10 border border-olive text-olive hover:bg-olive hover:text-white font-semibold text-xs md:text-sm uppercase tracking-widest transition-all duration-200 shadow-xs"
+          >
+            <span>Sponsorluk & Destek</span>
           </a>
 
           <a

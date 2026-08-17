@@ -1,5 +1,24 @@
 [
   {
+    "id": "event-launch",
+    "title": "Bodrum Kent Kütüphanesi Açılış Lansmanı & Kültür Buluşması",
+    "titleEn": "Bodrum City Library Grand Opening Launch & Cultural Symposium",
+    "date": "2026-09-04",
+    "displayDateTr": "4-5 EYLÜL 2026",
+    "displayDateEn": "4-5 SEPT 2026",
+    "category": "conference",
+    "categoryLabelTr": "Açılış Lansmanı",
+    "categoryLabelEn": "Grand Launch",
+    "locationTr": "Bodrum Kent Kütüphanesi Yerleşkesi & Açık Hava Sahnesi",
+    "locationEn": "Bodrum City Library Campus & Open Air Amphitheatre",
+    "summaryTr": "Bodrum’un yaşayan kültürel hafızası kapılarını açıyor. İki gün sürecek açılış sempozyumu, Halikarnas Balıkçısı sergisi, edebiyat panelleri, konserler ve kurumsal sponsorluk buluşmaları.",
+    "summaryEn": "Bodrum's living cultural memory opens its doors. A two-day launch symposium, Fisherman of Halicarnassus exhibition, literature panels, concerts, and sponsor reception.",
+    "image": "https://lh3.googleusercontent.com/aida-public/AB6AXuDQ_kg3bbgJ4ynOz1o7DQcY3YaIdeG_zUESiNKW-81FsNfEZqrXlPi-ZAYWzb2FYdKriB4ESdIgn04zGCTSrnOaQAobk2tEQSDMKK4TlQhdPdjUJk74KLsSusQUSR9nHe1QycFJgHdfJUQSr8eFa2k0wQHdX3j1D5aQBbxg9mUEAGpQs_UGA_l1geAuKfbBil5Wy-_VugN7cjAepbQ_HoOugyaLOfsfF-vsYSCOhY75Ao3sAvwHFdv3nGJYn9whKvXn8vnrP8j4yEE",
+    "featured": true,
+    "isPast": false,
+    "actionUrl": "/destek"
+  },
+  {
     "id": "event-1",
     "title": "Bodrum’da Edebiyat ve Kent Belleği",
     "titleEn": "Literature and Urban Memory in Bodrum",

@@ -44,21 +44,32 @@ const latestTalks = allTalks
     <!-- Hero Content Container -->
     <div class="relative z-10 max-w-container-max mx-auto w-full">
       <div class="max-w-4xl">
-        <!-- Overline Badge -->
-        <div class="inline-flex items-center gap-2.5 px-3.5 py-1.5 bg-secondary-container/60 border border-sand text-ink text-xs font-semibold tracking-widest uppercase mb-6 rounded">
-          <span class="w-2 h-2 rounded-full bg-olive animate-pulse"></span>
-          <span>Cultural & Heritage Initiative</span>
+        <!-- Overline Badge & Launch Announcement -->
+        <div class="flex flex-wrap items-center gap-3 mb-6">
+          <div class="inline-flex items-center gap-2.5 px-3.5 py-1.5 bg-secondary-container/60 border border-sand text-ink text-xs font-semibold tracking-widest uppercase rounded">
+            <span class="w-2 h-2 rounded-full bg-olive animate-pulse"></span>
+            <span>Cultural Heritage Initiative</span>
+          </div>
+
+          <a
+            href="/en/support"
+            class="inline-flex items-center gap-2 px-3.5 py-1.5 bg-olive text-white text-xs font-semibold tracking-wider uppercase rounded hover:bg-ink transition-colors shadow-xs"
+          >
+            <span class="material-symbols-outlined text-sm">campaign</span>
+            <span>September 4-5 Grand Launch & Sponsorship</span>
+            <span class="material-symbols-outlined text-xs">arrow_forward</span>
+          </a>
         </div>
 
         <!-- Headline -->
         <h1 class="font-display-lg text-4xl sm:text-5xl md:text-6xl lg:text-7xl text-ink font-serif leading-[1.12] tracking-tight mb-8 text-balance">
-          A living library dedicated to Bodrum’s cultural memory.
+          A living library dedicated to Bodrum's cultural and maritime memory.
         </h1>
 
         <!-- Subtext Card -->
         <div class="bg-parchment/90 backdrop-blur-sm border border-sand/80 p-6 md:p-8 rounded shadow-sm max-w-2xl mb-10">
           <p class="font-sans text-base md:text-lg text-secondary leading-relaxed text-balance">
-            Bodrum City Library is an independent cultural initiative preserving the peninsula's maritime history, the literary legacy of the Fisherman of Halicarnassus, and bringing together physical and digital archival collections.
+            Bodrum City Library is an independent cultural initiative preserving the peninsula's ancient history, the literary legacy of the Fisherman of Halicarnassus, and Mediterranean humanism through digital and physical collections.
           </p>
         </div>
 
@@ -70,6 +81,13 @@ const latestTalks = allTalks
           >
             <span>{t.exploreEvents}</span>
             <span class="material-symbols-outlined text-[18px] transition-transform group-hover:translate-x-1">arrow_forward</span>
+          </a>
+
+          <a
+            href="/en/support"
+            class="inline-flex items-center justify-center px-8 py-4 bg-olive/10 border border-olive text-olive hover:bg-olive hover:text-white font-semibold text-xs md:text-sm uppercase tracking-widest transition-all duration-200 shadow-xs"
+          >
+            <span>Sponsorship & Support</span>
           </a>
 
           <a
