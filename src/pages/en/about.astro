@@ -1,0 +1,376 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { getCollection } from 'astro:content';
+import { getT } from '../../utils/i18n';
+
+const lang = 'en';
+const t = getT(lang);
+
+// Retrieve all 11 founding board members from Content Collections sorted by order
+const allBoardMembers = await getCollection('board');
+const boardMembers = allBoardMembers.sort((a, b) => a.data.order - b.data.order);
+---
+
+<Layout
+  title={`${t.about} | ${t.siteTitle}`}
+  description="The founding story of Bodrum City Library, our founding committee, mission, vision, and targeted fields of activity."
+  lang={lang}
+  currentPath="/en/about"
+>
+  <!-- 1. Hero Section -->
+  <section class="relative min-h-[70vh] flex items-end pb-20 md:pb-28 pt-32 px-margin-mobile md:px-margin-desktop overflow-hidden border-b border-sand bg-surface-bright">
+    <!-- Atmospheric Architectural Library Backdrop -->
+    <div class="absolute inset-0 z-0">
+      <div
+        class="w-full h-full bg-cover bg-center filter contrast-105"
+        style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBQh1IEjANCZH2V7FGs8xNPcunfreBoq2Oy9fFRTrHc17swqF24pxTHI9m8kMFJsDnxA5J-Yz6adQnDYEDxEmx-7lxDPURT9UjGreDgAJ67hSPesztARMnar1xe_brbbpWAxa2wqXqMZavfesexQKu-f9-90BbHytNEldcl5izjawCKeF8tTQWBYZIl6S5CXxOq-8Q6i5nMmRw8TLXiHD05k55rSJtUKWqjNWHrVJmC7oAeH4yKCiac94rFUxjhNRB4q69_lWlqryQ');"
+      ></div>
+      <!-- Soft Gradient Overlay -->
+      <div class="absolute inset-0 bg-gradient-to-t from-parchment via-parchment/80 to-parchment/40"></div>
+    </div>
+
+    <!-- Ex Libris Watermark Stamp -->
+    <div class="absolute -top-10 -right-10 md:top-8 md:right-12 ex-libris-watermark select-none pointer-events-none">
+      <span class="material-symbols-outlined text-[240px] md:text-[360px] text-olive leading-none">auto_stories</span>
+    </div>
+
+    <!-- Hero Content -->
+    <div class="relative z-10 max-w-container-max mx-auto w-full">
+      <div class="max-w-3xl">
+        <!-- Overline Badge -->
+        <div class="inline-flex items-center gap-2 px-3.5 py-1.5 bg-secondary-container/80 border border-sand text-ink text-xs font-semibold tracking-[0.2em] uppercase mb-6 rounded">
+          <span class="w-2 h-2 rounded-full bg-olive animate-pulse"></span>
+          <span>{t.about.toUpperCase()}</span>
+        </div>
+
+        <!-- Headline -->
+        <h1 class="font-serif text-4xl sm:text-5xl md:text-6xl lg:text-7xl text-ink font-normal leading-[1.12] tracking-tight mb-6 text-balance">
+          Genesis of an Idea
+        </h1>
+
+        <!-- Subtext Quote Card -->
+        <div class="bg-parchment/95 backdrop-blur-sm border border-sand p-6 md:p-8 rounded shadow-sm max-w-2xl">
+          <p class="font-sans text-base md:text-lg text-secondary leading-relaxed text-balance">
+            In the heart of the Aegean, where history meets modern librarianship; as Bodrum City Library, we host the minds shaping tomorrow.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 2. History Section (Library History) -->
+  <section class="py-24 md:py-32 px-margin-mobile md:px-margin-desktop bg-parchment border-b border-sand relative overflow-hidden">
+    <!-- Watermark Graphic -->
+    <div class="absolute -right-12 top-1/4 ex-libris-watermark select-none pointer-events-none">
+      <span class="material-symbols-outlined text-[280px] md:text-[380px] text-ink leading-none">history_edu</span>
+    </div>
+
+    <div class="max-w-container-max mx-auto relative z-10">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-gutter items-center">
+        
+        <!-- Left Editorial Column: Historical Milestones Narrative -->
+        <div class="lg:col-span-6 space-y-8">
+          <div>
+            <span class="font-sans text-xs uppercase tracking-[0.2em] text-olive font-semibold block mb-3">
+              FOUNDATION MILESTONES
+            </span>
+            <h2 class="font-serif text-3xl sm:text-4xl md:text-5xl text-ink leading-tight mb-6">
+              {t.historyTitle}
+            </h2>
+          </div>
+
+          <div class="space-y-6 text-secondary text-base md:text-lg leading-relaxed">
+            <!-- Milestone Callout 1 -->
+            <div class="p-5 bg-surface-container-low border-l-4 border-olive rounded-r border-y border-r border-sand">
+              <div class="flex items-center gap-2 text-xs font-mono font-bold text-olive uppercase tracking-wider mb-1.5">
+                <span class="material-symbols-outlined text-[16px]">calendar_today</span>
+                <span>16 SEPTEMBER 2019</span>
+              </div>
+              <p class="font-serif text-ink text-base md:text-lg leading-snug">
+                {t.historyP1}
+              </p>
+            </div>
+
+            <!-- Milestone Callout 2 -->
+            <div class="p-5 bg-surface-container-low border-l-4 border-ink rounded-r border-y border-r border-sand">
+              <div class="flex items-center gap-2 text-xs font-mono font-bold text-ink uppercase tracking-wider mb-1.5">
+                <span class="material-symbols-outlined text-[16px]">calendar_today</span>
+                <span>07 SEPTEMBER 2019</span>
+              </div>
+              <p class="font-serif text-ink text-base md:text-lg leading-snug">
+                {t.historyP2}
+              </p>
+            </div>
+
+            <!-- Heritage Paragraph -->
+            <p class="font-sans text-secondary text-base leading-relaxed pt-2">
+              {t.historyP3}
+            </p>
+          </div>
+
+          <!-- Explore Archives Link -->
+          <div class="pt-6 border-t border-sand">
+            <a
+              href="/en/fisherman-of-halicarnassus"
+              class="inline-flex items-center gap-3 px-6 py-3.5 bg-ink text-parchment font-semibold text-xs md:text-sm uppercase tracking-widest hover:bg-olive transition-all duration-200 shadow-sm group rounded"
+            >
+              <span>EXPLORE THE ARCHIVES</span>
+              <span class="material-symbols-outlined text-[18px] transition-transform group-hover:translate-x-1.5">arrow_forward</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Right Column: Historical Archival Image -->
+        <div class="lg:col-span-6">
+          <div class="relative">
+            <div class="aspect-[4/5] w-full rounded overflow-hidden border border-sand bg-sand/30 shadow-lg">
+              <img
+                src="https://lh3.googleusercontent.com/aida-public/AB6AXuB_XICwOmzmDr1vkcwkGWx8xGd57FX_biXF5N4EhDhQugOsi0PPgp59UHEPnXAnvVVzWK9YzqcrRIs500nNgELehMvSDG3B8ukFd5xQPWAUKS0-y0OYW-O8vXfYsPZPgtHCZ6uM-HIMnkWK8c0i-hYC-JqeGwv4BkHUqoptVxPle2BQXVxxOwmvaTjbuOxByAOTr-veXULWhK2UPV8VBYQg-G6pqTaT_TnIEawQGRTuRohwuats1PCEt0z1GGbhDCjebFap32yCjLE"
+                alt="Bodrum City Library Archival Documents and Manuscripts"
+                class="w-full h-full object-cover filter contrast-105"
+                loading="lazy"
+              />
+            </div>
+            <!-- Decorative Border Accent -->
+            <div class="absolute -bottom-4 -left-4 w-full h-full rounded border border-olive/30 -z-10 hidden sm:block"></div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- 3. Founding Committee Section (Founding Committee) -->
+  <section class="py-24 md:py-32 px-margin-mobile md:px-margin-desktop bg-surface-container-low border-b border-sand">
+    <div class="max-w-container-max mx-auto">
+      
+      <!-- Section Header -->
+      <div class="max-w-3xl mb-16 md:mb-20">
+        <span class="font-sans text-xs uppercase tracking-[0.2em] text-olive font-semibold block mb-3">
+          OUR PIONEERS
+        </span>
+        <h2 class="font-serif text-3xl sm:text-4xl md:text-5xl text-ink leading-tight mb-4">
+          {t.foundersTitle}
+        </h2>
+        <p class="font-sans text-base md:text-lg text-secondary leading-relaxed">
+          {t.foundersDesc}
+        </p>
+      </div>
+
+      <!-- 11-Member Founding Grid -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+        {boardMembers.map((member) => (
+          <div class="bg-parchment p-6 md:p-8 border border-sand rounded hover:border-olive transition-all duration-300 flex flex-col justify-between group shadow-sm hover:shadow-md relative overflow-hidden">
+            <!-- Subtle Index Watermark in Card -->
+            <span class="absolute top-3 right-4 font-mono text-xs font-semibold text-sand select-none group-hover:text-olive/20 transition-colors">
+              {String(member.data.order).padStart(2, '0')}
+            </span>
+
+            <div>
+              <!-- Person Icon Circle -->
+              <div class="w-12 h-12 rounded-full bg-surface-container border border-sand flex items-center justify-center text-stone-gray mb-5 group-hover:bg-olive group-hover:text-parchment group-hover:border-olive transition-all duration-300">
+                <span class="material-symbols-outlined text-[22px]">person</span>
+              </div>
+
+              <!-- Member Name -->
+              <h3 class="font-serif text-xl font-semibold text-ink leading-snug mb-2 group-hover:text-olive transition-colors">
+                {member.data.name}
+              </h3>
+            </div>
+
+            <!-- Role Badge -->
+            <div class="pt-4 mt-4 border-t border-sand/60">
+              <span class="text-xs uppercase tracking-wider text-stone-gray font-medium block">
+                {member.data.roleEn || "Founding Committee Member"}
+              </span>
+            </div>
+          </div>
+        ))}
+      </div>
+
+    </div>
+  </section>
+
+  <!-- 4. Mission & Vision Section (Our Mission & Vision) -->
+  <section class="py-24 md:py-32 px-margin-mobile md:px-margin-desktop bg-parchment border-b border-sand relative">
+    <div class="max-w-container-max mx-auto">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-gutter items-center">
+        
+        <!-- Left Column: Mediterranean Architectural Photography -->
+        <div class="lg:col-span-5">
+          <div class="relative">
+            <div class="aspect-square w-full rounded overflow-hidden border border-sand shadow-md bg-sand/30">
+              <img
+                src="https://lh3.googleusercontent.com/aida-public/AB6AXuBPQHV4Nv0HXp0jOjlqx-BQpiyFAWydATsziB9F29a0z8PHanG12fIre0mCOKxHWoq2VIEvkj7Hf0dBkRC2TItFDCArwW0WXpNOPUbdksgNRu8JJ0PhPHt7qKyG4u8IUZFkiw71twfmIHTTFuidkpWttKpdGBMP7527tdhpnOZZLn0Wu5mMuA9pETltFHCZVd429bbgjVY9HnHK0oM0UIL6HcKffWosYyXyzjxompQPLj_RLk3g1uQ944mpMDLHmDA8WlbrnfH-VJ4"
+                alt="Bodrum City Library Courtyard and Mediterranean Architecture"
+                class="w-full h-full object-cover"
+                loading="lazy"
+              />
+            </div>
+            <!-- Glow Accent -->
+            <div class="absolute -bottom-6 -right-6 w-40 h-40 bg-olive/15 rounded-full blur-3xl pointer-events-none"></div>
+          </div>
+        </div>
+
+        <!-- Right Column: Mission & Vision Narrative -->
+        <div class="lg:col-span-7 space-y-12 lg:pl-6">
+          <div>
+            <span class="font-sans text-xs uppercase tracking-[0.2em] text-olive font-semibold block mb-3">
+              LOOKING AHEAD
+            </span>
+            <h2 class="font-serif text-3xl sm:text-4xl md:text-5xl text-ink leading-tight">
+              Institutional Identity
+            </h2>
+          </div>
+
+          <!-- Mission Block -->
+          <div class="space-y-4">
+            <div class="flex items-center gap-3">
+              <div class="w-10 h-10 rounded bg-secondary-container/60 border border-sand flex items-center justify-center text-olive">
+                <span class="material-symbols-outlined text-[22px]">track_changes</span>
+              </div>
+              <h3 class="font-serif text-2xl md:text-3xl text-ink font-semibold">
+                {t.missionTitle}
+              </h3>
+            </div>
+            <p class="font-sans text-base md:text-lg text-secondary leading-relaxed pl-13">
+              {t.missionText}
+            </p>
+          </div>
+
+          <div class="editorial-divider"></div>
+
+          <!-- Vision Block -->
+          <div class="space-y-4">
+            <div class="flex items-center gap-3">
+              <div class="w-10 h-10 rounded bg-secondary-container/60 border border-sand flex items-center justify-center text-olive">
+                <span class="material-symbols-outlined text-[22px]">visibility</span>
+              </div>
+              <h3 class="font-serif text-2xl md:text-3xl text-ink font-semibold">
+                {t.visionTitle}
+              </h3>
+            </div>
+            <p class="font-sans text-base md:text-lg text-secondary leading-relaxed pl-13">
+              {t.visionText}
+            </p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- 5. Areas of Activity Bento Grid (Targeted Initiatives) -->
+  <section class="py-24 md:py-32 px-margin-mobile md:px-margin-desktop bg-ink text-parchment relative overflow-hidden">
+    <div class="max-w-container-max mx-auto relative z-10">
+      
+      <!-- Section Header -->
+      <div class="max-w-3xl mb-16">
+        <span class="font-sans text-xs uppercase tracking-[0.2em] text-olive font-semibold block mb-3">
+          FIELDS OF ACTIVITY
+        </span>
+        <h2 class="font-serif text-3xl sm:text-4xl md:text-5xl text-parchment leading-tight mb-4">
+          Targeted Initiatives
+        </h2>
+        <p class="font-sans text-base md:text-lg text-on-primary-container leading-relaxed">
+          More than a repository of books, we serve across a wide spectrum as a vibrant center of intellectual interaction.
+        </p>
+      </div>
+
+      <!-- Bento Grid (5 Cards) -->
+      <div class="grid grid-cols-1 md:grid-cols-12 gap-6 auto-rows-[auto] md:auto-rows-[240px]">
+        
+        <!-- Bento Card 1: Digital Archiving (8 Columns, 2 Rows) -->
+        <div class="md:col-span-8 md:row-span-2 relative overflow-hidden group border border-sand/20 rounded p-8 md:p-10 flex flex-col justify-end min-h-[340px] md:min-h-0 bg-primary-container">
+          <!-- Background Image with Overlay -->
+          <div
+            class="absolute inset-0 z-0 opacity-30 grayscale group-hover:scale-105 transition-transform duration-700 bg-cover bg-center"
+            style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCJRgJvm6o2wUZRtMhogrR0KuZHPVCVld5S6xyoIgX9TZbovLiLVM1eKtQf2SaGYy6kMqIdDeSiLIMoYHGNBRXM44EteTCZ-rS25WROj46SmZ3Y-hbO_LTgVzenXK5CABDAaQ1QDovpALXqj8WEznrq93jxnpaZ2qoQRDUOvTVsIkZzJRu8_nWGoKn5mjDzCHw0xNYzhfuyVEQyJox7UB0KuDNtDw-cpbbhA2alQ9_ROX74XTaJ19EoA86rmfFcAM3RJmxP19mITEI');"
+          ></div>
+          <div class="absolute inset-0 bg-gradient-to-t from-ink via-ink/60 to-transparent"></div>
+
+          <div class="relative z-10">
+            <span class="inline-block px-3 py-1 bg-olive/80 text-parchment text-[11px] font-semibold uppercase tracking-widest rounded-sm mb-4">
+              OPEN ARCHIVE & DIGITIZATION
+            </span>
+            <h3 class="font-serif text-2xl sm:text-3xl md:text-4xl text-parchment mb-3 leading-snug">
+              Digital Archiving
+            </h3>
+            <p class="font-sans text-sm md:text-base text-on-primary-container max-w-xl leading-relaxed">
+              We digitize historical documents, regional sponge-diving records, oral history audio tapes, and newspaper archives into high-resolution accessible collections.
+            </p>
+          </div>
+        </div>
+
+        <!-- Bento Card 2: Educational Programs (4 Columns, 1 Row) -->
+        <div class="md:col-span-4 md:row-span-1 bg-primary-container border border-sand/20 rounded p-6 md:p-8 flex flex-col justify-between hover:border-olive transition-colors group">
+          <div class="w-10 h-10 rounded bg-parchment/10 border border-sand/20 flex items-center justify-center text-olive group-hover:bg-olive group-hover:text-parchment transition-colors">
+            <span class="material-symbols-outlined text-[24px]">school</span>
+          </div>
+          <div>
+            <h3 class="font-serif text-xl md:text-2xl text-parchment mb-1 group-hover:text-olive transition-colors">
+              Educational Programs
+            </h3>
+            <p class="font-sans text-xs uppercase tracking-widest text-on-primary-container font-semibold">
+              Seminars & Workshops
+            </p>
+          </div>
+        </div>
+
+        <!-- Bento Card 3: Cultural Events (4 Columns, 1 Row) -->
+        <div class="md:col-span-4 md:row-span-1 bg-primary-container border border-sand/20 rounded p-6 md:p-8 flex flex-col justify-between hover:border-olive transition-colors group">
+          <div class="w-10 h-10 rounded bg-parchment/10 border border-sand/20 flex items-center justify-center text-olive group-hover:bg-olive group-hover:text-parchment transition-colors">
+            <span class="material-symbols-outlined text-[24px]">event_seat</span>
+          </div>
+          <div>
+            <h3 class="font-serif text-xl md:text-2xl text-parchment mb-1 group-hover:text-olive transition-colors">
+              Cultural Events
+            </h3>
+            <p class="font-sans text-xs uppercase tracking-widest text-on-primary-container font-semibold">
+              Talks & Exhibitions
+            </p>
+          </div>
+        </div>
+
+        <!-- Bento Card 4: Planned Collections (6 Columns, 1 Row) -->
+        <div class="md:col-span-6 md:row-span-1 bg-primary-container/70 border border-sand/20 rounded p-6 md:p-8 flex flex-col justify-between hover:border-olive transition-colors group">
+          <div class="flex items-center justify-between">
+            <span class="material-symbols-outlined text-olive text-[24px]">menu_book</span>
+            <span class="text-[11px] uppercase tracking-widest text-on-primary-container font-mono">BODRUM COLLECTION</span>
+          </div>
+          <div>
+            <h3 class="font-serif text-xl md:text-2xl text-parchment mb-2 group-hover:text-olive transition-colors">
+              Planned Collections
+            </h3>
+            <p class="font-sans text-xs sm:text-sm text-on-primary-container leading-relaxed">
+              18th-century maps, regional historical publications, and original manuscripts of the Fisherman of Halicarnassus are preserved in specialized archival chambers.
+            </p>
+          </div>
+        </div>
+
+        <!-- Bento Card 5: Community & Volunteerism (6 Columns, 1 Row) -->
+        <a
+          href="/en/contact"
+          class="md:col-span-6 md:row-span-1 bg-olive/20 hover:bg-olive/30 border border-olive/40 rounded p-6 md:p-8 flex items-center justify-between group transition-all duration-200 cursor-pointer shadow-sm"
+        >
+          <div class="pr-4">
+            <div class="inline-flex items-center gap-2 text-[11px] uppercase tracking-widest text-olive font-bold mb-1">
+              <span class="w-1.5 h-1.5 rounded-full bg-olive"></span>
+              <span>COMMUNITY INVOLVEMENT</span>
+            </div>
+            <h3 class="font-serif text-xl md:text-2xl text-parchment mb-1 group-hover:text-white transition-colors">
+              Community & Volunteerism
+            </h3>
+            <p class="font-sans text-xs sm:text-sm text-sand/80 leading-relaxed">
+              Join our dedicated team and contribute to preserving Bodrum's collective cultural memory together.
+            </p>
+          </div>
+          <div class="w-12 h-12 rounded bg-parchment/10 border border-sand/30 flex items-center justify-center text-parchment shrink-0 group-hover:bg-olive group-hover:border-olive group-hover:translate-x-1.5 transition-all">
+            <span class="material-symbols-outlined text-[24px]">arrow_forward</span>
+          </div>
+        </a>
+
+      </div>
+    </div>
+  </section>
+</Layout>
