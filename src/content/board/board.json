@@ -1,0 +1,13 @@
+[
+  { "id": "board-1", "name": "Birol K. Yiğitcan", "roleTr": "Girişim Kurulu Üyesi", "roleEn": "Founding Committee Member", "order": 1 },
+  { "id": "board-2", "name": "Canan Küçükeren", "roleTr": "Girişim Kurulu Üyesi", "roleEn": "Founding Committee Member", "order": 2 },
+  { "id": "board-3", "name": "Deniz Öztürk", "roleTr": "Girişim Kurulu Üyesi", "roleEn": "Founding Committee Member", "order": 3 },
+  { "id": "board-4", "name": "Fikret Nesip Üçan", "roleTr": "Girişim Kurulu Üyesi", "roleEn": "Founding Committee Member", "order": 4 },
+  { "id": "board-5", "name": "Güldal Altuner", "roleTr": "Girişim Kurulu Üyesi", "roleEn": "Founding Committee Member", "order": 5 },
+  { "id": "board-6", "name": "Metin Ataç", "roleTr": "Girişim Kurulu Üyesi", "roleEn": "Founding Committee Member", "order": 6 },
+  { "id": "board-7", "name": "Nevra Sezer Tüfekçi", "roleTr": "Girişim Kurulu Üyesi", "roleEn": "Founding Committee Member", "order": 7 },
+  { "id": "board-8", "name": "Sema Sagat", "roleTr": "Girişim Kurulu Üyesi", "roleEn": "Founding Committee Member", "order": 8 },
+  { "id": "board-9", "name": "Sönmez Taner", "roleTr": "Girişim Kurulu Üyesi", "roleEn": "Founding Committee Member", "order": 9 },
+  { "id": "board-10", "name": "Ümran Yüksel", "roleTr": "Girişim Kurulu Üyesi", "roleEn": "Founding Committee Member", "order": 10 },
+  { "id": "board-11", "name": "Doç. Dr. Yalçın İ. Gürkan", "roleTr": "Girişim Kurulu Üyesi", "roleEn": "Founding Committee Member", "order": 11 }
+]
