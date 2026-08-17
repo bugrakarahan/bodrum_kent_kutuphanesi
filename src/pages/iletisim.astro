@@ -1,0 +1,581 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { getT } from '../utils/i18n';
+
+const lang = 'tr';
+const t = getT(lang);
+---
+
+<Layout
+  title={`İletişim & Katılım | ${t.siteTitle}`}
+  description="Bodrum Kent Kütüphanesi ile iletişime geçin. Gönüllülük, etkinlik ve söyleşi önerileri, bağış ve genel bilgi talepleriniz için bize ulaşın."
+  lang={lang}
+  currentPath="/iletisim"
+>
+  <!-- 1. Hero Section -->
+  <section class="relative min-h-[60vh] flex items-center py-20 md:py-28 px-margin-mobile md:px-margin-desktop overflow-hidden border-b border-sand bg-surface-bright">
+    <!-- Ex Libris Watermark Motif -->
+    <div class="absolute -top-10 -right-10 md:top-6 md:right-12 ex-libris-watermark select-none pointer-events-none">
+      <span class="material-symbols-outlined text-[260px] md:text-[380px] text-olive leading-none">contact_support</span>
+    </div>
+
+    <div class="relative z-10 max-w-container-max mx-auto w-full">
+      <div class="max-w-3xl">
+        <!-- Overline Badge -->
+        <div class="inline-flex items-center gap-2 px-3.5 py-1.5 bg-secondary-container/80 border border-sand text-ink text-xs font-semibold tracking-[0.2em] uppercase mb-6 rounded">
+          <span class="w-2 h-2 rounded-full bg-olive animate-pulse"></span>
+          <span>İLETİŞİM & KATILIM</span>
+        </div>
+
+        <!-- Headline -->
+        <h1 class="font-serif text-4xl sm:text-5xl md:text-6xl lg:text-7xl text-ink font-normal leading-[1.12] tracking-tight mb-6 text-balance">
+          Bağlantıda Kalalım.
+        </h1>
+
+        <!-- Subtitle Card -->
+        <div class="bg-parchment/95 backdrop-blur-sm border border-sand p-6 md:p-8 rounded shadow-sm max-w-2xl">
+          <p class="font-sans text-base md:text-lg text-secondary leading-relaxed text-balance">
+            Etkinlikler, söyleşiler, iş birlikleri ve genel bilgi talepleriniz için bize ulaşabilirsiniz. Bodrum’un kültürel mirasını birlikte yaşatalım.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 2. Main Content Area (Asymmetric Grid: 5-col Left, 7-col Right) -->
+  <section class="py-20 md:py-28 px-margin-mobile md:px-margin-desktop bg-parchment border-b border-sand relative">
+    <div class="max-w-container-max mx-auto">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-gutter items-start">
+        
+        <!-- Left Column (5-col): Contact Info, Visiting Details & Visual Map Card -->
+        <div class="lg:col-span-5 space-y-8">
+          
+          <!-- Contact Info Header -->
+          <div>
+            <span class="font-sans text-xs uppercase tracking-[0.2em] text-olive font-semibold block mb-2">
+              BİLGİ & ULAŞIM
+            </span>
+            <h2 class="font-serif text-3xl sm:text-4xl text-ink leading-tight">
+              Kütüphane Bilgileri
+            </h2>
+            <p class="font-sans text-secondary text-sm md:text-base mt-2">
+              Ziyaret etmek, arşivleri incelemek veya sorularınızı iletmek için iletişim kanallarımızdan bize ulaşabilirsiniz.
+            </p>
+          </div>
+
+          <!-- Contact Details Cards -->
+          <div class="space-y-4">
+            
+            <!-- E-Posta Card -->
+            <div class="p-5 bg-surface-container-low border border-sand rounded flex items-start gap-4 transition-all duration-200 hover:border-olive/60">
+              <div class="w-11 h-11 rounded bg-secondary-container/60 border border-sand flex items-center justify-center text-olive shrink-0">
+                <span class="material-symbols-outlined text-[22px]">mail</span>
+              </div>
+              <div class="flex-1 min-w-0">
+                <div class="text-xs font-semibold uppercase tracking-wider text-stone-gray mb-1">E-Posta Adresi</div>
+                <a
+                  href="mailto:bilgi@bodrumkentkutuphanesi.org"
+                  class="font-mono text-sm md:text-base text-ink font-medium hover:text-olive break-all transition-colors block"
+                >
+                  bilgi@bodrumkentkutuphanesi.org
+                </a>
+                <span class="text-xs text-stone-gray block mt-0.5">Tüm resmi yazışma ve bilgi talepleri</span>
+              </div>
+            </div>
+
+            <!-- Konum & Ziyaret Card -->
+            <div class="p-5 bg-surface-container-low border border-sand rounded flex items-start gap-4 transition-all duration-200 hover:border-olive/60">
+              <div class="w-11 h-11 rounded bg-secondary-container/60 border border-sand flex items-center justify-center text-olive shrink-0">
+                <span class="material-symbols-outlined text-[22px]">location_on</span>
+              </div>
+              <div class="flex-1">
+                <div class="text-xs font-semibold uppercase tracking-wider text-stone-gray mb-1">Yerleşke & Konum</div>
+                <p class="font-sans text-sm md:text-base text-ink font-medium leading-snug">
+                  Kızılağaç, Bodrum / Muğla
+                </p>
+                <div class="mt-2 text-xs text-stone-gray space-y-1">
+                  <div class="flex items-center gap-1.5">
+                    <span class="material-symbols-outlined text-[14px]">schedule</span>
+                    <span>Salı – Pazar: 09:00 – 19:00</span>
+                  </div>
+                  <div class="flex items-center gap-1.5 text-stone-gray">
+                    <span class="material-symbols-outlined text-[14px]">event_busy</span>
+                    <span>Pazartesi günleri kapalıdır.</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Sosyal Medya Card -->
+            <div class="p-5 bg-surface-container-low border border-sand rounded">
+              <div class="text-xs font-semibold uppercase tracking-wider text-stone-gray mb-3 flex items-center gap-2">
+                <span class="material-symbols-outlined text-[16px] text-olive">share</span>
+                <span>Sosyal Medya Kanallarımız</span>
+              </div>
+              <div class="grid grid-cols-2 gap-3">
+                <a
+                  href="https://instagram.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="flex items-center gap-2.5 p-2.5 rounded bg-parchment border border-sand text-ink hover:border-olive/60 hover:text-olive transition-colors text-xs font-medium"
+                >
+                  <svg class="w-4 h-4 shrink-0 text-olive" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                    <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                    <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                  </svg>
+                  <span>Instagram</span>
+                </a>
+
+                <a
+                  href="https://youtube.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="flex items-center gap-2.5 p-2.5 rounded bg-parchment border border-sand text-ink hover:border-olive/60 hover:text-olive transition-colors text-xs font-medium"
+                >
+                  <svg class="w-4 h-4 shrink-0 text-olive" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+                  </svg>
+                  <span>YouTube</span>
+                </a>
+
+                <a
+                  href="https://facebook.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="flex items-center gap-2.5 p-2.5 rounded bg-parchment border border-sand text-ink hover:border-olive/60 hover:text-olive transition-colors text-xs font-medium"
+                >
+                  <svg class="w-4 h-4 shrink-0 text-olive" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+                  </svg>
+                  <span>Facebook</span>
+                </a>
+
+                <a
+                  href="https://x.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="flex items-center gap-2.5 p-2.5 rounded bg-parchment border border-sand text-ink hover:border-olive/60 hover:text-olive transition-colors text-xs font-medium"
+                >
+                  <svg class="w-4 h-4 shrink-0 text-olive" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+                  </svg>
+                  <span>X (Twitter)</span>
+                </a>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- Visual Location / Map Preview Card -->
+          <div class="relative overflow-hidden rounded border border-sand bg-surface-bright shadow-sm group">
+            <div class="relative aspect-[16/9] w-full overflow-hidden bg-sand/30">
+              <img
+                src="https://lh3.googleusercontent.com/aida-public/AB6AXuBPQHV4Nv0HXp0jOjlqx-BQpiyFAWydATsziB9F29a0z8PHanG12fIre0mCOKxHWoq2VIEvkj7Hf0dBkRC2TItFDCArwW0WXpNOPUbdksgNRu8JJ0PhPHt7qKyG4u8IUZFkiw71twfmIHTTFuidkpWttKpdGBMP7527tdhpnOZZLn0Wu5mMuA9pETltFHCZVd429bbgjVY9HnHK0oM0UIL6HcKffWosYyXyzjxompQPLj_RLk3g1uQ944mpMDLHmDA8WlbrnfH-VJ4"
+                alt="Bodrum Kent Kütüphanesi Kızılağaç Yerleşkesi"
+                class="w-full h-full object-cover filter contrast-105 group-hover:scale-105 transition-transform duration-700"
+                loading="lazy"
+              />
+              <div class="absolute inset-0 bg-gradient-to-t from-ink/80 via-ink/20 to-transparent"></div>
+              
+              <!-- Floating Location Pin Badge -->
+              <div class="absolute bottom-4 left-4 right-4 flex items-center justify-between text-white">
+                <div class="flex items-center gap-2">
+                  <span class="w-8 h-8 rounded-full bg-olive/90 backdrop-blur-xs flex items-center justify-center text-white shadow-sm">
+                    <span class="material-symbols-outlined text-[18px]">pin_drop</span>
+                  </span>
+                  <div>
+                    <span class="text-xs uppercase tracking-wider font-semibold block text-white">Kızılağaç Yerleşkesi</span>
+                    <span class="text-[11px] text-white/80">Bodrum, Muğla</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="p-5 flex items-center justify-between gap-4 bg-surface-container-low border-t border-sand">
+              <div class="text-xs text-secondary leading-tight">
+                Toplu taşıma ve özel araç ile ulaşım güzergâhı
+              </div>
+              <a
+                href="https://maps.google.com/?q=Kızılagaç,Bodrum,Muğla"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="inline-flex items-center gap-2 px-4 py-2 bg-ink text-parchment hover:bg-olive text-xs font-semibold uppercase tracking-wider transition-colors rounded shrink-0 group/btn"
+              >
+                <span>Haritada Aç</span>
+                <span class="material-symbols-outlined text-[16px] transition-transform group-hover/btn:translate-x-0.5">open_in_new</span>
+              </a>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Right Column (7-col): Interactive Contact & Volunteer Form -->
+        <div class="lg:col-span-7">
+          <div class="bg-surface-bright border border-sand rounded-lg p-6 sm:p-8 md:p-10 shadow-sm relative">
+            
+            <!-- Form Header -->
+            <div class="border-b border-sand pb-6 mb-8">
+              <div class="inline-flex items-center gap-2 px-3 py-1 bg-olive/10 border border-olive/20 text-olive text-[11px] font-bold tracking-widest uppercase mb-3 rounded">
+                <span class="material-symbols-outlined text-[14px]">edit_note</span>
+                <span>İLETİŞİM FORMU</span>
+              </div>
+              <h3 class="font-serif text-2xl sm:text-3xl md:text-4xl text-ink leading-tight mb-2">
+                Bize Yazın & Katılın
+              </h3>
+              <p class="font-sans text-secondary text-sm md:text-base leading-relaxed">
+                Kütüphanemize dair sorularınız, gönüllü katılım talepleriniz, söyleşi önerileriniz veya kitap bağışı başvurularınız için formu doldurabilirsiniz.
+              </p>
+            </div>
+
+            <!-- Form -->
+            <form id="contact-form" class="space-y-6" novalidate>
+              
+              <!-- Row 1: Ad Soyad & E-posta -->
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                <!-- Ad Soyad Input -->
+                <div class="space-y-2">
+                  <label for="fullName" class="block font-sans text-xs font-semibold uppercase tracking-wider text-ink">
+                    Ad Soyad <span class="text-terracotta text-red-600">*</span>
+                  </label>
+                  <div class="relative">
+                    <input
+                      type="text"
+                      id="fullName"
+                      name="fullName"
+                      required
+                      placeholder="Örn: Haluk Bilginer"
+                      class="w-full px-4 py-3.5 bg-parchment border border-sand text-ink text-sm rounded focus:outline-none focus:border-olive focus:ring-1 focus:ring-olive transition-colors placeholder:text-stone-gray/60"
+                    />
+                  </div>
+                  <p class="hidden text-xs text-red-600 font-medium field-error" id="fullName-error">
+                    Lütfen adınızı ve soyadınızı giriniz.
+                  </p>
+                </div>
+
+                <!-- E-posta Input -->
+                <div class="space-y-2">
+                  <label for="email" class="block font-sans text-xs font-semibold uppercase tracking-wider text-ink">
+                    E-Posta Adresi <span class="text-red-600">*</span>
+                  </label>
+                  <div class="relative">
+                    <input
+                      type="email"
+                      id="email"
+                      name="email"
+                      required
+                      placeholder="Örn: adiniz@ornek.com"
+                      class="w-full px-4 py-3.5 bg-parchment border border-sand text-ink text-sm rounded focus:outline-none focus:border-olive focus:ring-1 focus:ring-olive transition-colors placeholder:text-stone-gray/60"
+                    />
+                  </div>
+                  <p class="hidden text-xs text-red-600 font-medium field-error" id="email-error">
+                    Lütfen geçerli bir e-posta adresi giriniz.
+                  </p>
+                </div>
+              </div>
+
+              <!-- Row 2: Telefon & Katılım Türü / Konu -->
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                <!-- Telefon Numarası (İsteğe Bağlı) -->
+                <div class="space-y-2">
+                  <label for="phone" class="block font-sans text-xs font-semibold uppercase tracking-wider text-ink">
+                    Telefon Numarası <span class="text-stone-gray text-[11px] font-normal lowercase">(isteğe bağlı)</span>
+                  </label>
+                  <input
+                    type="tel"
+                    id="phone"
+                    name="phone"
+                    placeholder="Örn: +90 5XX XXX XX XX"
+                    class="w-full px-4 py-3.5 bg-parchment border border-sand text-ink text-sm rounded focus:outline-none focus:border-olive focus:ring-1 focus:ring-olive transition-colors placeholder:text-stone-gray/60"
+                  />
+                </div>
+
+                <!-- Katılım Türü / Konu Dropdown -->
+                <div class="space-y-2">
+                  <label for="inquiryType" class="block font-sans text-xs font-semibold uppercase tracking-wider text-ink">
+                    Katılım Türü / Konu <span class="text-red-600">*</span>
+                  </label>
+                  <div class="relative">
+                    <select
+                      id="inquiryType"
+                      name="inquiryType"
+                      required
+                      class="w-full px-4 py-3.5 bg-parchment border border-sand text-ink text-sm rounded focus:outline-none focus:border-olive focus:ring-1 focus:ring-olive transition-colors appearance-none cursor-pointer pr-10"
+                    >
+                      <option value="" disabled selected>Lütfen bir konu seçiniz...</option>
+                      <option value="genel-bilgi">Genel Bilgi & Danışma</option>
+                      <option value="gonulluluk">Gönüllülük & Katılım Talebi</option>
+                      <option value="etkinlik-oneri">Etkinlik & Söyleşi Önerisi</option>
+                      <option value="kitap-bagisi">Kitap & Arşiv Bağışı</option>
+                      <option value="basin-isbirligi">Basın & Kurumsal İş Birliği</option>
+                    </select>
+                    <div class="absolute right-3.5 top-1/2 -translate-y-1/2 pointer-events-none text-stone-gray">
+                      <span class="material-symbols-outlined text-[20px]">expand_more</span>
+                    </div>
+                  </div>
+                  <p class="hidden text-xs text-red-600 font-medium field-error" id="inquiryType-error">
+                    Lütfen bir katılım türü veya konu seçiniz.
+                  </p>
+                </div>
+              </div>
+
+              <!-- Row 3: Mesajınız -->
+              <div class="space-y-2">
+                <label for="message" class="block font-sans text-xs font-semibold uppercase tracking-wider text-ink">
+                  Mesajınız <span class="text-red-600">*</span>
+                </label>
+                <textarea
+                  id="message"
+                  name="message"
+                  rows="5"
+                  required
+                  placeholder="Mesajınızı, iş birliği veya gönüllülük niyetinizi detaylı olarak paylaşabilirsiniz..."
+                  class="w-full px-4 py-3.5 bg-parchment border border-sand text-ink text-sm rounded focus:outline-none focus:border-olive focus:ring-1 focus:ring-olive transition-colors placeholder:text-stone-gray/60 resize-y"
+                ></textarea>
+                <p class="hidden text-xs text-red-600 font-medium field-error" id="message-error">
+                  Lütfen mesajınızı yazınız.
+                </p>
+              </div>
+
+              <!-- Row 4: KVKK Consent Checkbox -->
+              <div class="pt-2">
+                <label class="flex items-start gap-3 cursor-pointer group select-none">
+                  <input
+                    type="checkbox"
+                    id="kvkkConsent"
+                    name="kvkkConsent"
+                    required
+                    class="mt-1 w-4 h-4 rounded border-sand text-olive focus:ring-olive focus:ring-offset-parchment accent-olive cursor-pointer"
+                  />
+                  <span class="text-xs text-secondary leading-relaxed group-hover:text-ink transition-colors">
+                    Kişisel verilerimin <a href="#kvkk" class="text-olive underline font-medium hover:text-ink">KVKK Aydınlatma Metni</a> ve gizlilik ilkeleri doğrultusunda işlenmesini kabul ediyorum. <span class="text-red-600">*</span>
+                  </span>
+                </label>
+                <p class="hidden text-xs text-red-600 font-medium mt-1 field-error" id="kvkkConsent-error">
+                  Devam etmek için aydınlatma metnini onaylamanız gerekmektedir.
+                </p>
+              </div>
+
+              <!-- Row 5: Submit Button -->
+              <div class="pt-4">
+                <button
+                  type="submit"
+                  id="submit-btn"
+                  class="w-full sm:w-auto inline-flex items-center justify-center gap-3 px-8 py-4 bg-ink text-parchment font-semibold text-xs md:text-sm uppercase tracking-widest hover:bg-olive transition-all duration-200 shadow-md group rounded cursor-pointer disabled:opacity-60 disabled:cursor-not-allowed"
+                >
+                  <span id="btn-text">MESAJI GÖNDER</span>
+                  <span class="material-symbols-outlined text-[18px] transition-transform group-hover:translate-x-1" id="btn-icon">arrow_forward</span>
+                </button>
+              </div>
+
+            </form>
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- 3. Legal & Institutional Information Anchors (KVKK, Gizlilik, Çerezler) -->
+  <section class="py-16 md:py-20 px-margin-mobile md:px-margin-desktop bg-surface-bright border-b border-sand">
+    <div class="max-w-container-max mx-auto">
+      <div class="max-w-3xl mb-10">
+        <span class="font-sans text-xs uppercase tracking-[0.2em] text-olive font-semibold block mb-2">
+          ŞEFFAFLIK & GÜVENLİK
+        </span>
+        <h2 class="font-serif text-2xl sm:text-3xl text-ink leading-tight">
+          Yasal Bilgilendirme ve Politikalar
+        </h2>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        
+        <!-- KVKK Section -->
+        <div id="kvkk" class="p-6 bg-parchment border border-sand rounded scroll-mt-24">
+          <div class="flex items-center gap-2.5 text-olive font-serif text-lg font-semibold mb-3">
+            <span class="material-symbols-outlined text-[20px]">shield</span>
+            <h3>KVKK Aydınlatma</h3>
+          </div>
+          <p class="font-sans text-xs sm:text-sm text-secondary leading-relaxed">
+            6698 sayılı Kişisel Verilerin Korunması Kanunu (KVKK) uyarınca, web sitemiz ve kütüphane etkinliklerimiz kapsamında paylaştığınız veriler yalnızca bilgi ve iletişim amacıyla güvenle saklanmaktadır.
+          </p>
+        </div>
+
+        <!-- Gizlilik Politikası -->
+        <div id="gizlilik" class="p-6 bg-parchment border border-sand rounded scroll-mt-24">
+          <div class="flex items-center gap-2.5 text-olive font-serif text-lg font-semibold mb-3">
+            <span class="material-symbols-outlined text-[20px]">lock</span>
+            <h3>Gizlilik Politikası</h3>
+          </div>
+          <p class="font-sans text-xs sm:text-sm text-secondary leading-relaxed">
+            Bodrum Kent Kütüphanesi, ziyaretçi ve araştırmacı gizliliğini temel ilke kabul eder. Formlar üzerinden paylaşılan hiçbir veri üçüncü şahıs veya kurumlarla ticari amaçla paylaşılmaz.
+          </p>
+        </div>
+
+        <!-- Çerez Politikası -->
+        <div id="cerezler" class="p-6 bg-parchment border border-sand rounded scroll-mt-24">
+          <div class="flex items-center gap-2.5 text-olive font-serif text-lg font-semibold mb-3">
+            <span class="material-symbols-outlined text-[20px]">cookie</span>
+            <h3>Çerez Politikası</h3>
+          </div>
+          <p class="font-sans text-xs sm:text-sm text-secondary leading-relaxed">
+            Sitemizde kullanıcı deneyimini iyileştirmek ve dil tercihlerinizi hatırlamak amacıyla yalnızca temel teknik çerezler kullanılmaktadır.
+          </p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- 4. Bottom Editorial Banner (Arşivimize Göz Atın) -->
+  <section class="py-20 md:py-24 px-margin-mobile md:px-margin-desktop bg-ink text-parchment relative overflow-hidden">
+    <!-- Anchor & Book Graphic Accent -->
+    <div class="absolute -right-10 -bottom-10 ex-libris-watermark select-none pointer-events-none opacity-5">
+      <span class="material-symbols-outlined text-[320px] text-parchment leading-none">auto_stories</span>
+    </div>
+
+    <div class="max-w-container-max mx-auto relative z-10">
+      <div class="max-w-3xl">
+        <div class="inline-flex items-center gap-2 px-3 py-1 bg-olive/20 text-olive text-[11px] font-bold tracking-widest uppercase mb-4 rounded border border-olive/30">
+          <span>KÜLTÜREL ARŞİV</span>
+        </div>
+        <h2 class="font-serif text-3xl sm:text-4xl md:text-5xl text-parchment font-normal leading-tight mb-4">
+          Arşivimize Göz Atın
+        </h2>
+        <p class="font-sans text-base md:text-lg text-on-primary-container leading-relaxed mb-8 max-w-2xl">
+          Halikarnas Balıkçısı’nın el yazmaları, ilk baskı eserleri ve Bodrum’un zengin kültürel tarihine ait dijital koleksiyonları keşfedin.
+        </p>
+        
+        <div>
+          <a
+            href="/halikarnas-balikcisi"
+            class="inline-flex items-center gap-3 px-8 py-4 bg-olive text-parchment font-semibold text-xs md:text-sm uppercase tracking-widest hover:bg-olive/80 transition-all duration-200 shadow-md group rounded"
+          >
+            <span>ARŞİVLERİ KEŞFEDİN</span>
+            <span class="material-symbols-outlined text-[18px] transition-transform group-hover:translate-x-1.5">arrow_forward</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<script is:inline>
+  document.addEventListener('DOMContentLoaded', () => {
+    const form = document.getElementById('contact-form');
+    if (!form) return;
+
+    const fullNameInput = document.getElementById('fullName');
+    const emailInput = document.getElementById('email');
+    const inquiryTypeSelect = document.getElementById('inquiryType');
+    const messageTextarea = document.getElementById('message');
+    const kvkkCheckbox = document.getElementById('kvkkConsent');
+    
+    const submitBtn = document.getElementById('submit-btn');
+    const btnText = document.getElementById('btn-text');
+    const btnIcon = document.getElementById('btn-icon');
+
+    // Helper function to show/hide error
+    function setError(input, errorId, isInvalid) {
+      const errorEl = document.getElementById(errorId);
+      if (isInvalid) {
+        if (errorEl) errorEl.classList.remove('hidden');
+        input.classList.add('border-red-500', 'focus:border-red-500', 'focus:ring-red-500');
+        input.classList.remove('border-sand', 'focus:border-olive', 'focus:ring-olive');
+      } else {
+        if (errorEl) errorEl.classList.add('hidden');
+        input.classList.remove('border-red-500', 'focus:border-red-500', 'focus:ring-red-500');
+        input.classList.add('border-sand', 'focus:border-olive', 'focus:ring-olive');
+      }
+    }
+
+    // Live validation resets on input
+    fullNameInput?.addEventListener('input', () => setError(fullNameInput, 'fullName-error', false));
+    emailInput?.addEventListener('input', () => setError(emailInput, 'email-error', false));
+    inquiryTypeSelect?.addEventListener('change', () => setError(inquiryTypeSelect, 'inquiryType-error', false));
+    messageTextarea?.addEventListener('input', () => setError(messageTextarea, 'message-error', false));
+    kvkkCheckbox?.addEventListener('change', () => {
+      const errEl = document.getElementById('kvkkConsent-error');
+      if (kvkkCheckbox.checked && errEl) errEl.classList.add('hidden');
+    });
+
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+
+      let hasError = false;
+
+      // Validate Full Name
+      const nameVal = fullNameInput?.value.trim() || '';
+      if (!nameVal || nameVal.length < 2) {
+        setError(fullNameInput, 'fullName-error', true);
+        hasError = true;
+      } else {
+        setError(fullNameInput, 'fullName-error', false);
+      }
+
+      // Validate Email
+      const emailVal = emailInput?.value.trim() || '';
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!emailVal || !emailRegex.test(emailVal)) {
+        setError(emailInput, 'email-error', true);
+        hasError = true;
+      } else {
+        setError(emailInput, 'email-error', false);
+      }
+
+      // Validate Inquiry Type
+      const typeVal = inquiryTypeSelect?.value || '';
+      if (!typeVal) {
+        setError(inquiryTypeSelect, 'inquiryType-error', true);
+        hasError = true;
+      } else {
+        setError(inquiryTypeSelect, 'inquiryType-error', false);
+      }
+
+      // Validate Message
+      const messageVal = messageTextarea?.value.trim() || '';
+      if (!messageVal || messageVal.length < 5) {
+        setError(messageTextarea, 'message-error', true);
+        hasError = true;
+      } else {
+        setError(messageTextarea, 'message-error', false);
+      }
+
+      // Validate KVKK
+      if (!kvkkCheckbox?.checked) {
+        const errEl = document.getElementById('kvkkConsent-error');
+        if (errEl) errEl.classList.remove('hidden');
+        hasError = true;
+      } else {
+        const errEl = document.getElementById('kvkkConsent-error');
+        if (errEl) errEl.classList.add('hidden');
+      }
+
+      if (hasError) return;
+
+      // Loading state
+      if (submitBtn) submitBtn.disabled = true;
+      if (btnText) btnText.textContent = 'GÖNDERİLİYOR...';
+      if (btnIcon) btnIcon.textContent = 'hourglass_empty';
+
+      setTimeout(() => {
+        // Reset form
+        form.reset();
+        
+        // Reset button
+        if (submitBtn) submitBtn.disabled = false;
+        if (btnText) btnText.textContent = 'MESAJI GÖNDER';
+        if (btnIcon) btnIcon.textContent = 'arrow_forward';
+
+        // Trigger toast
+        if (typeof window.showToast === 'function') {
+          window.showToast(
+            'Mesajınız başarıyla iletildi. En kısa sürede sizinle iletişime geçeceğiz.',
+            'success'
+          );
+        }
+      }, 600);
+    });
+  });
+</script>
