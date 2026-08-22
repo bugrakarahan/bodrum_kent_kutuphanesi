@@ -2,7 +2,7 @@
 @import "tailwindcss/components";
 @import "tailwindcss/utilities";
 
-@import url('https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..800;1,400..800&family=Hanken+Grotesk:ital,wght@0,100..900;1,100..900&family=Libre+Franklin:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..800;1,400..800&family=Hanken+Grotesk:ital,wght@0,100..900;1,100..900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap');
 
 .material-symbols-outlined {
@@ -20,19 +20,19 @@
 }
 
 body {
-  background-color: #F9F7F2;
-  color: #1A2B3C;
-  font-family: 'Hanken Grotesk', system-ui, sans-serif;
+  background-color: #FAF8F5;
+  color: #111827;
+  font-family: 'EB Garamond', Georgia, serif;
   overflow-x: hidden;
 }
 
 ::selection {
-  background-color: #556B2F;
+  background-color: #005B94;
   color: #FFFFFF;
 }
 
 .editorial-divider {
   height: 1px;
-  background-color: #E5DFD3;
+  background-color: #E8E3D9;
   width: 100%;
 }

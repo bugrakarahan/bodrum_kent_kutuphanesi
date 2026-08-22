@@ -6,107 +6,66 @@ import { getT } from '../../utils/i18n';
 const lang = 'en';
 const t = getT(lang);
 
-// Fetch all 11 books from Content Collections sorted by order
 const allBooks = await getCollection('books');
 const books = allBooks.sort((a, b) => a.data.order - b.data.order);
-
-// Helper array for book categories and archival status in table view
-const bookDetailsEn: Record<string, { genre: string; status: string }> = {
-  'book-1': { genre: 'Novel / Maritime Literature', status: 'Open Stacks & Digital Archive' },
-  'book-2': { genre: 'Autobiography & Memoir', status: 'Rare Collection (Signed 1961 Edition)' },
-  'book-3': { genre: 'Historical Biographical Novel', status: 'Open Stacks Collection' },
-  'book-4': { genre: 'Novel / Sponge Diving', status: 'Open Stacks Collection' },
-  'book-5': { genre: 'Historical Novel', status: 'Open Stacks Collection' },
-  'book-6': { genre: 'Mythology & Cultural History', status: 'Rare Collection (Annotated Draft)' },
-  'book-7': { genre: 'Short Story Collection', status: 'Open Stacks Collection' },
-  'book-8': { genre: 'Philosophy & Essays', status: 'Open Stacks Collection' },
-  'book-9': { genre: 'Short Story Collection', status: 'Open Stacks Collection' },
-  'book-10': { genre: 'Short Story Collection', status: 'Open Stacks Collection' },
-  'book-11': { genre: 'Botany & Nature Essays', status: 'Open Stacks Collection' }
-};
 ---
 
 <Layout
-  title={`${t.fisherman} | ${t.siteTitle}`}
-  description="The works, life, rare manuscripts collection, and cultural heritage of Cevat Şakir Kabaağaçlı (The Fisherman of Halicarnassus)."
+  title={`The Fisherman of Halicarnassus | ${t.siteTitle}`}
+  description="The literary legacy of Cevat Şakir Kabaağaçlı (The Fisherman of Halicarnassus) and catalog of works."
   lang={lang}
   currentPath="/en/fisherman-of-halicarnassus"
 >
   <!-- 1. Hero Section -->
-  <section class="relative min-h-[75vh] flex items-center py-20 md:py-32 px-margin-mobile md:px-margin-desktop overflow-hidden border-b border-sand bg-surface-bright">
-    <!-- Anchor & Sailing Ex Libris Watermark -->
+  <section class="relative min-h-[70vh] flex items-center py-16 md:py-24 px-5 md:px-12 overflow-hidden border-b border-sand bg-surface-bright">
     <div class="absolute -top-12 -right-12 md:top-8 md:right-12 ex-libris-watermark select-none pointer-events-none">
       <span class="material-symbols-outlined text-[280px] md:text-[420px] text-olive leading-none">anchor</span>
     </div>
 
-    <div class="relative z-10 max-w-container-max mx-auto w-full">
-      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-gutter items-center">
+    <div class="relative z-10 max-w-[1280px] mx-auto w-full">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
         
-        <!-- Hero Text Content -->
         <div class="lg:col-span-7">
-          <!-- Overline Badge -->
-          <div class="inline-flex items-center gap-2 px-3.5 py-1.5 bg-secondary-container/80 border border-sand text-ink text-xs font-semibold tracking-[0.2em] uppercase mb-6 rounded">
+          <div class="inline-flex items-center gap-2 px-3.5 py-1.5 bg-secondary-container/80 border border-sand text-ink text-xs font-serif font-semibold tracking-widest uppercase mb-6 rounded-xs">
             <span class="w-2 h-2 rounded-full bg-olive animate-pulse"></span>
             <span>LITERARY HERITAGE</span>
           </div>
 
-          <!-- Headline -->
-          <h1 class="font-serif text-5xl sm:text-6xl md:text-7xl text-ink font-normal leading-[1.1] tracking-tight mb-6 text-balance">
-            The Fisherman of Halicarnassus
+          <h1 class="font-serif text-4xl sm:text-5xl md:text-6xl text-ink font-bold leading-tight mb-6">
+            The Fisherman of Halicarnassus Cevat Şakir Kabaağaçlı
           </h1>
 
-          <!-- Subtitle Card -->
-          <div class="bg-parchment/95 backdrop-blur-sm border border-sand p-6 md:p-8 rounded shadow-sm max-w-2xl mb-8">
-            <p class="font-sans text-lg md:text-xl text-secondary leading-relaxed text-balance">
-              The works, deep connection to Bodrum, and cultural legacy of Cevat Şakir Kabaağaçlı.
-            </p>
-            <p class="font-serif italic text-sm md:text-base text-stone-gray mt-3 border-t border-sand/60 pt-3">
-              "Those who dwell deep in the sea look upon the infinity of the sky from the waters."
+          <div class="bg-parchment/95 border border-sand p-6 sm:p-8 rounded-xs shadow-xs max-w-2xl mb-8">
+            <p class="font-serif text-base sm:text-lg text-ink/90 leading-relaxed">
+              The works, life, and enduring cultural heritage of Cevat Şakir Kabaağaçlı in Bodrum.
             </p>
           </div>
 
-          <!-- CTA Buttons -->
-          <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 sm:gap-6">
+          <div>
             <a
               href="#catalog"
-              class="inline-flex items-center justify-center gap-3 px-8 py-4 bg-ink text-parchment font-semibold text-xs md:text-sm uppercase tracking-widest hover:bg-olive transition-all duration-200 shadow-md group rounded"
+              class="inline-flex items-center justify-center gap-2 px-8 py-4 bg-ink text-parchment font-serif font-semibold text-sm tracking-wider uppercase hover:bg-olive transition-all duration-200 shadow-md group"
             >
-              <span>EXPLORE CATALOG</span>
-              <span class="material-symbols-outlined text-[18px] transition-transform group-hover:translate-y-1">arrow_downward</span>
-            </a>
-
-            <a
-              href="#biography"
-              class="inline-flex items-center justify-center gap-3 px-8 py-4 border border-ink text-ink font-semibold text-xs md:text-sm uppercase tracking-widest hover:bg-sand/60 transition-all duration-200 rounded"
-            >
-              <span>BIOGRAPHY & ARCHIVES</span>
-              <span class="material-symbols-outlined text-[18px]">history_edu</span>
+              <span>Explore Book Catalog</span>
+              <span class="material-symbols-outlined text-lg transition-transform group-hover:translate-y-1">arrow_downward</span>
             </a>
           </div>
         </div>
 
-        <!-- Hero Portrait / Archival Presentation -->
         <div class="lg:col-span-5">
-          <div class="relative">
-            <div class="aspect-[4/5] w-full rounded overflow-hidden border border-sand bg-sand/30 shadow-xl relative group">
+          <div class="relative bg-parchment border border-sand p-3 shadow-md">
+            <div class="aspect-[4/5] w-full overflow-hidden bg-surface-container-high relative">
               <img
                 src="https://lh3.googleusercontent.com/aida-public/AB6AXuBtamE2wb97G4UEjVppyIa8xyaz9ESuP7aGYOlM4umN3pryekAUYBwn8XZKo45ZH7aqW73vU6dZsZMnwJgHghenoLISwtjdMxzizGhJdT-zogTKwukWr8_mcLz_GzaVctJXJRHJp7NTLN-FpTqgLCSpt_ul3-9IG-wgO12fv2VihhT8grjHZSbIrejBTST3Qk4OkAZzS9DaaMmyQAUTQACoPiS-Px-FESLfSfYs8RcKnv1j1wlDAq9KyjedqU32oOYQb0Hdoct4hQA"
                 alt="Cevat Şakir Kabaağaçlı - The Fisherman of Halicarnassus"
-                class="w-full h-full object-cover filter contrast-105 transition-transform duration-700 group-hover:scale-105"
+                class="w-full h-full object-cover filter contrast-105"
                 loading="eager"
               />
-              <div class="absolute inset-0 bg-gradient-to-t from-ink/80 via-ink/20 to-transparent"></div>
-              
-              <!-- Floating Caption -->
-              <div class="absolute bottom-6 left-6 right-6 text-parchment">
-                <div class="text-xs font-mono uppercase tracking-widest text-olive font-bold mb-1">1886 – 1973</div>
-                <div class="font-serif text-lg font-bold">Cevat Şakir Kabaağaçlı</div>
-                <div class="text-xs text-parchment/80 font-sans">Bodrum's Eternal Blue Exile & Cultural Pioneer</div>
-              </div>
             </div>
-
-            <!-- Outer Accent Frame -->
-            <div class="absolute -bottom-4 -left-4 w-full h-full rounded border border-olive/30 -z-10 hidden sm:block"></div>
+            <div class="p-3 text-center">
+              <div class="font-serif font-bold text-base text-ink">Cevat Şakir Kabaağaçlı</div>
+              <div class="text-xs text-stone-gray font-serif italic">1886 – 1973 • The Fisherman of Halicarnassus</div>
+            </div>
           </div>
         </div>
 
@@ -114,486 +73,98 @@ const bookDetailsEn: Record<string, { genre: string; status: string }> = {
     </div>
   </section>
 
-  <!-- 2. Thematic Bento Grid (Archives & Themes - #biography) -->
-  <section id="biography" class="py-24 md:py-32 px-margin-mobile md:px-margin-desktop bg-parchment border-b border-sand relative overflow-hidden">
-    <!-- Watermark Graphic -->
-    <div class="absolute -right-10 top-1/3 ex-libris-watermark select-none pointer-events-none">
-      <span class="material-symbols-outlined text-[320px] text-ink leading-none">history_edu</span>
-    </div>
-
-    <div class="max-w-container-max mx-auto relative z-10">
+  <!-- 2. In the Footsteps of Blue Humanism -->
+  <section class="py-16 md:py-24 px-5 md:px-12 bg-parchment border-b border-sand">
+    <div class="max-w-[1280px] mx-auto">
       
-      <!-- Section Header -->
-      <div class="max-w-3xl mb-16 md:mb-20">
-        <span class="font-sans text-xs uppercase tracking-[0.2em] text-olive font-semibold block mb-3">
-          ARCHIVE & THEMES
-        </span>
-        <h2 class="font-serif text-3xl sm:text-4xl md:text-5xl text-ink leading-tight mb-6">
-          In the Footsteps of Blue Humanism
+      <div class="max-w-3xl mb-12">
+        <h2 class="font-serif text-3xl sm:text-4xl text-ink font-bold leading-tight mb-4">
+          In the Footsteps of Blue Humanism & Anatolian Civilization
         </h2>
-        <p class="font-sans text-base md:text-lg text-secondary leading-relaxed">
-          The turbulent life of Cevat Şakir spanning from Crete and Oxford to Istanbul and Bodrum, and his timeless contribution to Anatolian Mediterranean culture.
+        <p class="font-serif text-base sm:text-lg text-ink/85 leading-relaxed">
+          The immortal legacy brought to the Mediterranean and Anatolia by Cevat Şakir Kabaağaçlı, extending from Crete to Athens, Istanbul, Bodrum, and Izmir.
         </p>
       </div>
 
-      <!-- 4-Column Thematic Bento Grid -->
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-        
-        <!-- Card 1: Life & Biography (2-col, 2-row on large screens) -->
-        <div class="lg:col-span-2 lg:row-span-2 bg-surface-bright border border-sand p-8 md:p-10 rounded flex flex-col justify-between shadow-sm relative overflow-hidden group">
-          <div>
-            <div class="flex items-center justify-between gap-4 mb-6">
-              <span class="inline-flex items-center gap-2 px-3 py-1 bg-secondary-container/80 text-ink text-xs font-mono font-bold tracking-wider uppercase rounded">
-                <span class="material-symbols-outlined text-[16px] text-olive">person</span>
-                01 / BIOGRAPHICAL ARCHIVE
-              </span>
-              <span class="text-xs font-mono text-stone-gray">1886 — 1973</span>
-            </div>
-
-            <h3 class="font-serif text-2xl sm:text-3xl text-ink font-bold leading-snug mb-6">
-              The Life of Cevat Şakir Kabaağaçlı
-            </h3>
-
-            <div class="space-y-4 text-secondary text-sm sm:text-base leading-relaxed">
-              <p>
-                Born in Crete in 1886 into the esteemed Kabaağaçlızade family, Cevat Şakir received his early education at Robert College before reading Modern History at Oxford University, where he immersed himself in classical Mediterranean studies.
-              </p>
-              <p>
-                In 1925, due to an article published in the Istanbul periodical <em>Resimli Hafta</em>, he was sentenced to three years of fortress exile in the remote Aegean fishing town of Bodrum. This forced relocation became one of the most fruitful chapters in modern Turkish literature.
-              </p>
-              <p>
-                Enchanted by Bodrum's ancient Greek and Carian roots, its Aegean myths, and the resilient lives of its local sponge divers, he developed a profound devotion to the region. Even after his sentence ended, he chose to stay and adopted the pseudonym <strong>The Fisherman of Halicarnassus</strong>.
-              </p>
-              <p>
-                Alongside fellow scholars Sabahattin Eyüboğlu and Azra Erhat, he pioneered the legendary <em>Blue Cruise</em> (Mavi Yolculuk) expeditions, shaping the intellectual movement known as "Blue Humanism"—which celebrated Anatolia as the primordial cradle of Western civilization.
-              </p>
-            </div>
-          </div>
-
-          <!-- Bottom Quote Highlight -->
-          <div class="mt-8 pt-6 border-t border-sand bg-surface-container-low p-5 rounded">
-            <p class="font-serif italic text-ink text-sm sm:text-base leading-snug">
-              "To love Bodrum is to accept the sea and humanity in their purest essence. This is not a place of exile, but a realm of eternal freedom."
-            </p>
-            <span class="font-sans text-xs font-semibold text-olive uppercase tracking-wider block mt-2">
-              — The Blue Exile (Mavi Sürgün)
-            </span>
-          </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div class="bg-surface-container-low p-8 border border-sand">
+          <h3 class="font-serif text-xl text-ink font-bold mb-3">Biographical Archive</h3>
+          <p class="font-serif italic text-sm text-stone-gray">This section is currently being prepared.</p>
         </div>
 
-        <!-- Card 2: Chronology (2-col on large screens) -->
-        <div class="lg:col-span-2 bg-surface-container-low border border-sand p-6 md:p-8 rounded flex flex-col justify-between shadow-sm">
-          <div>
-            <div class="flex items-center justify-between mb-4">
-              <span class="inline-flex items-center gap-2 px-3 py-1 bg-secondary-container/80 text-ink text-xs font-mono font-bold tracking-wider uppercase rounded">
-                <span class="material-symbols-outlined text-[16px] text-olive">timeline</span>
-                02 / CHRONOLOGY
-              </span>
-              <span class="text-xs font-mono text-stone-gray">Historical Milestones</span>
-            </div>
-
-            <h3 class="font-serif text-xl sm:text-2xl text-ink font-bold leading-snug mb-6">
-              Major Turning Points
-            </h3>
-
-            <!-- Chronology List -->
-            <div class="space-y-3.5">
-              <div class="flex items-start gap-3">
-                <span class="font-mono text-xs font-bold text-olive bg-parchment border border-sand px-2 py-0.5 rounded shrink-0">1886</span>
-                <p class="text-xs sm:text-sm text-secondary leading-snug"><strong class="text-ink">Birth in Crete:</strong> Raised in a cosmopolitan, multilingual Mediterranean milieu.</p>
-              </div>
-              <div class="flex items-start gap-3">
-                <span class="font-mono text-xs font-bold text-olive bg-parchment border border-sand px-2 py-0.5 rounded shrink-0">1908</span>
-                <p class="text-xs sm:text-sm text-secondary leading-snug"><strong class="text-ink">Oxford Graduation:</strong> Completed Modern History degree and mastered classical philology.</p>
-              </div>
-              <div class="flex items-start gap-3">
-                <span class="font-mono text-xs font-bold text-olive bg-parchment border border-sand px-2 py-0.5 rounded shrink-0">1925</span>
-                <p class="text-xs sm:text-sm text-secondary leading-snug"><strong class="text-ink">Exile to Bodrum:</strong> A 3-year fortress sentence transformed into a lifelong love affair.</p>
-              </div>
-              <div class="flex items-start gap-3">
-                <span class="font-mono text-xs font-bold text-olive bg-parchment border border-sand px-2 py-0.5 rounded shrink-0">1946</span>
-                <p class="text-xs sm:text-sm text-secondary leading-snug"><strong class="text-ink">Aganta Burina Burinata:</strong> Masterpiece novel of Mediterranean maritime literature published.</p>
-              </div>
-              <div class="flex items-start gap-3">
-                <span class="font-mono text-xs font-bold text-olive bg-parchment border border-sand px-2 py-0.5 rounded shrink-0">1957</span>
-                <p class="text-xs sm:text-sm text-secondary leading-snug"><strong class="text-ink">The First Blue Cruise:</strong> Initiated Aegean voyages with Sabahattin Eyüboğlu & Azra Erhat.</p>
-              </div>
-              <div class="flex items-start gap-3">
-                <span class="font-mono text-xs font-bold text-olive bg-parchment border border-sand px-2 py-0.5 rounded shrink-0">1973</span>
-                <p class="text-xs sm:text-sm text-secondary leading-snug"><strong class="text-ink">Eternal Farewell:</strong> Passed away in Izmir; buried overlooking Bodrum's Gümbet Bay.</p>
-              </div>
-            </div>
-          </div>
+        <div class="bg-surface-container-low p-8 border border-sand">
+          <h3 class="font-serif text-xl text-ink font-bold mb-3">Key Milestones</h3>
+          <p class="font-serif italic text-sm text-stone-gray">This section is currently being prepared.</p>
         </div>
 
-        <!-- Card 3: Photographic Archive (Ink Dark Card) -->
-        <div class="lg:col-span-1 bg-ink text-parchment p-6 md:p-8 rounded flex flex-col justify-between shadow-md relative overflow-hidden group">
-          <div class="relative z-10">
-            <span class="inline-flex items-center gap-1.5 px-2.5 py-1 bg-white/10 text-sand text-[11px] font-mono font-bold tracking-wider uppercase rounded mb-4">
-              <span class="material-symbols-outlined text-[14px] text-olive">photo_camera</span>
-              03 / PHOTO ARCHIVES
-            </span>
-            <h4 class="font-serif text-lg font-bold text-parchment mb-3">
-              Historical Shots & Divers
-            </h4>
-            <p class="text-xs text-parchment/80 leading-relaxed mb-4">
-              Over 200 curated historical photographs capturing Balıkçı on sponge diving boats, archaeological excursions, and Aegean coastal gatherings.
-            </p>
-          </div>
-
-          <div class="relative z-10 pt-4 border-t border-white/10 flex items-center justify-between text-xs text-sand font-mono">
-            <span>Special Archival Room</span>
-            <span class="material-symbols-outlined text-[16px] text-olive">collections</span>
-          </div>
-
-          <!-- Subtle background texture -->
-          <div class="absolute -bottom-6 -right-6 opacity-10 pointer-events-none">
-            <span class="material-symbols-outlined text-[140px]">photo_library</span>
-          </div>
+        <div class="bg-surface-container-low p-8 border border-sand">
+          <h3 class="font-serif text-xl text-ink font-bold mb-3">Blue Humanism</h3>
+          <p class="font-serif italic text-sm text-stone-gray">Content under preparation.</p>
         </div>
 
-        <!-- Card 4: Quotes & Philosophy -->
-        <div class="lg:col-span-1 bg-surface-bright border border-sand p-6 md:p-8 rounded flex flex-col justify-between shadow-sm">
-          <div>
-            <span class="inline-flex items-center gap-1.5 px-2.5 py-1 bg-secondary-container/80 text-ink text-[11px] font-mono font-bold tracking-wider uppercase rounded mb-4">
-              <span class="material-symbols-outlined text-[14px] text-olive">format_quote</span>
-              04 / QUOTATIONS
-            </span>
-            <h4 class="font-serif text-lg font-bold text-ink mb-3">
-              Blue Humanism
-            </h4>
-            <p class="font-serif italic text-xs sm:text-sm text-secondary leading-relaxed">
-              "The sixth continent is the Mediterranean. Homer belongs here; history was born along these shores. Anatolia is the true mother of Western civilization."
-            </p>
-          </div>
-
-          <div class="pt-4 border-t border-sand mt-4 text-[11px] font-mono text-stone-gray">
-            — Voice of Anatolia
-          </div>
+        <div class="bg-surface-container-low p-8 border border-sand">
+          <h3 class="font-serif text-xl text-ink font-bold mb-3">The Pen that Greened Bodrum</h3>
+          <p class="font-serif italic text-sm text-stone-gray">Content under preparation.</p>
         </div>
-
-        <!-- Card 5: The Bodrum Years & Botany (Olive Accent Card - 2 col on lg) -->
-        <div class="lg:col-span-2 bg-olive text-white p-6 md:p-8 rounded flex flex-col justify-between shadow-md relative overflow-hidden group">
-          <div class="relative z-10">
-            <div class="flex items-center justify-between mb-4">
-              <span class="inline-flex items-center gap-1.5 px-3 py-1 bg-white/20 text-white text-xs font-mono font-bold tracking-wider uppercase rounded">
-                <span class="material-symbols-outlined text-[16px]">park</span>
-                05 / THE BODRUM YEARS & BOTANY
-              </span>
-              <span class="text-xs font-mono text-white/80">Botanical Legacy</span>
-            </div>
-
-            <h3 class="font-serif text-xl sm:text-2xl font-bold leading-snug mb-3 text-white">
-              The Pen That Greenery Brought to Bodrum
-            </h3>
-
-            <p class="text-xs sm:text-sm text-white/90 leading-relaxed">
-              During his exile years, Cevat Şakir ordered seeds and saplings from botanical societies worldwide. Many of the eucalyptus, bougainvillea, jacaranda, rubber, and mimosa trees that embellish Bodrum's streets and castle today were planted by his own hands. He transformed not only the region's literary identity, but also its botanical landscape.
-            </p>
-          </div>
-
-          <div class="relative z-10 pt-4 border-t border-white/20 mt-4 flex items-center justify-between text-xs text-white/90 font-mono">
-            <span>The Wedding of Flowers Collection</span>
-            <span class="material-symbols-outlined text-[18px]">nature</span>
-          </div>
-
-          <!-- Decorative Floral Icon Overlay -->
-          <div class="absolute -bottom-8 -right-8 opacity-10 pointer-events-none">
-            <span class="material-symbols-outlined text-[160px]">local_florist</span>
-          </div>
-        </div>
-
       </div>
+
     </div>
   </section>
 
-  <!-- 3. Book Catalog Section (Works Catalog - #catalog) -->
-  <section id="catalog" class="py-24 md:py-32 px-margin-mobile md:px-margin-desktop bg-surface-container-low border-b border-sand relative">
-    <div class="max-w-container-max mx-auto">
+  <!-- 3. Works Catalog -->
+  <section id="catalog" class="py-16 md:py-24 px-5 md:px-12 bg-surface-bright border-b border-sand">
+    <div class="max-w-[1280px] mx-auto">
       
-      <!-- Section Header -->
-      <div class="max-w-3xl mb-16 md:mb-20">
-        <span class="font-sans text-xs uppercase tracking-[0.2em] text-olive font-semibold block mb-3">
-          COLLECTED WORKS
-        </span>
-        <h2 class="font-serif text-3xl sm:text-4xl md:text-5xl text-ink leading-tight mb-6">
-          Works & Book Catalog
+      <div class="max-w-3xl mb-12">
+        <h2 class="font-serif text-3xl sm:text-4xl text-ink font-bold leading-tight mb-4">
+          Cevat Şakir Kabaağaçlı Catalog of Works
         </h2>
-        <p class="font-sans text-base md:text-lg text-secondary leading-relaxed">
-          The 11 foundational masterpieces contributed by the Fisherman of Halicarnassus to Turkish literature and Mediterranean culture.
+        <p class="font-serif text-base text-ink/80">
+          Essential works and collection holdings at Bodrum City Library.
         </p>
       </div>
 
-      <!-- 4-Column Book Grid -->
-      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 md:gap-8 mb-20">
+      <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-6 mb-16">
         {books.map((book) => (
-          <div class="bg-surface-bright border border-sand rounded p-4 sm:p-5 flex flex-col justify-between shadow-sm hover:shadow-md transition-all duration-300 group">
+          <div class="bg-parchment border border-sand p-4 flex flex-col justify-between hover:border-olive/50 transition-all shadow-xs">
             <div>
-              <!-- Book Cover Presentation [2/3 Aspect Ratio] -->
-              <div class="relative aspect-[2/3] w-full overflow-hidden rounded bg-sand/30 shadow-md border border-sand/60 mb-5">
+              <div class="aspect-[2/3] overflow-hidden bg-surface-container-high mb-4 border border-sand">
                 <img
                   src={book.data.coverImage}
                   alt={book.data.title}
-                  class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                  loading="lazy"
+                  class="w-full h-full object-cover grayscale contrast-110 hover:grayscale-0 transition-all duration-500"
                 />
-
-                <!-- Rare Edition Badge -->
-                {book.data.isRare && (
-                  <div class="absolute top-3 left-3 bg-olive text-white text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 rounded shadow-sm flex items-center gap-1">
-                    <span class="material-symbols-outlined text-[13px]">star</span>
-                    <span>Rare Edition</span>
-                  </div>
-                )}
-
-                <!-- Year Badge -->
-                {book.data.originalYear && (
-                  <div class="absolute top-3 right-3 bg-ink/85 backdrop-blur-sm text-parchment font-mono text-[11px] px-2 py-0.5 rounded shadow-sm">
-                    {book.data.originalYear}
-                  </div>
-                )}
               </div>
 
-              <!-- Book Meta -->
-              <div class="flex items-center gap-2 text-xs font-mono text-stone-gray mb-1.5">
-                <span>Work #{book.data.order}</span>
-                {book.data.originalYear && (
-                  <>
-                    <span>•</span>
-                    <span>1st Edition: {book.data.originalYear}</span>
-                  </>
-                )}
-              </div>
-
-              <!-- Title -->
-              <h3 class="font-serif text-xl font-bold text-ink mb-2.5 group-hover:text-olive transition-colors leading-snug">
-                {book.data.title}
-              </h3>
-
-              <!-- Summary -->
-              <p class="font-sans text-xs sm:text-sm text-secondary leading-relaxed line-clamp-3 mb-4">
-                {book.data.summaryEn}
-              </p>
-            </div>
-
-            <!-- Footer Meta -->
-            <div class="pt-3 border-t border-sand/60 flex items-center justify-between text-xs">
-              <span class="text-olive font-semibold font-sans">
-                {book.data.isRare ? 'Special Archival Volume' : 'Open Stacks Collection'}
-              </span>
-              <span class="material-symbols-outlined text-[16px] text-stone-gray group-hover:text-olive transition-colors">
-                auto_stories
-              </span>
+              <div class="text-xs text-stone-gray font-mono mb-1">{book.data.originalYear}</div>
+              <h3 class="font-serif font-bold text-base text-ink leading-snug mb-2">{book.data.title}</h3>
+              <p class="font-serif text-xs text-ink/75 leading-relaxed">{book.data.summaryEn}</p>
             </div>
           </div>
         ))}
       </div>
 
-      <!-- Comprehensive Bibliographic Table of all 11 Titles -->
-      <div class="bg-surface-bright border border-sand rounded p-6 md:p-8 shadow-sm">
-        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6 pb-4 border-b border-sand">
-          <div>
-            <h3 class="font-serif text-xl sm:text-2xl font-bold text-ink">
-              Bibliographic Directory of the Collection
-            </h3>
-            <p class="font-sans text-xs sm:text-sm text-secondary mt-1">
-              Complete catalog register of all 11 works by the Fisherman of Halicarnassus held at Bodrum City Library.
-            </p>
-          </div>
-          <div class="text-xs font-mono text-stone-gray">
-            Total: 11 Works
-          </div>
-        </div>
-
-        <div class="overflow-x-auto">
-          <table class="w-full text-left border-collapse">
-            <thead>
-              <tr class="border-b border-sand text-xs font-mono uppercase tracking-wider text-stone-gray">
-                <th class="py-3 px-4">No</th>
-                <th class="py-3 px-4">Work Title</th>
-                <th class="py-3 px-4">First Edition</th>
-                <th class="py-3 px-4">Genre & Theme</th>
-                <th class="py-3 px-4">Library Status</th>
+      <div class="bg-parchment border border-sand overflow-x-auto">
+        <table class="w-full text-left text-xs sm:text-sm font-serif">
+          <thead>
+            <tr class="bg-surface-container-high border-b border-sand text-ink font-bold">
+              <th class="p-4 w-12">#</th>
+              <th class="p-4">Title</th>
+              <th class="p-4">Year</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-sand text-ink/90">
+            {books.map((book, idx) => (
+              <tr class="hover:bg-surface-container-low transition-colors">
+                <td class="p-4 font-mono text-stone-gray">{idx + 1}</td>
+                <td class="p-4 font-bold text-ink">{book.data.title}</td>
+                <td class="p-4 font-mono">{book.data.originalYear}</td>
               </tr>
-            </thead>
-            <tbody class="divide-y divide-sand/60 font-sans text-xs sm:text-sm text-ink">
-              {books.map((book) => {
-                const details = bookDetailsEn[book.id] || { genre: 'Literature / Essays', status: 'Open Stacks' };
-                return (
-                  <tr class="hover:bg-surface-container-low transition-colors">
-                    <td class="py-3.5 px-4 font-mono text-stone-gray font-bold">
-                      {String(book.data.order).padStart(2, '0')}
-                    </td>
-                    <td class="py-3.5 px-4 font-serif font-bold text-base text-ink">
-                      {book.data.title}
-                      {book.data.isRare && (
-                        <span class="ml-2 inline-flex items-center px-2 py-0.5 bg-olive/10 text-olive text-[10px] font-bold uppercase rounded">
-                          Rare
-                        </span>
-                      )}
-                    </td>
-                    <td class="py-3.5 px-4 font-mono text-stone-gray">
-                      {book.data.originalYear || '—'}
-                    </td>
-                    <td class="py-3.5 px-4 text-secondary">
-                      {details.genre}
-                    </td>
-                    <td class="py-3.5 px-4">
-                      <span class={`inline-flex items-center gap-1.5 ${book.data.isRare ? 'text-olive font-semibold' : 'text-stone-gray'}`}>
-                        <span class={`w-1.5 h-1.5 rounded-full ${book.data.isRare ? 'bg-olive' : 'bg-stone-gray'}`}></span>
-                        {details.status}
-                      </span>
-                    </td>
-                  </tr>
-                );
-              })}
-            </tbody>
-          </table>
-        </div>
+            ))}
+          </tbody>
+        </table>
       </div>
 
-    </div>
-  </section>
-
-  <!-- 4. Rare Collection Section (Rare Collection) -->
-  <section class="py-24 md:py-32 px-margin-mobile md:px-margin-desktop bg-parchment border-b border-sand relative overflow-hidden">
-    <!-- Ex Libris Watermark -->
-    <div class="absolute -left-12 bottom-1/4 ex-libris-watermark select-none pointer-events-none">
-      <span class="material-symbols-outlined text-[320px] text-olive leading-none">menu_book</span>
-    </div>
-
-    <div class="max-w-container-max mx-auto relative z-10">
-      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-gutter items-center">
-        
-        <!-- Left: Archival Macro Presentation -->
-        <div class="lg:col-span-5">
-          <div class="relative">
-            <div class="aspect-[4/5] w-full rounded overflow-hidden border border-sand bg-sand/30 shadow-xl relative group">
-              <img
-                src="https://lh3.googleusercontent.com/aida-public/AB6AXuB_XICwOmzmDr1vkcwkGWx8xGd57FX_biXF5N4EhDhQugOsi0PPgp59UHEPnXAnvVVzWK9YzqcrRIs500nNgELehMvSDG3B8ukFd5xQPWAUKS0-y0OYW-O8vXfYsPZPgtHCZ6uM-HIMnkWK8c0i-hYC-JqeGwv4BkHUqoptVxPle2BQXVxxOwmvaTjbuOxByAOTr-veXULWhK2UPV8VBYQg-G6pqTaT_TnIEawQGRTuRohwuats1PCEt0z1GGbhDCjebFap32yCjLE"
-                alt="Fisherman of Halicarnassus Rare Collection and Signed Manuscripts"
-                class="w-full h-full object-cover filter contrast-105 transition-transform duration-700 group-hover:scale-105"
-                loading="lazy"
-              />
-              <div class="absolute inset-0 bg-gradient-to-t from-ink/80 via-transparent to-transparent"></div>
-              
-              <!-- Floating Card Badge -->
-              <div class="absolute bottom-6 left-6 right-6 text-parchment">
-                <span class="inline-flex items-center gap-1.5 px-2.5 py-1 bg-olive text-white text-[11px] font-mono font-bold tracking-wider uppercase rounded mb-2">
-                  Climate-Controlled Vault
-                </span>
-                <p class="font-serif text-base text-parchment leading-snug">
-                  1961 Signed First Editions & Original Hand Drawings
-                </p>
-              </div>
-            </div>
-
-            <!-- Outer Accent Frame -->
-            <div class="absolute -bottom-4 -right-4 w-full h-full rounded border border-olive/30 -z-10 hidden sm:block"></div>
-          </div>
-        </div>
-
-        <!-- Right: Editorial Information & Archival Highlights -->
-        <div class="lg:col-span-7 space-y-8">
-          <div>
-            <span class="font-sans text-xs uppercase tracking-[0.2em] text-olive font-semibold block mb-3">
-              {t.rareCollection.toUpperCase()}
-            </span>
-            <h2 class="font-serif text-3xl sm:text-4xl md:text-5xl text-ink leading-tight mb-6">
-              {t.rareCollectionSubtitle}
-            </h2>
-            <p class="font-sans text-base md:text-lg text-secondary leading-relaxed">
-              {t.rareCollectionDesc}
-            </p>
-          </div>
-
-          <!-- Highlighted Archival Items -->
-          <div class="space-y-4">
-            <!-- Item 01 -->
-            <div class="p-5 bg-surface-container-low border border-sand rounded hover:border-olive transition-colors">
-              <div class="flex items-center justify-between mb-2">
-                <div class="flex items-center gap-2 text-xs font-mono font-bold text-olive uppercase tracking-wider">
-                  <span class="material-symbols-outlined text-[16px]">verified</span>
-                  <span>01 • THE BLUE EXILE — SIGNED FIRST EDITION (1961)</span>
-                </div>
-                <span class="text-xs font-mono text-stone-gray">Yeditepe Publishing</span>
-              </div>
-              <p class="font-sans text-sm text-secondary leading-relaxed">
-                A pristine first edition copy autographed with a personal dedication by Cevat Şakir, preserving its original typographical layout and authentic publisher binding.
-              </p>
-            </div>
-
-            <!-- Item 02 -->
-            <div class="p-5 bg-surface-container-low border border-sand rounded hover:border-olive transition-colors">
-              <div class="flex items-center justify-between mb-2">
-                <div class="flex items-center gap-2 text-xs font-mono font-bold text-olive uppercase tracking-wider">
-                  <span class="material-symbols-outlined text-[16px]">verified</span>
-                  <span>02 • AGANTA BURINA BURINATA — ORIGINAL COVER DRAFT</span>
-                </div>
-                <span class="text-xs font-mono text-stone-gray">1946 Archive</span>
-              </div>
-              <p class="font-sans text-sm text-secondary leading-relaxed">
-                Historic cover draft featuring Balıkçı's own Indian ink sketch of a sponge diving gulet and detailed handwritten layout directives.
-              </p>
-            </div>
-
-            <!-- Item 03 -->
-            <div class="p-5 bg-surface-container-low border border-sand rounded hover:border-olive transition-colors">
-              <div class="flex items-center justify-between mb-2">
-                <div class="flex items-center gap-2 text-xs font-mono font-bold text-olive uppercase tracking-wider">
-                  <span class="material-symbols-outlined text-[16px]">verified</span>
-                  <span>03 • ANATOLIAN LEGENDS — HANDWRITTEN MANUSCRIPT NOTES</span>
-                </div>
-                <span class="text-xs font-mono text-stone-gray">1954 Archive</span>
-              </div>
-              <p class="font-sans text-sm text-secondary leading-relaxed">
-                Extensive marginalia recorded during research on ancient Carian and Lycian mythology, complete with hand-drawn geographical maps and glossary notes.
-              </p>
-            </div>
-          </div>
-
-          <!-- Archival Policy Note -->
-          <div class="p-4 bg-sand/30 border-l-4 border-olive rounded text-xs text-secondary leading-relaxed flex items-start gap-3">
-            <span class="material-symbols-outlined text-[18px] text-olive shrink-0 mt-0.5">info</span>
-            <span>
-              <strong>Scholar & Researcher Access:</strong> Due to archival preservation protocols, rare collection items are available for examination by researchers and academics upon appointment in our supervised reading room.
-            </span>
-          </div>
-
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- 5. Quotes Section (Yokuş Başı Quote) -->
-  <section class="py-24 md:py-32 px-margin-mobile md:px-margin-desktop bg-ink text-parchment relative overflow-hidden">
-    <!-- Atmospheric Ambient Watermark -->
-    <div class="absolute -right-8 -bottom-12 ex-libris-watermark pointer-events-none select-none opacity-5">
-      <span class="material-symbols-outlined text-[360px] text-parchment leading-none">format_quote</span>
-    </div>
-
-    <div class="max-w-4xl mx-auto relative z-10 text-center">
-      <!-- Quote Symbol -->
-      <div class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-white/10 text-olive mb-8 shadow-inner">
-        <span class="material-symbols-outlined text-[36px]">format_quote</span>
-      </div>
-
-      <!-- Main Blockquote -->
-      <blockquote class="font-serif text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-parchment font-normal leading-[1.3] mb-10 text-balance">
-        "{t.quotesText}"
-      </blockquote>
-
-      <!-- Author Attribution -->
-      <div class="inline-flex flex-col items-center">
-        <div class="w-12 h-0.5 bg-olive mb-4"></div>
-        <span class="font-serif text-xl sm:text-2xl text-sand font-bold tracking-wide">
-          — {t.quotesAuthor}
-        </span>
-        <span class="font-sans text-xs uppercase tracking-[0.25em] text-stone-gray mt-1.5">
-          The Fisherman of Halicarnassus (1886 – 1973)
-        </span>
-      </div>
     </div>
   </section>
 </Layout>

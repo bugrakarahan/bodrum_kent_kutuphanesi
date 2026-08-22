@@ -5,480 +5,271 @@ import { getT } from '../../utils/i18n';
 const lang = 'en';
 const t = getT(lang);
 
-const tiers = [
+const whyJoinUsEn = [
   {
-    name: "Main Supporter (Blue Exile)",
-    level: "Platinum Sponsorship",
-    badge: "Most Prestigious",
-    highlight: true,
-    desc: "Principal corporate partner of the Bodrum City Library Grand Launch and key 2026 cultural programs.",
-    features: [
-      "Primary prominent logo placement on main stage, press backdrops and all promotional materials",
-      "Welcome address at the Official Opening Ceremony on September 4th",
-      "Permanent 'Corporate Founding Patron' plaque at the library main entrance",
-      "Dedicated protocol table at the VIP Opening Reception and Gala (10 invitations)",
-      "Permanent acknowledgment in digital library catalog and official website",
-      "Featured highlight in national and regional press releases"
-    ]
+    title: "To carry Bodrum's cultural and historical heritage into the future",
+    desc: "To research, document, narrate, and pass on millennia of heritage from Halicarnassus to Caria to upcoming generations."
   },
   {
-    name: "Culture & Arts Sponsor",
-    level: "Gold Sponsorship",
-    badge: "Featured",
-    highlight: false,
-    desc: "Named sponsor of a core symposium panel and cultural session during the opening.",
-    features: [
-      "Naming rights for 1 thematic symposium panel or hall (e.g., '[Brand] Literature Session')",
-      "Corporate roll-up and display presence at the opening cocktail foyer",
-      "Full-page corporate message in the printed program handbook",
-      "Logo placement as 'Culture Sponsor' on website and newsletters",
-      "5 VIP invitations for the Official Opening Ceremony"
-    ]
+    title: "To make Bodrum a vibrant hub of culture and thought",
+    desc: "To establish a lively forum where books, scholarly research, panels, conferences, and diverse disciplines converge."
   },
   {
-    name: "Workshop & Youth Program",
-    level: "Silver Sponsorship",
-    badge: "Investing in Youth",
-    highlight: false,
-    desc: "Corporate backing for children's mythology and creative writing workshops.",
-    features: [
-      "Named sponsorship in children's wing and youth workshop series",
-      "Logo on participant certificates and workshop materials",
-      "Supporter logo on website events directory",
-      "3 VIP invitations for the launch events"
-    ]
+    title: "To connect authors, scholars, and researchers with readers",
+    desc: "To bring renowned writers, academics, and artists from across the globe to Bodrum, cultivating enriching intellectual exchange."
   },
   {
-    name: "In-Kind & Services Partner",
-    level: "Service Partner",
-    badge: "Collaboration",
-    highlight: false,
-    desc: "Partners providing hospitality, audio-visual, catering, printing, or logistical solutions.",
-    features: [
-      "Logo on 'Official Service Partners' board in the opening foyer",
-      "Prominent logo in the official printed program and website",
-      "Opportunity for promotional stand / presence during the launch",
-      "2 VIP invitations for the opening reception"
-    ]
+    title: "To strengthen Bodrum's cultural bridges with the world",
+    desc: "To create collaborative national and international cultural, artistic, and scientific projects across the Aegean and Mediterranean."
+  },
+  {
+    title: "To create an open space for diverse ideas and constructive dialogue",
+    desc: "To foster a distinguished intellectual climate in Bodrum by nurturing cultures of reading, inquiry, and sharing."
+  },
+  {
+    title: "To expand access to knowledge and books",
+    desc: "To establish an accessible library culture where people of all ages can read, learn, and grow."
+  },
+  {
+    title: "To nurture children and youth within this cultural environment",
+    desc: "To support tomorrow's readers, researchers, and creators through initiatives engaging them in books, science, and the arts."
+  },
+  {
+    title: "To accomplish this together",
+    desc: "To expand our cultural, artistic, and ecological initiatives with broad civic participation under our founding association."
   }
 ];
 
-const programHighlights = [
+const supportTypesEn = [
   {
-    day: "DAY 1",
-    date: "SEPTEMBER 4, 2026",
-    title: "Official Opening & Cultural Heritage",
-    events: [
-      "14:00 - Protocol & Founding Committee Opening Remarks",
-      "15:30 - Main Supporter Plaque Presentation Ceremony",
-      "16:30 - 'Cevat Şakir's Bodrum' Rare Archives Exhibition Opening",
-      "18:30 - Sunset Mediterranean Recital & Opening Reception"
-    ]
+    title: "Book Donations",
+    desc: "Enrich our collection with literature, history, archaeology, and scientific works concerning Bodrum, Caria, and the Mediterranean."
   },
   {
-    day: "DAY 2",
-    date: "SEPTEMBER 5, 2026",
-    title: "Literature, Sea & Future Symposium",
-    events: [
-      "10:30 - Panel: 'From the Blue Exile to Today: Aegean Memory & Literature'",
-      "13:00 - Aegean Mythology Workshop for Children",
-      "15:00 - Panel: 'Digital Librarianship & Open Science in the Mediterranean'",
-      "17:30 - Closing Concert & Library Courtyard Gathering"
-    ]
+    title: "Knowledge & Expertise",
+    desc: "Contribute to our talks, conferences, and workshops as a researcher, scholar, author, or specialist."
+  },
+  {
+    title: "Financial & Corporate Sponsorship",
+    desc: "Support our library operations, publication programs, academic research, and international cultural projects."
+  },
+  {
+    title: "Volunteering",
+    desc: "Offer your skills and time across event coordination, research, archiving, communications, and library services."
+  },
+  {
+    title: "Research & Project Support",
+    desc: "Participate in local historical investigations, oral history recording, and archival documentation of Bodrum."
+  },
+  {
+    title: "Venue & Equipment Support",
+    desc: "Provide spaces, event venues, or technical equipment for workshops, lectures, and exhibitions."
+  },
+  {
+    title: "Institutional Partnerships",
+    desc: "Help connect authors, academic bodies, NGOs, and cultural institutions with Bodrum City Library."
+  },
+  {
+    title: "Community Outreach",
+    desc: "Share our mission with your network, bringing together new readers, volunteers, and benefactors."
   }
 ];
 ---
 
-<Layout 
-  title="September 4-5 Grand Launch & Sponsorship | Bodrum City Library"
-  description="Partner with Bodrum City Library as a corporate sponsor or cultural patron for the grand opening launch on September 4-5, 2026."
-  lang="en"
+<Layout
+  title={`Support & Volunteer | ${t.siteTitle}`}
+  description="Support Bodrum City Library, volunteer, and contribute to Bodrum's shared cultural future."
+  lang={lang}
+  currentPath="/en/support"
 >
   <!-- Hero Section -->
-  <section class="relative bg-surface-container-high/50 border-b border-sand overflow-hidden py-20 lg:py-28">
-    <div class="absolute inset-0 ex-libris-watermark flex items-center justify-center opacity-5 pointer-events-none">
-      <span class="material-symbols-outlined text-[420px] text-ink">handshake</span>
-    </div>
-
-    <div class="max-w-[1280px] mx-auto px-5 md:px-12 relative z-10">
+  <section class="py-16 md:py-24 px-5 md:px-12 bg-surface-bright border-b border-sand">
+    <div class="max-w-[1280px] mx-auto">
       <div class="max-w-3xl">
-        <div class="inline-flex items-center gap-2 px-3 py-1 bg-olive/10 border border-olive/20 rounded-full text-olive text-xs font-semibold uppercase tracking-widest mb-6">
-          <span class="w-2 h-2 rounded-full bg-olive animate-pulse"></span>
-          PARTNER WITH BODRUM'S CULTURAL FUTURE
-        </div>
-
-        <h1 class="font-serif text-4xl sm:text-5xl lg:text-6xl text-ink leading-tight mb-6">
-          September 4-5 Grand Launch & <span class="italic text-olive">Sponsorship</span>
+        <h1 class="font-serif text-3xl sm:text-4xl md:text-5xl text-ink font-bold leading-tight mb-4">
+          Support & Volunteer
         </h1>
-
-        <p class="text-lg sm:text-xl text-ink/80 leading-relaxed mb-8">
-          Preserving Bodrum's living cultural memory and carrying the heritage of the Fisherman of Halicarnassus into tomorrow. Join our grand launch on September 4-5, 2026 as a corporate partner or cultural patron.
-        </p>
-
-        <div class="flex flex-wrap items-center gap-4">
-          <a
-            href="#inquiry"
-            class="px-8 py-4 bg-ink text-parchment hover:bg-olive text-sm font-semibold tracking-wider uppercase transition-all duration-200 shadow-md inline-flex items-center gap-2"
-          >
-            <span>Request Sponsorship Deck</span>
-            <span class="material-symbols-outlined text-sm">arrow_downward</span>
-          </a>
-          <a
-            href="#tiers"
-            class="px-8 py-4 bg-parchment border border-sand hover:border-ink text-ink text-sm font-semibold tracking-wider uppercase transition-all duration-200 inline-flex items-center gap-2"
-          >
-            <span>Explore Tiers</span>
-            <span class="material-symbols-outlined text-sm">list_alt</span>
-          </a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Strategic Value Props -->
-  <section class="py-16 md:py-24 bg-parchment border-b border-sand">
-    <div class="max-w-[1280px] mx-auto px-5 md:px-12">
-      <div class="text-center max-w-2xl mx-auto mb-16">
-        <span class="text-xs uppercase tracking-widest text-olive font-semibold block mb-2">CORPORATE VALUE</span>
-        <h2 class="font-serif text-3xl md:text-4xl text-ink">Why Partner with Bodrum City Library?</h2>
-      </div>
-
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-        <div class="bg-surface-container-low p-8 border border-sand hover:border-ink/40 transition-all">
-          <div class="w-12 h-12 bg-olive/10 border border-olive/20 rounded-full flex items-center justify-center text-olive mb-6">
-            <span class="material-symbols-outlined text-2xl">verified</span>
-          </div>
-          <h3 class="font-serif text-xl text-ink font-semibold mb-3">Cultural Heritage & Prestige</h3>
-          <p class="text-sm text-ink/75 leading-relaxed">
-            Align your brand with the Mediterranean humanism of Cevat Şakir and Bodrum's enduring literary heritage.
-          </p>
-        </div>
-
-        <div class="bg-surface-container-low p-8 border border-sand hover:border-ink/40 transition-all">
-          <div class="w-12 h-12 bg-olive/10 border border-olive/20 rounded-full flex items-center justify-center text-olive mb-6">
-            <span class="material-symbols-outlined text-2xl">visibility</span>
-          </div>
-          <h3 class="font-serif text-xl text-ink font-semibold mb-3">High-Profile Audience</h3>
-          <p class="text-sm text-ink/75 leading-relaxed">
-            Engage with prominent Turkish and international authors, scholars, artists, civic leaders, and cultural patrons.
-          </p>
-        </div>
-
-        <div class="bg-surface-container-low p-8 border border-sand hover:border-ink/40 transition-all">
-          <div class="w-12 h-12 bg-olive/10 border border-olive/20 rounded-full flex items-center justify-center text-olive mb-6">
-            <span class="material-symbols-outlined text-2xl">school</span>
-          </div>
-          <h3 class="font-serif text-xl text-ink font-semibold mb-3">Sustainable Community Impact</h3>
-          <p class="text-sm text-ink/75 leading-relaxed">
-            Support free educational programs for children, open-access digital archives, and public reading rooms.
-          </p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- 4-5 September Launch Program Preview -->
-  <section class="py-16 md:py-24 bg-surface-container-high/40 border-b border-sand">
-    <div class="max-w-[1280px] mx-auto px-5 md:px-12">
-      <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-4">
-        <div>
-          <span class="text-xs uppercase tracking-widest text-olive font-semibold block mb-2">EVENT AGENDA</span>
-          <h2 class="font-serif text-3xl md:text-4xl text-ink">September 4-5 Launch Program</h2>
-        </div>
-        <div class="text-sm text-ink/70 max-w-md">
-          A preview of the two-day literature panels, rare exhibitions, children's workshops, and opening gala.
-        </div>
-      </div>
-
-      <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
-        {programHighlights.map((prog) => (
-          <div class="bg-parchment p-8 border border-sand">
-            <div class="flex items-center justify-between border-b border-sand pb-4 mb-6">
-              <div>
-                <span class="text-xs font-mono font-bold text-olive block">{prog.day}</span>
-                <h3 class="font-serif text-2xl text-ink font-semibold">{prog.date}</h3>
-              </div>
-              <span class="text-sm font-serif italic text-ink/70">{prog.title}</span>
-            </div>
-            <ul class="space-y-4">
-              {prog.events.map((ev) => (
-                <li class="flex items-start gap-3 text-sm text-ink/80">
-                  <span class="material-symbols-outlined text-olive text-lg mt-0.5 shrink-0">event_available</span>
-                  <span>{ev}</span>
-                </li>
-              ))}
-            </ul>
-          </div>
-        ))}
-      </div>
-    </div>
-  </section>
-
-  <!-- Sponsorship Tiers Section -->
-  <section id="tiers" class="py-16 md:py-24 bg-parchment border-b border-sand">
-    <div class="max-w-[1280px] mx-auto px-5 md:px-12">
-      <div class="text-center max-w-2xl mx-auto mb-16">
-        <span class="text-xs uppercase tracking-widest text-olive font-semibold block mb-2">PARTNERSHIP PACKAGES</span>
-        <h2 class="font-serif text-3xl md:text-4xl text-ink">Sponsorship Tiers & Benefits</h2>
-        <p class="text-sm text-ink/75 mt-3">
-          Select the partnership level that aligns with your organization's CSR objectives and visibility goals.
+        <p class="font-serif text-lg sm:text-xl text-ink/80 leading-relaxed">
+          Join us in building Bodrum's cultural memory and collective intellectual future.
         </p>
       </div>
+    </div>
+  </section>
 
-      <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6">
-        {tiers.map((tier) => (
-          <div class={`flex flex-col justify-between p-8 border transition-all duration-300 ${
-            tier.highlight 
-              ? 'bg-ink text-parchment border-ink shadow-lg ring-1 ring-olive/40' 
-              : 'bg-surface-container-low text-ink border-sand hover:border-ink/50'
-          }`}>
+  <div class="max-w-[1280px] mx-auto px-5 md:px-12 py-16 space-y-24">
+    
+    <!-- 1. Why Join Us -->
+    <section>
+      <h2 class="font-serif text-2xl sm:text-3xl text-ink font-bold mb-8 pb-3 border-b border-sand">
+        Why Should You Join This Vision?
+      </h2>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        {whyJoinUsEn.map((item, index) => (
+          <div class="bg-surface-container-low border border-sand p-6 sm:p-8 flex items-start gap-4">
+            <span class="w-8 h-8 rounded-full bg-olive text-white flex items-center justify-center font-mono text-xs font-bold shrink-0 mt-0.5 shadow-xs">
+              {index + 1}
+            </span>
             <div>
-              <div class="flex items-center justify-between mb-4">
-                <span class={`text-[11px] font-mono uppercase tracking-wider px-2 py-0.5 rounded-sm ${
-                  tier.highlight ? 'bg-olive text-white' : 'bg-sand text-ink'
-                }`}>
-                  {tier.badge}
-                </span>
-                <span class={`text-xs ${tier.highlight ? 'text-parchment/60' : 'text-stone-gray'}`}>
-                  {tier.level}
-                </span>
-              </div>
-
-              <h3 class={`font-serif text-2xl font-semibold mb-3 ${tier.highlight ? 'text-white' : 'text-ink'}`}>
-                {tier.name}
+              <h3 class="font-serif text-lg sm:text-xl text-ink font-bold mb-2 leading-snug">
+                {item.title}
               </h3>
-              
-              <p class={`text-xs leading-relaxed mb-6 ${tier.highlight ? 'text-parchment/80' : 'text-ink/70'}`}>
-                {tier.desc}
+              <p class="font-serif text-sm sm:text-base text-ink/80 leading-relaxed">
+                {item.desc}
               </p>
-
-              <div class={`h-[1px] w-full mb-6 ${tier.highlight ? 'bg-parchment/20' : 'bg-sand'}`}></div>
-
-              <ul class="space-y-3 mb-8">
-                {tier.features.map((feat) => (
-                  <li class="flex items-start gap-2.5 text-xs leading-relaxed">
-                    <span class={`material-symbols-outlined text-sm shrink-0 mt-0.5 ${
-                      tier.highlight ? 'text-olive' : 'text-olive'
-                    }`}>check_circle</span>
-                    <span class={tier.highlight ? 'text-parchment/90' : 'text-ink/80'}>{feat}</span>
-                  </li>
-                ))}
-              </ul>
             </div>
-
-            <a
-              href="#inquiry"
-              class={`w-full text-center py-3 text-xs font-semibold uppercase tracking-wider transition-colors ${
-                tier.highlight
-                  ? 'bg-olive hover:bg-olive/90 text-white'
-                  : 'bg-ink hover:bg-olive text-parchment'
-              }`}
-            >
-              Request Dossier & Apply
-            </a>
           </div>
         ))}
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- Application / Inquiry Form Section -->
-  <section id="inquiry" class="py-16 md:py-24 bg-surface-container-high/40">
-    <div class="max-w-[1280px] mx-auto px-5 md:px-12">
+    <!-- 2. Ways to Contribute -->
+    <section>
+      <h2 class="font-serif text-2xl sm:text-3xl text-ink font-bold mb-8 pb-3 border-b border-sand">
+        How Can You Contribute?
+      </h2>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        {supportTypesEn.map((item) => (
+          <div class="bg-parchment border border-sand p-6 flex flex-col justify-between hover:border-olive/50 transition-all shadow-xs">
+            <div>
+              <div class="w-10 h-10 rounded-full bg-olive/10 text-olive flex items-center justify-center mb-4">
+                <span class="material-symbols-outlined text-xl">favorite</span>
+              </div>
+              <h3 class="font-serif text-base sm:text-lg text-ink font-bold mb-2 leading-snug">
+                {item.title}
+              </h3>
+              <p class="font-serif text-xs sm:text-sm text-ink/75 leading-relaxed">
+                {item.desc}
+              </p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <!-- 3. Direct Contact & Application Form -->
+    <section class="bg-surface-container-low border border-sand p-8 sm:p-12 shadow-xs">
       <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
         
-        <!-- Left: Direct Info -->
-        <div class="lg:col-span-5 flex flex-col gap-6">
+        <!-- Left: Direct Contact -->
+        <div class="lg:col-span-5 space-y-6">
           <div>
-            <span class="text-xs uppercase tracking-widest text-olive font-semibold block mb-2">DIRECT CONTACT</span>
-            <h2 class="font-serif text-3xl text-ink font-semibold mb-4">Connect with the Committee</h2>
-            <p class="text-sm text-ink/75 leading-relaxed">
-              Reach out directly for custom partnership proposals, sponsorship budget tiers, or in-kind collaboration opportunities.
+            <span class="text-xs uppercase tracking-widest text-olive font-serif font-bold block mb-2">DIRECT CONTACT</span>
+            <h3 class="font-serif text-2xl sm:text-3xl text-ink font-bold leading-tight mb-3">
+              Speak with Our Library Coordinator
+            </h3>
+            <p class="font-serif text-sm text-ink/80 leading-relaxed">
+              Reach out to discuss your contributions and participation directly.
             </p>
           </div>
 
-          <div class="bg-parchment p-6 border border-sand space-y-4">
-            <div class="flex items-start gap-3.5">
-              <span class="material-symbols-outlined text-olive mt-0.5">mail</span>
+          <div class="space-y-4 pt-4 border-t border-sand text-sm font-serif">
+            <div class="flex items-center gap-3">
+              <span class="material-symbols-outlined text-olive text-xl">call</span>
               <div>
-                <span class="text-xs text-stone-gray block">Sponsorship Secretariat</span>
-                <a href="mailto:sponsorluk@bodrumkentkutuphanesi.org" class="text-sm font-semibold text-ink hover:text-olive">
-                  sponsorluk@bodrumkentkutuphanesi.org
+                <div class="text-xs text-stone-gray font-sans">Phone</div>
+                <a href="tel:+905423739748" class="text-ink font-bold text-base hover:text-olive transition-colors">
+                  +90 (0) 542 373 97 48
                 </a>
               </div>
             </div>
 
-            <div class="flex items-start gap-3.5">
-              <span class="material-symbols-outlined text-olive mt-0.5">location_on</span>
+            <div class="flex items-center gap-3">
+              <span class="material-symbols-outlined text-olive text-xl">mail</span>
               <div>
-                <span class="text-xs text-stone-gray block">Campus Location</span>
-                <span class="text-sm font-medium text-ink">Kizilagac, Bodrum / Mugla, Turkiye</span>
+                <div class="text-xs text-stone-gray font-sans">Support Coordination</div>
+                <a href="mailto:destek@bodrumkentkutuphanesi.org" class="text-ink font-bold hover:text-olive transition-colors">
+                  destek@bodrumkentkutuphanesi.org
+                </a>
               </div>
             </div>
 
-            <div class="flex items-start gap-3.5">
-              <span class="material-symbols-outlined text-olive mt-0.5">download</span>
+            <div class="flex items-start gap-3">
+              <span class="material-symbols-outlined text-olive text-xl mt-0.5">location_on</span>
               <div>
-                <span class="text-xs text-stone-gray block">Sponsorship Dossier</span>
-                <a 
-                  href="/sponsorluk-dosyasi" 
-                  target="_blank"
-                  class="text-sm font-semibold text-olive hover:underline inline-flex items-center gap-1 mt-0.5"
-                >
-                  <span>View Dossier & Save PDF</span>
-                  <span class="material-symbols-outlined text-xs">open_in_new</span>
-                </a>
+                <div class="text-xs text-stone-gray font-sans">Campus</div>
+                <div class="text-ink font-medium">Kizilagac, Bodrum / Mugla, Turkiye</div>
               </div>
             </div>
           </div>
         </div>
 
-        <!-- Right: Interactive Form -->
-        <div class="lg:col-span-7 bg-parchment p-8 sm:p-10 border border-sand">
-          <h3 class="font-serif text-2xl text-ink font-semibold mb-2">Sponsorship & Partnership Inquiry</h3>
-          <p class="text-xs text-ink/70 mb-8">
-            Please submit your organization details; our coordination committee will respond with the detailed dossier within 24 hours.
+        <!-- Right: Form -->
+        <div class="lg:col-span-7 bg-parchment border border-sand p-6 sm:p-8 shadow-xs">
+          <h3 class="font-serif text-2xl text-ink font-bold mb-2">
+            Support & Volunteer Application Form
+          </h3>
+          <p class="font-serif text-xs text-stone-gray mb-6">
+            Please fill in your details and selected areas of interest; our coordinator will get in touch with you.
           </p>
 
-          <form id="sponsor-form-en" class="space-y-6">
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
-              <div>
-                <label for="companyNameEn" class="block text-xs font-semibold uppercase tracking-wider text-ink mb-2">
-                  Company / Organization *
-                </label>
-                <input
-                  type="text"
-                  id="companyNameEn"
-                  name="companyNameEn"
-                  required
-                  placeholder="e.g. Aegean Hospitality Ltd."
-                  class="w-full bg-surface-container-low border border-sand px-4 py-3 text-sm text-ink focus:outline-none focus:border-ink transition-colors"
-                />
-              </div>
-
-              <div>
-                <label for="contactPersonEn" class="block text-xs font-semibold uppercase tracking-wider text-ink mb-2">
-                  Contact Person *
-                </label>
-                <input
-                  type="text"
-                  id="contactPersonEn"
-                  name="contactPersonEn"
-                  required
-                  placeholder="e.g. John Doe"
-                  class="w-full bg-surface-container-low border border-sand px-4 py-3 text-sm text-ink focus:outline-none focus:border-ink transition-colors"
-                />
-              </div>
+          <form id="support-form-en" class="space-y-4 font-serif">
+            <div>
+              <label class="block text-xs font-bold text-ink uppercase tracking-wider mb-1">Full Name *</label>
+              <input 
+                type="text" 
+                required 
+                placeholder="Your Full Name"
+                class="w-full px-4 py-2.5 bg-surface-bright border border-sand text-ink text-sm focus:outline-none focus:border-olive" 
+              />
             </div>
 
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div>
-                <label for="emailEn" class="block text-xs font-semibold uppercase tracking-wider text-ink mb-2">
-                  Corporate Email *
-                </label>
-                <input
-                  type="email"
-                  id="emailEn"
-                  name="emailEn"
-                  required
-                  placeholder="john@company.com"
-                  class="w-full bg-surface-container-low border border-sand px-4 py-3 text-sm text-ink focus:outline-none focus:border-ink transition-colors"
+                <label class="block text-xs font-bold text-ink uppercase tracking-wider mb-1">Email Address *</label>
+                <input 
+                  type="email" 
+                  required 
+                  placeholder="name@domain.com"
+                  class="w-full px-4 py-2.5 bg-surface-bright border border-sand text-ink text-sm focus:outline-none focus:border-olive" 
                 />
               </div>
-
               <div>
-                <label for="phoneEn" class="block text-xs font-semibold uppercase tracking-wider text-ink mb-2">
-                  Phone Number *
-                </label>
-                <input
-                  type="tel"
-                  id="phoneEn"
-                  name="phoneEn"
-                  required
-                  placeholder="+90 532 000 00 00"
-                  class="w-full bg-surface-container-low border border-sand px-4 py-3 text-sm text-ink focus:outline-none focus:border-ink transition-colors"
+                <label class="block text-xs font-bold text-ink uppercase tracking-wider mb-1">Phone</label>
+                <input 
+                  type="tel" 
+                  placeholder="+90 5XX XXX XX XX"
+                  class="w-full px-4 py-2.5 bg-surface-bright border border-sand text-ink text-sm focus:outline-none focus:border-olive" 
                 />
               </div>
             </div>
 
             <div>
-              <label for="sponsorTierEn" class="block text-xs font-semibold uppercase tracking-wider text-ink mb-2">
-                Interested Sponsorship Level
-              </label>
-              <select
-                id="sponsorTierEn"
-                name="sponsorTierEn"
-                class="w-full bg-surface-container-low border border-sand px-4 py-3 text-sm text-ink focus:outline-none focus:border-ink transition-colors"
-              >
-                <option value="platinum">Main Supporter (Blue Exile - Platinum)</option>
-                <option value="gold">Culture & Arts Sponsor (Gold)</option>
-                <option value="silver">Workshop & Youth Program (Silver)</option>
-                <option value="inkind">In-Kind / Service Support</option>
-                <option value="individual">Individual Cultural Patron / Donor</option>
-                <option value="other">Other / Tailored Collaboration</option>
+              <label class="block text-xs font-bold text-ink uppercase tracking-wider mb-1">Support Category *</label>
+              <select required class="w-full px-4 py-2.5 bg-surface-bright border border-sand text-ink text-sm focus:outline-none focus:border-olive">
+                <option value="">Select category...</option>
+                <option value="books">Book Donation</option>
+                <option value="expertise">Knowledge & Expertise</option>
+                <option value="financial">Financial / Corporate Sponsorship</option>
+                <option value="volunteer">Volunteering</option>
+                <option value="research">Research & Archival Support</option>
+                <option value="venue">Venue & Equipment Support</option>
+                <option value="network">Institutional Partnerships</option>
+                <option value="other">Other</option>
               </select>
             </div>
 
             <div>
-              <label for="notesEn" class="block text-xs font-semibold uppercase tracking-wider text-ink mb-2">
-                Message / Specific Notes
-              </label>
-              <textarea
-                id="notesEn"
-                name="notesEn"
-                rows="4"
-                placeholder="Share your organization's goals or specific questions regarding the launch partnership..."
-                class="w-full bg-surface-container-low border border-sand px-4 py-3 text-sm text-ink focus:outline-none focus:border-ink transition-colors resize-none"
+              <label class="block text-xs font-bold text-ink uppercase tracking-wider mb-1">Your Message / Proposal</label>
+              <textarea 
+                rows="4" 
+                placeholder="Briefly describe your proposed contribution..."
+                class="w-full px-4 py-2.5 bg-surface-bright border border-sand text-ink text-sm focus:outline-none focus:border-olive"
               ></textarea>
             </div>
 
-            <button
-              type="submit"
-              class="w-full py-4 bg-ink hover:bg-olive text-parchment text-sm font-semibold tracking-wider uppercase transition-colors flex items-center justify-center gap-2"
+            <button 
+              type="submit" 
+              class="w-full py-3.5 bg-olive text-white hover:bg-ink text-sm font-serif font-semibold tracking-wider uppercase transition-colors shadow-xs"
             >
-              <span>Submit Inquiry</span>
-              <span class="material-symbols-outlined text-sm">send</span>
+              Submit Application
             </button>
           </form>
         </div>
 
       </div>
-    </div>
-  </section>
+    </section>
+
+  </div>
 </Layout>
-
-<script>
-  // Form submission handler
-  const form = document.getElementById('sponsor-form-en') as HTMLFormElement;
-  if (form) {
-    form.addEventListener('submit', (e) => {
-      e.preventDefault();
-      
-      const company = (document.getElementById('companyNameEn') as HTMLInputElement)?.value;
-      
-      if ((window as any).showToast) {
-        (window as any).showToast(
-          `Thank you! ${company ? `(${company})` : ''} Your sponsorship inquiry has been sent to our Founding Committee. We will follow up shortly.`,
-          'success',
-          6000
-        );
-      }
-      
-      form.reset();
-    });
-  }
-
-  // Kit download handler
-  const downloadBtn = document.getElementById('btn-download-kit-en');
-  if (downloadBtn) {
-    downloadBtn.addEventListener('click', () => {
-      if ((window as any).showToast) {
-        (window as any).showToast(
-          'Preparing the Bodrum City Library September 4-5 Sponsorship Kit. Our coordinator will contact you.',
-          'info',
-          4000
-        );
-      }
-    });
-  }
-</script>

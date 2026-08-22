@@ -1,22 +1,9 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import { getCollection } from 'astro:content';
 import { getT } from '../utils/i18n';
 
 const lang = 'tr';
 const t = getT(lang);
-
-// Fetch events and talks collections
-const allEvents = await getCollection('events');
-const upcomingEvents = allEvents
-  .filter((event) => !event.data.isPast)
-  .sort((a, b) => new Date(a.data.date).getTime() - new Date(b.data.date).getTime())
-  .slice(0, 3);
-
-const allTalks = await getCollection('talks');
-const latestTalks = allTalks
-  .sort((a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime())
-  .slice(0, 2);
 ---
 
 <Layout
@@ -25,443 +12,112 @@ const latestTalks = allTalks
   lang={lang}
   currentPath="/"
 >
-  <!-- 1. Hero Section -->
-  <section class="relative min-h-[85vh] flex items-center justify-center py-20 md:py-32 px-margin-mobile md:px-margin-desktop overflow-hidden border-b border-sand bg-surface-bright">
+  <!-- 1. Hero & Ana Tanıtım Vitrini -->
+  <section class="relative min-h-[80vh] flex items-center justify-center py-16 md:py-28 px-5 md:px-12 overflow-hidden border-b border-sand bg-surface-bright">
+    
     <!-- Subtle Ambient Background Layer -->
-    <div class="absolute inset-0 z-0 opacity-20 pointer-events-none">
+    <div class="absolute inset-0 z-0 opacity-15 pointer-events-none">
       <div
         class="w-full h-full bg-cover bg-center filter grayscale contrast-125"
         style="background-image: url('https://lh3.googleusercontent.com/aida/AP1WRLvo60AOVtg-X2yx5_UsWAYHm8SVZyT_7GmTxiGOeYNbsSg0TADSsk0S_nyvd794vLfkUY3I7nwaPhBWhJdlPkO45ZzOwy2dFyAdRBD_sw9MQ0ohoBLQsfabJSdYSm4TbUmg_2DEzDzqMqJbLKVQjdUYWpK6uJXcvx1KUMGHoDWpGghWlQBy8J7PfXLubkb5erCLKPe8Nznl46CMhd-jcSxP8dhqHD4evmD0Zl-vA-Sxo0_PqpRIAuZpIWo');"
       ></div>
-      <div class="absolute inset-0 bg-gradient-to-b from-parchment/60 via-parchment/80 to-parchment"></div>
+      <div class="absolute inset-0 bg-gradient-to-b from-parchment/70 via-parchment/90 to-parchment"></div>
     </div>
 
-    <!-- Ex Libris Watermark Flourish -->
-    <div class="absolute -top-10 -right-10 md:top-12 md:right-16 ex-libris-watermark select-none pointer-events-none">
-      <span class="material-symbols-outlined text-[240px] md:text-[380px] text-olive leading-none">auto_stories</span>
+    <!-- Ex Libris Watermark -->
+    <div class="absolute -top-10 -right-10 md:top-10 md:right-12 ex-libris-watermark select-none pointer-events-none">
+      <span class="material-symbols-outlined text-[200px] md:text-[340px] text-olive leading-none">auto_stories</span>
     </div>
 
     <!-- Hero Content Container -->
-    <div class="relative z-10 max-w-container-max mx-auto w-full">
-      <div class="max-w-4xl">
-        <!-- Overline Badge & Launch Announcement -->
-        <div class="flex flex-wrap items-center gap-3 mb-6">
-          <div class="inline-flex items-center gap-2.5 px-3.5 py-1.5 bg-secondary-container/60 border border-sand text-ink text-xs font-semibold tracking-widest uppercase rounded">
-            <span class="w-2 h-2 rounded-full bg-olive animate-pulse"></span>
-            <span>Kültür & Bellek Girişimi</span>
-          </div>
+    <div class="relative z-10 max-w-[1280px] mx-auto w-full">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+        
+        <!-- Left: Headline & Manifesto Text -->
+        <div class="lg:col-span-7">
+          <!-- Headline (Title Case, noktasız) -->
+          <h1 class="font-serif text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-ink font-bold leading-[1.18] tracking-tight mb-8 text-balance">
+            Bodrum’un Kültürel Hafızası İçin Yaşayan Bir Kütüphane
+          </h1>
 
-          <a
-            href="/destek"
-            class="inline-flex items-center gap-2 px-3.5 py-1.5 bg-olive text-white text-xs font-semibold tracking-wider uppercase rounded hover:bg-ink transition-colors shadow-xs"
-          >
-            <span class="material-symbols-outlined text-sm">campaign</span>
-            <span>4-5 Eylül Açılış Lansmanı & Sponsorluk</span>
-            <span class="material-symbols-outlined text-xs">arrow_forward</span>
-          </a>
-        </div>
-
-        <!-- Headline -->
-        <h1 class="font-display-lg text-4xl sm:text-5xl md:text-6xl lg:text-7xl text-ink font-serif leading-[1.12] tracking-tight mb-8 text-balance">
-          Bodrum’un kültürel hafızası için yaşayan bir kütüphane.
-        </h1>
-
-        <!-- Subtext Card -->
-        <div class="bg-parchment/90 backdrop-blur-sm border border-sand/80 p-6 md:p-8 rounded shadow-sm max-w-2xl mb-10">
-          <p class="font-sans text-base md:text-lg text-secondary leading-relaxed text-balance">
-            Bodrum Kent Kütüphanesi, yarımadanın kadim tarihini, Halikarnas Balıkçısı’nın edebi mirasını ve Akdeniz hümanizmasını koruyan, dijital ve fiziksel koleksiyonları buluşturan bağımsız bir kültür projesidir.
-          </p>
-        </div>
-
-        <!-- Primary & Secondary CTA Buttons -->
-        <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 sm:gap-6">
-          <a
-            href="/etkinlikler"
-            class="inline-flex items-center justify-center gap-3 px-8 py-4 bg-ink text-parchment font-semibold text-xs md:text-sm uppercase tracking-widest hover:bg-olive transition-all duration-200 shadow-md group"
-          >
-            <span>{t.exploreEvents}</span>
-            <span class="material-symbols-outlined text-[18px] transition-transform group-hover:translate-x-1">arrow_forward</span>
-          </a>
-
-          <a
-            href="/destek"
-            class="inline-flex items-center justify-center px-8 py-4 bg-olive/10 border border-olive text-olive hover:bg-olive hover:text-white font-semibold text-xs md:text-sm uppercase tracking-widest transition-all duration-200 shadow-xs"
-          >
-            <span>Sponsorluk & Destek</span>
-          </a>
-
-          <a
-            href="/hakkimizda"
-            class="inline-flex items-center justify-center px-8 py-4 border border-ink text-ink font-semibold text-xs md:text-sm uppercase tracking-widest hover:bg-sand/60 transition-all duration-200"
-          >
-            <span>{t.exploreProject}</span>
-          </a>
-        </div>
-      </div>
-
-      <!-- Quick Indicator Strip -->
-      <div class="mt-16 md:mt-24 pt-8 border-t border-sand/60 grid grid-cols-2 md:grid-cols-4 gap-6 text-ink">
-        <div>
-          <div class="font-serif text-2xl md:text-3xl font-bold text-olive">11</div>
-          <div class="text-xs uppercase tracking-wider text-stone-gray font-medium mt-1">Girişim Kurulu Üyesi</div>
-        </div>
-        <div>
-          <div class="font-serif text-2xl md:text-3xl font-bold text-olive">16.09.2019</div>
-          <div class="text-xs uppercase tracking-wider text-stone-gray font-medium mt-1">Fikrin Doğuşu</div>
-        </div>
-        <div>
-          <div class="font-serif text-2xl md:text-3xl font-bold text-olive">11 Eser</div>
-          <div class="text-xs uppercase tracking-wider text-stone-gray font-medium mt-1">Balıkçı Koleksiyonu</div>
-        </div>
-        <div>
-          <div class="font-serif text-2xl md:text-3xl font-bold text-olive">Açık Arşiv</div>
-          <div class="text-xs uppercase tracking-wider text-stone-gray font-medium mt-1">Sözlü Tarih & Dijital Yayınlar</div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- 2. Institutional Info Section (Hakkımızda Özeti) -->
-  <section class="py-24 md:py-32 px-margin-mobile md:px-margin-desktop bg-parchment border-b border-sand relative">
-    <div class="max-w-container-max mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-gutter items-start">
-      
-      <!-- Sticky Left Column -->
-      <div class="lg:col-span-5 lg:sticky lg:top-28">
-        <span class="font-sans text-xs uppercase tracking-[0.2em] text-olive font-semibold block mb-3">HAKKIMIZDA</span>
-        <h2 class="font-serif text-3xl sm:text-4xl md:text-5xl text-ink leading-tight mb-6">
-          Bodrum Kent Kütüphanesi Nedir?
-        </h2>
-        <p class="font-serif italic text-lg md:text-xl text-secondary leading-relaxed mb-6">
-          "Mavi Sürgün'ün izinde, denizin mavisiyle bilimin berraklığını birleştiren bir kültür limanı."
-        </p>
-        <a
-          href="/hakkimizda"
-          class="inline-flex items-center gap-2 font-sans text-xs font-bold uppercase tracking-widest text-ink hover:text-olive transition-colors pb-1 border-b border-ink hover:border-olive group"
-        >
-          <span>Tarihçemizi & Kuruluşumuzu İnceleyin</span>
-          <span class="material-symbols-outlined text-[16px] transition-transform group-hover:translate-x-1">arrow_forward</span>
-        </a>
-      </div>
-
-      <!-- Right Column -->
-      <div class="lg:col-span-7 space-y-8">
-        <div class="prose prose-lg text-ink/90">
-          <p class="font-serif text-xl md:text-2xl text-ink leading-relaxed font-normal">
-            Biz, yalnızca raflarında kitapların sıralandığı geleneksel bir mekan değil; Bodrum’un kolektif hafızasının korunduğu, paylaşıldığı ve yeni nesillerle yeniden üretildiği yaşayan bir platformuz.
-          </p>
-          <div class="h-px w-20 bg-olive/40 my-6"></div>
-          <p class="font-sans text-base md:text-lg text-secondary leading-relaxed">
-            Kütüphanemiz, Halikarnas Balıkçısı Cevat Şakir Kabaağaçlı’nın eserlerinden antik Halikarnassos’un kadim belgelerine, yerel süngercilik hikayelerinden çağdaş edebiyat atölyelerine uzanan çok boyutlu bir kültürel köprüdür. Bodrum’un entelektüel zenginliğini herkes için erişilebilir kılmayı amaçlıyoruz.
-          </p>
-        </div>
-
-        <!-- 2 Feature Cards -->
-        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 pt-4">
-          <!-- Card 1: Hedeflenen Çalışmalar / Dijital Arşiv -->
-          <div class="p-6 md:p-8 bg-surface-container-low border border-sand rounded hover:border-olive/60 transition-colors group">
-            <div class="w-12 h-12 rounded bg-parchment border border-sand flex items-center justify-center text-olive mb-5 group-hover:bg-olive group-hover:text-parchment transition-colors">
-              <span class="material-symbols-outlined text-[24px]">history_edu</span>
-            </div>
-            <h3 class="font-serif text-xl font-semibold text-ink mb-3 group-hover:text-olive transition-colors">
-              Hedeflenen Çalışmalar
-            </h3>
-            <p class="font-sans text-sm text-secondary leading-relaxed mb-4">
-              Nadir elyazması nüshalar, yerel gazete koleksiyonları ve Bodrum sözlü tarih kayıtları sayısallaştırılarak araştırmacıların hizmetine sunulmaktadır.
+          <!-- Main Manifesto Text -->
+          <div class="bg-parchment/90 backdrop-blur-xs border border-sand p-6 sm:p-8 rounded-xs shadow-xs mb-10">
+            <p class="font-serif text-base sm:text-lg text-ink/90 leading-relaxed text-balance">
+              Bodrum Kent Kütüphanesi, Bodrum’da yaşayanlar ile kenti ziyaret eden kitapseverleri, edebiyat, sanat ve bilim dünyasının değerli isimleriyle ve kitaplarıyla buluşturmayı amaçlayan, çok amaçlı ve yaşayan bir kütüphane projesidir. Kitap merkezli etkinlikler, söyleşiler, atölyeler ve kültürel buluşmalar aracılığıyla yaşam boyu öğrenmeyi, üretimi ve paylaşımı destekleyen, Akdeniz ve Anadolu hümanizmasını koruyan, bağımsız bir buluşma alanı olarak tasarlanmaktadır.
             </p>
-            <a href="/halikarnas-balikcisi" class="inline-flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wider text-ink group-hover:text-olive">
-              <span>Arşivi Gör</span>
-              <span class="material-symbols-outlined text-[14px]">east</span>
-            </a>
           </div>
 
-          <!-- Card 2: Gönüllü Katılım & Topluluk -->
-          <div class="p-6 md:p-8 bg-surface-container-low border border-sand rounded hover:border-olive/60 transition-colors group">
-            <div class="w-12 h-12 rounded bg-parchment border border-sand flex items-center justify-center text-olive mb-5 group-hover:bg-olive group-hover:text-parchment transition-colors">
-              <span class="material-symbols-outlined text-[24px]">groups</span>
-            </div>
-            <h3 class="font-serif text-xl font-semibold text-ink mb-3 group-hover:text-olive transition-colors">
-              Gönüllü Katılım
-            </h3>
-            <p class="font-sans text-sm text-secondary leading-relaxed mb-4">
-              Bodrum sevdalılarının bağışları, yerel anlatıları ve gönüllü uzmanlık katkılarıyla kütüphanemizi hep birlikte büyütüyor ve yaşatıyoruz.
-            </p>
-            <a href="/iletisim" class="inline-flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wider text-ink group-hover:text-olive">
-              <span>Bize Katılın</span>
-              <span class="material-symbols-outlined text-[14px]">east</span>
-            </a>
-          </div>
-        </div>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- 3. Upcoming Events Section (Gündem & Yaklaşan Etkinlikler) -->
-  <section class="py-24 md:py-32 px-margin-mobile md:px-margin-desktop bg-surface-container-low border-b border-sand">
-    <div class="max-w-container-max mx-auto">
-      
-      <!-- Section Header -->
-      <div class="flex flex-col md:flex-row md:items-end justify-between mb-16 pb-6 border-b border-sand gap-4">
-        <div>
-          <span class="font-sans text-xs uppercase tracking-[0.2em] text-olive font-semibold block mb-2">GÜNDEM</span>
-          <h2 class="font-serif text-3xl sm:text-4xl md:text-5xl text-ink leading-tight">
-            {t.upcomingEvents}
-          </h2>
-        </div>
-        <a
-          href="/etkinlikler"
-          class="inline-flex items-center gap-2 font-sans text-xs font-bold uppercase tracking-widest text-ink hover:text-olive transition-colors group"
-        >
-          <span>{t.viewAll}</span>
-          <span class="material-symbols-outlined text-[16px] transition-transform group-hover:translate-x-1">arrow_forward</span>
-        </a>
-      </div>
-
-      <!-- 3-Card Events Grid -->
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-        {upcomingEvents.map((event) => (
-          <article class="bg-parchment border border-sand rounded overflow-hidden flex flex-col group hover:shadow-md transition-shadow">
-            <!-- Event Image Container -->
-            <a href="/etkinlikler" class="block relative aspect-[16/10] overflow-hidden bg-sand/30">
-              <img
-                src={event.data.image}
-                alt={event.data.title}
-                class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                loading="lazy"
-              />
-              <div class="absolute inset-0 bg-ink/5 group-hover:bg-transparent transition-colors"></div>
-              
-              <!-- Floating Date Badge -->
-              <div class="absolute top-4 left-4 bg-ink text-parchment font-mono text-[11px] font-semibold px-3 py-1.5 uppercase tracking-wider rounded-sm shadow">
-                {event.data.displayDateTr}
-              </div>
-            </a>
-
-            <!-- Event Card Content -->
-            <div class="p-6 flex-1 flex flex-col justify-between">
-              <div>
-                <!-- Category & Location Badges -->
-                <div class="flex items-center justify-between gap-2 mb-3">
-                  <span class="text-xs uppercase tracking-widest text-olive font-semibold">
-                    {event.data.categoryLabelTr}
-                  </span>
-                  <span class="text-xs text-stone-gray flex items-center gap-1">
-                    <span class="material-symbols-outlined text-[14px]">location_on</span>
-                    {event.data.locationTr}
-                  </span>
-                </div>
-
-                <!-- Event Title -->
-                <h3 class="font-serif text-xl font-semibold text-ink leading-snug mb-3 group-hover:text-olive transition-colors">
-                  <a href="/etkinlikler">
-                    {event.data.title}
-                  </a>
-                </h3>
-
-                <!-- Event Summary -->
-                <p class="font-sans text-sm text-secondary leading-relaxed line-clamp-3 mb-6">
-                  {event.data.summaryTr}
-                </p>
-              </div>
-
-              <!-- Card Action Link -->
-              <div class="pt-4 border-t border-sand/60">
-                <a
-                  href="/etkinlikler"
-                  class="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-ink group-hover:text-olive transition-colors"
-                >
-                  <span>Detayları İncele</span>
-                  <span class="material-symbols-outlined text-[14px] transition-transform group-hover:translate-x-1">arrow_forward</span>
-                </a>
-              </div>
-            </div>
-          </article>
-        ))}
-      </div>
-
-    </div>
-  </section>
-
-  <!-- 4. Digital Talks Section (Dijital Yayınlar & Söyleşiler) -->
-  <section class="py-24 md:py-32 px-margin-mobile md:px-margin-desktop bg-parchment border-b border-sand">
-    <div class="max-w-container-max mx-auto">
-      
-      <!-- Section Header -->
-      <div class="flex flex-col md:flex-row md:items-end justify-between mb-16 pb-6 border-b border-sand gap-4">
-        <div>
-          <span class="font-sans text-xs uppercase tracking-[0.2em] text-olive font-semibold block mb-2">DİJİTAL YAYINLAR</span>
-          <h2 class="font-serif text-3xl sm:text-4xl md:text-5xl text-ink leading-tight">
-            Kütüphane Söyleşileri
-          </h2>
-          <p class="font-sans text-sm md:text-base text-secondary mt-2 max-w-xl">
-            Bodrum’un değerlerini, ustalarını ve araştırmacılarını YouTube video arşivimizde buluşturuyoruz.
-          </p>
-        </div>
-        <a
-          href="/soylesiler"
-          class="inline-flex items-center gap-2 font-sans text-xs font-bold uppercase tracking-widest text-ink hover:text-olive transition-colors group shrink-0"
-        >
-          <span>Tüm Söyleşileri Gör</span>
-          <span class="material-symbols-outlined text-[16px] transition-transform group-hover:translate-x-1">arrow_forward</span>
-        </a>
-      </div>
-
-      <!-- 2 Video Cards Grid -->
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-gutter">
-        {latestTalks.map((talk) => (
-          <div class="bg-surface-container-low border border-sand rounded overflow-hidden flex flex-col group hover:shadow-md transition-shadow">
-            
-            <!-- Video Thumbnail with Play Button Overlay -->
-            <div
-              class="relative aspect-video overflow-hidden bg-black cursor-pointer"
-              data-youtube-id={talk.data.youtubeId}
-              data-video-title={talk.data.titleTr}
-              data-video-subtitle={`${talk.data.guestTr} • ${talk.data.roleTr}`}
-              role="button"
-              tabindex="0"
-              aria-label={`Videoyu İzle: ${talk.data.titleTr}`}
+          <!-- Action Buttons -->
+          <div class="flex flex-wrap items-center gap-4">
+            <a
+              href="/etkinlikler"
+              class="inline-flex items-center justify-center gap-2 px-7 py-3.5 bg-ink text-parchment font-serif font-semibold text-sm tracking-wider uppercase hover:bg-olive transition-all duration-200 shadow-sm group"
             >
-              <img
-                src={talk.data.thumbnail}
-                alt={talk.data.titleTr}
-                class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105 opacity-90 group-hover:opacity-100"
-                loading="lazy"
-              />
-              <div class="absolute inset-0 bg-ink/20 group-hover:bg-ink/10 transition-colors"></div>
+              <span>Etkinlikleri İncele</span>
+              <span class="material-symbols-outlined text-base transition-transform group-hover:translate-x-1">arrow_forward</span>
+            </a>
 
-              <!-- Play Button Center Overlay -->
-              <div class="absolute inset-0 flex items-center justify-center">
-                <div class="w-16 h-16 rounded-full bg-parchment/90 backdrop-blur-sm text-ink flex items-center justify-center shadow-lg transition-transform duration-300 group-hover:scale-110 group-hover:bg-olive group-hover:text-parchment">
-                  <span class="material-symbols-outlined text-[32px] ml-0.5">play_arrow</span>
-                </div>
-              </div>
+            <a
+              href="/destek"
+              class="inline-flex items-center justify-center px-7 py-3.5 bg-olive text-white font-serif font-semibold text-sm tracking-wider uppercase hover:bg-ink transition-all duration-200 shadow-xs"
+            >
+              <span>Destek & Gönüllü Katılım</span>
+            </a>
 
-              <!-- Duration Badge -->
-              <div class="absolute bottom-3 right-3 bg-ink/80 backdrop-blur-sm text-parchment font-mono text-xs px-2.5 py-1 rounded flex items-center gap-1">
-                <span class="material-symbols-outlined text-[13px]">schedule</span>
-                <span>{talk.data.duration}</span>
-              </div>
-            </div>
-
-            <!-- Video Info & Meta -->
-            <div class="p-6 md:p-8 flex-1 flex flex-col justify-between">
-              <div>
-                <div class="flex items-center gap-2 mb-2">
-                  <span class="font-sans text-xs font-semibold uppercase tracking-widest text-olive">
-                    {talk.data.roleTr}
-                  </span>
-                  <span class="text-stone-gray text-xs">•</span>
-                  <span class="font-sans text-xs text-stone-gray">
-                    {talk.data.guestTr}
-                  </span>
-                </div>
-
-                <h3 class="font-serif text-xl md:text-2xl font-semibold text-ink leading-snug mb-3 group-hover:text-olive transition-colors">
-                  {talk.data.titleTr}
-                </h3>
-
-                <p class="font-sans text-sm text-secondary leading-relaxed line-clamp-2 mb-6">
-                  {talk.data.summaryTr}
-                </p>
-              </div>
-
-              <!-- Video Modal Trigger Button -->
-              <div class="pt-4 border-t border-sand/60 flex items-center justify-between">
-                <button
-                  type="button"
-                  data-youtube-id={talk.data.youtubeId}
-                  data-video-title={talk.data.titleTr}
-                  data-video-subtitle={`${talk.data.guestTr} • ${talk.data.roleTr}`}
-                  class="inline-flex items-center gap-2 font-sans text-xs font-bold uppercase tracking-wider text-ink hover:text-olive transition-colors group/btn cursor-pointer"
-                >
-                  <span class="material-symbols-outlined text-[18px] text-olive">smart_display</span>
-                  <span>{t.watchOnYoutube}</span>
-                  <span class="material-symbols-outlined text-[14px] transition-transform group-hover/btn:translate-x-1">north_east</span>
-                </button>
-
-                <span class="font-mono text-[11px] text-stone-gray">
-                  {talk.data.date}
-                </span>
-              </div>
-            </div>
-
+            <a
+              href="/hakkimizda"
+              class="inline-flex items-center justify-center px-7 py-3.5 border border-ink text-ink font-serif font-semibold text-sm tracking-wider uppercase hover:bg-sand/60 transition-all duration-200"
+            >
+              <span>Hakkımızda</span>
+            </a>
           </div>
-        ))}
+        </div>
+
+        <!-- Right: Atmospheric Heritage Photo -->
+        <div class="lg:col-span-5">
+          <div class="relative group">
+            <!-- Frame shadow layer -->
+            <div class="absolute -inset-2 bg-gradient-to-r from-olive/20 to-sand/40 rounded-xs blur-xs group-hover:opacity-100 transition duration-500"></div>
+            
+            <div class="relative bg-parchment border border-sand p-3 shadow-md">
+              <div class="aspect-[4/3] overflow-hidden bg-surface-container-high relative">
+                <img
+                  src="https://lh3.googleusercontent.com/aida-public/AB6AXuDQ_kg3bbgJ4ynOz1o7DQcY3YaIdeG_zUESiNKW-81FsNfEZqrXlPi-ZAYWzb2FYdKriB4ESdIgn04zGCTSrnOaQAobk2tEQSDMKK4TlQhdPdjUJk74KLsSusQUSR9nHe1QycFJgHdfJUQSr8eFa2k0wQHdX3j1D5aQBbxg9mUEAGpQs_UGA_l1geAuKfbBil5Wy-_VugN7cjAepbQ_HoOugyaLOfsfF-vsYSCOhY75Ao3sAvwHFdv3nGJYn9whKvXn8vnrP8j4yEE"
+                  alt="Bodrum Kent Kütüphanesi Kültürel Hafıza"
+                  class="w-full h-full object-cover grayscale contrast-110 hover:grayscale-0 transition-all duration-700"
+                  loading="eager"
+                />
+              </div>
+              <div class="pt-3 pb-1 px-1 flex items-center justify-between text-xs text-stone-gray font-serif italic">
+                <span>Bodrum Kent Kütüphanesi</span>
+                <span class="font-mono text-[11px] not-italic">Kızılağaç • 2019</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Quick Institutional Numbers -->
+      <div class="mt-16 pt-8 border-t border-sand/80 grid grid-cols-2 md:grid-cols-4 gap-6 text-ink">
+        <div class="bg-parchment/60 p-4 border border-sand/50">
+          <div class="font-serif text-2xl md:text-3xl font-bold text-olive">11</div>
+          <div class="text-xs uppercase tracking-wider text-stone-gray font-serif font-medium mt-1">Girişim Kurulu Üyesi</div>
+        </div>
+        <div class="bg-parchment/60 p-4 border border-sand/50">
+          <div class="font-serif text-2xl md:text-3xl font-bold text-olive">16.09.2019</div>
+          <div class="text-xs uppercase tracking-wider text-stone-gray font-serif font-medium mt-1">Fikrin Doğuşu</div>
+        </div>
+        <div class="bg-parchment/60 p-4 border border-sand/50">
+          <div class="font-serif text-2xl md:text-3xl font-bold text-olive">Halikarnas Balıkçısı</div>
+          <div class="text-xs uppercase tracking-wider text-stone-gray font-serif font-medium mt-1">Özel Kitaplığı & Mirası</div>
+        </div>
+        <div class="bg-parchment/60 p-4 border border-sand/50">
+          <div class="font-serif text-2xl md:text-3xl font-bold text-olive">Yaşayan Kütüphane</div>
+          <div class="text-xs uppercase tracking-wider text-stone-gray font-serif font-medium mt-1">Etkinlik, Söyleşi & Atölye</div>
+        </div>
       </div>
 
     </div>
   </section>
-
-  <!-- 5. Newsletter / Community Invitation -->
-  <section class="py-20 md:py-28 px-margin-mobile md:px-margin-desktop bg-surface-container relative overflow-hidden">
-    <!-- Ex Libris Watermark Background -->
-    <div class="absolute -bottom-12 -left-12 ex-libris-watermark pointer-events-none select-none">
-      <span class="material-symbols-outlined text-[280px] text-olive leading-none">menu_book</span>
-    </div>
-
-    <div class="max-w-4xl mx-auto relative z-10 text-center">
-      <span class="font-sans text-xs uppercase tracking-[0.2em] text-olive font-semibold block mb-3">
-        TOPLULUK DAVETİ
-      </span>
-      <h2 class="font-serif text-3xl sm:text-4xl md:text-5xl text-ink leading-tight mb-6">
-        {t.subscribeNewsletter}
-      </h2>
-      <p class="font-sans text-base md:text-lg text-secondary leading-relaxed max-w-2xl mx-auto mb-10">
-        {t.newsletterDesc}
-      </p>
-
-      <!-- Interactive Newsletter Form -->
-      <form id="home-newsletter-form" class="max-w-xl mx-auto flex flex-col sm:flex-row gap-3">
-        <input
-          type="email"
-          id="home-newsletter-email"
-          name="email"
-          required
-          placeholder="E-posta adresinizi yazınız..."
-          class="flex-1 px-5 py-4 bg-surface-bright border border-sand text-ink text-sm placeholder:text-stone-gray/70 focus:outline-none focus:border-olive focus:ring-1 focus:ring-olive rounded-sm shadow-sm"
-          aria-label="E-posta adresiniz"
-        />
-        <button
-          type="submit"
-          class="px-8 py-4 bg-ink text-parchment font-sans font-semibold text-xs tracking-widest uppercase hover:bg-olive transition-colors rounded-sm shadow-sm shrink-0 flex items-center justify-center gap-2 cursor-pointer"
-        >
-          <span>{t.subscribeButton}</span>
-          <span class="material-symbols-outlined text-[16px]">send</span>
-        </button>
-      </form>
-
-      <p class="font-sans text-xs text-stone-gray mt-4">
-        Gizliliğinize saygı duyuyoruz. İstediğiniz an bülten aboneliğinden çıkabilirsiniz.
-      </p>
-    </div>
-  </section>
-
-  <!-- Client-side Script for Newsletter Submission -->
-  <script>
-    function setupNewsletter() {
-      const form = document.getElementById('home-newsletter-form') as HTMLFormElement | null;
-      const input = document.getElementById('home-newsletter-email') as HTMLInputElement | null;
-
-      if (!form || !input) return;
-
-      form.addEventListener('submit', (e) => {
-        e.preventDefault();
-        const email = input.value.trim();
-
-        if (email && email.includes('@')) {
-          if (typeof (window as any).showToast === 'function') {
-            (window as any).showToast('Bülten aboneliğiniz başarıyla tamamlandı. Teşekkür ederiz!', 'success');
-          }
-          input.value = '';
-        } else {
-          if (typeof (window as any).showToast === 'function') {
-            (window as any).showToast('Lütfen geçerli bir e-posta adresi giriniz.', 'error');
-          }
-        }
-      });
-    }
-
-    setupNewsletter();
-    document.addEventListener('astro:page-load', setupNewsletter);
-  </script>
 </Layout>

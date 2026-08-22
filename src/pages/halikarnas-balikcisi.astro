@@ -6,107 +6,83 @@ import { getT } from '../utils/i18n';
 const lang = 'tr';
 const t = getT(lang);
 
-// Fetch all 11 books from Content Collections sorted by order
+// Fetch all books from Content Collections sorted by order
 const allBooks = await getCollection('books');
 const books = allBooks.sort((a, b) => a.data.order - b.data.order);
 
-// Helper array for book categories and archival status in table view
-const bookDetailsTr: Record<string, { genre: string; status: string }> = {
-  'book-1': { genre: 'Roman / Deniz Edebiyatı', status: 'Açık Raf & Dijital Arşiv' },
-  'book-2': { genre: 'Otobiyografi & Anı', status: 'Nadir Koleksiyon (İmzalı 1961 Baskı)' },
-  'book-3': { genre: 'Tarihi Biyografik Roman', status: 'Açık Raf Koleksiyonu' },
-  'book-4': { genre: 'Roman / Süngercilik', status: 'Açık Raf Koleksiyonu' },
-  'book-5': { genre: 'Tarihi Roman', status: 'Açık Raf Koleksiyonu' },
-  'book-6': { genre: 'Mitoloji & Kültür Tarihi', status: 'Nadir Koleksiyon (El Notlu Nüsha)' },
-  'book-7': { genre: 'Öykü Derlemesi', status: 'Açık Raf Koleksiyonu' },
-  'book-8': { genre: 'Felsefe & Deneme', status: 'Açık Raf Koleksiyonu' },
-  'book-9': { genre: 'Öykü Derlemesi', status: 'Açık Raf Koleksiyonu' },
-  'book-10': { genre: 'Öykü Derlemesi', status: 'Açık Raf Koleksiyonu' },
-  'book-11': { genre: 'Botanik & Doğa Yazıları', status: 'Açık Raf Koleksiyonu' }
+const bookDetailsTr: Record<string, { genre: string }> = {
+  'book-1': { genre: 'Roman / Deniz Edebiyatı' },
+  'book-2': { genre: 'Otobiyografi & Anı' },
+  'book-3': { genre: 'Tarihi Biyografik Roman' },
+  'book-4': { genre: 'Roman / Süngercilik' },
+  'book-5': { genre: 'Tarihi Roman' },
+  'book-6': { genre: 'Mitoloji & Kültür Tarihi' },
+  'book-7': { genre: 'Öykü Derlemesi' },
+  'book-8': { genre: 'Felsefe & Deneme' },
+  'book-9': { genre: 'Öykü Derlemesi' },
+  'book-10': { genre: 'Öykü Derlemesi' },
+  'book-11': { genre: 'Botanik & Doğa Yazıları' }
 };
 ---
 
 <Layout
-  title={`${t.fisherman} | ${t.siteTitle}`}
-  description="Cevat Şakir Kabaağaçlı’nın (Halikarnas Balıkçısı) eserleri, yaşamı, nadir baskı koleksiyonu ve Bodrum'un kültürel mirasına katkıları."
+  title={`Halikarnas Balıkçısı Cevat Şakir Kabaağaçlı | ${t.siteTitle}`}
+  description="Cevat Şakir Kabaağaçlı’nın (Halikarnas Balıkçısı) eserleri, yaşamı ve Bodrum'un kültürel mirasına katkıları."
   lang={lang}
   currentPath="/halikarnas-balikcisi"
 >
   <!-- 1. Hero Section -->
-  <section class="relative min-h-[75vh] flex items-center py-20 md:py-32 px-margin-mobile md:px-margin-desktop overflow-hidden border-b border-sand bg-surface-bright">
-    <!-- Anchor & Sailing Ex Libris Watermark -->
+  <section class="relative min-h-[70vh] flex items-center py-16 md:py-24 px-5 md:px-12 overflow-hidden border-b border-sand bg-surface-bright">
     <div class="absolute -top-12 -right-12 md:top-8 md:right-12 ex-libris-watermark select-none pointer-events-none">
       <span class="material-symbols-outlined text-[280px] md:text-[420px] text-olive leading-none">anchor</span>
     </div>
 
-    <div class="relative z-10 max-w-container-max mx-auto w-full">
-      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-gutter items-center">
+    <div class="relative z-10 max-w-[1280px] mx-auto w-full">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
         
         <!-- Hero Text Content -->
         <div class="lg:col-span-7">
-          <!-- Overline Badge -->
-          <div class="inline-flex items-center gap-2 px-3.5 py-1.5 bg-secondary-container/80 border border-sand text-ink text-xs font-semibold tracking-[0.2em] uppercase mb-6 rounded">
+          <div class="inline-flex items-center gap-2 px-3.5 py-1.5 bg-secondary-container/80 border border-sand text-ink text-xs font-serif font-semibold tracking-widest uppercase mb-6 rounded-xs">
             <span class="w-2 h-2 rounded-full bg-olive animate-pulse"></span>
             <span>EDEBİYAT MİRASI</span>
           </div>
 
-          <!-- Headline -->
-          <h1 class="font-serif text-5xl sm:text-6xl md:text-7xl text-ink font-normal leading-[1.1] tracking-tight mb-6 text-balance">
-            Halikarnas Balıkçısı
+          <h1 class="font-serif text-4xl sm:text-5xl md:text-6xl text-ink font-bold leading-tight mb-6">
+            Halikarnas Balıkçısı Cevat Şakir Kabaağaçlı
           </h1>
 
-          <!-- Subtitle Card -->
-          <div class="bg-parchment/95 backdrop-blur-sm border border-sand p-6 md:p-8 rounded shadow-sm max-w-2xl mb-8">
-            <p class="font-sans text-lg md:text-xl text-secondary leading-relaxed text-balance">
+          <div class="bg-parchment/95 border border-sand p-6 sm:p-8 rounded-xs shadow-xs max-w-2xl mb-8">
+            <p class="font-serif text-base sm:text-lg text-ink/90 leading-relaxed">
               Cevat Şakir Kabaağaçlı’nın eserleri, Bodrum’la kurduğu bağ ve kültürel mirası.
-            </p>
-            <p class="font-serif italic text-sm md:text-base text-stone-gray mt-3 border-t border-sand/60 pt-3">
-              "Deniz diplerinde yaşayanlar, gökyüzünün sonsuzluğuna denizden bakarlar."
             </p>
           </div>
 
-          <!-- CTA Buttons -->
-          <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 sm:gap-6">
+          <div>
             <a
               href="#katalog"
-              class="inline-flex items-center justify-center gap-3 px-8 py-4 bg-ink text-parchment font-semibold text-xs md:text-sm uppercase tracking-widest hover:bg-olive transition-all duration-200 shadow-md group rounded"
+              class="inline-flex items-center justify-center gap-2 px-8 py-4 bg-ink text-parchment font-serif font-semibold text-sm tracking-wider uppercase hover:bg-olive transition-all duration-200 shadow-md group"
             >
-              <span>KATALOĞU İNCELE</span>
-              <span class="material-symbols-outlined text-[18px] transition-transform group-hover:translate-y-1">arrow_downward</span>
-            </a>
-
-            <a
-              href="#hayati"
-              class="inline-flex items-center justify-center gap-3 px-8 py-4 border border-ink text-ink font-semibold text-xs md:text-sm uppercase tracking-widest hover:bg-sand/60 transition-all duration-200 rounded"
-            >
-              <span>HAYATI VE ARŞİVİ</span>
-              <span class="material-symbols-outlined text-[18px]">history_edu</span>
+              <span>Kitap Kataloğunu İncele</span>
+              <span class="material-symbols-outlined text-lg transition-transform group-hover:translate-y-1">arrow_downward</span>
             </a>
           </div>
         </div>
 
-        <!-- Hero Portrait / Archival Presentation -->
+        <!-- Hero Portrait Presentation -->
         <div class="lg:col-span-5">
-          <div class="relative">
-            <div class="aspect-[4/5] w-full rounded overflow-hidden border border-sand bg-sand/30 shadow-xl relative group">
+          <div class="relative bg-parchment border border-sand p-3 shadow-md">
+            <div class="aspect-[4/5] w-full overflow-hidden bg-surface-container-high relative">
               <img
                 src="https://lh3.googleusercontent.com/aida-public/AB6AXuBtamE2wb97G4UEjVppyIa8xyaz9ESuP7aGYOlM4umN3pryekAUYBwn8XZKo45ZH7aqW73vU6dZsZMnwJgHghenoLISwtjdMxzizGhJdT-zogTKwukWr8_mcLz_GzaVctJXJRHJp7NTLN-FpTqgLCSpt_ul3-9IG-wgO12fv2VihhT8grjHZSbIrejBTST3Qk4OkAZzS9DaaMmyQAUTQACoPiS-Px-FESLfSfYs8RcKnv1j1wlDAq9KyjedqU32oOYQb0Hdoct4hQA"
                 alt="Cevat Şakir Kabaağaçlı - Halikarnas Balıkçısı"
-                class="w-full h-full object-cover filter contrast-105 transition-transform duration-700 group-hover:scale-105"
+                class="w-full h-full object-cover filter contrast-105"
                 loading="eager"
               />
-              <div class="absolute inset-0 bg-gradient-to-t from-ink/80 via-ink/20 to-transparent"></div>
-              
-              <!-- Floating Caption -->
-              <div class="absolute bottom-6 left-6 right-6 text-parchment">
-                <div class="text-xs font-mono uppercase tracking-widest text-olive font-bold mb-1">1886 – 1973</div>
-                <div class="font-serif text-lg font-bold">Cevat Şakir Kabaağaçlı</div>
-                <div class="text-xs text-parchment/80 font-sans">Bodrum'un Ebedi Mavi Sürgünü & Kültür Öncüsü</div>
-              </div>
             </div>
-
-            <!-- Outer Accent Frame -->
-            <div class="absolute -bottom-4 -left-4 w-full h-full rounded border border-olive/30 -z-10 hidden sm:block"></div>
+            <div class="p-3 text-center">
+              <div class="font-serif font-bold text-base text-ink">Cevat Şakir Kabaağaçlı</div>
+              <div class="text-xs text-stone-gray font-serif italic">1886 – 1973 • Halikarnas Balıkçısı</div>
+            </div>
           </div>
         </div>
 
@@ -114,486 +90,103 @@ const bookDetailsTr: Record<string, { genre: string; status: string }> = {
     </div>
   </section>
 
-  <!-- 2. Thematic Bento Grid (Arşiv & Temalar - #hayati) -->
-  <section id="hayati" class="py-24 md:py-32 px-margin-mobile md:px-margin-desktop bg-parchment border-b border-sand relative overflow-hidden">
-    <!-- Watermark Graphic -->
-    <div class="absolute -right-10 top-1/3 ex-libris-watermark select-none pointer-events-none">
-      <span class="material-symbols-outlined text-[320px] text-ink leading-none">history_edu</span>
-    </div>
-
-    <div class="max-w-container-max mx-auto relative z-10">
+  <!-- 2. Mavi Hümanizmanın ve Anadolu Uygarlığının İzinde -->
+  <section class="py-16 md:py-24 px-5 md:px-12 bg-parchment border-b border-sand">
+    <div class="max-w-[1280px] mx-auto">
       
-      <!-- Section Header -->
-      <div class="max-w-3xl mb-16 md:mb-20">
-        <span class="font-sans text-xs uppercase tracking-[0.2em] text-olive font-semibold block mb-3">
-          ARŞİV & TEMALAR
-        </span>
-        <h2 class="font-serif text-3xl sm:text-4xl md:text-5xl text-ink leading-tight mb-6">
-          Mavi Hümanizmanın İzinde
+      <div class="max-w-3xl mb-12">
+        <h2 class="font-serif text-3xl sm:text-4xl text-ink font-bold leading-tight mb-4">
+          Mavi Hümanizmanın ve Anadolu Uygarlığının İzinde
         </h2>
-        <p class="font-sans text-base md:text-lg text-secondary leading-relaxed">
-          Cevat Şakir'in Girit'ten Oxford'a, İstanbul'dan Bodrum'a uzanan çalkantılı yaşamı ve Anadolu Akdeniz kültürüne kazandırdığı ölümsüz miras.
+        <p class="font-serif text-base sm:text-lg text-ink/85 leading-relaxed">
+          Halikarnas Balıkçısı Cevat Şakir Kabaağaçlı’nın Girit’ten Atina’ya, İstanbul’dan Bodrum’a ve İzmir’e uzanan, Akdeniz Mirasına ve Anadolu Uygarlığına kazandırdığı ölümsüz miras
         </p>
       </div>
 
-      <!-- 4-Column Thematic Bento Grid -->
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-        
-        <!-- Card 1: Hayatı (2-col, 2-row on large screens) -->
-        <div class="lg:col-span-2 lg:row-span-2 bg-surface-bright border border-sand p-8 md:p-10 rounded flex flex-col justify-between shadow-sm relative overflow-hidden group">
-          <div>
-            <div class="flex items-center justify-between gap-4 mb-6">
-              <span class="inline-flex items-center gap-2 px-3 py-1 bg-secondary-container/80 text-ink text-xs font-mono font-bold tracking-wider uppercase rounded">
-                <span class="material-symbols-outlined text-[16px] text-olive">person</span>
-                01 / BİYOGRAFİK ARŞİV
-              </span>
-              <span class="text-xs font-mono text-stone-gray">1886 — 1973</span>
-            </div>
-
-            <h3 class="font-serif text-2xl sm:text-3xl text-ink font-bold leading-snug mb-6">
-              Cevat Şakir Kabaağaçlı'nın Yaşamı
-            </h3>
-
-            <div class="space-y-4 text-secondary text-sm sm:text-base leading-relaxed">
-              <p>
-                1886 yılında Girit'te köklü Kabaağaçlızade ailesinin çocuğu olarak dünyaya gelen Cevat Şakir, Robert Kolej'deki eğitiminin ardından İngiltere'ye giderek Oxford Üniversitesi'nde Yeniçağ Tarihi öğrenimi gördü.
-              </p>
-              <p>
-                1925 yılında İstanbul'da <em>Resimli Hafta</em> dergisinde yayımlanan bir yazısı nedeniyle Bodrum'a üç yıl kalebentlik cezasıyla sürgün edildi. Bu zorunlu yolculuk, Türk edebiyat tarihinin en bereketli dönüm noktalarından biri oldu.
-              </p>
-              <p>
-                Sürgün geldiği Bodrum'un antik köklerini, Akdeniz mitolojisini ve sünger avcılarının çetin mücadelesini keşfeden yazar, kente derin bir aşkla bağlandı. Cezası bittikten sonra da Bodrum'dan ayrılmadı ve adını <strong>Halikarnas Balıkçısı</strong> olarak edebiyat tarihine yazdırdı.
-              </p>
-              <p>
-                Sabahattin Eyüboğlu ve Azra Erhat ile birlikte başlattığı <em>Mavi Yolculuk</em> geleneğiyle, Anadolu'yu Batı medeniyetinin beşiği olarak konumlandıran "Mavi Hümanizma" felsefesini inşa etti.
-              </p>
-            </div>
-          </div>
-
-          <!-- Bottom Quote Highlight -->
-          <div class="mt-8 pt-6 border-t border-sand bg-surface-container-low p-5 rounded">
-            <p class="font-serif italic text-ink text-sm sm:text-base leading-snug">
-              "Bodrum'u sevmek, denizi ve insanı olduğu gibi kabul etmektir. Burası bir sürgün yeri değil, ebedi bir hürriyet yurdudur."
-            </p>
-            <span class="font-sans text-xs font-semibold text-olive uppercase tracking-wider block mt-2">
-              — Mavi Sürgün
-            </span>
-          </div>
+      <!-- Prepared Sections Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div class="bg-surface-container-low p-8 border border-sand">
+          <h3 class="font-serif text-xl text-ink font-bold mb-3">Biyografik Arşiv</h3>
+          <p class="font-serif italic text-sm text-stone-gray">Bu bölüm hazırlanmaktadır.</p>
         </div>
 
-        <!-- Card 2: Kronoloji (2-col on large screens) -->
-        <div class="lg:col-span-2 bg-surface-container-low border border-sand p-6 md:p-8 rounded flex flex-col justify-between shadow-sm">
-          <div>
-            <div class="flex items-center justify-between mb-4">
-              <span class="inline-flex items-center gap-2 px-3 py-1 bg-secondary-container/80 text-ink text-xs font-mono font-bold tracking-wider uppercase rounded">
-                <span class="material-symbols-outlined text-[16px] text-olive">timeline</span>
-                02 / KRONOLOJİ
-              </span>
-              <span class="text-xs font-mono text-stone-gray">Tarihsel Dönüm Noktaları</span>
-            </div>
-
-            <h3 class="font-serif text-xl sm:text-2xl text-ink font-bold leading-snug mb-6">
-              Önemli Kilometre Taşları
-            </h3>
-
-            <!-- Chronology List -->
-            <div class="space-y-3.5">
-              <div class="flex items-start gap-3">
-                <span class="font-mono text-xs font-bold text-olive bg-parchment border border-sand px-2 py-0.5 rounded shrink-0">1886</span>
-                <p class="text-xs sm:text-sm text-secondary leading-snug"><strong class="text-ink">Girit'te Doğum:</strong> Çok dilli, kozmopolit Akdeniz kültürüyle yetişti.</p>
-              </div>
-              <div class="flex items-start gap-3">
-                <span class="font-mono text-xs font-bold text-olive bg-parchment border border-sand px-2 py-0.5 rounded shrink-0">1908</span>
-                <p class="text-xs sm:text-sm text-secondary leading-snug"><strong class="text-ink">Oxford Mezuniyeti:</strong> Yeniçağ Tarihi bölümünü bitirerek antik dilleri öğrendi.</p>
-              </div>
-              <div class="flex items-start gap-3">
-                <span class="font-mono text-xs font-bold text-olive bg-parchment border border-sand px-2 py-0.5 rounded shrink-0">1925</span>
-                <p class="text-xs sm:text-sm text-secondary leading-snug"><strong class="text-ink">Bodrum'a Sürgün:</strong> 3 yıllık ceza, ömür boyu sürecek bir tutkuya dönüştü.</p>
-              </div>
-              <div class="flex items-start gap-3">
-                <span class="font-mono text-xs font-bold text-olive bg-parchment border border-sand px-2 py-0.5 rounded shrink-0">1946</span>
-                <p class="text-xs sm:text-sm text-secondary leading-snug"><strong class="text-ink">Aganta Burina Burinata:</strong> Türk deniz edebiyatının başyapıtı yayımlandı.</p>
-              </div>
-              <div class="flex items-start gap-3">
-                <span class="font-mono text-xs font-bold text-olive bg-parchment border border-sand px-2 py-0.5 rounded shrink-0">1957</span>
-                <p class="text-xs sm:text-sm text-secondary leading-snug"><strong class="text-ink">İlk Mavi Yolculuk:</strong> Sabahattin Eyüboğlu ve Azra Erhat ile Ege seferleri başladı.</p>
-              </div>
-              <div class="flex items-start gap-3">
-                <span class="font-mono text-xs font-bold text-olive bg-parchment border border-sand px-2 py-0.5 rounded shrink-0">1973</span>
-                <p class="text-xs sm:text-sm text-secondary leading-snug"><strong class="text-ink">Sonsuzluğa Uğurlanış:</strong> İzmir'de vefat etti, vasiyeti üzerine Bodrum Gümbet'e defnedildi.</p>
-              </div>
-            </div>
-          </div>
+        <div class="bg-surface-container-low p-8 border border-sand">
+          <h3 class="font-serif text-xl text-ink font-bold mb-3">Önemli Kilometre Taşları</h3>
+          <p class="font-serif italic text-sm text-stone-gray">Bu bölüm hazırlanmaktadır.</p>
         </div>
 
-        <!-- Card 3: Fotoğraf Arşivi (Ink Dark Card) -->
-        <div class="lg:col-span-1 bg-ink text-parchment p-6 md:p-8 rounded flex flex-col justify-between shadow-md relative overflow-hidden group">
-          <div class="relative z-10">
-            <span class="inline-flex items-center gap-1.5 px-2.5 py-1 bg-white/10 text-sand text-[11px] font-mono font-bold tracking-wider uppercase rounded mb-4">
-              <span class="material-symbols-outlined text-[14px] text-olive">photo_camera</span>
-              03 / FOTOĞRAF ARŞİVİ
-            </span>
-            <h4 class="font-serif text-lg font-bold text-parchment mb-3">
-              Tarihi Kareler & Süngerciler
-            </h4>
-            <p class="text-xs text-parchment/80 leading-relaxed mb-4">
-              Balıkçı’nın Bodrum sünger avcılarıyla denize açıldığı anlar, antik kazı ziyaretleri ve dost meclislerinden oluşan 200'ü aşkın dijitalleştirilmiş kare.
-            </p>
-          </div>
-
-          <div class="relative z-10 pt-4 border-t border-white/10 flex items-center justify-between text-xs text-sand font-mono">
-            <span>Özel Arşiv Odası</span>
-            <span class="material-symbols-outlined text-[16px] text-olive">collections</span>
-          </div>
-
-          <!-- Subtle background texture -->
-          <div class="absolute -bottom-6 -right-6 opacity-10 pointer-events-none">
-            <span class="material-symbols-outlined text-[140px]">photo_library</span>
-          </div>
+        <div class="bg-surface-container-low p-8 border border-sand">
+          <h3 class="font-serif text-xl text-ink font-bold mb-3">Mavi Hümanizma</h3>
+          <p class="font-serif italic text-sm text-stone-gray">İçerik hazırlanmaktadır.</p>
         </div>
 
-        <!-- Card 4: Alıntılar & Felsefe -->
-        <div class="lg:col-span-1 bg-surface-bright border border-sand p-6 md:p-8 rounded flex flex-col justify-between shadow-sm">
-          <div>
-            <span class="inline-flex items-center gap-1.5 px-2.5 py-1 bg-secondary-container/80 text-ink text-[11px] font-mono font-bold tracking-wider uppercase rounded mb-4">
-              <span class="material-symbols-outlined text-[14px] text-olive">format_quote</span>
-              04 / ALINTILAR
-            </span>
-            <h4 class="font-serif text-lg font-bold text-ink mb-3">
-              Mavi Hümanizma
-            </h4>
-            <p class="font-serif italic text-xs sm:text-sm text-secondary leading-relaxed">
-              "Altıncı kıta Akdeniz'dir. Homeros buralıdır, tarih bu kıyılarda doğmuştur. Anadolu, Batı medeniyetinin üvey değil, öz anasıdır."
-            </p>
-          </div>
-
-          <div class="pt-4 border-t border-sand mt-4 text-[11px] font-mono text-stone-gray">
-            — Anadolu'nun Sesi
-          </div>
+        <div class="bg-surface-container-low p-8 border border-sand">
+          <h3 class="font-serif text-xl text-ink font-bold mb-3">Bodrum’u Yeşerten Kalem</h3>
+          <p class="font-serif italic text-sm text-stone-gray">İçerik hazırlanmaktadır.</p>
         </div>
-
-        <!-- Card 5: Bodrum Yılları & Botanik (Olive Accent Card - 2 col on lg) -->
-        <div class="lg:col-span-2 bg-olive text-white p-6 md:p-8 rounded flex flex-col justify-between shadow-md relative overflow-hidden group">
-          <div class="relative z-10">
-            <div class="flex items-center justify-between mb-4">
-              <span class="inline-flex items-center gap-1.5 px-3 py-1 bg-white/20 text-white text-xs font-mono font-bold tracking-wider uppercase rounded">
-                <span class="material-symbols-outlined text-[16px]">park</span>
-                05 / BODRUM YILLARI & BOTANİK
-              </span>
-              <span class="text-xs font-mono text-white/80">Kente Ekilen Tohumlar</span>
-            </div>
-
-            <h3 class="font-serif text-xl sm:text-2xl font-bold leading-snug mb-3 text-white">
-              Bodrum'u Yeşerten Kalem
-            </h3>
-
-            <p class="text-xs sm:text-sm text-white/90 leading-relaxed">
-              Cevat Şakir, sürgün yıllarında dünyanın dört bir yanındaki botanik bahçelerinden tohumlar ve fidanlar ısmarladı. Bodrum sokaklarını ve kaleyi süsleyen okaliptüs, begonvil, jakaranda, kauçuk ve mimoza ağaçlarının pek çoğu Balıkçı'nın kendi elleriyle dikilmiştir. O, sadece edebiyatı değil, Bodrum'un tabiat dokusunu da baştan yaratmıştır.
-            </p>
-          </div>
-
-          <div class="relative z-10 pt-4 border-t border-white/20 mt-4 flex items-center justify-between text-xs text-white/90 font-mono">
-            <span>Çiçeklerin Düğünü Koleksiyonu</span>
-            <span class="material-symbols-outlined text-[18px]">nature</span>
-          </div>
-
-          <!-- Decorative Floral Icon Overlay -->
-          <div class="absolute -bottom-8 -right-8 opacity-10 pointer-events-none">
-            <span class="material-symbols-outlined text-[160px]">local_florist</span>
-          </div>
-        </div>
-
       </div>
+
     </div>
   </section>
 
-  <!-- 3. Book Catalog Section (Eserler Kataloğu - #katalog) -->
-  <section id="katalog" class="py-24 md:py-32 px-margin-mobile md:px-margin-desktop bg-surface-container-low border-b border-sand relative">
-    <div class="max-w-container-max mx-auto">
+  <!-- 3. Eserler Kataloğu Section -->
+  <section id="katalog" class="py-16 md:py-24 px-5 md:px-12 bg-surface-bright border-b border-sand">
+    <div class="max-w-[1280px] mx-auto">
       
-      <!-- Section Header -->
-      <div class="max-w-3xl mb-16 md:mb-20">
-        <span class="font-sans text-xs uppercase tracking-[0.2em] text-olive font-semibold block mb-3">
-          KÜLLİYAT
-        </span>
-        <h2 class="font-serif text-3xl sm:text-4xl md:text-5xl text-ink leading-tight mb-6">
-          Eserler Kataloğu
+      <div class="max-w-3xl mb-12">
+        <h2 class="font-serif text-3xl sm:text-4xl text-ink font-bold leading-tight mb-4">
+          Halikarnas Balıkçısı Cevat Şakir Kabaağaçlı Eserler Kataloğu
         </h2>
-        <p class="font-sans text-base md:text-lg text-secondary leading-relaxed">
-          Halikarnas Balıkçısı’nın Türk edebiyatına ve Akdeniz kültürüne kazandırdığı 11 temel başyapıt.
+        <p class="font-serif text-base text-ink/80">
+          Bodrum Kent Kütüphanesi bünyesinde bulunan temel eserler ve kitap koleksiyonu.
         </p>
       </div>
 
-      <!-- 4-Column Book Grid -->
-      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 md:gap-8 mb-20">
+      <!-- Book Cards Grid -->
+      <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-6 mb-16">
         {books.map((book) => (
-          <div class="bg-surface-bright border border-sand rounded p-4 sm:p-5 flex flex-col justify-between shadow-sm hover:shadow-md transition-all duration-300 group">
+          <div class="bg-parchment border border-sand p-4 flex flex-col justify-between hover:border-olive/50 transition-all shadow-xs">
             <div>
-              <!-- Book Cover Presentation [2/3 Aspect Ratio] -->
-              <div class="relative aspect-[2/3] w-full overflow-hidden rounded bg-sand/30 shadow-md border border-sand/60 mb-5">
+              <div class="aspect-[2/3] overflow-hidden bg-surface-container-high mb-4 border border-sand">
                 <img
                   src={book.data.coverImage}
                   alt={book.data.title}
-                  class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                  loading="lazy"
+                  class="w-full h-full object-cover grayscale contrast-110 hover:grayscale-0 transition-all duration-500"
                 />
-
-                <!-- Rare Edition Badge -->
-                {book.data.isRare && (
-                  <div class="absolute top-3 left-3 bg-olive text-white text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 rounded shadow-sm flex items-center gap-1">
-                    <span class="material-symbols-outlined text-[13px]">star</span>
-                    <span>Nadir Eser</span>
-                  </div>
-                )}
-
-                <!-- Year Badge -->
-                {book.data.originalYear && (
-                  <div class="absolute top-3 right-3 bg-ink/85 backdrop-blur-sm text-parchment font-mono text-[11px] px-2 py-0.5 rounded shadow-sm">
-                    {book.data.originalYear}
-                  </div>
-                )}
               </div>
 
-              <!-- Book Meta -->
-              <div class="flex items-center gap-2 text-xs font-mono text-stone-gray mb-1.5">
-                <span>Eser #{book.data.order}</span>
-                {book.data.originalYear && (
-                  <>
-                    <span>•</span>
-                    <span>İlk Basım: {book.data.originalYear}</span>
-                  </>
-                )}
-              </div>
-
-              <!-- Title -->
-              <h3 class="font-serif text-xl font-bold text-ink mb-2.5 group-hover:text-olive transition-colors leading-snug">
-                {book.data.title}
-              </h3>
-
-              <!-- Summary -->
-              <p class="font-sans text-xs sm:text-sm text-secondary leading-relaxed line-clamp-3 mb-4">
-                {book.data.summaryTr}
-              </p>
-            </div>
-
-            <!-- Footer Meta -->
-            <div class="pt-3 border-t border-sand/60 flex items-center justify-between text-xs">
-              <span class="text-olive font-semibold font-sans">
-                {book.data.isRare ? 'Özel Arşiv Nüshası' : 'Açık Raf Koleksiyonu'}
-              </span>
-              <span class="material-symbols-outlined text-[16px] text-stone-gray group-hover:text-olive transition-colors">
-                auto_stories
-              </span>
+              <div class="text-xs text-stone-gray font-mono mb-1">{book.data.originalYear}</div>
+              <h3 class="font-serif font-bold text-base text-ink leading-snug mb-2">{book.data.title}</h3>
+              <p class="font-serif text-xs text-ink/75 leading-relaxed">{book.data.summaryTr}</p>
             </div>
           </div>
         ))}
       </div>
 
-      <!-- Comprehensive Bibliographic Table of all 11 Titles -->
-      <div class="bg-surface-bright border border-sand rounded p-6 md:p-8 shadow-sm">
-        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6 pb-4 border-b border-sand">
-          <div>
-            <h3 class="font-serif text-xl sm:text-2xl font-bold text-ink">
-              Koleksiyon Başlıkları Dizini
-            </h3>
-            <p class="font-sans text-xs sm:text-sm text-secondary mt-1">
-              Bodrum Kent Kütüphanesi bünyesinde kayıtlı Halikarnas Balıkçısı eserlerinin tam bibliyografik dökümü.
-            </p>
-          </div>
-          <div class="text-xs font-mono text-stone-gray">
-            Toplam: 11 Eser
-          </div>
-        </div>
-
-        <div class="overflow-x-auto">
-          <table class="w-full text-left border-collapse">
-            <thead>
-              <tr class="border-b border-sand text-xs font-mono uppercase tracking-wider text-stone-gray">
-                <th class="py-3 px-4">No</th>
-                <th class="py-3 px-4">Eser Adı</th>
-                <th class="py-3 px-4">İlk Basım Yılı</th>
-                <th class="py-3 px-4">Tür & Tema</th>
-                <th class="py-3 px-4">Kütüphane Durumu</th>
+      <!-- Complete Directory Table -->
+      <div class="bg-parchment border border-sand overflow-x-auto">
+        <table class="w-full text-left text-xs sm:text-sm font-serif">
+          <thead>
+            <tr class="bg-surface-container-high border-b border-sand text-ink font-bold">
+              <th class="p-4 w-12">#</th>
+              <th class="p-4">Eser Adı</th>
+              <th class="p-4">İlk Yayın Yılı</th>
+              <th class="p-4">Tür</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-sand text-ink/90">
+            {books.map((book, idx) => (
+              <tr class="hover:bg-surface-container-low transition-colors">
+                <td class="p-4 font-mono text-stone-gray">{idx + 1}</td>
+                <td class="p-4 font-bold text-ink">{book.data.title}</td>
+                <td class="p-4 font-mono">{book.data.originalYear}</td>
+                <td class="p-4 text-stone-gray">{bookDetailsTr[book.data.id]?.genre || 'Edebiyat & İnceleme'}</td>
               </tr>
-            </thead>
-            <tbody class="divide-y divide-sand/60 font-sans text-xs sm:text-sm text-ink">
-              {books.map((book) => {
-                const details = bookDetailsTr[book.id] || { genre: 'Edebiyat / İnceleme', status: 'Açık Raf' };
-                return (
-                  <tr class="hover:bg-surface-container-low transition-colors">
-                    <td class="py-3.5 px-4 font-mono text-stone-gray font-bold">
-                      {String(book.data.order).padStart(2, '0')}
-                    </td>
-                    <td class="py-3.5 px-4 font-serif font-bold text-base text-ink">
-                      {book.data.title}
-                      {book.data.isRare && (
-                        <span class="ml-2 inline-flex items-center px-2 py-0.5 bg-olive/10 text-olive text-[10px] font-bold uppercase rounded">
-                          Nadir
-                        </span>
-                      )}
-                    </td>
-                    <td class="py-3.5 px-4 font-mono text-stone-gray">
-                      {book.data.originalYear || '—'}
-                    </td>
-                    <td class="py-3.5 px-4 text-secondary">
-                      {details.genre}
-                    </td>
-                    <td class="py-3.5 px-4">
-                      <span class={`inline-flex items-center gap-1.5 ${book.data.isRare ? 'text-olive font-semibold' : 'text-stone-gray'}`}>
-                        <span class={`w-1.5 h-1.5 rounded-full ${book.data.isRare ? 'bg-olive' : 'bg-stone-gray'}`}></span>
-                        {details.status}
-                      </span>
-                    </td>
-                  </tr>
-                );
-              })}
-            </tbody>
-          </table>
-        </div>
+            ))}
+          </tbody>
+        </table>
       </div>
 
-    </div>
-  </section>
-
-  <!-- 4. Rare Collection Section (Nadir Koleksiyon) -->
-  <section class="py-24 md:py-32 px-margin-mobile md:px-margin-desktop bg-parchment border-b border-sand relative overflow-hidden">
-    <!-- Ex Libris Watermark -->
-    <div class="absolute -left-12 bottom-1/4 ex-libris-watermark select-none pointer-events-none">
-      <span class="material-symbols-outlined text-[320px] text-olive leading-none">menu_book</span>
-    </div>
-
-    <div class="max-w-container-max mx-auto relative z-10">
-      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-gutter items-center">
-        
-        <!-- Left: Archival Macro Presentation -->
-        <div class="lg:col-span-5">
-          <div class="relative">
-            <div class="aspect-[4/5] w-full rounded overflow-hidden border border-sand bg-sand/30 shadow-xl relative group">
-              <img
-                src="https://lh3.googleusercontent.com/aida-public/AB6AXuB_XICwOmzmDr1vkcwkGWx8xGd57FX_biXF5N4EhDhQugOsi0PPgp59UHEPnXAnvVVzWK9YzqcrRIs500nNgELehMvSDG3B8ukFd5xQPWAUKS0-y0OYW-O8vXfYsPZPgtHCZ6uM-HIMnkWK8c0i-hYC-JqeGwv4BkHUqoptVxPle2BQXVxxOwmvaTjbuOxByAOTr-veXULWhK2UPV8VBYQg-G6pqTaT_TnIEawQGRTuRohwuats1PCEt0z1GGbhDCjebFap32yCjLE"
-                alt="Halikarnas Balıkçısı Nadir Koleksiyon ve İmzalı Elyazmaları"
-                class="w-full h-full object-cover filter contrast-105 transition-transform duration-700 group-hover:scale-105"
-                loading="lazy"
-              />
-              <div class="absolute inset-0 bg-gradient-to-t from-ink/80 via-transparent to-transparent"></div>
-              
-              <!-- Floating Card Badge -->
-              <div class="absolute bottom-6 left-6 right-6 text-parchment">
-                <span class="inline-flex items-center gap-1.5 px-2.5 py-1 bg-olive text-white text-[11px] font-mono font-bold tracking-wider uppercase rounded mb-2">
-                  Özel İklimlendirmeli Oda
-                </span>
-                <p class="font-serif text-base text-parchment leading-snug">
-                  1961 İmzalı İlk Baskılar & Orijinal El Çizimleri
-                </p>
-              </div>
-            </div>
-
-            <!-- Outer Accent Frame -->
-            <div class="absolute -bottom-4 -right-4 w-full h-full rounded border border-olive/30 -z-10 hidden sm:block"></div>
-          </div>
-        </div>
-
-        <!-- Right: Editorial Information & Archival Highlights -->
-        <div class="lg:col-span-7 space-y-8">
-          <div>
-            <span class="font-sans text-xs uppercase tracking-[0.2em] text-olive font-semibold block mb-3">
-              {t.rareCollection.toUpperCase()}
-            </span>
-            <h2 class="font-serif text-3xl sm:text-4xl md:text-5xl text-ink leading-tight mb-6">
-              {t.rareCollectionSubtitle}
-            </h2>
-            <p class="font-sans text-base md:text-lg text-secondary leading-relaxed">
-              {t.rareCollectionDesc}
-            </p>
-          </div>
-
-          <!-- Highlighted Archival Items -->
-          <div class="space-y-4">
-            <!-- Item 01 -->
-            <div class="p-5 bg-surface-container-low border border-sand rounded hover:border-olive transition-colors">
-              <div class="flex items-center justify-between mb-2">
-                <div class="flex items-center gap-2 text-xs font-mono font-bold text-olive uppercase tracking-wider">
-                  <span class="material-symbols-outlined text-[16px]">verified</span>
-                  <span>01 • MAVİ SÜRGÜN — İMZALI İLK BASKI (1961)</span>
-                </div>
-                <span class="text-xs font-mono text-stone-gray">Yeditepe Yayınları</span>
-              </div>
-              <p class="font-sans text-sm text-secondary leading-relaxed">
-                Cevat Şakir'in bizzat kendi el yazısıyla dostlarına ithaf ettiği, orijinal kapak mizanpajı ve dönem matbaa cildini muhafaza eden eşsiz ilk baskı nüsha.
-              </p>
-            </div>
-
-            <!-- Item 02 -->
-            <div class="p-5 bg-surface-container-low border border-sand rounded hover:border-olive transition-colors">
-              <div class="flex items-center justify-between mb-2">
-                <div class="flex items-center gap-2 text-xs font-mono font-bold text-olive uppercase tracking-wider">
-                  <span class="material-symbols-outlined text-[16px]">verified</span>
-                  <span>02 • AGANTA BURİNA BURİNATA — ORİJİNAL KAPAK TASLAĞI</span>
-                </div>
-                <span class="text-xs font-mono text-stone-gray">1946 Arşivi</span>
-              </div>
-              <p class="font-sans text-sm text-secondary leading-relaxed">
-                Balıkçı'nın çini mürekkebiyle bizzat resmettiği süngerci yelkenlisi eskizleri ve sayfa düzenine ilişkin el yazısı editoryal notları.
-              </p>
-            </div>
-
-            <!-- Item 03 -->
-            <div class="p-5 bg-surface-container-low border border-sand rounded hover:border-olive transition-colors">
-              <div class="flex items-center justify-between mb-2">
-                <div class="flex items-center gap-2 text-xs font-mono font-bold text-olive uppercase tracking-wider">
-                  <span class="material-symbols-outlined text-[16px]">verified</span>
-                  <span>03 • ANADOLU EFSANELERİ — EL YAZMASI NOTLAR</span>
-                </div>
-                <span class="text-xs font-mono text-stone-gray">1954 Arşivi</span>
-              </div>
-              <p class="font-sans text-sm text-secondary leading-relaxed">
-                Antik Karya ve Likya mitolojisi çevirileri esnasında tutulmuş kenar notları, el çizimi antik yarımada haritası ve mitolojik kavram dizinleri.
-              </p>
-            </div>
-          </div>
-
-          <!-- Archival Policy Note -->
-          <div class="p-4 bg-sand/30 border-l-4 border-olive rounded text-xs text-secondary leading-relaxed flex items-start gap-3">
-            <span class="material-symbols-outlined text-[18px] text-olive shrink-0 mt-0.5">info</span>
-            <span>
-              <strong>Araştırmacı Erişimi:</strong> Nadir koleksiyon eserlerimiz, koruma protokolleri gereği araştırmacı ve akademisyenlerin incelemesine randevu usulüyle ve özel arşiv odasında sunulmaktadır.
-            </span>
-          </div>
-
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- 5. Quotes Section (Yokuş Başı Alıntısı) -->
-  <section class="py-24 md:py-32 px-margin-mobile md:px-margin-desktop bg-ink text-parchment relative overflow-hidden">
-    <!-- Atmospheric Ambient Watermark -->
-    <div class="absolute -right-8 -bottom-12 ex-libris-watermark pointer-events-none select-none opacity-5">
-      <span class="material-symbols-outlined text-[360px] text-parchment leading-none">format_quote</span>
-    </div>
-
-    <div class="max-w-4xl mx-auto relative z-10 text-center">
-      <!-- Quote Symbol -->
-      <div class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-white/10 text-olive mb-8 shadow-inner">
-        <span class="material-symbols-outlined text-[36px]">format_quote</span>
-      </div>
-
-      <!-- Main Blockquote -->
-      <blockquote class="font-serif text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-parchment font-normal leading-[1.3] mb-10 text-balance">
-        "{t.quotesText}"
-      </blockquote>
-
-      <!-- Author Attribution -->
-      <div class="inline-flex flex-col items-center">
-        <div class="w-12 h-0.5 bg-olive mb-4"></div>
-        <span class="font-serif text-xl sm:text-2xl text-sand font-bold tracking-wide">
-          — {t.quotesAuthor}
-        </span>
-        <span class="font-sans text-xs uppercase tracking-[0.25em] text-stone-gray mt-1.5">
-          Halikarnas Balıkçısı (1886 – 1973)
-        </span>
-      </div>
     </div>
   </section>
 </Layout>

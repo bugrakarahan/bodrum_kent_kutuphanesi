@@ -35,29 +35,35 @@ const switchLangUrl = getEquivalentLanguageUrl(currentPath, targetLang);
 const homeUrl = lang === 'tr' ? '/' : '/en';
 ---
 
-<header class="sticky top-0 z-40 w-full bg-parchment/90 backdrop-blur-md border-b border-sand h-20 transition-all duration-300">
+<header class="sticky top-0 z-40 w-full bg-parchment/95 backdrop-blur-md border-b border-sand h-20 transition-all duration-300">
   <div class="max-w-[1280px] mx-auto h-full px-5 md:px-12 flex items-center justify-between gap-4">
     
-    <!-- Brand / Logo -->
+    <!-- Brand / Logo with Bodrum Emblem -->
     <a 
       href={homeUrl} 
       class="group flex items-center gap-3 focus:outline-none focus-visible:ring-2 focus-visible:ring-olive rounded-sm py-1"
       aria-label={`${t.siteTitle} - ${t.nav.home}`}
     >
-      <span class="font-serif text-2xl sm:text-3xl italic font-normal text-ink tracking-tight group-hover:text-olive transition-colors duration-200">
+      <!-- Custom Library Emblem (Bodrum Blue Anchor/Book Emblem) -->
+      <div class="w-9 h-9 rounded-full bg-olive text-white flex items-center justify-center shadow-xs transition-transform group-hover:scale-105">
+        <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18a8.967 8.967 0 00-6 2.292m0-14.25v14.25" />
+        </svg>
+      </div>
+      <span class="font-serif text-xl sm:text-2xl italic font-semibold text-ink tracking-tight group-hover:text-olive transition-colors duration-200">
         {t.siteTitle}
       </span>
     </a>
 
     <!-- Desktop Navigation -->
-    <nav class="hidden lg:flex items-center gap-6 xl:gap-8" aria-label="Ana Menü">
+    <nav class="hidden lg:flex items-center gap-5 xl:gap-7" aria-label="Ana Menü">
       {links.map((link) => (
         <a
           href={link.href}
           class={`text-sm xl:text-[15px] transition-all duration-200 ${
             link.isActive
-              ? 'border-b-2 border-ink pb-1 font-semibold text-ink'
-              : 'text-ink/80 hover:text-ink hover:border-b-2 hover:border-sand pb-1 font-medium'
+              ? 'border-b-2 border-olive pb-1 font-semibold text-olive'
+              : 'text-ink/80 hover:text-olive hover:border-b-2 hover:border-sand pb-1 font-medium'
           }`}
           aria-current={link.isActive ? 'page' : undefined}
         >
@@ -72,7 +78,7 @@ const homeUrl = lang === 'tr' ? '/' : '/en';
       <button
         type="button"
         data-search-trigger
-        class="flex items-center gap-2 px-3 py-1.5 rounded border border-sand bg-surface-container-low/80 hover:bg-surface-container hover:border-ink/30 text-ink/80 hover:text-ink transition-all text-xs focus:outline-none focus-visible:ring-2 focus-visible:ring-olive cursor-pointer"
+        class="flex items-center gap-2 px-3 py-1.5 rounded border border-sand bg-surface-container-low hover:bg-surface-container hover:border-ink/30 text-ink/80 hover:text-ink transition-all text-xs focus:outline-none focus-visible:ring-2 focus-visible:ring-olive cursor-pointer"
         aria-label={t.search.title}
         title={`${t.search.title} (⌘K)`}
       >
@@ -86,13 +92,13 @@ const homeUrl = lang === 'tr' ? '/' : '/en';
       <!-- Language Switcher Toggle -->
       <a
         href={switchLangUrl}
-        class="flex items-center text-xs tracking-wider font-medium text-ink border border-sand hover:border-ink/40 bg-surface-container-low/60 hover:bg-surface-container-low px-2.5 py-1.5 rounded transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-olive"
+        class="flex items-center text-xs tracking-wider font-medium text-ink border border-sand hover:border-ink/40 bg-surface-container-low px-2.5 py-1.5 rounded transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-olive"
         title={lang === 'tr' ? 'Switch to English' : 'Türkçe\'ye geç'}
         aria-label={lang === 'tr' ? 'Switch website to English' : 'Web sitesini Türkçe\'ye çevir'}
       >
-        <span class={lang === 'tr' ? 'font-bold text-ink' : 'text-stone-gray hover:text-ink'}>TR</span>
+        <span class={lang === 'tr' ? 'font-bold text-olive' : 'text-stone-gray hover:text-ink'}>TR</span>
         <span class="mx-1 text-sand">|</span>
-        <span class={lang === 'en' ? 'font-bold text-ink' : 'text-stone-gray hover:text-ink'}>EN</span>
+        <span class={lang === 'en' ? 'font-bold text-olive' : 'text-stone-gray hover:text-ink'}>EN</span>
       </a>
     </div>
 
@@ -102,196 +108,168 @@ const homeUrl = lang === 'tr' ? '/' : '/en';
       <button
         type="button"
         data-search-trigger
-        class="p-2 rounded border border-sand bg-surface-container-low/80 text-ink hover:bg-surface-container transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-olive"
+        class="p-2 text-ink/80 hover:text-olive focus:outline-none focus-visible:ring-2 focus-visible:ring-olive rounded"
         aria-label={t.search.title}
       >
-        <span class="material-symbols-outlined text-[22px]">search</span>
+        <span class="material-symbols-outlined text-2xl">search</span>
       </button>
-
-      <!-- Mobile Language Switcher Link -->
-      <a
-        href={switchLangUrl}
-        class="px-2 py-1 text-xs font-semibold rounded border border-sand bg-surface-container-low/80 text-ink hover:bg-surface-container transition-colors"
-        aria-label={lang === 'tr' ? 'Switch to English' : 'Türkçe\'ye geç'}
-      >
-        {lang === 'tr' ? 'EN' : 'TR'}
-      </a>
 
       <!-- Mobile Menu Hamburger Button -->
       <button
         type="button"
-        id="mobile-menu-btn"
-        class="p-2 rounded border border-sand bg-surface-container-low/80 text-ink hover:bg-surface-container transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-olive"
-        aria-label="Menüyü aç"
+        id="mobile-menu-open-btn"
+        class="p-2 text-ink/80 hover:text-olive focus:outline-none focus-visible:ring-2 focus-visible:ring-olive rounded"
+        aria-label="Menüyü Aç"
         aria-expanded="false"
         aria-controls="mobile-drawer"
       >
-        <span class="material-symbols-outlined text-[24px] transition-transform duration-200" id="mobile-menu-icon">menu</span>
+        <span class="material-symbols-outlined text-2xl">menu</span>
       </button>
     </div>
 
   </div>
 </header>
 
-<!-- Mobile Navigation Drawer Backdrop & Modal Panel -->
-<div 
-  id="mobile-drawer-backdrop" 
-  class="fixed inset-0 z-50 bg-ink/40 backdrop-blur-xs opacity-0 pointer-events-none transition-opacity duration-300 lg:hidden"
-  aria-hidden="true"
-></div>
-
-<aside
+<!-- Mobile Navigation Drawer -->
+<div
   id="mobile-drawer"
-  class="fixed top-0 right-0 z-50 w-[85%] max-w-sm h-full bg-surface-bright border-l border-sand shadow-2xl flex flex-col transform translate-x-full transition-transform duration-300 ease-in-out lg:hidden"
-  aria-label="Mobil Menü"
+  class="fixed inset-0 z-50 transform -translate-x-full transition-transform duration-300 ease-in-out lg:hidden"
   aria-hidden="true"
+  role="dialog"
+  aria-modal="true"
+  aria-label="Mobil Menü"
 >
-  <!-- Drawer Header -->
-  <div class="h-20 px-6 border-b border-sand flex items-center justify-between bg-parchment">
-    <span class="font-serif italic text-xl text-ink">
-      {t.siteTitle}
-    </span>
-    <button
-      type="button"
-      id="mobile-drawer-close"
-      class="p-2 rounded border border-sand text-ink hover:bg-surface-container transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-olive"
-      aria-label="Menüyü kapat"
-    >
-      <span class="material-symbols-outlined text-[22px]">close</span>
-    </button>
-  </div>
+  <!-- Backdrop overlay -->
+  <div 
+    id="mobile-drawer-backdrop" 
+    class="fixed inset-0 bg-ink/60 backdrop-blur-xs opacity-0 transition-opacity duration-300"
+  ></div>
 
-  <!-- Drawer Body Navigation Links -->
-  <div class="flex-1 overflow-y-auto px-6 py-6 flex flex-col gap-2">
-    <p class="text-[11px] uppercase tracking-wider text-stone-gray font-semibold mb-2">
-      {lang === 'tr' ? 'Menü' : 'Menu'}
-    </p>
+  <!-- Drawer panel content -->
+  <div class="relative w-full max-w-sm bg-parchment h-full flex flex-col shadow-2xl border-r border-sand overflow-y-auto">
+    
+    <!-- Drawer Header -->
+    <div class="p-6 border-b border-sand flex items-center justify-between">
+      <div class="flex items-center gap-2.5">
+        <div class="w-8 h-8 rounded-full bg-olive text-white flex items-center justify-center shadow-xs">
+          <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18a8.967 8.967 0 00-6 2.292m0-14.25v14.25" />
+          </svg>
+        </div>
+        <span class="font-serif text-lg italic font-semibold text-ink">
+          {t.siteTitle}
+        </span>
+      </div>
 
-    {links.map((link) => (
-      <a
-        href={link.href}
-        class={`py-3 px-3 rounded flex items-center justify-between text-base transition-colors ${
-          link.isActive
-            ? 'bg-surface-container font-semibold text-ink border-l-4 border-ink'
-            : 'text-ink/80 hover:bg-surface-container-low hover:text-ink'
-        }`}
-        aria-current={link.isActive ? 'page' : undefined}
+      <button
+        type="button"
+        id="mobile-menu-close-btn"
+        class="p-2 text-ink/70 hover:text-olive focus:outline-none focus-visible:ring-2 focus-visible:ring-olive rounded"
+        aria-label="Menüyü Kapat"
       >
-        <span>{link.label}</span>
-        {link.isActive && (
-          <span class="material-symbols-outlined text-[18px] text-ink">arrow_forward</span>
-        )}
-      </a>
-    ))}
+        <span class="material-symbols-outlined text-2xl">close</span>
+      </button>
+    </div>
 
-    <div class="my-4 border-t border-sand/70"></div>
-
-    <!-- Mobile Drawer Search Trigger -->
-    <button
-      type="button"
-      data-search-trigger
-      class="w-full flex items-center justify-between px-3 py-3 rounded border border-sand bg-surface-container-low text-ink/80 hover:text-ink hover:bg-surface-container transition-colors text-sm"
-    >
-      <span class="flex items-center gap-2">
-        <span class="material-symbols-outlined text-[20px] text-ink/70">search</span>
-        <span>{t.search.title}</span>
-      </span>
-      <kbd class="font-mono text-[10px] bg-parchment border border-sand px-1.5 py-0.5 rounded text-stone-gray">
-        ⌘K
-      </kbd>
-    </button>
-
-    <!-- Language Selector in Drawer -->
-    <div class="mt-4 pt-4 border-t border-sand/70">
-      <p class="text-[11px] uppercase tracking-wider text-stone-gray font-semibold mb-2">
-        {lang === 'tr' ? 'Dil Seçimi / Language' : 'Language / Dil Seçimi'}
-      </p>
-      <div class="grid grid-cols-2 gap-2">
+    <!-- Drawer Navigation Links -->
+    <nav class="p-6 flex flex-col gap-4 flex-1" aria-label="Mobil Menü Linkleri">
+      {links.map((link) => (
         <a
-          href={lang === 'tr' ? currentPath : getEquivalentLanguageUrl(currentPath, 'tr')}
-          class={`py-2 px-3 text-center text-xs font-semibold rounded border transition-colors ${
-            lang === 'tr'
-              ? 'bg-ink text-white border-ink'
-              : 'bg-surface-container-low border-sand text-ink/70 hover:bg-surface-container'
+          href={link.href}
+          class={`text-base font-serif transition-colors py-2 border-b border-sand/60 flex items-center justify-between ${
+            link.isActive
+              ? 'text-olive font-semibold'
+              : 'text-ink hover:text-olive'
           }`}
         >
-          Türkçe (TR)
+          <span>{link.label}</span>
+          <span class="material-symbols-outlined text-sm text-stone-gray">chevron_right</span>
         </a>
+      ))}
+    </nav>
+
+    <!-- Drawer Footer Actions -->
+    <div class="p-6 border-t border-sand bg-surface-container-low flex flex-col gap-4">
+      <!-- Mobile Search Shortcut -->
+      <button
+        type="button"
+        data-search-trigger
+        class="w-full flex items-center justify-center gap-2 py-2.5 px-4 rounded border border-sand bg-parchment text-ink text-sm hover:bg-surface-container transition-colors"
+      >
+        <span class="material-symbols-outlined text-lg text-stone-gray">search</span>
+        <span>{t.search.placeholder}</span>
+      </button>
+
+      <!-- Language Selector -->
+      <div class="flex items-center justify-between pt-2 text-sm text-stone-gray">
+        <span>Dil / Language:</span>
         <a
-          href={lang === 'en' ? currentPath : getEquivalentLanguageUrl(currentPath, 'en')}
-          class={`py-2 px-3 text-center text-xs font-semibold rounded border transition-colors ${
-            lang === 'en'
-              ? 'bg-ink text-white border-ink'
-              : 'bg-surface-container-low border-sand text-ink/70 hover:bg-surface-container'
-          }`}
+          href={switchLangUrl}
+          class="flex items-center font-semibold text-ink border border-sand bg-parchment px-3 py-1 rounded text-xs hover:border-ink/50 transition-colors"
         >
-          English (EN)
+          <span class={lang === 'tr' ? 'text-olive font-bold' : 'text-stone-gray'}>TR</span>
+          <span class="mx-1 text-sand">|</span>
+          <span class={lang === 'en' ? 'text-olive font-bold' : 'text-stone-gray'}>EN</span>
         </a>
       </div>
     </div>
-  </div>
 
-  <!-- Drawer Footer Info -->
-  <div class="p-6 border-t border-sand bg-surface-container-low text-xs text-stone-gray flex flex-col gap-1">
-    <span class="font-serif italic text-ink font-semibold">{t.siteTitle}</span>
-    <span>{t.footer.address}</span>
   </div>
-</aside>
+</div>
 
 <script>
-  function setupMobileMenu() {
-    const menuBtn = document.getElementById('mobile-menu-btn');
-    const closeBtn = document.getElementById('mobile-drawer-close');
+  function setupMobileDrawer() {
+    const openBtn = document.getElementById('mobile-menu-open-btn');
+    const closeBtn = document.getElementById('mobile-menu-close-btn');
     const drawer = document.getElementById('mobile-drawer');
     const backdrop = document.getElementById('mobile-drawer-backdrop');
 
-    if (!menuBtn || !drawer || !backdrop) return;
+    if (!openBtn || !closeBtn || !drawer || !backdrop) return;
+
+    const elOpenBtn = openBtn;
+    const elCloseBtn = closeBtn;
+    const elDrawer = drawer;
+    const elBackdrop = backdrop;
 
     function openDrawer() {
-      drawer?.classList.remove('translate-x-full');
-      drawer?.setAttribute('aria-hidden', 'false');
-      backdrop?.classList.remove('opacity-0', 'pointer-events-none');
-      backdrop?.classList.add('opacity-100');
-      menuBtn?.setAttribute('aria-expanded', 'true');
+      elDrawer.classList.remove('-translate-x-full');
+      elDrawer.setAttribute('aria-hidden', 'false');
+      elOpenBtn.setAttribute('aria-expanded', 'true');
       document.body.style.overflow = 'hidden';
+      setTimeout(() => {
+        elBackdrop.classList.remove('opacity-0');
+        elBackdrop.classList.add('opacity-100');
+      }, 10);
     }
 
     function closeDrawer() {
-      drawer?.classList.add('translate-x-full');
-      drawer?.setAttribute('aria-hidden', 'true');
-      backdrop?.classList.add('opacity-0', 'pointer-events-none');
-      backdrop?.classList.remove('opacity-100');
-      menuBtn?.setAttribute('aria-expanded', 'false');
+      elBackdrop.classList.remove('opacity-100');
+      elBackdrop.classList.add('opacity-0');
+      elDrawer.classList.add('-translate-x-full');
+      elDrawer.setAttribute('aria-hidden', 'true');
+      elOpenBtn.setAttribute('aria-expanded', 'false');
       document.body.style.overflow = '';
     }
 
-    menuBtn.addEventListener('click', () => {
-      const isOpen = drawer.getAttribute('aria-hidden') === 'false';
-      if (isOpen) {
-        closeDrawer();
-      } else {
-        openDrawer();
-      }
-    });
+    elOpenBtn.addEventListener('click', openDrawer);
+    elCloseBtn.addEventListener('click', closeDrawer);
+    elBackdrop.addEventListener('click', closeDrawer);
 
-    closeBtn?.addEventListener('click', closeDrawer);
-    backdrop.addEventListener('click', closeDrawer);
-
-    window.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape' && drawer.getAttribute('aria-hidden') === 'false') {
+    // Close on Escape key
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && !elDrawer.classList.contains('-translate-x-full')) {
         closeDrawer();
       }
     });
 
-    // Close drawer when mobile nav links or search are clicked
-    drawer.querySelectorAll('a, button[data-search-trigger]').forEach((el) => {
-      el.addEventListener('click', () => {
-        closeDrawer();
-      });
+    // Close drawer when a navigation link is clicked
+    const navLinks = elDrawer.querySelectorAll('nav a');
+    navLinks.forEach((link) => {
+      link.addEventListener('click', closeDrawer);
     });
   }
 
-  // Setup on page load and support Astro View Transitions
-  setupMobileMenu();
-  document.addEventListener('astro:page-load', setupMobileMenu);
+  // Setup on initial load and page transitions
+  setupMobileDrawer();
+  document.addEventListener('astro:page-load', setupMobileDrawer);
 </script>

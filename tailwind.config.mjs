@@ -5,32 +5,34 @@ export default {
   theme: {
     extend: {
       colors: {
-        parchment: '#F9F7F2',
-        ink: '#1A2B3C',
-        olive: '#556B2F',
-        sand: '#E5DFD3',
-        'stone-gray': '#7D7D7D',
-        primary: '#041627',
-        'primary-container': '#1a2b3c',
+        parchment: '#FAF8F5', // Açık krem / çok açık toprak rengi zemin
+        ink: '#111827',       // Siyah / koyu mürekkep
+        olive: '#005B94',     // Yeşil yerine Bodrum mavisi
+        'bodrum-blue': '#005B94', // Bodrum mavisi
+        'bodrum-blue-light': '#E6F0F7',
+        sand: '#E8E3D9',      // Yumuşak açık toprak / sınır tonu
+        'stone-gray': '#6B7280',
+        primary: '#005B94',
+        'primary-container': '#111827',
         'on-primary': '#ffffff',
-        'on-primary-container': '#8192a7',
-        secondary: '#625e55',
-        'secondary-container': '#e5dfd3',
+        'on-primary-container': '#E6F0F7',
+        secondary: '#374151',
+        'secondary-container': '#E8E3D9',
         'on-secondary': '#ffffff',
-        'on-secondary-container': '#666259',
-        tertiary: '#0e1900',
-        'tertiary-container': '#1e2f00',
-        'surface-bright': '#fbf9f4',
-        'surface-dim': '#dbdad5',
+        'on-secondary-container': '#1F2937',
+        tertiary: '#003A61',
+        'tertiary-container': '#002640',
+        'surface-bright': '#FCFAF7',
+        'surface-dim': '#E8E3D9',
         'surface-container-lowest': '#ffffff',
-        'surface-container-low': '#f5f3ee',
-        'surface-container': '#f0eee9',
-        'surface-container-high': '#eae8e3',
-        'surface-container-highest': '#e4e2dd',
-        'on-surface': '#1b1c19',
-        'on-surface-variant': '#44474c',
-        outline: '#74777d',
-        'outline-variant': '#c4c6cd'
+        'surface-container-low': '#FAF8F5',
+        'surface-container': '#F5F2EC',
+        'surface-container-high': '#EFEBE3',
+        'surface-container-highest': '#E8E3D9',
+        'on-surface': '#111827',
+        'on-surface-variant': '#374151',
+        outline: '#6B7280',
+        'outline-variant': '#D1D5DB'
       },
       borderRadius: {
         DEFAULT: '0.125rem',
@@ -49,14 +51,14 @@ export default {
       },
       fontFamily: {
         serif: ['"EB Garamond"', 'Georgia', 'serif'],
-        sans: ['"Hanken Grotesk"', '"Libre Franklin"', 'system-ui', 'sans-serif'],
+        sans: ['"EB Garamond"', 'Georgia', 'serif'],
         'headline-lg': ['"EB Garamond"', 'serif'],
         'headline-md': ['"EB Garamond"', 'serif'],
         'display-lg': ['"EB Garamond"', 'serif'],
-        'body-lg': ['"Hanken Grotesk"', 'sans-serif'],
-        'body-md': ['"Hanken Grotesk"', 'sans-serif'],
-        'label-md': ['"Hanken Grotesk"', 'sans-serif'],
-        caption: ['"Hanken Grotesk"', 'sans-serif']
+        'body-lg': ['"EB Garamond"', 'serif'],
+        'body-md': ['"EB Garamond"', 'serif'],
+        'label-md': ['"EB Garamond"', 'serif'],
+        caption: ['"EB Garamond"', 'serif']
       }
     }
   },

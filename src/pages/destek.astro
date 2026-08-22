@@ -5,480 +5,284 @@ import { getT } from '../utils/i18n';
 const lang = 'tr';
 const t = getT(lang);
 
-const tiers = [
+const whyJoinUs = [
   {
-    name: "Ana Destekçi (Mavi Sürgün)",
-    level: "Platin Sponsorluk",
-    badge: "En Prestijli",
-    highlight: true,
-    desc: "Bodrum Kent Kütüphanesi açılış lansmanının ve 2026 yılı ana etkinliklerinin kurumsal baş sponsoru.",
-    features: [
-      "Ana sahne, basın arkalığı ve tüm görsel materyallerde en üstte birincil logo",
-      "4 Eylül Resmi Açılış Töreni'nde selamlama ve teşekkür konuşması",
-      "Kütüphane ana girişinde kalıcı 'Kurumsal Kurucu Hami' plaketi",
-      "VIP Açılış Resepsiyonu ve gala kokteylinde özel protokol masası (10 davetiye)",
-      "Dijital kütüphane kataloğunda ve web sitesinde kalıcı teşekkür logosu",
-      "Ulusal ve yerel basın bültenlerinde ana sponsorluk vurgusu"
-    ]
+    title: "Bodrum’un kültürel ve tarihsel mirasını geleceğe taşımak için",
+    desc: "Halikarnas’tan Karya’ya uzanan binlerce yıllık birikimi araştırmak, belgelemek, anlatmak ve yeni kuşaklarla buluşturmak için."
   },
   {
-    name: "Kültür & Sanat Sponsoru",
-    level: "Altın Sponsorluk",
-    badge: "Öne Çıkan",
-    highlight: false,
-    desc: "Açılış sempozyumu kapsamındaki bir ana panelin ve sanat buluşmasının isim sponsoru.",
-    features: [
-      "1 Tematik sempozyum panelinin veya salonun isim sponsorluğu (Örn: '[Marka] Edebiyat Oturumu')",
-      "Açılış kokteyli ve fuaye alanında kurumsal roll-up / tanıtım görünürlüğü",
-      "Basılı program kitapçığında tam sayfa kurumsal tanıtım ve teşekkür",
-      "Web sitesinde ve e-bültenlerde 'Kültür Sponsoru' olarak logo yerleşimi",
-      "VIP Açılış Töreni için 5 adet özel davetiye"
-    ]
+    title: "Bodrum’u yaşayan bir kültür ve düşünce merkezi haline getirmek için",
+    desc: "Kitapların, araştırmaların, söyleşilerin, konferansların, sergilerin ve farklı disiplinlerin bir araya geldiği canlı bir buluşma alanı oluşturmak için."
   },
   {
-    name: "Atölye & Çocuk Programı",
-    level: "Gümüş Sponsorluk",
-    badge: "Geleceğe Yatırım",
-    highlight: false,
-    desc: "Çocuk mitoloji ve yaratıcı yazarlık atölyelerinin gerçekleşmesini sağlayan kurumsal destek.",
-    features: [
-      "Kütüphane çocuk bölümü ve gençlik atölyelerinde isim sponsorluğu",
-      "Atölye katılım sertifikalarında ve çalışma materyallerinde logo",
-      "Web sitesi etkinlikler sayfasında destekçi logosu",
-      "Açılış etkinlikleri için 3 adet VIP davetiye"
-    ]
+    title: "Yazarları, araştırmacıları ve bilim insanlarını okurlarla buluşturmak için",
+    desc: "Türkiye’den ve dünyanın farklı ülkelerinden yazar, akademisyen, araştırmacı ve sanatçıları Bodrum’da okurlar ve ilgililerle buluşturarak bilgi ve düşünce alışverişini güçlendirmek için."
   },
   {
-    name: "Ayni & Hizmet Destekçisi",
-    level: "Hizmet Sponsorluğu",
-    badge: "Katılım & İş Birliği",
-    highlight: false,
-    desc: "Konaklama, ses-ışık, açılış kokteyli/ikram, matbaa veya lojistik çözümleri sunan iş ortakları.",
-    features: [
-      "Açılış fuaye alanında 'Hizmet Destekçileri' teşekkür panosunda logo",
-      "Resmi basılı programda ve web sitesinde logo görünürlüğü",
-      "Kurumsal ürün/hizmet tanıtım standı kurma imkanı",
-      "Açılış töreni için 2 adet VIP davetiye"
-    ]
+    title: "Bodrum’un dünyayla kültürel bağlarını güçlendirmek için",
+    desc: "Ege, Akdeniz ve komşu coğrafyalardan başlayarak ulusal ve uluslararası kültür, sanat ve bilim projeleri geliştirmek ve ortak çalışmalar üretmek için."
+  },
+  {
+    title: "Farklı düşüncelerin bir arada özgürce konuşulabildiği bir ortam yaratmak için",
+    desc: "Okuma, tartışma, araştırma ve paylaşma kültürünü güçlendirerek Bodrum’da nitelikli bir düşünce ortamının oluşmasına katkıda bulunmak için."
+  },
+  {
+    title: "Bilgiye ve kitaba erişimi yaygınlaştırmak için",
+    desc: "Her yaştan insanın okuyabileceği, öğrenebileceği, araştırabileceği ve kendisini geliştirebileceği açık ve erişilebilir bir kütüphane kültürü oluşturmak için."
+  },
+  {
+    title: "Çocukların ve gençlerin bu kültürün içinde yetişmesini sağlamak için",
+    desc: "Onları kitap, sanat, bilim ve düşünceyle buluşturan çalışmalarla geleceğin okurlarını, araştırmacılarını ve sanatçılarını desteklemek için."
+  },
+  {
+    title: "Bunu birlikte yapmak için",
+    desc: "Bodrum Kent Kütüphanesi başta olmak üzere kültür, sanat ve ekoloji alanındaki projelerimizi kurulmakta olan derneğimizin çatısı altında, toplumun katılımıyla büyütmek istiyoruz."
   }
 ];
 
-const programHighlights = [
+const supportTypes = [
   {
-    day: "1. GÜN",
-    date: "4 EYLÜL 2026",
-    title: "Resmi Açılış & Kültür Mirası",
-    events: [
-      "14:00 - Protokol & Girişim Kurulu Açılış Konuşmaları",
-      "15:30 - Ana Sponsor & Destekçi Teşekkür Plaketi Takdimi",
-      "16:30 - 'Cevat Şakir’in Bodrum’u' Nadir Arşiv Sergisi Açılışı",
-      "18:30 - Gün Batımı Akdeniz Dinletisi & Açılış Kokteyli"
-    ]
+    title: "Kitap bağışlayabilirsiniz",
+    desc: "Kütüphanemizin koleksiyonunu zenginleştirebilir; özellikle Bodrum, Halikarnas, Karya, Ege ve Akdeniz tarihi, arkeoloji, sanat, edebiyat ve bilim alanlarında kaynakların çoğalmasına katkıda bulunabilirsiniz."
   },
   {
-    day: "2. GÜN",
-    date: "5 EYLÜL 2026",
-    title: "Edebiyat, Deniz & Gelecek Sempozyumu",
-    events: [
-      "10:30 - Panel: 'Mavi Sürgün’den Bugüne Ege Edebiyatı ve Kent Belleği'",
-      "13:00 - Çocuklar İçin Ege Mitolojisi ve Masal Atölyesi",
-      "15:00 - Panel: 'Akdeniz’de Dijital Kütüphanecilik ve Açık Bilim'",
-      "17:30 - Kapanış Konseri & Kütüphane Bahçesi Buluşması"
-    ]
+    title: "Bilginiz ve uzmanlığınızla katkıda bulunabilirsiniz",
+    desc: "Yazar, araştırmacı, akademisyen, bilim insanı, sanatçı veya farklı bir alanda uzman olarak söyleşi, konferans, atölye ve araştırma çalışmalarımıza katılabilirsiniz."
+  },
+  {
+    title: "Maddi destek sağlayabilirsiniz",
+    desc: "Kütüphanenin gelişimi, etkinlikler, yayınlar, araştırmalar, kültür-sanat projeleri ve ulusal/uluslararası çalışmaların gerçekleştirilmesine katkıda bulunabilirsiniz."
+  },
+  {
+    title: "Gönüllü olabilirsiniz",
+    desc: "Kütüphane çalışmalarından etkinlik organizasyonlarına, araştırmalardan iletişim ve tanıtıma kadar farklı alanlarda zamanınız ve becerilerinizle katkı sunabilirsiniz."
+  },
+  {
+    title: "Araştırma ve proje çalışmalarına destek olabilirsiniz",
+    desc: "Bodrum’un tarihi, kültürü, sanatı, doğası ve toplumsal yaşamına ilişkin araştırma, arşiv, sözlü tarih ve yayın çalışmalarına katkıda bulunabilirsiniz."
+  },
+  {
+    title: "Mekân, ekipman ve malzeme desteği sağlayabilirsiniz",
+    desc: "Etkinlik, sergi, toplantı ve atölyeler için mekânlarınızı veya ihtiyaç duyulan teknik ekipman ve malzemeleri paylaşabilirsiniz."
+  },
+  {
+    title: "Ulusal ve uluslararası bağlantılar kurmamıza yardımcı olabilirsiniz",
+    desc: "Yazarları, bilim insanlarını, sanatçıları, kurumları, üniversiteleri ve kültür kuruluşlarını Bodrum Kent Kütüphanesi ile buluşturarak yeni iş birliklerinin oluşmasına katkıda bulunabilirsiniz."
+  },
+  {
+    title: "Bu çalışmaları çevrenizle paylaşabilirsiniz",
+    desc: "Kütüphaneyi ve projelerimizi daha fazla insana ulaştırarak okurların, gönüllülerin, üreticilerin ve destekçilerin bu ortak hayale katılmasını sağlayabilirsiniz."
   }
 ];
 ---
 
-<Layout 
-  title="4-5 Eylül Açılış Lansmanı & Sponsorluk | Bodrum Kent Kütüphanesi"
-  description="Bodrum Kent Kütüphanesi'nin 4-5 Eylül 2026 açılış lansmanına kurumsal sponsor veya kültür hamisi olarak destek verin."
-  lang="tr"
+<Layout
+  title={`Destek & Gönüllü Katılım | ${t.siteTitle}`}
+  description="Bodrum Kent Kütüphanesi'ne destek olun, gönüllü olarak katılın ve Bodrum'un kültürel geleceğine ortak olun."
+  lang={lang}
+  currentPath="/destek"
 >
   <!-- Hero Section -->
-  <section class="relative bg-surface-container-high/50 border-b border-sand overflow-hidden py-20 lg:py-28">
-    <div class="absolute inset-0 ex-libris-watermark flex items-center justify-center opacity-5 pointer-events-none">
-      <span class="material-symbols-outlined text-[420px] text-ink">handshake</span>
-    </div>
-
-    <div class="max-w-[1280px] mx-auto px-5 md:px-12 relative z-10">
+  <section class="py-16 md:py-24 px-5 md:px-12 bg-surface-bright border-b border-sand">
+    <div class="max-w-[1280px] mx-auto">
       <div class="max-w-3xl">
-        <div class="inline-flex items-center gap-2 px-3 py-1 bg-olive/10 border border-olive/20 rounded-full text-olive text-xs font-semibold uppercase tracking-widest mb-6">
-          <span class="w-2 h-2 rounded-full bg-olive animate-pulse"></span>
-          KÜLTÜREL GELECEĞE ORTAK OLUN
-        </div>
-
-        <h1 class="font-serif text-4xl sm:text-5xl lg:text-6xl text-ink leading-tight mb-6">
-          4-5 Eylül Açılış Lansmanı & <span class="italic text-olive">Sponsorluk</span>
+        <h1 class="font-serif text-3xl sm:text-4xl md:text-5xl text-ink font-bold leading-tight mb-4">
+          Destek & Gönüllü Katılım
         </h1>
-
-        <p class="text-lg sm:text-xl text-ink/80 leading-relaxed mb-8">
-          Bodrum’un yaşayan kültürel hafızasını ve Halikarnas Balıkçısı’nın mirasını geleceğe taşıyoruz. 4-5 Eylül 2026 tarihlerinde gerçekleşecek büyük açılış buluşmamıza kurumsal destekçi veya kültür hamisi olarak katılın.
-        </p>
-
-        <div class="flex flex-wrap items-center gap-4">
-          <a
-            href="#basvuru"
-            class="px-8 py-4 bg-ink text-parchment hover:bg-olive text-sm font-semibold tracking-wider uppercase transition-all duration-200 shadow-md inline-flex items-center gap-2"
-          >
-            <span>Sponsorluk Başvurusu</span>
-            <span class="material-symbols-outlined text-sm">arrow_downward</span>
-          </a>
-          <a
-            href="#paketler"
-            class="px-8 py-4 bg-parchment border border-sand hover:border-ink text-ink text-sm font-semibold tracking-wider uppercase transition-all duration-200 inline-flex items-center gap-2"
-          >
-            <span>Paketleri İncele</span>
-            <span class="material-symbols-outlined text-sm">list_alt</span>
-          </a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Strategic Value Props -->
-  <section class="py-16 md:py-24 bg-parchment border-b border-sand">
-    <div class="max-w-[1280px] mx-auto px-5 md:px-12">
-      <div class="text-center max-w-2xl mx-auto mb-16">
-        <span class="text-xs uppercase tracking-widest text-olive font-semibold block mb-2">KURUMSAL DEĞER</span>
-        <h2 class="font-serif text-3xl md:text-4xl text-ink">Neden Sponsor Olmalısınız?</h2>
-      </div>
-
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-        <div class="bg-surface-container-low p-8 border border-sand hover:border-ink/40 transition-all">
-          <div class="w-12 h-12 bg-olive/10 border border-olive/20 rounded-full flex items-center justify-center text-olive mb-6">
-            <span class="material-symbols-outlined text-2xl">verified</span>
-          </div>
-          <h3 class="font-serif text-xl text-ink font-semibold mb-3">Kültürel Miras & Saygınlık</h3>
-          <p class="text-sm text-ink/75 leading-relaxed">
-            Halikarnas Balıkçısı’nın mavi hümanizmasına ve Bodrum’un kadim edebiyat belleğine kalıcı olarak adınızı yazdırın.
-          </p>
-        </div>
-
-        <div class="bg-surface-container-low p-8 border border-sand hover:border-ink/40 transition-all">
-          <div class="w-12 h-12 bg-olive/10 border border-olive/20 rounded-full flex items-center justify-center text-olive mb-6">
-            <span class="material-symbols-outlined text-2xl">visibility</span>
-          </div>
-          <h3 class="font-serif text-xl text-ink font-semibold mb-3">Seçkin & Nitelikli Kitle</h3>
-          <p class="text-sm text-ink/75 leading-relaxed">
-            Türkiye'nin önde gelen yazarları, akademisyenleri, sanatçıları, kanaat önderleri ve yerel yöneticileriyle doğrudan temas kurun.
-          </p>
-        </div>
-
-        <div class="bg-surface-container-low p-8 border border-sand hover:border-ink/40 transition-all">
-          <div class="w-12 h-12 bg-olive/10 border border-olive/20 rounded-full flex items-center justify-center text-olive mb-6">
-            <span class="material-symbols-outlined text-2xl">school</span>
-          </div>
-          <h3 class="font-serif text-xl text-ink font-semibold mb-3">Sürdürülebilir Toplumsal Etki</h3>
-          <p class="text-sm text-ink/75 leading-relaxed">
-            Gençler ve çocuklar için ücretsiz atölyelerin, açık erişimli dijital arşivlerin ve araştırma odalarının kurulmasına öncülük edin.
-          </p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- 4-5 September Launch Program Preview -->
-  <section class="py-16 md:py-24 bg-surface-container-high/40 border-b border-sand">
-    <div class="max-w-[1280px] mx-auto px-5 md:px-12">
-      <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-4">
-        <div>
-          <span class="text-xs uppercase tracking-widest text-olive font-semibold block mb-2">ETKİNLİK PLANI</span>
-          <h2 class="font-serif text-3xl md:text-4xl text-ink">4-5 Eylül Lansman Programı</h2>
-        </div>
-        <div class="text-sm text-ink/70 max-w-md">
-          İki gün boyunca sürecek edebiyat panelleri, sergiler, çocuk atölyeleri ve açılış resepsiyonu taslağı.
-        </div>
-      </div>
-
-      <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
-        {programHighlights.map((prog) => (
-          <div class="bg-parchment p-8 border border-sand">
-            <div class="flex items-center justify-between border-b border-sand pb-4 mb-6">
-              <div>
-                <span class="text-xs font-mono font-bold text-olive block">{prog.day}</span>
-                <h3 class="font-serif text-2xl text-ink font-semibold">{prog.date}</h3>
-              </div>
-              <span class="text-sm font-serif italic text-ink/70">{prog.title}</span>
-            </div>
-            <ul class="space-y-4">
-              {prog.events.map((ev) => (
-                <li class="flex items-start gap-3 text-sm text-ink/80">
-                  <span class="material-symbols-outlined text-olive text-lg mt-0.5 shrink-0">event_available</span>
-                  <span>{ev}</span>
-                </li>
-              ))}
-            </ul>
-          </div>
-        ))}
-      </div>
-    </div>
-  </section>
-
-  <!-- Sponsorship Tiers Section -->
-  <section id="paketler" class="py-16 md:py-24 bg-parchment border-b border-sand">
-    <div class="max-w-[1280px] mx-auto px-5 md:px-12">
-      <div class="text-center max-w-2xl mx-auto mb-16">
-        <span class="text-xs uppercase tracking-widest text-olive font-semibold block mb-2">DESTEK KATEGORİLERİ</span>
-        <h2 class="font-serif text-3xl md:text-4xl text-ink">Sponsorluk Paketleri & Hakları</h2>
-        <p class="text-sm text-ink/75 mt-3">
-          Kurumunuzun hedeflerine ve katkı düzeyine uygun sponsorluk kategorisini seçebilirsiniz.
+        <p class="font-serif text-lg sm:text-xl text-ink/80 leading-relaxed">
+          Bodrum’un kültürel belleğini ve geleceğini birlikte inşa etmek, bilginin ışığını çoğaltmak için siz de bu ortak hayale katılabilirsiniz.
         </p>
       </div>
+    </div>
+  </section>
 
-      <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6">
-        {tiers.map((tier) => (
-          <div class={`flex flex-col justify-between p-8 border transition-all duration-300 ${
-            tier.highlight 
-              ? 'bg-ink text-parchment border-ink shadow-lg ring-1 ring-olive/40' 
-              : 'bg-surface-container-low text-ink border-sand hover:border-ink/50'
-          }`}>
+  <div class="max-w-[1280px] mx-auto px-5 md:px-12 py-16 space-y-24">
+    
+    <!-- 1. Bu Hayale Neden Ortak Olmalısınız? -->
+    <section>
+      <h2 class="font-serif text-2xl sm:text-3xl text-ink font-bold mb-8 pb-3 border-b border-sand">
+        Bu Hayale Neden Ortak Olmalısınız?
+      </h2>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        {whyJoinUs.map((item, index) => (
+          <div class="bg-surface-container-low border border-sand p-6 sm:p-8 flex items-start gap-4">
+            <span class="w-8 h-8 rounded-full bg-olive text-white flex items-center justify-center font-mono text-xs font-bold shrink-0 mt-0.5 shadow-xs">
+              {index + 1}
+            </span>
             <div>
-              <div class="flex items-center justify-between mb-4">
-                <span class={`text-[11px] font-mono uppercase tracking-wider px-2 py-0.5 rounded-sm ${
-                  tier.highlight ? 'bg-olive text-white' : 'bg-sand text-ink'
-                }`}>
-                  {tier.badge}
-                </span>
-                <span class={`text-xs ${tier.highlight ? 'text-parchment/60' : 'text-stone-gray'}`}>
-                  {tier.level}
-                </span>
-              </div>
-
-              <h3 class={`font-serif text-2xl font-semibold mb-3 ${tier.highlight ? 'text-white' : 'text-ink'}`}>
-                {tier.name}
+              <h3 class="font-serif text-lg sm:text-xl text-ink font-bold mb-2 leading-snug">
+                {item.title}
               </h3>
-              
-              <p class={`text-xs leading-relaxed mb-6 ${tier.highlight ? 'text-parchment/80' : 'text-ink/70'}`}>
-                {tier.desc}
+              <p class="font-serif text-sm sm:text-base text-ink/80 leading-relaxed">
+                {item.desc}
               </p>
-
-              <div class={`h-[1px] w-full mb-6 ${tier.highlight ? 'bg-parchment/20' : 'bg-sand'}`}></div>
-
-              <ul class="space-y-3 mb-8">
-                {tier.features.map((feat) => (
-                  <li class="flex items-start gap-2.5 text-xs leading-relaxed">
-                    <span class={`material-symbols-outlined text-sm shrink-0 mt-0.5 ${
-                      tier.highlight ? 'text-olive' : 'text-olive'
-                    }`}>check_circle</span>
-                    <span class={tier.highlight ? 'text-parchment/90' : 'text-ink/80'}>{feat}</span>
-                  </li>
-                ))}
-              </ul>
             </div>
-
-            <a
-              href="#basvuru"
-              class={`w-full text-center py-3 text-xs font-semibold uppercase tracking-wider transition-colors ${
-                tier.highlight
-                  ? 'bg-olive hover:bg-olive/90 text-white'
-                  : 'bg-ink hover:bg-olive text-parchment'
-              }`}
-            >
-              Dosya Talep Et & Başvur
-            </a>
           </div>
         ))}
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- Application / Inquiry Form Section -->
-  <section id="basvuru" class="py-16 md:py-24 bg-surface-container-high/40">
-    <div class="max-w-[1280px] mx-auto px-5 md:px-12">
+    <!-- 2. Ne Tür Desteklerde Bulunabilirsiniz? -->
+    <section>
+      <h2 class="font-serif text-2xl sm:text-3xl text-ink font-bold mb-8 pb-3 border-b border-sand">
+        Ne Tür Desteklerde Bulunabilirsiniz?
+      </h2>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        {supportTypes.map((item) => (
+          <div class="bg-parchment border border-sand p-6 flex flex-col justify-between hover:border-olive/50 transition-all shadow-xs">
+            <div>
+              <div class="w-10 h-10 rounded-full bg-olive/10 text-olive flex items-center justify-center mb-4">
+                <span class="material-symbols-outlined text-xl">favorite</span>
+              </div>
+              <h3 class="font-serif text-base sm:text-lg text-ink font-bold mb-2 leading-snug">
+                {item.title}
+              </h3>
+              <p class="font-serif text-xs sm:text-sm text-ink/75 leading-relaxed">
+                {item.desc}
+              </p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <!-- 3. Doğrudan İletişim & Başvuru Formu -->
+    <section class="bg-surface-container-low border border-sand p-8 sm:p-12 shadow-xs">
       <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
         
-        <!-- Left: Direct Info -->
-        <div class="lg:col-span-5 flex flex-col gap-6">
+        <!-- Sol Taraf: Doğrudan İletişim -->
+        <div class="lg:col-span-5 space-y-6">
           <div>
-            <span class="text-xs uppercase tracking-widest text-olive font-semibold block mb-2">DOĞRUDAN İLETİŞİM</span>
-            <h2 class="font-serif text-3xl text-ink font-semibold mb-4">Girişim Kurulu ile Görüşün</h2>
-            <p class="text-sm text-ink/75 leading-relaxed">
-              Özel sponsorluk paketleri, bütçe detayları veya ayni destek iş birlikleri hakkında detaylı sunum ve görüşme için bize doğrudan ulaşabilirsiniz.
+            <span class="text-xs uppercase tracking-widest text-olive font-serif font-bold block mb-2">DOĞRUDAN İLETİŞİM</span>
+            <h3 class="font-serif text-2xl sm:text-3xl text-ink font-bold leading-tight mb-3">
+              Kütüphane Yetkilimiz ile Görüşün
+            </h3>
+            <p class="font-serif text-sm text-ink/80 leading-relaxed">
+              Katkıda bulunmak istediğiniz destek ile ilgili bize doğrudan ulaşabilirsiniz.
             </p>
           </div>
 
-          <div class="bg-parchment p-6 border border-sand space-y-4">
-            <div class="flex items-start gap-3.5">
-              <span class="material-symbols-outlined text-olive mt-0.5">mail</span>
+          <div class="space-y-4 pt-4 border-t border-sand text-sm font-serif">
+            <div class="flex items-center gap-3">
+              <span class="material-symbols-outlined text-olive text-xl">call</span>
               <div>
-                <span class="text-xs text-stone-gray block">Sponsorluk Koordinasyonu</span>
-                <a href="mailto:sponsorluk@bodrumkentkutuphanesi.org" class="text-sm font-semibold text-ink hover:text-olive">
-                  sponsorluk@bodrumkentkutuphanesi.org
+                <div class="text-xs text-stone-gray font-sans">Telefon</div>
+                <a href="tel:+905423739748" class="text-ink font-bold text-base hover:text-olive transition-colors">
+                  +90 (0) 542 373 97 48
                 </a>
               </div>
             </div>
 
-            <div class="flex items-start gap-3.5">
-              <span class="material-symbols-outlined text-olive mt-0.5">location_on</span>
+            <div class="flex items-center gap-3">
+              <span class="material-symbols-outlined text-olive text-xl">mail</span>
               <div>
-                <span class="text-xs text-stone-gray block">Yerleşke</span>
-                <span class="text-sm font-medium text-ink">Kızılağaç, Bodrum / Muğla</span>
+                <div class="text-xs text-stone-gray font-sans">Destek Koordinasyonu</div>
+                <a href="mailto:destek@bodrumkentkutuphanesi.org" class="text-ink font-bold hover:text-olive transition-colors">
+                  destek@bodrumkentkutuphanesi.org
+                </a>
               </div>
             </div>
 
-            <div class="flex items-start gap-3.5">
-              <span class="material-symbols-outlined text-olive mt-0.5">download</span>
+            <div class="flex items-start gap-3">
+              <span class="material-symbols-outlined text-olive text-xl mt-0.5">location_on</span>
               <div>
-                <span class="text-xs text-stone-gray block">Sponsorluk Dosyası</span>
-                <a 
-                  href="/sponsorluk-dosyasi" 
-                  target="_blank"
-                  class="text-sm font-semibold text-olive hover:underline inline-flex items-center gap-1 mt-0.5"
-                >
-                  <span>Tanıtım Kitini İncele & PDF Kaydet</span>
-                  <span class="material-symbols-outlined text-xs">open_in_new</span>
-                </a>
+                <div class="text-xs text-stone-gray font-sans">Yerleşke</div>
+                <div class="text-ink font-medium">Kızılağaç, Bodrum / Muğla</div>
               </div>
             </div>
           </div>
         </div>
 
-        <!-- Right: Interactive Form -->
-        <div class="lg:col-span-7 bg-parchment p-8 sm:p-10 border border-sand">
-          <h3 class="font-serif text-2xl text-ink font-semibold mb-2">Sponsorluk & Destek Başvuru Formu</h3>
-          <p class="text-xs text-ink/70 mb-8">
-            Bilgilerinizi bırakın; etkinlik koordinasyon ekibimiz en geç 24 saat içinde detaylı dosya ile dönüş yapsın.
+        <!-- Sağ Taraf: Destek ve Gönüllü Katılım Başvuru Formu -->
+        <div class="lg:col-span-7 bg-parchment border border-sand p-6 sm:p-8 shadow-xs">
+          <h3 class="font-serif text-2xl text-ink font-bold mb-2">
+            Destek ve Gönüllü Katılım Başvuru Formu
+          </h3>
+          <p class="font-serif text-xs text-stone-gray mb-6">
+            Lütfen ilgilendiğiniz destek alanını ve bilgilerinizi iletin; yetkilimiz sizinle irtibata geçecektir.
           </p>
 
-          <form id="sponsor-form" class="space-y-6">
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
-              <div>
-                <label for="companyName" class="block text-xs font-semibold uppercase tracking-wider text-ink mb-2">
-                  Firma / Kurum Adı *
-                </label>
-                <input
-                  type="text"
-                  id="companyName"
-                  name="companyName"
-                  required
-                  placeholder="Örn: Mavi Turizm A.Ş."
-                  class="w-full bg-surface-container-low border border-sand px-4 py-3 text-sm text-ink focus:outline-none focus:border-ink transition-colors"
-                />
-              </div>
-
-              <div>
-                <label for="contactPerson" class="block text-xs font-semibold uppercase tracking-wider text-ink mb-2">
-                  Yetkili Adı Soyadı *
-                </label>
-                <input
-                  type="text"
-                  id="contactPerson"
-                  name="contactPerson"
-                  required
-                  placeholder="Örn: Ahmet Yılmaz"
-                  class="w-full bg-surface-container-low border border-sand px-4 py-3 text-sm text-ink focus:outline-none focus:border-ink transition-colors"
-                />
-              </div>
+          <form id="support-form" class="space-y-4 font-serif">
+            <div>
+              <label class="block text-xs font-bold text-ink uppercase tracking-wider mb-1">Ad Soyad *</label>
+              <input 
+                type="text" 
+                required 
+                placeholder="Adınız Soyadınız"
+                class="w-full px-4 py-2.5 bg-surface-bright border border-sand text-ink text-sm focus:outline-none focus:border-olive" 
+              />
             </div>
 
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div>
-                <label for="email" class="block text-xs font-semibold uppercase tracking-wider text-ink mb-2">
-                  Kurumsal E-Posta *
-                </label>
-                <input
-                  type="email"
-                  id="email"
-                  name="email"
-                  required
-                  placeholder="ahmet@firma.com"
-                  class="w-full bg-surface-container-low border border-sand px-4 py-3 text-sm text-ink focus:outline-none focus:border-ink transition-colors"
+                <label class="block text-xs font-bold text-ink uppercase tracking-wider mb-1">E-Posta *</label>
+                <input 
+                  type="email" 
+                  required 
+                  placeholder="ornek@alanadi.com"
+                  class="w-full px-4 py-2.5 bg-surface-bright border border-sand text-ink text-sm focus:outline-none focus:border-olive" 
                 />
               </div>
-
               <div>
-                <label for="phone" class="block text-xs font-semibold uppercase tracking-wider text-ink mb-2">
-                  Telefon Numarası *
-                </label>
-                <input
-                  type="tel"
-                  id="phone"
-                  name="phone"
-                  required
-                  placeholder="0532 000 00 00"
-                  class="w-full bg-surface-container-low border border-sand px-4 py-3 text-sm text-ink focus:outline-none focus:border-ink transition-colors"
+                <label class="block text-xs font-bold text-ink uppercase tracking-wider mb-1">Telefon</label>
+                <input 
+                  type="tel" 
+                  placeholder="05XX XXX XX XX"
+                  class="w-full px-4 py-2.5 bg-surface-bright border border-sand text-ink text-sm focus:outline-none focus:border-olive" 
                 />
               </div>
             </div>
 
             <div>
-              <label for="sponsorTier" class="block text-xs font-semibold uppercase tracking-wider text-ink mb-2">
-                İlgilenilen Sponsorluk Düzeyi
-              </label>
-              <select
-                id="sponsorTier"
-                name="sponsorTier"
-                class="w-full bg-surface-container-low border border-sand px-4 py-3 text-sm text-ink focus:outline-none focus:border-ink transition-colors"
-              >
-                <option value="platin">Ana Destekçi (Mavi Sürgün - Platin)</option>
-                <option value="altin">Kültür & Sanat Sponsoru (Altın)</option>
-                <option value="gumus">Atölye & Çocuk Programı (Gümüş)</option>
-                <option value="ayni">Ayni / Hizmet Desteği (Mekan, İkram, vb.)</option>
-                <option value="bireysel">Bireysel Kültür Hamisi / Bağışçı</option>
-                <option value="diger">Diğer / Özel İş Birliği</option>
+              <label class="block text-xs font-bold text-ink uppercase tracking-wider mb-1">İlgilenilen Destek Türü *</label>
+              <select required class="w-full px-4 py-2.5 bg-surface-bright border border-sand text-ink text-sm focus:outline-none focus:border-olive">
+                <option value="">Destek türü seçiniz...</option>
+                <option value="kitap">Kitap Bağışı</option>
+                <option value="uzmanlik">Bilgi ve Uzmanlık / Konuşmacı</option>
+                <option value="maddi">Maddi / Kurumsal Destek</option>
+                <option value="gonullu">Gönüllü Katılım</option>
+                <option value="arastirma">Araştırma & Arşiv Desteği</option>
+                <option value="mekan">Mekân, Ekipman ve Malzeme Desteği</option>
+                <option value="baglanti">Ulusal / Uluslararası Bağlantı ve İletişim</option>
+                <option value="diger">Diğer</option>
               </select>
             </div>
 
             <div>
-              <label for="notes" class="block text-xs font-semibold uppercase tracking-wider text-ink mb-2">
-                Mesajınız / Ek Notlar
-              </label>
-              <textarea
-                id="notes"
-                name="notes"
-                rows="4"
-                placeholder="Etkinlik ve iş birliği ile ilgili düşüncelerinizi veya sorularınızı iletebilirsiniz..."
-                class="w-full bg-surface-container-low border border-sand px-4 py-3 text-sm text-ink focus:outline-none focus:border-ink transition-colors resize-none"
+              <label class="block text-xs font-bold text-ink uppercase tracking-wider mb-1">Mesajınız / Katkı Öneriniz</label>
+              <textarea 
+                rows="4" 
+                placeholder="Yapmak istediğiniz katkıyı kısaca açıklayınız..."
+                class="w-full px-4 py-2.5 bg-surface-bright border border-sand text-ink text-sm focus:outline-none focus:border-olive"
               ></textarea>
             </div>
 
-            <button
-              type="submit"
-              class="w-full py-4 bg-ink hover:bg-olive text-parchment text-sm font-semibold tracking-wider uppercase transition-colors flex items-center justify-center gap-2"
+            <button 
+              type="submit" 
+              class="w-full py-3.5 bg-olive text-white hover:bg-ink text-sm font-serif font-semibold tracking-wider uppercase transition-colors shadow-xs"
             >
-              <span>Başvuruyu Gönder</span>
-              <span class="material-symbols-outlined text-sm">send</span>
+              Başvuruyu Gönder
             </button>
           </form>
         </div>
 
       </div>
-    </div>
-  </section>
+    </section>
+
+  </div>
 </Layout>
 
 <script>
-  // Form submission handler
-  const form = document.getElementById('sponsor-form') as HTMLFormElement;
+  const form = document.getElementById('support-form') as HTMLFormElement;
   if (form) {
     form.addEventListener('submit', (e) => {
       e.preventDefault();
-      
-      const company = (document.getElementById('companyName') as HTMLInputElement)?.value;
-      
       if ((window as any).showToast) {
-        (window as any).showToast(
-          `Teşekkürler Sayın Yetkili! ${company ? `(${company})` : ''} Sponsorluk talebiniz Girişim Kurulumuza iletildi. En kısa sürede sizinle iletişime geçeceğiz.`,
-          'success',
-          6000
-        );
+        (window as any).showToast('Destek ve katılım başvurunuz başarıyla alındı. Teşekkür ederiz.', 'success', 5000);
       }
-      
       form.reset();
-    });
-  }
-
-  // Kit download handler
-  const downloadBtn = document.getElementById('btn-download-kit');
-  if (downloadBtn) {
-    downloadBtn.addEventListener('click', () => {
-      if ((window as any).showToast) {
-        (window as any).showToast(
-          'Bodrum Kent Kütüphanesi 4-5 Eylül Sponsorluk Dosyası hazırlanıyor. Talebiniz koordinatörümüze iletildi.',
-          'info',
-          4000
-        );
-      }
     });
   }
 </script>

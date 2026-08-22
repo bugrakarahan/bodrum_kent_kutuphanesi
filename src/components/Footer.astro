@@ -56,7 +56,7 @@ const links = navRoutes.map((route) => ({
             <li>
               <a
                 href={link.href}
-                class="text-ink/75 hover:text-ink hover:underline decoration-sand underline-offset-4 transition-colors inline-block"
+                class="text-ink/75 hover:text-olive hover:underline decoration-sand underline-offset-4 transition-colors inline-block"
               >
                 {link.label}
               </a>
@@ -65,21 +65,39 @@ const links = navRoutes.map((route) => ({
         </ul>
       </div>
 
-      <!-- Column 3: Social Media & Contact -->
+      <!-- Column 3: Social Media & WhatsApp -->
       <div class="flex flex-col gap-4">
         <h3 class="font-serif text-lg italic text-ink font-semibold tracking-tight">
           {t.footer.socialMedia}
         </h3>
         <ul class="space-y-3 text-sm" role="list">
+          <!-- WhatsApp Channel -->
+          <li>
+            <a
+              href="https://wa.me/905423739748"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="group flex items-center gap-2.5 text-ink/75 hover:text-olive transition-colors"
+            >
+              <span class="w-7 h-7 rounded border border-sand bg-parchment flex items-center justify-center group-hover:border-olive/40 transition-colors">
+                <svg class="w-4 h-4 text-olive" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.711 2.598 2.664-.699c.971.53 1.771.821 2.796.822 3.185 0 5.772-2.587 5.772-5.768 0-3.184-2.587-5.774-5.772-5.774zm3.376 8.204c-.149.418-.752.766-1.042.813-.289.047-.665.066-1.077-.067-.253-.082-.584-.199-1.009-.383-1.796-.777-2.964-2.593-3.054-2.713-.09-.12-.733-.974-.733-1.859 0-.885.464-1.32.63-1.498.165-.178.36-.223.479-.223.12 0 .24.001.344.006.111.006.26-.042.407.311.15.359.51 1.242.555 1.332.045.09.075.195.015.315-.06.12-.09.195-.18.299-.09.105-.189.234-.27.314-.09.09-.184.187-.079.367.105.18.468.772.998 1.246.685.611 1.264.8 1.444.89.18.09.285.075.39-.045.105-.12.45-.524.57-.704.12-.18.24-.15.405-.09.165.06 1.05.495 1.23.585.18.09.3.135.345.21.045.075.045.435-.104.853z"/>
+                </svg>
+              </span>
+              <span>WhatsApp Kanalı</span>
+            </a>
+          </li>
+
+          <!-- Instagram -->
           <li>
             <a
               href="https://instagram.com"
               target="_blank"
               rel="noopener noreferrer"
-              class="group flex items-center gap-2.5 text-ink/75 hover:text-ink transition-colors"
+              class="group flex items-center gap-2.5 text-ink/75 hover:text-olive transition-colors"
             >
-              <span class="w-7 h-7 rounded border border-sand bg-parchment flex items-center justify-center group-hover:border-ink/40 transition-colors">
-                <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <span class="w-7 h-7 rounded border border-sand bg-parchment flex items-center justify-center group-hover:border-olive/40 transition-colors">
+                <svg class="w-3.5 h-3.5 text-olive" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                   <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
                   <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
                   <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
@@ -88,42 +106,30 @@ const links = navRoutes.map((route) => ({
               <span>Instagram</span>
             </a>
           </li>
+
+          <!-- YouTube -->
           <li>
             <a
               href="https://youtube.com"
               target="_blank"
               rel="noopener noreferrer"
-              class="group flex items-center gap-2.5 text-ink/75 hover:text-ink transition-colors"
+              class="group flex items-center gap-2.5 text-ink/75 hover:text-olive transition-colors"
             >
-              <span class="w-7 h-7 rounded border border-sand bg-parchment flex items-center justify-center group-hover:border-ink/40 transition-colors">
-                <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="currentColor">
+              <span class="w-7 h-7 rounded border border-sand bg-parchment flex items-center justify-center group-hover:border-olive/40 transition-colors">
+                <svg class="w-3.5 h-3.5 text-olive" viewBox="0 0 24 24" fill="currentColor">
                   <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
                 </svg>
               </span>
               <span>YouTube</span>
             </a>
           </li>
-          <li>
-            <a
-              href="https://facebook.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              class="group flex items-center gap-2.5 text-ink/75 hover:text-ink transition-colors"
-            >
-              <span class="w-7 h-7 rounded border border-sand bg-parchment flex items-center justify-center group-hover:border-ink/40 transition-colors">
-                <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="currentColor">
-                  <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
-                </svg>
-              </span>
-              <span>Facebook</span>
-            </a>
-          </li>
-          <li class="pt-2">
+
+          <li class="pt-1">
             <a
               href="mailto:bilgi@bodrumkentkutuphanesi.org"
               class="flex items-center gap-2 text-xs font-mono text-ink/80 hover:text-olive break-all transition-colors"
             >
-              <span class="material-symbols-outlined text-[16px] text-stone-gray shrink-0">mail</span>
+              <span class="material-symbols-outlined text-[16px] text-olive shrink-0">mail</span>
               <span>bilgi@bodrumkentkutuphanesi.org</span>
             </a>
           </li>
@@ -137,60 +143,50 @@ const links = navRoutes.map((route) => ({
         </h3>
         <div class="space-y-2.5 text-sm text-ink/75">
           <p class="flex items-start gap-2">
-            <span class="material-symbols-outlined text-[18px] text-stone-gray shrink-0 mt-0.5">location_on</span>
+            <span class="material-symbols-outlined text-[18px] text-olive shrink-0 mt-0.5">location_on</span>
             <span>{t.footer.address}</span>
           </p>
           <p class="flex items-start gap-2">
-            <span class="material-symbols-outlined text-[18px] text-stone-gray shrink-0 mt-0.5">schedule</span>
+            <span class="material-symbols-outlined text-[18px] text-olive shrink-0 mt-0.5">call</span>
+            <a href="tel:+905423739748" class="hover:text-olive transition-colors">{t.footer.phone}</a>
+          </p>
+          <p class="flex items-start gap-2">
+            <span class="material-symbols-outlined text-[18px] text-olive shrink-0 mt-0.5">schedule</span>
             <span>{t.footer.openingHours}</span>
           </p>
-          <p class="text-xs text-stone-gray pl-6">
-            {t.footer.closedMondays}
-          </p>
-        </div>
-
-        <div class="mt-1">
-          <a
-            href={lang === 'tr' ? '/iletisim' : '/en/contact'}
-            class="inline-flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wider text-ink hover:text-olive transition-colors"
-          >
-            <span>{lang === 'tr' ? 'Yol Tarifi ve İletişim' : 'Directions & Contact'}</span>
-            <span class="material-symbols-outlined text-[14px]">arrow_forward</span>
-          </a>
         </div>
       </div>
 
     </div>
 
-    <!-- Bottom Bar: Copyright & Legal Links -->
-    <div class="pt-8 flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-stone-gray">
-      <div>
-        <p>© {currentYear} {t.siteTitle}. {t.footer.rightsReserved}</p>
-      </div>
-
-      <div class="flex flex-wrap items-center gap-4 sm:gap-6">
+    <!-- Bottom Bar: Copyright & Legal Policies -->
+    <div class="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-stone-gray">
+      <p class="text-center sm:text-left">
+        &copy; {currentYear} {t.siteTitle}. {t.footer.rightsReserved}
+      </p>
+      
+      <div class="flex items-center gap-4 sm:gap-6 flex-wrap justify-center">
         <a 
           href={lang === 'tr' ? '/iletisim#kvkk' : '/en/contact#kvkk'} 
-          class="hover:text-ink transition-colors"
+          class="hover:text-olive transition-colors"
         >
           {t.footer.kvkk}
         </a>
         <span class="text-sand hidden sm:inline">•</span>
         <a 
           href={lang === 'tr' ? '/iletisim#gizlilik' : '/en/contact#privacy'} 
-          class="hover:text-ink transition-colors"
+          class="hover:text-olive transition-colors"
         >
           {t.footer.privacy}
         </a>
         <span class="text-sand hidden sm:inline">•</span>
         <a 
           href={lang === 'tr' ? '/iletisim#cerezler' : '/en/contact#cookies'} 
-          class="hover:text-ink transition-colors"
+          class="hover:text-olive transition-colors"
         >
           {t.footer.cookies}
         </a>
       </div>
     </div>
-
   </div>
 </footer>

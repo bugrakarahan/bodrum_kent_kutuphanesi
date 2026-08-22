@@ -6,747 +6,194 @@ import { getT } from '../utils/i18n';
 const lang = 'tr';
 const t = getT(lang);
 
-// Fetch events from Content Collections
 const allEvents = await getCollection('events');
-
-// Separate upcoming and past events
-const upcomingEvents = allEvents
-  .filter((e) => !e.data.isPast)
-  .sort((a, b) => new Date(a.data.date).getTime() - new Date(b.data.date).getTime());
-
-const pastEvents = allEvents
-  .filter((e) => e.data.isPast)
-  .sort((a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime());
-
-const featuredEvent = upcomingEvents.find((e) => e.data.featured) || upcomingEvents[0];
-const sideEvents = upcomingEvents.filter((e) => e.data.id !== featuredEvent?.data.id);
+const upcomingEvents = allEvents.filter((e) => !e.data.isPast);
+const pastEvents = allEvents.filter((e) => e.data.isPast);
 ---
 
 <Layout
-  title={`Etkinlikler & Atölyeler | ${t.siteTitle}`}
-  description="Bodrum Kent Kütüphanesi etkinlikleri, edebiyat söyleşileri, tarih konferansları, çocuk atölyeleri ve açık oturum programları."
+  title={`Etkinlikler | ${t.siteTitle}`}
+  description="Bodrum Kent Kütüphanesi etkinlikleri, kitap kulübü, söyleşi ve atölye buluşmaları."
   lang={lang}
   currentPath="/etkinlikler"
 >
-  <!-- 1. Hero Section -->
-  <section class="relative min-h-[65vh] flex items-center py-20 md:py-28 px-margin-mobile md:px-margin-desktop overflow-hidden border-b border-sand bg-surface-bright">
-    <!-- Atmospheric Ambient Background Layer -->
-    <div class="absolute inset-0 z-0 opacity-25 pointer-events-none">
-      <div
-        class="w-full h-full bg-cover bg-center filter contrast-110"
-        style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDQ_kg3bbgJ4ynOz1o7DQcY3YaIdeG_zUESiNKW-81FsNfEZqrXlPi-ZAYWzb2FYdKriB4ESdIgn04zGCTSrnOaQAobk2tEQSDMKK4TlQhdPdjUJk74KLsSusQUSR9nHe1QycFJgHdfJUQSr8eFa2k0wQHdX3j1D5aQBbxg9mUEAGpQs_UGA_l1geAuKfbBil5Wy-_VugN7cjAepbQ_HoOugyaLOfsfF-vsYSCOhY75Ao3sAvwHFdv3nGJYn9whKvXn8vnrP8j4yEE');"
-      ></div>
-      <div class="absolute inset-0 bg-gradient-to-r from-parchment via-parchment/85 to-parchment/60"></div>
-    </div>
-
-    <!-- Ex Libris Watermark Flourish -->
-    <div class="absolute -top-10 -right-10 md:top-8 md:right-12 ex-libris-watermark select-none pointer-events-none">
-      <span class="material-symbols-outlined text-[260px] md:text-[380px] text-olive leading-none">event_note</span>
-    </div>
-
-    <!-- Hero Content -->
-    <div class="relative z-10 max-w-container-max mx-auto w-full">
+  <!-- Hero Header -->
+  <section class="py-16 md:py-24 px-5 md:px-12 bg-surface-bright border-b border-sand">
+    <div class="max-w-[1280px] mx-auto">
       <div class="max-w-3xl">
-        <!-- Overline Badge -->
-        <div class="inline-flex items-center gap-2 px-3.5 py-1.5 bg-secondary-container/80 border border-sand text-ink text-xs font-semibold tracking-[0.2em] uppercase mb-6 rounded">
-          <span class="w-2 h-2 rounded-full bg-olive animate-pulse"></span>
-          <span>ETKİNLİK & ATÖLYE PROGRAMI</span>
-        </div>
-
-        <!-- Headline -->
-        <h1 class="font-serif text-4xl sm:text-5xl md:text-6xl lg:text-7xl text-ink font-normal leading-[1.12] tracking-tight mb-6 text-balance">
-          Bilginin Işığında Bodrum Etkinlikleri
+        <h1 class="font-serif text-3xl sm:text-4xl md:text-5xl text-ink font-bold leading-tight mb-4">
+          Bilginin ve Sanatın Işığında Etkinlikler
         </h1>
-
-        <!-- Subtitle Card -->
-        <div class="bg-parchment/95 backdrop-blur-sm border border-sand p-6 md:p-8 rounded shadow-sm max-w-2xl">
-          <p class="font-sans text-base md:text-lg text-secondary leading-relaxed text-balance">
-            Edebiyat söyleşilerinden felsefe seminerlerine, çocuk atölyelerinden antik çağ konferanslarına; Bodrum'un kültürel nabzını tutan buluşmalarımıza katılın.
-          </p>
-        </div>
+        <p class="font-serif text-lg sm:text-xl text-ink/80 leading-relaxed">
+          Edebiyat, Tarih, Arkeoloji, Antik Tarih, Felsefe, Sosyoloji, Psikoloji, Sanat,… etkinliklerimize katılımlarınızı bekliyoruz…
+        </p>
       </div>
     </div>
   </section>
 
-  <!-- 2. Sticky Filter & Search Bar -->
-  <section class="sticky top-16 md:top-20 z-30 bg-surface-bright/95 backdrop-blur-md border-b border-sand py-4 px-margin-mobile md:px-margin-desktop transition-all shadow-sm">
-    <div class="max-w-container-max mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
-      
-      <!-- Category Filter Pills -->
-      <div class="flex items-center gap-2 overflow-x-auto w-full md:w-auto pb-2 md:pb-0 scrollbar-none" id="event-filters">
-        <button
-          type="button"
-          data-category-filter="all"
-          class="event-filter-btn px-4 py-2 rounded-full text-xs font-semibold uppercase tracking-wider transition-all cursor-pointer bg-ink text-parchment shadow-sm whitespace-nowrap active-filter"
-        >
-          Tüm Etkinlikler
-        </button>
-        <button
-          type="button"
-          data-category-filter="workshop"
-          class="event-filter-btn px-4 py-2 rounded-full text-xs font-semibold uppercase tracking-wider transition-all cursor-pointer bg-sand/50 text-ink hover:bg-sand/80 whitespace-nowrap"
-        >
-          Atölyeler
-        </button>
-        <button
-          type="button"
-          data-category-filter="conference"
-          class="event-filter-btn px-4 py-2 rounded-full text-xs font-semibold uppercase tracking-wider transition-all cursor-pointer bg-sand/50 text-ink hover:bg-sand/80 whitespace-nowrap"
-        >
-          Konferanslar
-        </button>
-        <button
-          type="button"
-          data-category-filter="kids"
-          class="event-filter-btn px-4 py-2 rounded-full text-xs font-semibold uppercase tracking-wider transition-all cursor-pointer bg-sand/50 text-ink hover:bg-sand/80 whitespace-nowrap"
-        >
-          Çocuk Programları
-        </button>
-        <button
-          type="button"
-          data-category-filter="talk"
-          class="event-filter-btn px-4 py-2 rounded-full text-xs font-semibold uppercase tracking-wider transition-all cursor-pointer bg-sand/50 text-ink hover:bg-sand/80 whitespace-nowrap"
-        >
-          Söyleşiler
-        </button>
-      </div>
+  <!-- Main Content Area -->
+  <div class="max-w-[1280px] mx-auto px-5 md:px-12 py-16">
+    
+    <!-- Gelecek Etkinlikler Section -->
+    <section class="mb-20">
+      <h2 class="font-serif text-2xl sm:text-3xl text-ink font-bold mb-8 pb-3 border-b border-sand">
+        Gelecek Etkinlikler
+      </h2>
 
-      <!-- Live Search Input -->
-      <div class="w-full md:w-72 relative shrink-0">
-        <span class="material-symbols-outlined text-[18px] text-stone-gray absolute left-3.5 top-1/2 -translate-y-1/2 pointer-events-none">
-          search
-        </span>
-        <input
-          type="search"
-          id="event-search-input"
-          placeholder="Etkinlik veya mekan ara..."
-          class="w-full pl-10 pr-4 py-2 bg-parchment border border-sand rounded-full text-xs text-ink placeholder:text-stone-gray/70 focus:outline-none focus:border-olive focus:ring-1 focus:ring-olive transition-all shadow-inner"
-          aria-label="Etkinlik ara"
-        />
-      </div>
-
-    </div>
-  </section>
-
-  <!-- Empty State Notification (Hidden by default) -->
-  <div id="no-events-message" class="hidden max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop py-20 text-center">
-    <div class="w-16 h-16 rounded-full bg-sand/40 border border-sand mx-auto flex items-center justify-center text-stone-gray mb-4">
-      <span class="material-symbols-outlined text-[32px]">event_busy</span>
-    </div>
-    <h3 class="font-serif text-2xl text-ink font-semibold mb-2">Eşleşen Etkinlik Bulunamadı</h3>
-    <p class="font-sans text-sm text-secondary max-w-md mx-auto mb-6">
-      Arama kriterleriniz veya seçtiğiniz kategori ile eşleşen bir etkinlik kaydı bulunamadı. Lütfen filtreleri sıfırlamayı deneyin.
-    </p>
-    <button
-      type="button"
-      id="reset-filters-btn"
-      class="px-5 py-2.5 bg-ink text-parchment text-xs font-semibold uppercase tracking-wider rounded-sm hover:bg-olive transition-colors cursor-pointer"
-    >
-      Filtreleri Sıfırla
-    </button>
-  </div>
-
-  <!-- 3. Gelecek Etkinlikler Section -->
-  <section id="upcoming-events-section" class="py-20 md:py-28 px-margin-mobile md:px-margin-desktop bg-surface-container-low border-b border-sand">
-    <div class="max-w-container-max mx-auto">
-      
-      <!-- Section Header -->
-      <div class="flex items-center justify-between mb-12 pb-4 border-b border-sand">
-        <div>
-          <span class="font-sans text-xs uppercase tracking-[0.2em] text-olive font-semibold block mb-1">
-            GÜNDEM
-          </span>
-          <h2 class="font-serif text-3xl sm:text-4xl text-ink font-normal">
-            Gelecek Etkinlikler
-          </h2>
-        </div>
-        <span class="font-mono text-xs font-semibold text-stone-gray px-3 py-1 bg-parchment border border-sand rounded-full">
-          {upcomingEvents.length} Program
-        </span>
-      </div>
-
-      <!-- Bento Layout: Featured (8-Col) + Side (4-Col) -->
-      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
-        
-        <!-- Featured Event Card (8-Col) -->
-        {featuredEvent && (
-          <article
-            class="event-card lg:col-span-8 bg-parchment border border-sand rounded overflow-hidden flex flex-col justify-between group hover:shadow-lg transition-all duration-300 relative"
-            data-category={featuredEvent.data.category}
-            data-title={`${featuredEvent.data.title} ${featuredEvent.data.summaryTr} ${featuredEvent.data.locationTr} ${featuredEvent.data.categoryLabelTr}`.toLowerCase()}
-          >
-            <div>
-              <!-- Image Banner with Overlay -->
-              <div class="relative aspect-[16/9] md:aspect-[21/10] overflow-hidden bg-sand/30">
-                <img
-                  src={featuredEvent.data.image}
-                  alt={featuredEvent.data.title}
-                  class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-                  loading="eager"
-                />
-                <div class="absolute inset-0 bg-gradient-to-t from-ink/80 via-ink/20 to-transparent"></div>
-
-                <!-- Floating Badges -->
-                <div class="absolute top-4 left-4 flex flex-wrap gap-2">
-                  <span class="bg-olive text-parchment font-mono text-xs font-semibold px-3 py-1 uppercase tracking-wider rounded-sm shadow">
-                    ÖNE ÇIKAN
-                  </span>
-                  <span class="bg-ink/90 backdrop-blur-sm text-parchment font-mono text-xs font-semibold px-3 py-1 uppercase tracking-wider rounded-sm shadow">
-                    {featuredEvent.data.displayDateTr}
-                  </span>
-                </div>
-
-                <div class="absolute bottom-4 left-4 right-4 flex items-center justify-between text-parchment text-xs font-medium">
-                  <span class="inline-flex items-center gap-1 bg-black/40 backdrop-blur-sm px-2.5 py-1 rounded">
-                    <span class="material-symbols-outlined text-[15px] text-olive">location_on</span>
-                    {featuredEvent.data.locationTr}
-                  </span>
-                  <span class="inline-flex items-center gap-1 bg-black/40 backdrop-blur-sm px-2.5 py-1 rounded uppercase tracking-wider">
-                    {featuredEvent.data.categoryLabelTr}
-                  </span>
-                </div>
+      {upcomingEvents.map((event) => (
+        <div class="bg-surface-container-low border border-sand p-8 sm:p-12 shadow-xs">
+          <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+            
+            <div class="lg:col-span-8">
+              <div class="inline-block px-3 py-1 bg-olive text-white text-xs font-serif uppercase tracking-widest font-semibold mb-4 rounded-xs">
+                {event.data.categoryLabelTr}
               </div>
 
-              <!-- Content Body -->
-              <div class="p-6 md:p-8">
-                <h3 class="font-serif text-2xl sm:text-3xl md:text-4xl font-semibold text-ink leading-tight mb-4 group-hover:text-olive transition-colors">
-                  {featuredEvent.data.title}
-                </h3>
-                <p class="font-sans text-base text-secondary leading-relaxed mb-6">
-                  {featuredEvent.data.summaryTr}
-                </p>
+              <h3 class="font-serif text-2xl sm:text-3xl text-ink font-bold leading-tight mb-6">
+                {event.data.title}
+              </h3>
+
+              <div class="prose max-w-none text-ink/90 font-serif text-base sm:text-lg leading-relaxed space-y-4 whitespace-pre-line mb-8">
+                {event.data.summaryTr}
+              </div>
+
+              <div class="flex flex-wrap items-center gap-4 pt-4 border-t border-sand">
+                <button
+                  type="button"
+                  id="btn-join-bookclub"
+                  class="px-8 py-3.5 bg-olive text-white hover:bg-ink text-sm font-serif font-semibold tracking-wider uppercase transition-colors shadow-xs"
+                >
+                  Kitap Kulübüne Katılın
+                </button>
+                <span class="text-xs text-stone-gray font-serif italic">
+                  Duyurular ve ilk buluşma tarihi Instagram ve WhatsApp kanalımızdan paylaşılacaktır.
+                </span>
               </div>
             </div>
 
-            <!-- Card Action Footer -->
-            <div class="px-6 pb-6 md:px-8 md:pb-8 pt-4 border-t border-sand/60 flex flex-wrap items-center justify-between gap-4">
-              <button
-                type="button"
-                class="event-register-btn px-6 py-3 bg-ink hover:bg-olive text-parchment font-sans font-semibold text-xs uppercase tracking-widest transition-colors rounded-sm shadow-sm flex items-center gap-2 cursor-pointer"
-                data-event-title={featuredEvent.data.title}
-              >
-                <span>Kayıt Ol</span>
-                <span class="material-symbols-outlined text-[16px]">how_to_reg</span>
-              </button>
-
-              <button
-                type="button"
-                class="event-detail-btn px-5 py-3 border border-sand hover:border-ink text-ink font-sans font-semibold text-xs uppercase tracking-widest transition-colors rounded-sm flex items-center gap-1.5 cursor-pointer"
-                data-event-title={featuredEvent.data.title}
-                data-event-date={featuredEvent.data.displayDateTr}
-                data-event-category={featuredEvent.data.categoryLabelTr}
-                data-event-location={featuredEvent.data.locationTr}
-                data-event-summary={featuredEvent.data.summaryTr}
-                data-event-image={featuredEvent.data.image}
-              >
-                <span>Detaylar</span>
-                <span class="material-symbols-outlined text-[16px]">info</span>
-              </button>
-            </div>
-          </article>
-        )}
-
-        <!-- Side Event Cards (4-Col) -->
-        <div class="lg:col-span-4 flex flex-col gap-6">
-          {sideEvents.map((event) => (
-            <article
-              class="event-card bg-parchment border border-sand rounded overflow-hidden flex flex-col justify-between group hover:shadow-md transition-all duration-300 flex-1"
-              data-category={event.data.category}
-              data-title={`${event.data.title} ${event.data.summaryTr} ${event.data.locationTr} ${event.data.categoryLabelTr}`.toLowerCase()}
-            >
-              <div>
-                <!-- Side Card Thumbnail -->
-                <div class="relative aspect-[16/9] overflow-hidden bg-sand/30">
+            <div class="lg:col-span-4">
+              <div class="bg-parchment border border-sand p-3 shadow-xs">
+                <div class="aspect-[4/3] overflow-hidden bg-surface-container-high">
                   <img
                     src={event.data.image}
                     alt={event.data.title}
-                    class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                    loading="lazy"
+                    class="w-full h-full object-cover grayscale contrast-110 hover:grayscale-0 transition-all duration-500"
                   />
-                  <!-- Floating Date Badge -->
-                  <div class="absolute top-3 left-3 bg-ink text-parchment font-mono text-[11px] font-semibold px-2.5 py-1 uppercase tracking-wider rounded-sm shadow">
-                    {event.data.displayDateTr}
-                  </div>
-                  <div class="absolute bottom-3 right-3 bg-parchment/90 backdrop-blur-sm text-ink font-sans text-[11px] font-semibold px-2 py-0.5 uppercase tracking-wider rounded-sm">
-                    {event.data.categoryLabelTr}
-                  </div>
                 </div>
-
-                <!-- Side Card Content -->
-                <div class="p-5">
-                  <div class="flex items-center gap-1 text-xs text-stone-gray mb-2">
-                    <span class="material-symbols-outlined text-[14px] text-olive">location_on</span>
-                    <span>{event.data.locationTr}</span>
-                  </div>
-                  <h4 class="font-serif text-lg font-semibold text-ink leading-snug mb-2 group-hover:text-olive transition-colors">
-                    {event.data.title}
-                  </h4>
-                  <p class="font-sans text-xs text-secondary leading-relaxed line-clamp-2">
-                    {event.data.summaryTr}
-                  </p>
+                <div class="p-3 text-center">
+                  <span class="font-serif italic text-sm text-ink block font-bold">Bodrum Kent Kütüphanesi</span>
+                  <span class="text-xs text-stone-gray font-serif">Buluşma Salonu & Bahçe</span>
                 </div>
               </div>
+            </div>
 
-              <!-- Side Card Footer -->
-              <div class="px-5 pb-5 pt-3 border-t border-sand/60 flex items-center justify-between gap-2">
-                <button
-                  type="button"
-                  class="event-register-btn px-4 py-2 bg-ink hover:bg-olive text-parchment font-sans font-semibold text-[11px] uppercase tracking-wider transition-colors rounded-sm cursor-pointer flex items-center gap-1"
-                  data-event-title={event.data.title}
-                >
-                  <span>Kayıt Ol</span>
-                  <span class="material-symbols-outlined text-[14px]">how_to_reg</span>
-                </button>
-
-                <button
-                  type="button"
-                  class="event-detail-btn px-3 py-2 border border-sand hover:border-ink text-ink font-sans font-semibold text-[11px] uppercase tracking-wider transition-colors rounded-sm cursor-pointer"
-                  data-event-title={event.data.title}
-                  data-event-date={event.data.displayDateTr}
-                  data-event-category={event.data.categoryLabelTr}
-                  data-event-location={event.data.locationTr}
-                  data-event-summary={event.data.summaryTr}
-                  data-event-image={event.data.image}
-                >
-                  Detaylar
-                </button>
-              </div>
-            </article>
-          ))}
+          </div>
         </div>
+      ))}
+    </section>
 
-      </div>
-    </div>
-  </section>
+    <!-- Geçmiş Etkinlikler Section -->
+    <section>
+      <h2 class="font-serif text-2xl sm:text-3xl text-ink font-bold mb-8 pb-3 border-b border-sand">
+        Geçmiş Etkinlikler
+      </h2>
 
-  <!-- 4. Geçmiş Etkinlikler Section -->
-  <section id="past-events-section" class="py-20 md:py-28 px-margin-mobile md:px-margin-desktop bg-parchment border-b border-sand">
-    <div class="max-w-container-max mx-auto">
-      
-      <!-- Section Header -->
-      <div class="flex flex-col sm:flex-row sm:items-end justify-between mb-12 pb-4 border-b border-sand gap-4">
-        <div>
-          <span class="font-sans text-xs uppercase tracking-[0.2em] text-olive font-semibold block mb-1">
-            ARŞİV & BELLEK
-          </span>
-          <h2 class="font-serif text-3xl sm:text-4xl text-ink font-normal">
-            Geçmiş Etkinlikler
-          </h2>
-          <p class="font-sans text-sm text-secondary mt-1">
-            Gerçekleştirdiğimiz oturumlar, arşiv kayıtları ve etkinlik bültenleri.
-          </p>
-        </div>
-        <span class="font-mono text-xs font-semibold text-stone-gray px-3 py-1 bg-surface-container-low border border-sand rounded-full shrink-0">
-          {pastEvents.length} Kayıt
-        </span>
+      <!-- Topic Filters (Edebiyat, Arkeoloji, Tarih, Felsefe, Ekoloji) -->
+      <div class="flex flex-wrap gap-2 mb-8 text-xs font-serif">
+        <span class="px-3.5 py-1.5 bg-olive text-white font-semibold">Tümü</span>
+        <span class="px-3.5 py-1.5 bg-surface-container-low border border-sand text-ink">Arkeoloji</span>
+        <span class="px-3.5 py-1.5 bg-surface-container-low border border-sand text-ink">Tarih</span>
+        <span class="px-3.5 py-1.5 bg-surface-container-low border border-sand text-ink">Edebiyat</span>
+        <span class="px-3.5 py-1.5 bg-surface-container-low border border-sand text-ink">Felsefe</span>
+        <span class="px-3.5 py-1.5 bg-surface-container-low border border-sand text-ink">Ekoloji</span>
       </div>
 
-      <!-- 3-Column Grid -->
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {pastEvents.map((event) => (
-          <article
-            class="event-card bg-surface-container-low border border-sand rounded overflow-hidden flex flex-col justify-between group hover:shadow-md transition-all duration-300"
-            data-category={event.data.category}
-            data-title={`${event.data.title} ${event.data.summaryTr} ${event.data.locationTr} ${event.data.categoryLabelTr}`.toLowerCase()}
-          >
+          <div class="bg-surface-container-low border border-sand p-6 flex flex-col justify-between">
             <div>
-              <!-- Past Event Image -->
-              <div class="relative aspect-[16/10] overflow-hidden bg-sand/30">
+              <div class="aspect-[16/10] overflow-hidden bg-surface-container-high mb-4 border border-sand">
                 <img
                   src={event.data.image}
                   alt={event.data.title}
-                  class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500"
-                  loading="lazy"
+                  class="w-full h-full object-cover grayscale contrast-110 hover:grayscale-0 transition-all duration-500"
                 />
-                <!-- Floating Date -->
-                <div class="absolute top-3 left-3 bg-stone-gray/90 text-parchment font-mono text-[11px] font-semibold px-2.5 py-1 uppercase tracking-wider rounded-sm shadow">
-                  {event.data.displayDateTr}
-                </div>
-                <div class="absolute bottom-3 right-3 bg-parchment/95 text-ink font-sans text-[11px] font-semibold px-2 py-0.5 uppercase tracking-wider rounded-sm">
-                  {event.data.categoryLabelTr}
-                </div>
               </div>
 
-              <!-- Past Event Body -->
-              <div class="p-6">
-                <div class="flex items-center gap-1 text-xs text-stone-gray mb-2">
-                  <span class="material-symbols-outlined text-[14px] text-olive">location_on</span>
-                  <span>{event.data.locationTr}</span>
-                </div>
-                <h3 class="font-serif text-xl font-semibold text-ink leading-snug mb-3 group-hover:text-olive transition-colors">
-                  {event.data.title}
-                </h3>
-                <p class="font-sans text-sm text-secondary leading-relaxed line-clamp-3">
-                  {event.data.summaryTr}
-                </p>
+              <div class="flex items-center justify-between text-xs text-stone-gray font-mono mb-2">
+                <span class="text-olive font-serif font-bold uppercase">{event.data.categoryLabelTr}</span>
+                <span>{event.data.displayDateTr}</span>
               </div>
+
+              <h3 class="font-serif text-xl text-ink font-bold mb-3 leading-snug">
+                {event.data.title}
+              </h3>
+
+              <p class="text-xs sm:text-sm text-ink/80 font-serif leading-relaxed mb-6">
+                {event.data.summaryTr}
+              </p>
             </div>
 
-            <!-- Past Actions Toolbar -->
-            <div class="p-4 bg-surface-container border-t border-sand/60 grid grid-cols-3 gap-2 text-center">
+            <div class="flex items-center gap-3 pt-4 border-t border-sand">
               <button
                 type="button"
-                class="past-action-btn py-2 px-1 rounded bg-parchment border border-sand hover:border-olive hover:text-olive text-ink font-mono text-[10px] font-semibold uppercase tracking-wider transition-colors flex flex-col items-center gap-1 cursor-pointer"
-                data-action="recording"
+                class="btn-event-detail px-4 py-2 bg-ink text-parchment hover:bg-olive text-xs font-serif font-semibold uppercase tracking-wider transition-colors"
                 data-title={event.data.title}
-                title="Etkinlik Kaydını İncele"
+                data-summary={event.data.summaryTr}
               >
-                <span class="material-symbols-outlined text-[16px] text-olive">smart_display</span>
-                <span>KAYIT</span>
+                Detay
               </button>
 
               <button
                 type="button"
-                class="past-action-btn py-2 px-1 rounded bg-parchment border border-sand hover:border-olive hover:text-olive text-ink font-mono text-[10px] font-semibold uppercase tracking-wider transition-colors flex flex-col items-center gap-1 cursor-pointer"
-                data-action="gallery"
-                data-title={event.data.title}
-                title="Fotoğraf Galerisini Görüntüle"
+                class="btn-event-gallery px-4 py-2 bg-parchment border border-sand text-ink hover:border-olive text-xs font-serif font-semibold uppercase tracking-wider transition-colors"
               >
-                <span class="material-symbols-outlined text-[16px] text-olive">photo_library</span>
-                <span>GALERİ</span>
-              </button>
-
-              <button
-                type="button"
-                class="past-action-btn py-2 px-1 rounded bg-parchment border border-sand hover:border-olive hover:text-olive text-ink font-mono text-[10px] font-semibold uppercase tracking-wider transition-colors flex flex-col items-center gap-1 cursor-pointer"
-                data-action="bulletin"
-                data-title={event.data.title}
-                title="Özet Bülteni İndir"
-              >
-                <span class="material-symbols-outlined text-[16px] text-olive">article</span>
-                <span>BÜLTEN</span>
+                Galeri
               </button>
             </div>
-          </article>
+          </div>
         ))}
       </div>
+    </section>
 
-    </div>
-  </section>
-
-  <!-- 5. Event Detail Modal -->
-  <div
-    id="event-detail-modal"
-    class="fixed inset-0 z-50 bg-ink/80 backdrop-blur-sm flex items-center justify-center p-4 opacity-0 pointer-events-none transition-opacity duration-300"
-    role="dialog"
-    aria-modal="true"
-    aria-labelledby="modal-event-title"
-  >
-    <div class="bg-parchment border border-sand rounded-md max-w-xl w-full max-h-[90vh] overflow-y-auto shadow-2xl flex flex-col">
-      <div class="relative aspect-video w-full bg-sand/30 overflow-hidden">
-        <img id="modal-event-image" src="" alt="" class="w-full h-full object-cover" />
-        <button
-          type="button"
-          id="close-event-modal"
-          class="absolute top-3 right-3 w-8 h-8 rounded-full bg-ink/80 text-parchment flex items-center justify-center hover:bg-olive transition-colors cursor-pointer"
-          aria-label="Kapat"
-        >
-          <span class="material-symbols-outlined text-[20px]">close</span>
-        </button>
-      </div>
-
-      <div class="p-6 md:p-8 flex-1">
-        <div class="flex items-center justify-between gap-2 mb-3">
-          <span id="modal-event-category" class="font-sans text-xs font-semibold uppercase tracking-widest text-olive"></span>
-          <span id="modal-event-date" class="font-mono text-xs font-semibold text-stone-gray px-2 py-0.5 bg-surface-container border border-sand rounded"></span>
-        </div>
-
-        <h3 id="modal-event-title" class="font-serif text-2xl md:text-3xl font-semibold text-ink mb-4"></h3>
-
-        <div class="flex items-center gap-1.5 text-xs text-stone-gray mb-4 pb-4 border-b border-sand">
-          <span class="material-symbols-outlined text-[16px] text-olive">location_on</span>
-          <span id="modal-event-location" class="font-medium text-ink"></span>
-        </div>
-
-        <p id="modal-event-summary" class="font-sans text-sm md:text-base text-secondary leading-relaxed mb-6"></p>
-
-        <div class="pt-4 border-t border-sand flex items-center justify-between">
-          <button
-            type="button"
-            id="modal-register-btn"
-            class="px-6 py-3 bg-ink hover:bg-olive text-parchment font-sans font-semibold text-xs uppercase tracking-widest transition-colors rounded-sm shadow-sm flex items-center gap-2 cursor-pointer"
-          >
-            <span>Etkinliğe Kayıt Ol</span>
-            <span class="material-symbols-outlined text-[16px]">how_to_reg</span>
-          </button>
-          <button
-            type="button"
-            id="modal-close-bottom-btn"
-            class="px-4 py-2.5 text-stone-gray hover:text-ink text-xs font-semibold uppercase tracking-wider transition-colors cursor-pointer"
-          >
-            Kapat
-          </button>
-        </div>
-      </div>
-    </div>
   </div>
-
-  <!-- 6. Newsletter Subscription Section -->
-  <section class="py-20 md:py-28 px-margin-mobile md:px-margin-desktop bg-surface-container relative overflow-hidden">
-    <div class="absolute -bottom-12 -left-12 ex-libris-watermark pointer-events-none select-none">
-      <span class="material-symbols-outlined text-[280px] text-olive leading-none">mail</span>
-    </div>
-
-    <div class="max-w-4xl mx-auto relative z-10 text-center">
-      <span class="font-sans text-xs uppercase tracking-[0.2em] text-olive font-semibold block mb-3">
-        KÜLTÜR BÜLTENİ
-      </span>
-      <h2 class="font-serif text-3xl sm:text-4xl md:text-5xl text-ink leading-tight mb-6">
-        {t.subscribeNewsletter}
-      </h2>
-      <p class="font-sans text-base md:text-lg text-secondary leading-relaxed max-w-2xl mx-auto mb-10">
-        {t.newsletterDesc}
-      </p>
-
-      <!-- Newsletter Form -->
-      <form id="events-newsletter-form" class="max-w-xl mx-auto flex flex-col sm:flex-row gap-3">
-        <input
-          type="email"
-          id="events-newsletter-email"
-          name="email"
-          required
-          placeholder="E-posta adresinizi yazınız..."
-          class="flex-1 px-5 py-4 bg-surface-bright border border-sand text-ink text-sm placeholder:text-stone-gray/70 focus:outline-none focus:border-olive focus:ring-1 focus:ring-olive rounded-sm shadow-sm"
-          aria-label="E-posta adresiniz"
-        />
-        <button
-          type="submit"
-          class="px-8 py-4 bg-ink text-parchment font-sans font-semibold text-xs tracking-widest uppercase hover:bg-olive transition-colors rounded-sm shadow-sm shrink-0 flex items-center justify-center gap-2 cursor-pointer"
-        >
-          <span>{t.subscribeButton}</span>
-          <span class="material-symbols-outlined text-[16px]">send</span>
-        </button>
-      </form>
-
-      <p class="font-sans text-xs text-stone-gray mt-4">
-        Gizliliğinize saygı duyuyoruz. İstediğiniz an bülten aboneliğinden çıkabilirsiniz.
-      </p>
-    </div>
-  </section>
-
-  <!-- Client-side Filtering & Interactivity Script -->
-  <script>
-    function setupEventsInteractivity() {
-      const filterButtons = document.querySelectorAll<HTMLButtonElement>('.event-filter-btn');
-      const searchInput = document.getElementById('event-search-input') as HTMLInputElement | null;
-      const eventCards = document.querySelectorAll<HTMLElement>('.event-card');
-      const noEventsMsg = document.getElementById('no-events-message');
-      const upcomingSection = document.getElementById('upcoming-events-section');
-      const pastSection = document.getElementById('past-events-section');
-      const resetBtn = document.getElementById('reset-filters-btn');
-
-      let currentCategory = 'all';
-      let currentQuery = '';
-
-      function filterEvents() {
-        let visibleCount = 0;
-        let visibleUpcoming = 0;
-        let visiblePast = 0;
-
-        eventCards.forEach((card) => {
-          const category = card.getAttribute('data-category') || '';
-          const title = card.getAttribute('data-title') || '';
-
-          const matchesCategory = currentCategory === 'all' || category === currentCategory;
-          const matchesQuery = !currentQuery || title.includes(currentQuery);
-
-          if (matchesCategory && matchesQuery) {
-            card.style.display = '';
-            visibleCount++;
-            if (card.closest('#upcoming-events-section')) visibleUpcoming++;
-            if (card.closest('#past-events-section')) visiblePast++;
-          } else {
-            card.style.display = 'none';
-          }
-        });
-
-        // Toggle sections visibility if no child cards are visible
-        if (upcomingSection) {
-          upcomingSection.style.display = visibleUpcoming > 0 ? '' : 'none';
-        }
-        if (pastSection) {
-          pastSection.style.display = visiblePast > 0 ? '' : 'none';
-        }
-
-        // Toggle Empty state
-        if (noEventsMsg) {
-          if (visibleCount === 0) {
-            noEventsMsg.classList.remove('hidden');
-          } else {
-            noEventsMsg.classList.add('hidden');
-          }
-        }
-      }
-
-      // Filter button click handler
-      filterButtons.forEach((btn) => {
-        btn.addEventListener('click', () => {
-          filterButtons.forEach((b) => {
-            b.classList.remove('bg-ink', 'text-parchment', 'active-filter');
-            b.classList.add('bg-sand/50', 'text-ink');
-          });
-          btn.classList.remove('bg-sand/50', 'text-ink');
-          btn.classList.add('bg-ink', 'text-parchment', 'active-filter');
-
-          currentCategory = btn.getAttribute('data-category-filter') || 'all';
-          filterEvents();
-        });
-      });
-
-      // Search input handler
-      if (searchInput) {
-        searchInput.addEventListener('input', (e) => {
-          currentQuery = (e.target as HTMLInputElement).value.trim().toLowerCase();
-          filterEvents();
-        });
-      }
-
-      // Reset button handler
-      if (resetBtn) {
-        resetBtn.addEventListener('click', () => {
-          currentCategory = 'all';
-          currentQuery = '';
-          if (searchInput) searchInput.value = '';
-
-          filterButtons.forEach((b) => {
-            if (b.getAttribute('data-category-filter') === 'all') {
-              b.classList.remove('bg-sand/50', 'text-ink');
-              b.classList.add('bg-ink', 'text-parchment', 'active-filter');
-            } else {
-              b.classList.remove('bg-ink', 'text-parchment', 'active-filter');
-              b.classList.add('bg-sand/50', 'text-ink');
-            }
-          });
-
-          filterEvents();
-        });
-      }
-
-      // Event Registration Buttons
-      document.querySelectorAll('.event-register-btn').forEach((btn) => {
-        btn.addEventListener('click', (e) => {
-          e.stopPropagation();
-          const title = btn.getAttribute('data-event-title') || 'Etkinlik';
-          if (typeof (window as any).showToast === 'function') {
-            (window as any).showToast(`"${title}" için etkinlik kaydınız başarıyla alındı. Teşekkür ederiz!`, 'success');
-          }
-        });
-      });
-
-      // Past Event Action Buttons
-      document.querySelectorAll('.past-action-btn').forEach((btn) => {
-        btn.addEventListener('click', (e) => {
-          e.stopPropagation();
-          const action = btn.getAttribute('data-action');
-          const title = btn.getAttribute('data-title') || 'Etkinlik';
-
-          if (typeof (window as any).showToast === 'function') {
-            if (action === 'recording') {
-              (window as any).showToast(`"${title}" etkinlik kaydı arşivden yükleniyor...`, 'info');
-            } else if (action === 'gallery') {
-              (window as any).showToast(`"${title}" fotoğraf galerisi yakında eklenecektir.`, 'info');
-            } else if (action === 'bulletin') {
-              (window as any).showToast(`"${title}" özet bülteni PDF olarak indiriliyor.`, 'success');
-            }
-          }
-        });
-      });
-
-      // Event Detail Modal
-      const modal = document.getElementById('event-detail-modal');
-      const modalImage = document.getElementById('modal-event-image') as HTMLImageElement | null;
-      const modalCategory = document.getElementById('modal-event-category');
-      const modalDate = document.getElementById('modal-event-date');
-      const modalTitle = document.getElementById('modal-event-title');
-      const modalLocation = document.getElementById('modal-event-location');
-      const modalSummary = document.getElementById('modal-event-summary');
-      const modalRegisterBtn = document.getElementById('modal-register-btn');
-      const closeBtn = document.getElementById('close-event-modal');
-      const closeBottomBtn = document.getElementById('modal-close-bottom-btn');
-
-      let currentModalEventTitle = '';
-
-      function openModal(data: {
-        title: string;
-        date: string;
-        category: string;
-        location: string;
-        summary: string;
-        image: string;
-      }) {
-        if (!modal) return;
-        currentModalEventTitle = data.title;
-        if (modalImage) modalImage.src = data.image;
-        if (modalCategory) modalCategory.textContent = data.category;
-        if (modalDate) modalDate.textContent = data.date;
-        if (modalTitle) modalTitle.textContent = data.title;
-        if (modalLocation) modalLocation.textContent = data.location;
-        if (modalSummary) modalSummary.textContent = data.summary;
-
-        modal.classList.remove('opacity-0', 'pointer-events-none');
-        modal.classList.add('opacity-100');
-        document.body.style.overflow = 'hidden';
-      }
-
-      function closeModal() {
-        if (!modal) return;
-        modal.classList.add('opacity-0', 'pointer-events-none');
-        modal.classList.remove('opacity-100');
-        document.body.style.overflow = '';
-      }
-
-      document.querySelectorAll('.event-detail-btn').forEach((btn) => {
-        btn.addEventListener('click', (e) => {
-          e.stopPropagation();
-          openModal({
-            title: btn.getAttribute('data-event-title') || '',
-            date: btn.getAttribute('data-event-date') || '',
-            category: btn.getAttribute('data-event-category') || '',
-            location: btn.getAttribute('data-event-location') || '',
-            summary: btn.getAttribute('data-event-summary') || '',
-            image: btn.getAttribute('data-event-image') || ''
-          });
-        });
-      });
-
-      closeBtn?.addEventListener('click', closeModal);
-      closeBottomBtn?.addEventListener('click', closeModal);
-      modal?.addEventListener('click', (e) => {
-        if (e.target === modal) closeModal();
-      });
-
-      if (modalRegisterBtn) {
-        modalRegisterBtn.addEventListener('click', () => {
-          if (typeof (window as any).showToast === 'function') {
-            (window as any).showToast(`"${currentModalEventTitle}" için etkinlik kaydınız başarıyla alındı. Teşekkür ederiz!`, 'success');
-          }
-          closeModal();
-        });
-      }
-
-      // Newsletter Form
-      const newsletterForm = document.getElementById('events-newsletter-form') as HTMLFormElement | null;
-      const newsletterInput = document.getElementById('events-newsletter-email') as HTMLInputElement | null;
-
-      if (newsletterForm && newsletterInput) {
-        newsletterForm.addEventListener('submit', (e) => {
-          e.preventDefault();
-          const email = newsletterInput.value.trim();
-          if (email && email.includes('@')) {
-            if (typeof (window as any).showToast === 'function') {
-              (window as any).showToast('Bülten aboneliğiniz başarıyla tamamlandı. Teşekkür ederiz!', 'success');
-            }
-            newsletterInput.value = '';
-          } else {
-            if (typeof (window as any).showToast === 'function') {
-              (window as any).showToast('Lütfen geçerli bir e-posta adresi giriniz.', 'error');
-            }
-          }
-        });
-      }
-    }
-
-    setupEventsInteractivity();
-    document.addEventListener('astro:page-load', setupEventsInteractivity);
-  </script>
 </Layout>
+
+<script>
+  // Book club click
+  const bookClubBtn = document.getElementById('btn-join-bookclub');
+  if (bookClubBtn) {
+    bookClubBtn.addEventListener('click', () => {
+      if ((window as any).showToast) {
+        (window as any).showToast(
+          'Kitap Kulübü ilgiliniz için teşekkürler! İlk buluşma detayları için WhatsApp ve sosyal medya kanallarımızı takip edebilirsiniz.',
+          'success',
+          5000
+        );
+      }
+    });
+  }
+
+  // Gallery click
+  document.querySelectorAll('.btn-event-gallery').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      if ((window as any).showToast) {
+        (window as any).showToast(
+          'Etkinlik fotoğraf galerisi arşive eklenmektedir.',
+          'info',
+          3000
+        );
+      }
+    });
+  });
+
+  // Detail click
+  document.querySelectorAll('.btn-event-detail').forEach((btn) => {
+    btn.addEventListener('click', (e) => {
+      const target = e.currentTarget as HTMLElement;
+      const title = target.getAttribute('data-title');
+      const summary = target.getAttribute('data-summary');
+      alert(`${title}\n\n${summary}`);
+    });
+  });
+</script>
