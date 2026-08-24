@@ -13,10 +13,10 @@ const t = getT(lang);
   currentPath="/"
 >
   <!-- 1. Hero & Ana Tanıtım Vitrini -->
-  <section class="relative min-h-[80vh] flex items-center justify-center py-16 md:py-28 px-5 md:px-12 overflow-hidden border-b border-sand bg-surface-bright">
+  <section class="relative min-h-[75vh] flex items-center justify-center py-12 md:py-20 px-5 md:px-12 overflow-hidden border-b border-sand bg-surface-bright">
     
     <!-- Subtle Ambient Background Layer -->
-    <div class="absolute inset-0 z-0 opacity-15 pointer-events-none">
+    <div class="absolute inset-0 z-0 opacity-10 pointer-events-none">
       <div
         class="w-full h-full bg-cover bg-center filter grayscale contrast-125"
         style="background-image: url('https://lh3.googleusercontent.com/aida/AP1WRLvo60AOVtg-X2yx5_UsWAYHm8SVZyT_7GmTxiGOeYNbsSg0TADSsk0S_nyvd794vLfkUY3I7nwaPhBWhJdlPkO45ZzOwy2dFyAdRBD_sw9MQ0ohoBLQsfabJSdYSm4TbUmg_2DEzDzqMqJbLKVQjdUYWpK6uJXcvx1KUMGHoDWpGghWlQBy8J7PfXLubkb5erCLKPe8Nznl46CMhd-jcSxP8dhqHD4evmD0Zl-vA-Sxo0_PqpRIAuZpIWo');"
@@ -25,72 +25,47 @@ const t = getT(lang);
     </div>
 
     <!-- Ex Libris Watermark -->
-    <div class="absolute -top-10 -right-10 md:top-10 md:right-12 ex-libris-watermark select-none pointer-events-none">
-      <span class="material-symbols-outlined text-[200px] md:text-[340px] text-olive leading-none">auto_stories</span>
+    <div class="absolute -top-10 -right-10 md:top-8 md:right-10 ex-libris-watermark select-none pointer-events-none">
+      <span class="material-symbols-outlined text-[180px] md:text-[300px] text-olive leading-none">auto_stories</span>
     </div>
 
     <!-- Hero Content Container -->
     <div class="relative z-10 max-w-[1280px] mx-auto w-full">
-      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
         
-        <!-- Left: Headline & Manifesto Text -->
-        <div class="lg:col-span-7">
-          <!-- Headline (Title Case, noktasız) -->
-          <h1 class="font-serif text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-ink font-bold leading-[1.18] tracking-tight mb-8 text-balance">
+        <!-- Left: Headline & 2-Paragraph Manifesto -->
+        <div class="lg:col-span-7 space-y-6">
+          <!-- Scaled-down Balanced Headline -->
+          <h1 class="font-serif text-3xl sm:text-4xl lg:text-[40px] text-ink font-bold leading-[1.25] tracking-tight text-balance">
             Bodrum’un Kültürel Hafızası İçin Yaşayan Bir Kütüphane
           </h1>
 
-          <!-- Main Manifesto Text -->
-          <div class="bg-parchment/90 backdrop-blur-xs border border-sand p-6 sm:p-8 rounded-xs shadow-xs mb-10">
-            <p class="font-serif text-base sm:text-lg text-ink/90 leading-relaxed text-balance">
-              Bodrum Kent Kütüphanesi, Bodrum’da yaşayanlar ile kenti ziyaret eden kitapseverleri, edebiyat, sanat ve bilim dünyasının değerli isimleriyle ve kitaplarıyla buluşturmayı amaçlayan, çok amaçlı ve yaşayan bir kütüphane projesidir. Kitap merkezli etkinlikler, söyleşiler, atölyeler ve kültürel buluşmalar aracılığıyla yaşam boyu öğrenmeyi, üretimi ve paylaşımı destekleyen, Akdeniz ve Anadolu hümanizmasını koruyan, bağımsız bir buluşma alanı olarak tasarlanmaktadır.
+          <!-- Main Manifesto Text: 2 Paragraphs with Exact Line Breaks -->
+          <div class="bg-parchment border border-sand p-6 sm:p-8 rounded-xs shadow-xs space-y-4">
+            <p class="font-serif text-lg sm:text-xl text-ink/90 leading-relaxed text-balance">
+              Bodrum Kent Kütüphanesi, Bodrum’da yaşayanlar ile kenti ziyaret eden kitapseverleri, edebiyat, sanat ve bilim dünyasının değerli isimleriyle ve kitaplarıyla buluşturmayı amaçlayan, çok amaçlı ve yaşayan bir kütüphane projesidir.
             </p>
-          </div>
-
-          <!-- Action Buttons -->
-          <div class="flex flex-wrap items-center gap-4">
-            <a
-              href="/etkinlikler"
-              class="inline-flex items-center justify-center gap-2 px-7 py-3.5 bg-ink text-parchment font-serif font-semibold text-sm tracking-wider uppercase hover:bg-olive transition-all duration-200 shadow-sm group"
-            >
-              <span>Etkinlikleri İncele</span>
-              <span class="material-symbols-outlined text-base transition-transform group-hover:translate-x-1">arrow_forward</span>
-            </a>
-
-            <a
-              href="/destek"
-              class="inline-flex items-center justify-center px-7 py-3.5 bg-olive text-white font-serif font-semibold text-sm tracking-wider uppercase hover:bg-ink transition-all duration-200 shadow-xs"
-            >
-              <span>Destek & Gönüllü Katılım</span>
-            </a>
-
-            <a
-              href="/hakkimizda"
-              class="inline-flex items-center justify-center px-7 py-3.5 border border-ink text-ink font-serif font-semibold text-sm tracking-wider uppercase hover:bg-sand/60 transition-all duration-200"
-            >
-              <span>Hakkımızda</span>
-            </a>
+            <p class="font-serif text-lg sm:text-xl text-ink/90 leading-relaxed text-balance">
+              Kitap merkezli etkinlikler, söyleşiler, atölyeler ve kültürel buluşmalar aracılığıyla yaşam boyu öğrenmeyi, üretimi ve paylaşımı destekleyen; Halikarnas Balıkçısı’nın Akdeniz ve Mavi Hümanizmasını koruyan, Anadolu Uygarlığı’nın değerinin altını çizen; bağımsız bir buluşma alanı olarak tasarlanmaktadır.
+            </p>
           </div>
         </div>
 
-        <!-- Right: Atmospheric Heritage Photo -->
+        <!-- Right: Atmospheric Heritage Photo (Direct full-color presentation) -->
         <div class="lg:col-span-5">
           <div class="relative group">
-            <!-- Frame shadow layer -->
-            <div class="absolute -inset-2 bg-gradient-to-r from-olive/20 to-sand/40 rounded-xs blur-xs group-hover:opacity-100 transition duration-500"></div>
-            
             <div class="relative bg-parchment border border-sand p-3 shadow-md">
-              <div class="aspect-[4/3] overflow-hidden bg-surface-container-high relative">
+              <div class="aspect-[4/3] overflow-hidden bg-surface-container-high relative border border-sand/60">
                 <img
                   src="https://lh3.googleusercontent.com/aida-public/AB6AXuDQ_kg3bbgJ4ynOz1o7DQcY3YaIdeG_zUESiNKW-81FsNfEZqrXlPi-ZAYWzb2FYdKriB4ESdIgn04zGCTSrnOaQAobk2tEQSDMKK4TlQhdPdjUJk74KLsSusQUSR9nHe1QycFJgHdfJUQSr8eFa2k0wQHdX3j1D5aQBbxg9mUEAGpQs_UGA_l1geAuKfbBil5Wy-_VugN7cjAepbQ_HoOugyaLOfsfF-vsYSCOhY75Ao3sAvwHFdv3nGJYn9whKvXn8vnrP8j4yEE"
                   alt="Bodrum Kent Kütüphanesi Kültürel Hafıza"
-                  class="w-full h-full object-cover grayscale contrast-110 hover:grayscale-0 transition-all duration-700"
+                  class="w-full h-full object-cover"
                   loading="eager"
                 />
               </div>
-              <div class="pt-3 pb-1 px-1 flex items-center justify-between text-xs text-stone-gray font-serif italic">
-                <span>Bodrum Kent Kütüphanesi</span>
-                <span class="font-mono text-[11px] not-italic">Kızılağaç • 2019</span>
+              <div class="pt-3 pb-1 px-1 flex items-center justify-between text-sm text-stone-gray font-serif italic">
+                <span class="font-bold text-ink">Bodrum Kent Kütüphanesi</span>
+                <span class="font-mono text-xs not-italic">Kızılağaç • 2019</span>
               </div>
             </div>
           </div>
@@ -98,24 +73,54 @@ const t = getT(lang);
 
       </div>
 
-      <!-- Quick Institutional Numbers -->
-      <div class="mt-16 pt-8 border-t border-sand/80 grid grid-cols-2 md:grid-cols-4 gap-6 text-ink">
-        <div class="bg-parchment/60 p-4 border border-sand/50">
-          <div class="font-serif text-2xl md:text-3xl font-bold text-olive">11</div>
-          <div class="text-xs uppercase tracking-wider text-stone-gray font-serif font-medium mt-1">Girişim Kurulu Üyesi</div>
+      <!-- 3 Strategic Institutional Headings & Descriptions -->
+      <div class="mt-14 pt-8 border-t border-sand grid grid-cols-1 md:grid-cols-3 gap-6 text-ink">
+        
+        <!-- 1. Zeytin Taneleri Kütüphanesi -->
+        <div class="bg-parchment p-6 border-2 border-olive rounded-xs shadow-xs flex flex-col justify-between">
+          <div>
+            <h3 class="font-serif text-xl font-bold text-olive mb-2">
+              Zeytin Taneleri Kütüphanesi
+            </h3>
+            <p class="font-serif text-base text-ink/85 leading-relaxed mb-4">
+              Çocuk, Genç, Ebeveyn ve Eğitimcilere yönelik kütüphane
+            </p>
+          </div>
+          <div class="pt-2 border-t border-olive/20 text-xs font-serif italic text-stone-gray">
+            Web sayfası hazırlanmakta
+          </div>
         </div>
-        <div class="bg-parchment/60 p-4 border border-sand/50">
-          <div class="font-serif text-2xl md:text-3xl font-bold text-olive">16.09.2019</div>
-          <div class="text-xs uppercase tracking-wider text-stone-gray font-serif font-medium mt-1">Fikrin Doğuşu</div>
+
+        <!-- 2. Halikarnaslı Çocuklar -->
+        <div class="bg-parchment p-6 border-2 border-olive rounded-xs shadow-xs flex flex-col justify-between">
+          <div>
+            <h3 class="font-serif text-xl font-bold text-olive mb-2">
+              Halikarnaslı Çocuklar
+            </h3>
+            <p class="font-serif text-base text-ink/85 leading-relaxed mb-4">
+              Her Yaşa Yönelik Sanat Çalışmaları
+            </p>
+          </div>
+          <div class="pt-2 border-t border-olive/20 text-xs font-serif italic text-stone-gray">
+            Web sayfası hazırlanmakta
+          </div>
         </div>
-        <div class="bg-parchment/60 p-4 border border-sand/50">
-          <div class="font-serif text-2xl md:text-3xl font-bold text-olive">Halikarnas Balıkçısı</div>
-          <div class="text-xs uppercase tracking-wider text-stone-gray font-serif font-medium mt-1">Özel Kitaplığı & Mirası</div>
+
+        <!-- 3. Halikarnas Derneği -->
+        <div class="bg-parchment p-6 border-2 border-olive rounded-xs shadow-xs flex flex-col justify-between">
+          <div>
+            <h3 class="font-serif text-xl font-bold text-olive mb-2">
+              Halikarnas Kültür, Sanat, Eğitim ve Ekoloji Derneği
+            </h3>
+            <p class="font-serif text-base text-ink/85 leading-relaxed mb-4">
+              Tüm Çalışmalarımızın Resmĭ Çatısı
+            </p>
+          </div>
+          <div class="pt-2 border-t border-olive/20 text-xs font-serif italic text-stone-gray">
+            Web sayfası hazırlanmakta
+          </div>
         </div>
-        <div class="bg-parchment/60 p-4 border border-sand/50">
-          <div class="font-serif text-2xl md:text-3xl font-bold text-olive">Yaşayan Kütüphane</div>
-          <div class="text-xs uppercase tracking-wider text-stone-gray font-serif font-medium mt-1">Etkinlik, Söyleşi & Atölye</div>
-        </div>
+
       </div>
 
     </div>

@@ -9,6 +9,10 @@ const t = getT(lang);
 const allEvents = await getCollection('events');
 const upcomingEvents = allEvents.filter((e) => !e.data.isPast);
 const pastEvents = allEvents.filter((e) => e.data.isPast);
+
+const pastEventCategoriesEn = [
+  "ALL", "LITERATURE", "CULTURE", "ARTS", "HISTORY", "PHILOSOPHY", "ARCHAEOLOGY", "SOCIOLOGY", "PSYCHOLOGY", "ECOLOGY", "SCIENCE"
+];
 ---
 
 <Layout
@@ -41,11 +45,11 @@ const pastEvents = allEvents.filter((e) => e.data.isPast);
       </h2>
 
       {upcomingEvents.map((event) => (
-        <div class="bg-surface-container-low border border-sand p-8 sm:p-12 shadow-xs">
+        <div class="bg-surface-container-low border-2 border-olive p-8 sm:p-12 shadow-xs">
           <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
             
             <div class="lg:col-span-8">
-              <div class="inline-block px-3 py-1 bg-olive text-white text-xs font-serif uppercase tracking-widest font-semibold mb-4 rounded-xs">
+              <div class="inline-block px-3.5 py-1 bg-olive text-white text-xs font-serif uppercase tracking-widest font-bold mb-4 rounded-xs">
                 {event.data.categoryLabelEn}
               </div>
 
@@ -53,19 +57,19 @@ const pastEvents = allEvents.filter((e) => e.data.isPast);
                 {event.data.titleEn}
               </h3>
 
-              <div class="prose max-w-none text-ink/90 font-serif text-base sm:text-lg leading-relaxed space-y-4 whitespace-pre-line mb-8">
+              <div class="prose max-w-none text-ink/90 font-serif text-lg sm:text-xl leading-relaxed space-y-4 whitespace-pre-line mb-8">
                 {event.data.summaryEn}
               </div>
 
-              <div class="flex flex-wrap items-center gap-4 pt-4 border-t border-sand">
+              <div class="flex flex-col sm:flex-row sm:items-center gap-4 pt-6 border-t border-sand">
                 <button
                   type="button"
                   id="btn-join-bookclub-en"
-                  class="px-8 py-3.5 bg-olive text-white hover:bg-ink text-sm font-serif font-semibold tracking-wider uppercase transition-colors shadow-xs"
+                  class="px-8 py-3.5 bg-olive text-white hover:bg-bodrum-blue-dark text-base font-serif font-bold tracking-wider uppercase transition-colors shadow-xs shrink-0"
                 >
                   Join the Book Club
                 </button>
-                <span class="text-xs text-stone-gray font-serif italic">
+                <span class="text-base font-serif italic text-ink/80 leading-snug">
                   Announcements and schedule will be shared via our official channels.
                 </span>
               </div>
@@ -73,16 +77,16 @@ const pastEvents = allEvents.filter((e) => e.data.isPast);
 
             <div class="lg:col-span-4">
               <div class="bg-parchment border border-sand p-3 shadow-xs">
-                <div class="aspect-[4/3] overflow-hidden bg-surface-container-high">
+                <div class="aspect-[4/3] overflow-hidden bg-surface-container-high border border-sand/60">
                   <img
                     src={event.data.image}
                     alt={event.data.titleEn}
-                    class="w-full h-full object-cover grayscale contrast-110 hover:grayscale-0 transition-all duration-500"
+                    class="w-full h-full object-cover"
                   />
                 </div>
                 <div class="p-3 text-center">
-                  <span class="font-serif italic text-sm text-ink block font-bold">Bodrum City Library</span>
-                  <span class="text-xs text-stone-gray font-serif">Hall & Garden</span>
+                  <span class="font-serif italic text-base text-ink block font-bold">Bodrum City Library</span>
+                  <span class="text-sm text-stone-gray font-serif">Hall & Garden</span>
                 </div>
               </div>
             </div>
@@ -94,50 +98,53 @@ const pastEvents = allEvents.filter((e) => e.data.isPast);
 
     <!-- Past Events Section -->
     <section>
-      <h2 class="font-serif text-2xl sm:text-3xl text-ink font-bold mb-8 pb-3 border-b border-sand">
+      <h2 class="font-serif text-2xl sm:text-3xl text-ink font-bold mb-6 pb-3 border-b border-sand">
         Past Events
       </h2>
 
       <!-- Topic Badges -->
-      <div class="flex flex-wrap gap-2 mb-8 text-xs font-serif">
-        <span class="px-3.5 py-1.5 bg-olive text-white font-semibold">All</span>
-        <span class="px-3.5 py-1.5 bg-surface-container-low border border-sand text-ink">Archaeology</span>
-        <span class="px-3.5 py-1.5 bg-surface-container-low border border-sand text-ink">History</span>
-        <span class="px-3.5 py-1.5 bg-surface-container-low border border-sand text-ink">Literature</span>
-        <span class="px-3.5 py-1.5 bg-surface-container-low border border-sand text-ink">Philosophy</span>
-        <span class="px-3.5 py-1.5 bg-surface-container-low border border-sand text-ink">Ecology</span>
+      <div class="flex flex-wrap gap-2.5 mb-10 text-sm font-serif font-bold">
+        {pastEventCategoriesEn.map((cat, idx) => (
+          <span class={`px-4 py-2 uppercase tracking-wider transition-colors ${
+            idx === 0
+              ? 'bg-olive text-white shadow-xs'
+              : 'bg-surface-container-low border border-sand text-ink hover:border-olive hover:text-olive'
+          }`}>
+            {cat}
+          </span>
+        ))}
       </div>
 
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         {pastEvents.map((event) => (
-          <div class="bg-surface-container-low border border-sand p-6 flex flex-col justify-between">
+          <div class="bg-surface-container-low border-2 border-olive p-6 flex flex-col justify-between shadow-xs">
             <div>
               <div class="aspect-[16/10] overflow-hidden bg-surface-container-high mb-4 border border-sand">
                 <img
                   src={event.data.image}
                   alt={event.data.titleEn}
-                  class="w-full h-full object-cover grayscale contrast-110 hover:grayscale-0 transition-all duration-500"
+                  class="w-full h-full object-cover"
                 />
               </div>
 
               <div class="flex items-center justify-between text-xs text-stone-gray font-mono mb-2">
-                <span class="text-olive font-serif font-bold uppercase">{event.data.categoryLabelEn}</span>
-                <span>{event.data.displayDateEn}</span>
+                <span class="text-olive font-serif font-bold text-sm uppercase">{event.data.categoryLabelEn}</span>
+                <span class="font-bold">{event.data.displayDateEn}</span>
               </div>
 
-              <h3 class="font-serif text-xl text-ink font-bold mb-3 leading-snug">
+              <h3 class="font-serif text-xl sm:text-2xl text-ink font-bold mb-3 leading-snug">
                 {event.data.titleEn}
               </h3>
 
-              <p class="text-xs sm:text-sm text-ink/80 font-serif leading-relaxed mb-6">
+              <div class="text-base text-ink/85 font-serif leading-relaxed mb-6 space-y-3 whitespace-pre-line">
                 {event.data.summaryEn}
-              </p>
+              </div>
             </div>
 
             <div class="flex items-center gap-3 pt-4 border-t border-sand">
               <button
                 type="button"
-                class="px-4 py-2 bg-ink text-parchment hover:bg-olive text-xs font-serif font-semibold uppercase tracking-wider transition-colors"
+                class="px-5 py-2.5 bg-olive text-white hover:bg-bodrum-blue-dark text-xs font-serif font-bold uppercase tracking-wider transition-colors"
                 onclick={`alert('${event.data.titleEn}\\n\\n${event.data.summaryEn}')`}
               >
                 Details
@@ -145,7 +152,7 @@ const pastEvents = allEvents.filter((e) => e.data.isPast);
 
               <button
                 type="button"
-                class="px-4 py-2 bg-parchment border border-sand text-ink hover:border-olive text-xs font-serif font-semibold uppercase tracking-wider transition-colors"
+                class="px-5 py-2.5 bg-parchment border border-olive text-olive hover:bg-olive hover:text-white text-xs font-serif font-bold uppercase tracking-wider transition-colors"
                 onclick="alert('Archival photo gallery will be available soon.')"
               >
                 Gallery

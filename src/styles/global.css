@@ -2,7 +2,7 @@
 @import "tailwindcss/components";
 @import "tailwindcss/utilities";
 
-@import url('https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..800;1,400..800&family=Hanken+Grotesk:ital,wght@0,100..900;1,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..800;1,400..800&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap');
 
 .material-symbols-outlined {
@@ -10,7 +10,7 @@
 }
 
 .ex-libris-watermark {
-  opacity: 0.04;
+  opacity: 0.035;
   pointer-events: none;
   user-select: none;
 }
@@ -19,11 +19,16 @@
   text-wrap: balance;
 }
 
+html {
+  font-size: 18px; /* Okuma kolaylığı için temel font boyutu büyütüldü */
+}
+
 body {
-  background-color: #FAF8F5;
+  background-color: #FCFBF8;
   color: #111827;
   font-family: 'EB Garamond', Georgia, serif;
   overflow-x: hidden;
+  line-height: 1.65;
 }
 
 ::selection {
@@ -33,6 +38,6 @@ body {
 
 .editorial-divider {
   height: 1px;
-  background-color: #E8E3D9;
+  background-color: #EAE5DB;
   width: 100%;
 }

@@ -5,30 +5,31 @@ export default {
   theme: {
     extend: {
       colors: {
-        parchment: '#FAF8F5', // Açık krem / çok açık toprak rengi zemin
-        ink: '#111827',       // Siyah / koyu mürekkep
-        olive: '#005B94',     // Yeşil yerine Bodrum mavisi
+        parchment: '#FCFBF8', // Daha açık, duru krem zemin rengi
+        ink: '#111827',       // Siyah / koyu metin
+        olive: '#005B94',     // Bodrum mavisi
         'bodrum-blue': '#005B94', // Bodrum mavisi
-        'bodrum-blue-light': '#E6F0F7',
-        sand: '#E8E3D9',      // Yumuşak açık toprak / sınır tonu
-        'stone-gray': '#6B7280',
+        'bodrum-blue-light': '#EBF3F9',
+        'bodrum-blue-dark': '#00436E',
+        sand: '#EAE5DB',      // Yumuşak sınır ve ayırıcı tonu
+        'stone-gray': '#555A64',
         primary: '#005B94',
-        'primary-container': '#111827',
+        'primary-container': '#EBF3F9',
         'on-primary': '#ffffff',
-        'on-primary-container': '#E6F0F7',
+        'on-primary-container': '#005B94',
         secondary: '#374151',
-        'secondary-container': '#E8E3D9',
+        'secondary-container': '#EAE5DB',
         'on-secondary': '#ffffff',
         'on-secondary-container': '#1F2937',
         tertiary: '#003A61',
         'tertiary-container': '#002640',
-        'surface-bright': '#FCFAF7',
+        'surface-bright': '#FFFFFF',
         'surface-dim': '#E8E3D9',
-        'surface-container-lowest': '#ffffff',
-        'surface-container-low': '#FAF8F5',
-        'surface-container': '#F5F2EC',
-        'surface-container-high': '#EFEBE3',
-        'surface-container-highest': '#E8E3D9',
+        'surface-container-lowest': '#FFFFFF',
+        'surface-container-low': '#FAF8F4',
+        'surface-container': '#F4F1EA',
+        'surface-container-high': '#EFECE4',
+        'surface-container-highest': '#E5E0D5',
         'on-surface': '#111827',
         'on-surface-variant': '#374151',
         outline: '#6B7280',

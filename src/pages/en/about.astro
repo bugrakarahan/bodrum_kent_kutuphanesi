@@ -1,72 +1,78 @@
 ---
 import Layout from '../../layouts/Layout.astro';
-import { getCollection } from 'astro:content';
 import { getT } from '../../utils/i18n';
 
 const lang = 'en';
 const t = getT(lang);
 
-const board = await getCollection('board');
-const sortedBoard = board.sort((a, b) => a.data.order - b.data.order);
+const alphabeticalBoardEn = [
+  "Birol K. Yiğitcan",
+  "Canan Küçükeren",
+  "Deniz Öztürk",
+  "Assoc. Prof. Yalçın İ. Gürkan",
+  "Fikret Nesip Üçan",
+  "Güldal Altuner",
+  "Metin Ataç",
+  "Nevra Sezer Tüfekçi",
+  "Sema Sagat",
+  "Sönmez Taner",
+  "Ümran Yüksel"
+];
 
-const plannedActivitiesEn = [
-  "Author talks and book signing events",
-  "Writing and editing workshops",
-  "Detailed workshop studies (Book and literary analysis)",
-  "Book and reading clubs",
-  "Meetings, panels, seminars, symposiums, conferences, and festivals",
-  "Book fairs and literary days",
-  "Science, philosophy, archaeology, history, sociology, psychology, and art history events",
-  "Art events (Theater, cinema, photography, dance)",
-  "Comparative studies (e.g. Literature and philosophy, literature and archaeology)",
-  "Reader gatherings and discussions",
-  "Book exchange events",
-  "Exhibitions",
-  "Journal and newspaper initiatives",
-  "Special Bodrum book collection / reading corner",
-  "Collaborative projects with national and international libraries, NGOs, museums, and cultural centers"
+const plannedActivitiesUppercaseEn = [
+  "AUTHOR TALKS AND BOOK SIGNING EVENTS",
+  "WRITING AND EDITING WORKSHOPS",
+  "DETAILED WORKSHOP STUDIES (BOOK AND LITERARY ANALYSIS)",
+  "BOOK AND READING CLUBS",
+  "MEETINGS, PANELS, SEMINARS, SYMPOSIUMS, CONFERENCES, AND FESTIVALS",
+  "BOOK FAIRS AND LITERARY DAYS",
+  "SCIENCE, PHILOSOPHY, ARCHAEOLOGY, HISTORY, SOCIOLOGY, PSYCHOLOGY, AND ART HISTORY EVENTS",
+  "ART EVENTS (THEATER, CINEMA, PHOTOGRAPHY, DANCE)",
+  "COMPARATIVE STUDIES (E.G. LITERATURE AND PHILOSOPHY, LITERATURE AND ARCHAEOLOGY)",
+  "READER GATHERINGS AND DISCUSSIONS",
+  "BOOK EXCHANGE EVENTS",
+  "EXHIBITIONS",
+  "JOURNAL AND NEWSPAPER INITIATIVES",
+  "SPECIAL BODRUM BOOK COLLECTION / READING CORNER",
+  "COLLABORATIVE PROJECTS WITH NATIONAL AND INTERNATIONAL LIBRARIES, NGOS, MUSEUMS, AND CULTURAL CENTERS"
 ];
 ---
 
 <Layout
   title={`About Us | ${t.siteTitle}`}
-  description="The genesis of Bodrum City Library, our founding committee, and planned cultural initiatives."
+  description="The genesis of Bodrum City Library, our founders, and planned cultural initiatives."
   lang={lang}
   currentPath="/en/about"
 >
-  <!-- 1. Origins of the Concept & Founding Committee -->
+  <!-- 1. Origins of the Concept & Founders -->
   <section class="py-16 md:py-24 px-5 md:px-12 bg-surface-bright border-b border-sand relative overflow-hidden">
     <div class="max-w-[1280px] mx-auto">
       
-      <!-- Top Title Area -->
-      <div class="max-w-3xl mb-12">
+      <div class="max-w-4xl mb-12">
         <h1 class="font-serif text-3xl sm:text-4xl md:text-5xl text-ink font-bold leading-tight mb-6">
           Origins of the Concept
         </h1>
         
-        <div class="bg-parchment p-6 sm:p-8 border border-sand shadow-xs space-y-4 text-base sm:text-lg text-ink/90 font-serif leading-relaxed">
+        <div class="bg-parchment p-6 sm:p-8 border border-sand shadow-xs space-y-4 text-lg sm:text-xl text-ink/90 font-serif leading-relaxed">
           <p>
             The name and founding concept of Bodrum City Library were first articulated on <strong>September 16, 2019</strong>, at Dibeklihan Culture & Art Village by the esteemed figures listed below:
           </p>
         </div>
       </div>
 
-      <!-- Founding Committee Names Grid -->
-      <div class="mb-12">
-        <h2 class="font-serif text-2xl text-ink font-bold mb-6">Founding Committee</h2>
-        <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
-          {sortedBoard.map((member) => (
-            <div class="p-4 bg-parchment border border-sand hover:border-olive/50 transition-colors">
-              <div class="font-serif font-bold text-ink text-base mb-1">{member.data.name}</div>
-              <div class="text-xs text-stone-gray font-serif italic">{member.data.roleEn || 'Founding Committee Member'}</div>
-            </div>
+      <div class="max-w-2xl bg-parchment border border-sand p-6 sm:p-8 mb-10 shadow-xs">
+        <ul class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-lg sm:text-xl font-serif font-bold text-ink">
+          {alphabeticalBoardEn.map((name) => (
+            <li class="flex items-center gap-2.5 py-1">
+              <span class="w-2 h-2 rounded-full bg-olive shrink-0"></span>
+              <span>{name}</span>
+            </li>
           ))}
-        </div>
+        </ul>
       </div>
 
-      <!-- Entrustment Callout -->
-      <div class="bg-olive/5 border border-olive/20 p-6 sm:p-8 rounded-xs">
-        <p class="font-serif text-base sm:text-lg text-ink font-medium leading-relaxed">
+      <div class="max-w-4xl bg-olive/5 border border-olive/30 p-6 sm:p-8 rounded-xs">
+        <p class="font-serif text-lg sm:text-xl text-ink font-semibold leading-relaxed">
           The name Bodrum City Library was entrusted to the Olive Seeds Library team by <strong>Mr. Sönmez Taner</strong> on <strong>September 7, 2019</strong>.
         </p>
       </div>
@@ -83,45 +89,31 @@ const plannedActivitiesEn = [
           Objectives and Planned Initiatives
         </h2>
 
-        <div class="bg-surface-container-low p-6 sm:p-8 border border-sand shadow-xs mb-10">
-          <p class="font-serif text-base sm:text-lg text-ink/90 leading-relaxed">
-            Bodrum City Library is a multi-purpose, living library project designed to bring together residents and visitors with esteemed figures and works of literature, art, and science. Through book-centered events, talks, workshops, and cultural gatherings, it supports lifelong learning, creation, and sharing, while preserving Mediterranean and Anatolian humanism as an independent meeting space.
+        <div class="bg-surface-container-low p-6 sm:p-8 border border-sand shadow-xs mb-10 space-y-4">
+          <p class="font-serif text-lg sm:text-xl text-ink/90 leading-relaxed">
+            Bodrum City Library is a multi-purpose, living library project designed to bring together residents and visitors with esteemed figures and works of literature, art, and science.
+          </p>
+          <p class="font-serif text-lg sm:text-xl text-ink/90 leading-relaxed">
+            Through book-centered events, talks, workshops, and cultural gatherings, it supports lifelong learning, creation, and sharing; preserving the Mediterranean and Blue Humanism of the Fisherman of Halicarnassus and highlighting the timeless value of Anatolian Civilization as an independent meeting space.
           </p>
         </div>
 
-        <p class="font-serif text-base sm:text-lg text-ink font-semibold mb-6">
+        <p class="font-serif text-lg sm:text-xl text-ink font-bold mb-6">
           To this end, the library aims to conduct the following cultural initiatives on national and international scales:
         </p>
       </div>
 
-      <!-- 15 Planned Initiatives Grid -->
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-        {plannedActivitiesEn.map((act, index) => (
-          <div class="bg-surface-container-low p-6 border border-sand hover:border-olive/40 transition-all flex items-start gap-4">
-            <span class="w-8 h-8 rounded-full bg-olive/10 text-olive flex items-center justify-center font-mono text-xs font-bold shrink-0 mt-0.5">
+        {plannedActivitiesUppercaseEn.map((act, index) => (
+          <div class="bg-surface-container-low p-6 border-2 border-olive rounded-xs shadow-xs flex items-start gap-4">
+            <span class="w-8 h-8 rounded-full bg-olive text-white flex items-center justify-center font-mono text-xs font-bold shrink-0 mt-0.5 shadow-xs">
               {String(index + 1).padStart(2, '0')}
             </span>
-            <p class="font-serif text-base text-ink leading-relaxed">
+            <p class="font-serif text-base sm:text-lg font-bold text-ink leading-snug">
               {act}
             </p>
           </div>
         ))}
-      </div>
-
-      <!-- Support Callout Box -->
-      <div class="mt-16 p-8 bg-surface-container-high border border-sand flex flex-col sm:flex-row items-center justify-between gap-6">
-        <div>
-          <h3 class="font-serif text-2xl text-ink font-bold mb-2">Contribute to this Cultural Vision</h3>
-          <p class="font-serif text-sm text-ink/80">
-            Join the Bodrum City Library initiative through book donations, expertise, volunteering, or sponsorship.
-          </p>
-        </div>
-        <a
-          href="/en/support"
-          class="px-7 py-3.5 bg-olive text-white hover:bg-ink text-sm font-serif font-semibold tracking-wider uppercase transition-colors shrink-0 shadow-xs"
-        >
-          Support & Volunteer
-        </a>
       </div>
 
     </div>

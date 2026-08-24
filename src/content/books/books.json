@@ -11,102 +11,242 @@
   },
   {
     "id": "book-2",
-    "title": "Mavi Sürgün",
-    "originalYear": 1961,
-    "coverImage": "https://lh3.googleusercontent.com/aida-public/AB6AXuDVttDrg33J7nK7Pu3LP7QarRgOoHZ_9prcOS8MDxYd_s8d7iY0FZQTxxzIAsWznVjskXzFJC44SQk7_LMdof5LFC6GZ7unKJ_YNSfl25oM_ktMZoiXbr91uUdsuMmv6lkjtld1VFKsKaQDISisKeqfWTC9VqL89kwmqSYa6R35uT9y0WaDpnOfajEA-JPgQ5fUvptXsRlTxCJqRfwMyrGwTS_7sDLBGJ53c993sUj29-bj2NOEZymDTGLPkr--ACh2IZmUz1iDnxY",
-    "summaryTr": "Cevat Şakir'in Bodrum'a sürgün edilişini ve kente olan aşkını anlattığı otobiyografik anı eseri.",
-    "summaryEn": "The iconic autobiographical memoir capturing the author's exile to Bodrum and his deep love for the town.",
-    "isRare": true,
+    "title": "Altıncı Kıta Akdeniz",
+    "originalYear": 1982,
+    "coverImage": "https://lh3.googleusercontent.com/aida-public/AB6AXuAa2lpFiOMtq1G5QMTMcrhGf-eAIwJpqrkKWYMZ7k575vAUYtotBBBn3sGqyxyBQ_Dcrha5WOCYY2a4gwNRq0JR1LMstQugEHNTXE029TQK2X0tmg6OBpqXzxBhJuI54UCLkMHC3ttba7xIMF29OLWhvw8SWX2wxv2znaMKy9IC4mc0VKjsv3fA-glDw11kAcCi6ry5mnRGxep7FazMew97p5cp1y2aRXN3Klzx5Jp22iIhFHLrpfUrwICjzhWdM-r0zKuP6THba_s",
+    "summaryTr": "Akdeniz uygarlıklarının kökleri ve Mavi Hümanizma felsefesini içeren denemeler.",
+    "summaryEn": "Essays exploring the roots of Mediterranean civilizations and Blue Humanism philosophy.",
+    "isRare": false,
     "order": 2
   },
   {
     "id": "book-3",
-    "title": "Uluç Reis",
-    "originalYear": 1962,
-    "coverImage": "https://lh3.googleusercontent.com/aida-public/AB6AXuAXBkFWopuKLSZhWxAXFGY1G9hfX2iRCCWTZEzfwO9PMGlShHYR-cS5usmHqsvPuKdJohlfhmTxGcINHp8wy8XGHWdGCwCjMzlyIoVkuKxsROOPs2JYUvyIqMK1OeDH6P_yV6hs9U2K18_R6j1cQn8g6F6YGnZtsuiA07nu2my9JGTPTf1DJfHHb_BeuC2XcctPtkpR8uqGzdXzJOMgWdT9g4yrWLRjcZvyNOsTbBr6Z5K86JFtI-SLBbwT8T2m0rtoMhADEc2CI4o",
-    "summaryTr": "Akdeniz'de hüküm süren efsanevi Türk denizcisi Uluç Ali Reis'in destansı yaşamı.",
-    "summaryEn": "The epic chronicle of legendary Ottoman Mediterranean admiral Uluç Ali Reis.",
-    "isRare": false,
+    "title": "Anadolu Tanrıları",
+    "originalYear": 1955,
+    "coverImage": "https://lh3.googleusercontent.com/aida-public/AB6AXuAa2lpFiOMtq1G5QMTMcrhGf-eAIwJpqrkKWYMZ7k575vAUYtotBBBn3sGqyxyBQ_Dcrha5WOCYY2a4gwNRq0JR1LMstQugEHNTXE029TQK2X0tmg6OBpqXzxBhJuI54UCLkMHC3ttba7xIMF29OLWhvw8SWX2wxv2znaMKy9IC4mc0VKjsv3fA-glDw11kAcCi6ry5mnRGxep7FazMew97p5cp1y2aRXN3Klzx5Jp22iIhFHLrpfUrwICjzhWdM-r0zKuP6THba_s",
+    "summaryTr": "Anadolu mitolojisinin ve Ege tanrılarının kadim köklerini aydınlatan başvuru eseri.",
+    "summaryEn": "An authoritative study illuminating the Anatolian origins of Mediterranean mythology.",
+    "isRare": true,
     "order": 3
   },
   {
     "id": "book-4",
-    "title": "Deniz Gurbetçileri",
-    "originalYear": 1969,
-    "coverImage": "https://lh3.googleusercontent.com/aida-public/AB6AXuBMCWkgky_PMT3yLHplVl7x_FJErNB1kwwRm5hO0j1ycSuHOrNOrmoaHTI2Bq9v5p3MPkFIYjnFnPpIn0JbHMKMD-YUzLrS_212pQBO_f2TKZ46ttMS2_MpH7tSxR7I9UIykFkUzpiL8zhCnPugNqEYB1mT8Mcnq52J6Z6Vc7WMTE65-e2WvXX2fzd9wGhv8PXvAyAAYPGdh1zbGAXew5xfqHG7h2GcRMz75pK1nZ3w1W57osXQYwiPlfq9VzpWwGgVknKuW79-MJg",
-    "summaryTr": "Ekmeklerini deniz diplerinden çıkaran süngercilerin çetin hayat mücadelesi.",
-    "summaryEn": "The perilous livelihood and solidarity of traditional Mediterranean sponge divers.",
+    "title": "Anadolu’nun Sesi",
+    "originalYear": 1971,
+    "coverImage": "https://lh3.googleusercontent.com/aida-public/AB6AXuCqA2WM6mgUDlTqu77svWfadlFiAS_DtA_1wA5fyVCBN4Dqo9dQe7_2uGjBT31QBtYWv8NSLeEE2fhCKxfjCaAc831PRgP97J5QZW4nwZ5k6Z4VwfQOX0wPp2s5zeWBfbHXlN4jMh3agFCcONR1zWO5IhNbXBEanvfsOB9Zn0mvlUTONYH5LHraNv4ynE0RxLlj5D2fal4r0Hy4bxaIEhFd7CLKnvyvuCT0SDKTc43SdSnu7aDkTggITYnev4OiG5eN76YwRH7LFc4",
+    "summaryTr": "Anadolu hümanizmasını ve kadim kültürlerin kardeşliğini işleyen derinlikli metinler.",
+    "summaryEn": "Essays celebrating Anatolian humanism and the shared legacy of ancient cultures.",
     "isRare": false,
     "order": 4
   },
   {
     "id": "book-5",
+    "title": "Arşipel",
+    "originalYear": 1993,
+    "coverImage": "https://lh3.googleusercontent.com/aida-public/AB6AXuDyV23I4j_XKCl20T9R_CWzgeEve_0fFjFj7t8HpIh1_1Z10v2r8z33l_43RKL68XuMg5LL2dmFlmgSVIFOySLJb6TFlzsVTqvnTO8TLreJGpzcqTVySae9geDc5ntH5tMuCR4vvgEm16rPSEp8ghDluCotT11YdtrvQ8YMKuskCGifrzk-XxF1HV62dz4oJueRQKQZ8bgAujXt-OvqBwyEd1ZvYZ6wrI7xd6qCRwWwPT2C3TluJLekvWuGvIIqyF4rSKEn1_V4eao",
+    "summaryTr": "Ege adaları ve Akdeniz'in kıyı kültürünü anlatan öykü ve denemeler.",
+    "summaryEn": "Stories and reflections on the Aegean archipelago and maritime culture.",
+    "isRare": false,
+    "order": 5
+  },
+  {
+    "id": "book-6",
+    "title": "Bulamaç",
+    "originalYear": 1972,
+    "coverImage": "https://lh3.googleusercontent.com/aida-public/AB6AXuBMCWkgky_PMT3yLHplVl7x_FJErNB1kwwRm5hO0j1ycSuHOrNOrmoaHTI2Bq9v5p3MPkFIYjnFnPpIn0JbHMKMD-YUzLrS_212pQBO_f2TKZ46ttMS2_MpH7tSxR7I9UIykFkUzpiL8zhCnPugNqEYB1mT8Mcnq52J6Z6Vc7WMTE65-e2WvXX2fzd9wGhv8PXvAyAAYPGdh1zbGAXew5xfqHG7h2GcRMz75pK1nZ3w1W57osXQYwiPlfq9VzpWwGgVknKuW79-MJg",
+    "summaryTr": "Köy ve kasaba insanlarının hayatını mizahi ve gerçekçi dille aktaran roman.",
+    "summaryEn": "A realistic and humorous novel portraying the lives of Aegean village folk.",
+    "isRare": false,
+    "order": 6
+  },
+  {
+    "id": "book-7",
+    "title": "Çiçeklerin Düğünü",
+    "originalYear": 1971,
+    "coverImage": "https://lh3.googleusercontent.com/aida-public/AB6AXuBMCWkgky_PMT3yLHplVl7x_FJErNB1kwwRm5hO0j1ycSuHOrNOrmoaHTI2Bq9v5p3MPkFIYjnFnPpIn0JbHMKMD-YUzLrS_212pQBO_f2TKZ46ttMS2_MpH7tSxR7I9UIykFkUzpiL8zhCnPugNqEYB1mT8Mcnq52J6Z6Vc7WMTE65-e2WvXX2fzd9wGhv8PXvAyAAYPGdh1zbGAXew5xfqHG7h2GcRMz75pK1nZ3w1W57osXQYwiPlfq9VzpWwGgVknKuW79-MJg",
+    "summaryTr": "Cevat Şakir'in Bodrum'a kazandırdığı bitki türleri ve doğa sevgisi yazıları.",
+    "summaryEn": "Writings on botanical passion and exotic plants planted across Bodrum.",
+    "isRare": false,
+    "order": 7
+  },
+  {
+    "id": "book-8",
+    "title": "Dalgıçlar",
+    "originalYear": 1968,
+    "coverImage": "https://lh3.googleusercontent.com/aida-public/AB6AXuBMCWkgky_PMT3yLHplVl7x_FJErNB1kwwRm5hO0j1ycSuHOrNOrmoaHTI2Bq9v5p3MPkFIYjnFnPpIn0JbHMKMD-YUzLrS_212pQBO_f2TKZ46ttMS2_MpH7tSxR7I9UIykFkUzpiL8zhCnPugNqEYB1mT8Mcnq52J6Z6Vc7WMTE65-e2WvXX2fzd9wGhv8PXvAyAAYPGdh1zbGAXew5xfqHG7h2GcRMz75pK1nZ3w1W57osXQYwiPlfq9VzpWwGgVknKuW79-MJg",
+    "summaryTr": "Akdeniz'in derinliklerinde sünger çıkaran dalgıçların çetin yaşamı.",
+    "summaryEn": "Tales and struggles of Mediterranean deep-sea sponge divers.",
+    "isRare": false,
+    "order": 8
+  },
+  {
+    "id": "book-9",
+    "title": "Deniz Gurbetçileri",
+    "originalYear": 1969,
+    "coverImage": "https://lh3.googleusercontent.com/aida-public/AB6AXuBMCWkgky_PMT3yLHplVl7x_FJErNB1kwwRm5hO0j1ycSuHOrNOrmoaHTI2Bq9v5p3MPkFIYjnFnPpIn0JbHMKMD-YUzLrS_212pQBO_f2TKZ46ttMS2_MpH7tSxR7I9UIykFkUzpiL8zhCnPugNqEYB1mT8Mcnq52J6Z6Vc7WMTE65-e2WvXX2fzd9wGhv8PXvAyAAYPGdh1zbGAXew5xfqHG7h2GcRMz75pK1nZ3w1W57osXQYwiPlfq9VzpWwGgVknKuW79-MJg",
+    "summaryTr": "Ekmeklerini deniz diplerinden çıkaran süngercilerin dayanışması.",
+    "summaryEn": "The perilous livelihood and solidarity of traditional Mediterranean sponge divers.",
+    "isRare": false,
+    "order": 9
+  },
+  {
+    "id": "book-10",
+    "title": "Denizin Çağrısı",
+    "originalYear": 1938,
+    "coverImage": "https://lh3.googleusercontent.com/aida-public/AB6AXuDVttDrg33J7nK7Pu3LP7QarRgOoHZ_9prcOS8MDxYd_s8d7iY0FZQTxxzIAsWznVjskXzFJC44SQk7_LMdof5LFC6GZ7unKJ_YNSfl25oM_ktMZoiXbr91uUdsuMmv6lkjtld1VFKsKaQDISisKeqfWTC9VqL89kwmqSYa6R35uT9y0WaDpnOfajEA-JPgQ5fUvptXsRlTxCJqRfwMyrGwTS_7sDLBGJ53c993sUj29-bj2NOEZymDTGLPkr--ACh2IZmUz1iDnxY",
+    "summaryTr": "İçindeki deniz tutkusuyla kıyıya sığınan aydın bir öğretmenin ruhsal dünyası.",
+    "summaryEn": "A poignant psychological novel of an intellectual drawn irrevocably to the sea.",
+    "isRare": false,
+    "order": 10
+  },
+  {
+    "id": "book-11",
+    "title": "Düşün Yazıları",
+    "originalYear": 1981,
+    "coverImage": "https://lh3.googleusercontent.com/aida-public/AB6AXuCqA2WM6mgUDlTqu77svWfadlFiAS_DtA_1wA5fyVCBN4Dqo9dQe7_2uGjBT31QBtYWv8NSLeEE2fhCKxfjCaAc831PRgP97J5QZW4nwZ5k6Z4VwfQOX0wPp2s5zeWBfbHXlN4jMh3agFCcONR1zWO5IhNbXBEanvfsOB9Zn0mvlUTONYH5LHraNv4ynE0RxLlj5D2fal4r0Hy4bxaIEhFd7CLKnvyvuCT0SDKTc43SdSnu7aDkTggITYnev4OiG5eN76YwRH7LFc4",
+    "summaryTr": "Akdeniz felsefesi, uygarlık tarihi ve hümanizma üzerine felsefi denemeler.",
+    "summaryEn": "Philosophical essays on Mediterranean culture, humanism, and history.",
+    "isRare": false,
+    "order": 11
+  },
+  {
+    "id": "book-12",
+    "title": "Ege’den Akdeniz’e Bırakılmış Bir Çiçek",
+    "originalYear": 1999,
+    "coverImage": "https://lh3.googleusercontent.com/aida-public/AB6AXuDyV23I4j_XKCl20T9R_CWzgeEve_0fFjFj7t8HpIh1_1Z10v2r8z33l_43RKL68XuMg5LL2dmFlmgSVIFOySLJb6TFlzsVTqvnTO8TLreJGpzcqTVySae9geDc5ntH5tMuCR4vvgEm16rPSEp8ghDluCotT11YdtrvQ8YMKuskCGifrzk-XxF1HV62dz4oJueRQKQZ8bgAujXt-OvqBwyEd1ZvYZ6wrI7xd6qCRwWwPT2C3TluJLekvWuGvIIqyF4rSKEn1_V4eao",
+    "summaryTr": "Ege ve Akdeniz coğrafyasına adanmış özel derleme yazılar.",
+    "summaryEn": "Selected writings dedicated to the geography and spirit of the Aegean and Mediterranean.",
+    "isRare": false,
+    "order": 12
+  },
+  {
+    "id": "book-13",
+    "title": "Gençlik Denizlerinde",
+    "originalYear": 1973,
+    "coverImage": "https://lh3.googleusercontent.com/aida-public/AB6AXuDVttDrg33J7nK7Pu3LP7QarRgOoHZ_9prcOS8MDxYd_s8d7iY0FZQTxxzIAsWznVjskXzFJC44SQk7_LMdof5LFC6GZ7unKJ_YNSfl25oM_ktMZoiXbr91uUdsuMmv6lkjtld1VFKsKaQDISisKeqfWTC9VqL89kwmqSYa6R35uT9y0WaDpnOfajEA-JPgQ5fUvptXsRlTxCJqRfwMyrGwTS_7sDLBGJ53c993sUj29-bj2NOEZymDTGLPkr--ACh2IZmUz1iDnxY",
+    "summaryTr": "Denizcilik gençlik anıları ve Ege insanının sıcak öyküleri.",
+    "summaryEn": "Memoirs and vibrant stories from the author's early maritime voyages.",
+    "isRare": false,
+    "order": 13
+  },
+  {
+    "id": "book-14",
+    "title": "Gülen Ada",
+    "originalYear": 1957,
+    "coverImage": "https://lh3.googleusercontent.com/aida-public/AB6AXuDyV23I4j_XKCl20T9R_CWzgeEve_0fFjFj7t8HpIh1_1Z10v2r8z33l_43RKL68XuMg5LL2dmFlmgSVIFOySLJb6TFlzsVTqvnTO8TLreJGpzcqTVySae9geDc5ntH5tMuCR4vvgEm16rPSEp8ghDluCotT11YdtrvQ8YMKuskCGifrzk-XxF1HV62dz4oJueRQKQZ8bgAujXt-OvqBwyEd1ZvYZ6wrI7xd6qCRwWwPT2C3TluJLekvWuGvIIqyF4rSKEn1_V4eao",
+    "summaryTr": "Bodrum adaları ve Akdeniz doğasının canlı tasvirleriyle dolu öyküler.",
+    "summaryEn": "Stories filled with vivid depictions of Aegean islands and maritime nature.",
+    "isRare": false,
+    "order": 14
+  },
+  {
+    "id": "book-15",
+    "title": "Hey Koca Yurt",
+    "originalYear": 1972,
+    "coverImage": "https://lh3.googleusercontent.com/aida-public/AB6AXuCqA2WM6mgUDlTqu77svWfadlFiAS_DtA_1wA5fyVCBN4Dqo9dQe7_2uGjBT31QBtYWv8NSLeEE2fhCKxfjCaAc831PRgP97J5QZW4nwZ5k6Z4VwfQOX0wPp2s5zeWBfbHXlN4jMh3agFCcONR1zWO5IhNbXBEanvfsOB9Zn0mvlUTONYH5LHraNv4ynE0RxLlj5D2fal4r0Hy4bxaIEhFd7CLKnvyvuCT0SDKTc43SdSnu7aDkTggITYnev4OiG5eN76YwRH7LFc4",
+    "summaryTr": "Anadolu hümanizmasını ve Akdeniz uygarlıklarının kardeşliğini anlatan denemeler.",
+    "summaryEn": "Philosophical essays celebrating Anatolian humanism and shared Mediterranean culture.",
+    "isRare": false,
+    "order": 15
+  },
+  {
+    "id": "book-16",
+    "title": "İmbat Serinliği",
+    "originalYear": 1985,
+    "coverImage": "https://lh3.googleusercontent.com/aida-public/AB6AXuDyV23I4j_XKCl20T9R_CWzgeEve_0fFjFj7t8HpIh1_1Z10v2r8z33l_43RKL68XuMg5LL2dmFlmgSVIFOySLJb6TFlzsVTqvnTO8TLreJGpzcqTVySae9geDc5ntH5tMuCR4vvgEm16rPSEp8ghDluCotT11YdtrvQ8YMKuskCGifrzk-XxF1HV62dz4oJueRQKQZ8bgAujXt-OvqBwyEd1ZvYZ6wrI7xd6qCRwWwPT2C3TluJLekvWuGvIIqyF4rSKEn1_V4eao",
+    "summaryTr": "İmbat rüzgarıyla tazelenen Bodrum ve İzmir hikayeleri.",
+    "summaryEn": "Refreshing short stories set along Bodrum and Izmir coastlines.",
+    "isRare": false,
+    "order": 16
+  },
+  {
+    "id": "book-17",
+    "title": "Mavi Sürgün",
+    "originalYear": 1961,
+    "coverImage": "https://lh3.googleusercontent.com/aida-public/AB6AXuDVttDrg33J7nK7Pu3LP7QarRgOoHZ_9prcOS8MDxYd_s8d7iY0FZQTxxzIAsWznVjskXzFJC44SQk7_LMdof5LFC6GZ7unKJ_YNSfl25oM_ktMZoiXbr91uUdsuMmv6lkjtld1VFKsKaQDISisKeqfWTC9VqL89kwmqSYa6R35uT9y0WaDpnOfajEA-JPgQ5fUvptXsRlTxCJqRfwMyrGwTS_7sDLBGJ53c993sUj29-bj2NOEZymDTGLPkr--ACh2IZmUz1iDnxY",
+    "summaryTr": "Cevat Şakir'in Bodrum'a sürgün edilişini ve kente aşkını anlattığı ölümsüz anı eseri.",
+    "summaryEn": "The iconic autobiographical memoir capturing the author's exile to Bodrum.",
+    "isRare": true,
+    "order": 17
+  },
+  {
+    "id": "book-18",
+    "title": "Merhaba Akdeniz",
+    "originalYear": 1947,
+    "coverImage": "https://lh3.googleusercontent.com/aida-public/AB6AXuDyV23I4j_XKCl20T9R_CWzgeEve_0fFjFj7t8HpIh1_1Z10v2r8z33l_43RKL68XuMg5LL2dmFlmgSVIFOySLJb6TFlzsVTqvnTO8TLreJGpzcqTVySae9geDc5ntH5tMuCR4vvgEm16rPSEp8ghDluCotT11YdtrvQ8YMKuskCGifrzk-XxF1HV62dz4oJueRQKQZ8bgAujXt-OvqBwyEd1ZvYZ6wrI7xd6qCRwWwPT2C3TluJLekvWuGvIIqyF4rSKEn1_V4eao",
+    "summaryTr": "Deniz hikayeleri ve Bodrum insanının sıcak anlatımıyla yoğrulmuş ilk öykü kitabı.",
+    "summaryEn": "The inaugural short story collection portraying maritime folklore.",
+    "isRare": false,
+    "order": 18
+  },
+  {
+    "id": "book-19",
+    "title": "Merhaba Anadolu",
+    "originalYear": 1980,
+    "coverImage": "https://lh3.googleusercontent.com/aida-public/AB6AXuAa2lpFiOMtq1G5QMTMcrhGf-eAIwJpqrkKWYMZ7k575vAUYtotBBBn3sGqyxyBQ_Dcrha5WOCYY2a4gwNRq0JR1LMstQugEHNTXE029TQK2X0tmg6OBpqXzxBhJuI54UCLkMHC3ttba7xIMF29OLWhvw8SWX2wxv2znaMKy9IC4mc0VKjsv3fA-glDw11kAcCi6ry5mnRGxep7FazMew97p5cp1y2aRXN3Klzx5Jp22iIhFHLrpfUrwICjzhWdM-r0zKuP6THba_s",
+    "summaryTr": "Anadolu'nun kadim topraklarına ve insanına sevgi dolu bir selam.",
+    "summaryEn": "A loving salute to the ancient land and people of Anatolia.",
+    "isRare": false,
+    "order": 19
+  },
+  {
+    "id": "book-20",
+    "title": "Ötelerin Çocukları",
+    "originalYear": 1956,
+    "coverImage": "https://lh3.googleusercontent.com/aida-public/AB6AXuBMCWkgky_PMT3yLHplVl7x_FJErNB1kwwRm5hO0j1ycSuHOrNOrmoaHTI2Bq9v5p3MPkFIYjnFnPpIn0JbHMKMD-YUzLrS_212pQBO_f2TKZ46ttMS2_MpH7tSxR7I9UIykFkUzpiL8zhCnPugNqEYB1mT8Mcnq52J6Z6Vc7WMTE65-e2WvXX2fzd9wGhv8PXvAyAAYPGdh1zbGAXew5xfqHG7h2GcRMz75pK1nZ3w1W57osXQYwiPlfq9VzpWwGgVknKuW79-MJg",
+    "summaryTr": "Bodrum kıyılarında denizle iç içe büyüyen çocukların ve gençlerin romanı.",
+    "summaryEn": "A poignant novel about youths coming of age along the Aegean shores.",
+    "isRare": false,
+    "order": 20
+  },
+  {
+    "id": "book-21",
+    "title": "Parmak Damgası",
+    "originalYear": 1971,
+    "coverImage": "https://lh3.googleusercontent.com/aida-public/AB6AXuAXBkFWopuKLSZhWxAXFGY1G9hfX2iRCCWTZEzfwO9PMGlShHYR-cS5usmHqsvPuKdJohlfhmTxGcINHp8wy8XGHWdGCwCjMzlyIoVkuKxsROOPs2JYUvyIqMK1OeDH6P_yV6hs9U2K18_R6j1cQn8g6F6YGnZtsuiA07nu2my9JGTPTf1DJfHHb_BeuC2XcctPtkpR8uqGzdXzJOMgWdT9g4yrWLRjcZvyNOsTbBr6Z5K86JFtI-SLBbwT8T2m0rtoMhADEc2CI4o",
+    "summaryTr": "Ege kıyılarında geçen insan ve adalet temalı derinlikli öyküler.",
+    "summaryEn": "Profound stories revolving around human conscience and justice.",
+    "isRare": false,
+    "order": 21
+  },
+  {
+    "id": "book-22",
+    "title": "Sonsuzluk Sessiz Büyür",
+    "originalYear": 1983,
+    "coverImage": "https://lh3.googleusercontent.com/aida-public/AB6AXuCqA2WM6mgUDlTqu77svWfadlFiAS_DtA_1wA5fyVCBN4Dqo9dQe7_2uGjBT31QBtYWv8NSLeEE2fhCKxfjCaAc831PRgP97J5QZW4nwZ5k6Z4VwfQOX0wPp2s5zeWBfbHXlN4jMh3agFCcONR1zWO5IhNbXBEanvfsOB9Zn0mvlUTONYH5LHraNv4ynE0RxLlj5D2fal4r0Hy4bxaIEhFd7CLKnvyvuCT0SDKTc43SdSnu7aDkTggITYnev4OiG5eN76YwRH7LFc4",
+    "summaryTr": "Doğa, felsefe ve insanın evrendeki yeri üzerine denemeler.",
+    "summaryEn": "Reflections on nature, philosophy, and humanity's place in the cosmos.",
+    "isRare": false,
+    "order": 22
+  },
+  {
+    "id": "book-23",
     "title": "Turgut Reis",
     "originalYear": 1958,
     "coverImage": "https://lh3.googleusercontent.com/aida-public/AB6AXuCgQzLxuCXFYeiqO8grc0zr_0Pf1ihkOs0hxyFkjDFjEr98GT2pA1iI2azelxClhyPYCHuKIb2bH75zBV6kYaeNAzDMsRziJ8Z9B-Tf9UmZd7-zpYA7WXSmshAfwfQRSKtXOOMUtFNLORtmLOvK6fAaZccXos3jt8HOuIJ1aJQZlVoliWouikqEEq8uZzwp6KrW0Aa_kMQM6lv36sh1AVUFIEx91y5fVQUXQhwpTSQQAvUFHwb5wI4ZOd1cgjoLkSQ68q33aAMrvY0",
     "summaryTr": "Bodrum Karatoprak doğumlu büyük Türk amirali Turgut Reis'in biyografik romanı.",
     "summaryEn": "The historical novel on the life of Bodrum-born grand admiral Turgut Reis.",
     "isRare": false,
-    "order": 5
+    "order": 23
   },
   {
-    "id": "book-6",
-    "title": "Anadolu Efsaneleri",
-    "originalYear": 1954,
-    "coverImage": "https://lh3.googleusercontent.com/aida-public/AB6AXuAa2lpFiOMtq1G5QMTMcrhGf-eAIwJpqrkKWYMZ7k575vAUYtotBBBn3sGqyxyBQ_Dcrha5WOCYY2a4gwNRq0JR1LMstQugEHNTXE029TQK2X0tmg6OBpqXzxBhJuI54UCLkMHC3ttba7xIMF29OLWhvw8SWX2wxv2znaMKy9IC4mc0VKjsv3fA-glDw11kAcCi6ry5mnRGxep7FazMew97p5cp1y2aRXN3Klzx5Jp22iIhFHLrpfUrwICjzhWdM-r0zKuP6THba_s",
-    "summaryTr": "Anadolu mitolojisinin ve kadim Ege uygarlıklarının köklerini aydınlatan başvuru eseri.",
-    "summaryEn": "An authoritative collection illuminating the deep mythological heritage of Anatolia and the Aegean.",
-    "isRare": true,
-    "order": 6
-  },
-  {
-    "id": "book-7",
-    "title": "Merhaba Akdeniz",
-    "originalYear": 1947,
-    "coverImage": "https://lh3.googleusercontent.com/aida-public/AB6AXuDyV23I4j_XKCl20T9R_CWzgeEve_0fFjFj7t8HpIh1_1Z10v2r8z33l_43RKL68XuMg5LL2dmFlmgSVIFOySLJb6TFlzsVTqvnTO8TLreJGpzcqTVySae9geDc5ntH5tMuCR4vvgEm16rPSEp8ghDluCotT11YdtrvQ8YMKuskCGifrzk-XxF1HV62dz4oJueRQKQZ8bgAujXt-OvqBwyEd1ZvYZ6wrI7xd6qCRwWwPT2C3TluJLekvWuGvIIqyF4rSKEn1_V4eao",
-    "summaryTr": "Deniz hikayeleri ve Bodrum insanının sıcak anlatımıyla yoğrulmuş ilk öykü derlemesi.",
-    "summaryEn": "The inaugural short story collection portraying maritime folklore and the people of Bodrum.",
-    "isRare": false,
-    "order": 7
-  },
-  {
-    "id": "book-8",
-    "title": "Hey Koca Yurt",
-    "originalYear": 1972,
-    "coverImage": "https://lh3.googleusercontent.com/aida-public/AB6AXuCqA2WM6mgUDlTqu77svWfadlFiAS_DtA_1wA5fyVCBN4Dqo9dQe7_2uGjBT31QBtYWv8NSLeEE2fhCKxfjCaAc831PRgP97J5QZW4nwZ5k6Z4VwfQOX0wPp2s5zeWBfbHXlN4jMh3agFCcONR1zWO5IhNbXBEanvfsOB9Zn0mvlUTONYH5LHraNv4ynE0RxLlj5D2fal4r0Hy4bxaIEhFd7CLKnvyvuCT0SDKTc43SdSnu7aDkTggITYnev4OiG5eN76YwRH7LFc4",
-    "summaryTr": "Anadolu hümanizmasını ve Akdeniz uygarlıklarının kardeşliğini anlatan denemeler.",
-    "summaryEn": "Philosophical essays celebrating Anatolian humanism and the shared heritage of Mediterranean civilizations.",
-    "isRare": false,
-    "order": 8
-  },
-  {
-    "id": "book-9",
-    "title": "Ege Kıyılarından",
-    "originalYear": 1939,
-    "coverImage": "https://lh3.googleusercontent.com/aida-public/AB6AXuDVttDrg33J7nK7Pu3LP7QarRgOoHZ_9prcOS8MDxYd_s8d7iY0FZQTxxzIAsWznVjskXzFJC44SQk7_LMdof5LFC6GZ7unKJ_YNSfl25oM_ktMZoiXbr91uUdsuMmv6lkjtld1VFKsKaQDISisKeqfWTC9VqL89kwmqSYa6R35uT9y0WaDpnOfajEA-JPgQ5fUvptXsRlTxCJqRfwMyrGwTS_7sDLBGJ53c993sUj29-bj2NOEZymDTGLPkr--ACh2IZmUz1iDnxY",
-    "summaryTr": "Ege denizcilerinin hayatından kesitler sunan unutulmaz öyküler.",
-    "summaryEn": "Memorable tales portraying the maritime way of life along the Aegean shores.",
-    "isRare": false,
-    "order": 9
-  },
-  {
-    "id": "book-10",
-    "title": "Parmak Damgası",
-    "originalYear": 1971,
+    "id": "book-24",
+    "title": "Uluç Reis",
+    "originalYear": 1962,
     "coverImage": "https://lh3.googleusercontent.com/aida-public/AB6AXuAXBkFWopuKLSZhWxAXFGY1G9hfX2iRCCWTZEzfwO9PMGlShHYR-cS5usmHqsvPuKdJohlfhmTxGcINHp8wy8XGHWdGCwCjMzlyIoVkuKxsROOPs2JYUvyIqMK1OeDH6P_yV6hs9U2K18_R6j1cQn8g6F6YGnZtsuiA07nu2my9JGTPTf1DJfHHb_BeuC2XcctPtkpR8uqGzdXzJOMgWdT9g4yrWLRjcZvyNOsTbBr6Z5K86JFtI-SLBbwT8T2m0rtoMhADEc2CI4o",
-    "summaryTr": "Ege kıyılarında geçen insan ve adalet temalı derinlikli öyküler.",
-    "summaryEn": "Profound stories revolving around human conscience and justice on the Aegean coast.",
+    "summaryTr": "Akdeniz'de hüküm süren efsanevi Türk denizcisi Uluç Ali Reis'in destansı yaşamı.",
+    "summaryEn": "The epic chronicle of legendary Ottoman Mediterranean admiral Uluç Ali Reis.",
     "isRare": false,
-    "order": 10
+    "order": 24
   },
   {
-    "id": "book-11",
-    "title": "Çiçeklerin Düğünü",
-    "originalYear": 1971,
-    "coverImage": "https://lh3.googleusercontent.com/aida-public/AB6AXuBMCWkgky_PMT3yLHplVl7x_FJErNB1kwwRm5hO0j1ycSuHOrNOrmoaHTI2Bq9v5p3MPkFIYjnFnPpIn0JbHMKMD-YUzLrS_212pQBO_f2TKZ46ttMS2_MpH7tSxR7I9UIykFkUzpiL8zhCnPugNqEYB1mT8Mcnq52J6Z6Vc7WMTE65-e2WvXX2fzd9wGhv8PXvAyAAYPGdh1zbGAXew5xfqHG7h2GcRMz75pK1nZ3w1W57osXQYwiPlfq9VzpWwGgVknKuW79-MJg",
-    "summaryTr": "Cevat Şakir'in Bodrum'a diktiği yüzlerce bitki ve ağaç türünün hikayesini içeren doğa sevgisi yazıları.",
-    "summaryEn": "Writings on botanical passion and the hundreds of exotic plant species Cevat Şakir planted across Bodrum.",
+    "id": "book-25",
+    "title": "Yol Ver Deniz",
+    "originalYear": 1954,
+    "coverImage": "https://lh3.googleusercontent.com/aida-public/AB6AXuDyV23I4j_XKCl20T9R_CWzgeEve_0fFjFj7t8HpIh1_1Z10v2r8z33l_43RKL68XuMg5LL2dmFlmgSVIFOySLJb6TFlzsVTqvnTO8TLreJGpzcqTVySae9geDc5ntH5tMuCR4vvgEm16rPSEp8ghDluCotT11YdtrvQ8YMKuskCGifrzk-XxF1HV62dz4oJueRQKQZ8bgAujXt-OvqBwyEd1ZvYZ6wrI7xd6qCRwWwPT2C3TluJLekvWuGvIIqyF4rSKEn1_V4eao",
+    "summaryTr": "Ege denizinin çağrısı ve sünger avcılarının unutulmaz öyküleri.",
+    "summaryEn": "The call of the Aegean sea and unforgettable tales of sponge divers.",
     "isRare": false,
-    "order": 11
+    "order": 25
   }
 ]

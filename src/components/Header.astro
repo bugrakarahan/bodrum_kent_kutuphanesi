@@ -22,7 +22,6 @@ const links = navRoutes.map((route) => {
   const label = t.nav[route.key];
   const normalizedHref = normalizePath(href);
   
-  // Exact match for root, prefix match or exact match for nested routes
   const isActive = normalizedHref === '/' || normalizedHref === '/en'
     ? activePath === normalizedHref
     : activePath === normalizedHref || activePath.startsWith(`${normalizedHref}/`);
@@ -35,35 +34,34 @@ const switchLangUrl = getEquivalentLanguageUrl(currentPath, targetLang);
 const homeUrl = lang === 'tr' ? '/' : '/en';
 ---
 
-<header class="sticky top-0 z-40 w-full bg-parchment/95 backdrop-blur-md border-b border-sand h-20 transition-all duration-300">
-  <div class="max-w-[1280px] mx-auto h-full px-5 md:px-12 flex items-center justify-between gap-4">
+<header class="sticky top-0 z-40 w-full bg-parchment/95 backdrop-blur-md border-b border-sand h-22 transition-all duration-300">
+  <div class="max-w-[1280px] mx-auto h-full px-5 md:px-10 flex items-center justify-between gap-4">
     
     <!-- Brand / Logo with Bodrum Emblem -->
     <a 
       href={homeUrl} 
-      class="group flex items-center gap-3 focus:outline-none focus-visible:ring-2 focus-visible:ring-olive rounded-sm py-1"
+      class="group flex items-center gap-3 focus:outline-none focus-visible:ring-2 focus-visible:ring-olive rounded-sm py-1 shrink-0"
       aria-label={`${t.siteTitle} - ${t.nav.home}`}
     >
-      <!-- Custom Library Emblem (Bodrum Blue Anchor/Book Emblem) -->
-      <div class="w-9 h-9 rounded-full bg-olive text-white flex items-center justify-center shadow-xs transition-transform group-hover:scale-105">
+      <div class="w-10 h-10 rounded-full bg-olive text-white flex items-center justify-center shadow-xs transition-transform group-hover:scale-105">
         <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
           <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18a8.967 8.967 0 00-6 2.292m0-14.25v14.25" />
         </svg>
       </div>
-      <span class="font-serif text-xl sm:text-2xl italic font-semibold text-ink tracking-tight group-hover:text-olive transition-colors duration-200">
+      <span class="font-serif text-xl sm:text-2xl font-bold text-ink tracking-tight group-hover:text-olive transition-colors duration-200">
         {t.siteTitle}
       </span>
     </a>
 
-    <!-- Desktop Navigation -->
-    <nav class="hidden lg:flex items-center gap-5 xl:gap-7" aria-label="Ana Menü">
+    <!-- Desktop Navigation: Bold, Upper Case, Prominent Font Size -->
+    <nav class="hidden xl:flex items-center gap-4 2xl:gap-6" aria-label="Ana Menü">
       {links.map((link) => (
         <a
           href={link.href}
-          class={`text-sm xl:text-[15px] transition-all duration-200 ${
+          class={`text-[15px] 2xl:text-[16px] font-bold font-serif uppercase tracking-wider transition-all duration-200 ${
             link.isActive
-              ? 'border-b-2 border-olive pb-1 font-semibold text-olive'
-              : 'text-ink/80 hover:text-olive hover:border-b-2 hover:border-sand pb-1 font-medium'
+              ? 'border-b-2 border-olive pb-1 text-olive'
+              : 'text-ink/85 hover:text-olive hover:border-b-2 hover:border-sand pb-1'
           }`}
           aria-current={link.isActive ? 'page' : undefined}
         >
@@ -73,17 +71,17 @@ const homeUrl = lang === 'tr' ? '/' : '/en';
     </nav>
 
     <!-- Desktop Utility Actions: Search & Language Switcher -->
-    <div class="hidden lg:flex items-center gap-3">
+    <div class="hidden xl:flex items-center gap-3">
       <!-- Search Trigger Button -->
       <button
         type="button"
         data-search-trigger
-        class="flex items-center gap-2 px-3 py-1.5 rounded border border-sand bg-surface-container-low hover:bg-surface-container hover:border-ink/30 text-ink/80 hover:text-ink transition-all text-xs focus:outline-none focus-visible:ring-2 focus-visible:ring-olive cursor-pointer"
+        class="flex items-center gap-2 px-3 py-1.5 rounded border border-sand bg-surface-container-low hover:bg-surface-container hover:border-olive/40 text-ink/80 hover:text-olive transition-all text-xs font-serif focus:outline-none focus-visible:ring-2 focus-visible:ring-olive cursor-pointer"
         aria-label={t.search.title}
         title={`${t.search.title} (⌘K)`}
       >
-        <span class="material-symbols-outlined text-[18px] text-ink/70">search</span>
-        <span class="hidden xl:inline text-xs text-ink/70">{t.search.title}</span>
+        <span class="material-symbols-outlined text-[18px] text-olive">search</span>
+        <span class="text-xs font-semibold text-ink/80">{t.search.title}</span>
         <kbd class="font-mono text-[10px] bg-parchment border border-sand px-1.5 py-0.5 rounded text-stone-gray shadow-xs">
           ⌘K
         </kbd>
@@ -92,7 +90,7 @@ const homeUrl = lang === 'tr' ? '/' : '/en';
       <!-- Language Switcher Toggle -->
       <a
         href={switchLangUrl}
-        class="flex items-center text-xs tracking-wider font-medium text-ink border border-sand hover:border-ink/40 bg-surface-container-low px-2.5 py-1.5 rounded transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-olive"
+        class="flex items-center text-xs tracking-wider font-bold text-ink border border-sand hover:border-olive/50 bg-surface-container-low px-2.5 py-1.5 rounded transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-olive font-serif"
         title={lang === 'tr' ? 'Switch to English' : 'Türkçe\'ye geç'}
         aria-label={lang === 'tr' ? 'Switch website to English' : 'Web sitesini Türkçe\'ye çevir'}
       >
@@ -103,7 +101,7 @@ const homeUrl = lang === 'tr' ? '/' : '/en';
     </div>
 
     <!-- Mobile Action Buttons -->
-    <div class="flex lg:hidden items-center gap-2">
+    <div class="flex xl:hidden items-center gap-2">
       <!-- Mobile Search Button -->
       <button
         type="button"
@@ -133,7 +131,7 @@ const homeUrl = lang === 'tr' ? '/' : '/en';
 <!-- Mobile Navigation Drawer -->
 <div
   id="mobile-drawer"
-  class="fixed inset-0 z-50 transform -translate-x-full transition-transform duration-300 ease-in-out lg:hidden"
+  class="fixed inset-0 z-50 transform -translate-x-full transition-transform duration-300 ease-in-out xl:hidden"
   aria-hidden="true"
   role="dialog"
   aria-modal="true"
@@ -156,7 +154,7 @@ const homeUrl = lang === 'tr' ? '/' : '/en';
             <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18a8.967 8.967 0 00-6 2.292m0-14.25v14.25" />
           </svg>
         </div>
-        <span class="font-serif text-lg italic font-semibold text-ink">
+        <span class="font-serif text-lg font-bold text-ink">
           {t.siteTitle}
         </span>
       </div>
@@ -172,40 +170,38 @@ const homeUrl = lang === 'tr' ? '/' : '/en';
     </div>
 
     <!-- Drawer Navigation Links -->
-    <nav class="p-6 flex flex-col gap-4 flex-1" aria-label="Mobil Menü Linkleri">
+    <nav class="p-6 flex flex-col gap-3 flex-1" aria-label="Mobil Menü Linkleri">
       {links.map((link) => (
         <a
           href={link.href}
-          class={`text-base font-serif transition-colors py-2 border-b border-sand/60 flex items-center justify-between ${
+          class={`text-base font-serif font-bold uppercase tracking-wider transition-colors py-2.5 border-b border-sand/60 flex items-center justify-between ${
             link.isActive
-              ? 'text-olive font-semibold'
+              ? 'text-olive font-bold'
               : 'text-ink hover:text-olive'
           }`}
         >
           <span>{link.label}</span>
-          <span class="material-symbols-outlined text-sm text-stone-gray">chevron_right</span>
+          <span class="material-symbols-outlined text-sm text-olive">chevron_right</span>
         </a>
       ))}
     </nav>
 
     <!-- Drawer Footer Actions -->
     <div class="p-6 border-t border-sand bg-surface-container-low flex flex-col gap-4">
-      <!-- Mobile Search Shortcut -->
       <button
         type="button"
         data-search-trigger
-        class="w-full flex items-center justify-center gap-2 py-2.5 px-4 rounded border border-sand bg-parchment text-ink text-sm hover:bg-surface-container transition-colors"
+        class="w-full flex items-center justify-center gap-2 py-2.5 px-4 rounded border border-sand bg-parchment text-ink text-sm font-serif hover:bg-surface-container transition-colors"
       >
-        <span class="material-symbols-outlined text-lg text-stone-gray">search</span>
+        <span class="material-symbols-outlined text-lg text-olive">search</span>
         <span>{t.search.placeholder}</span>
       </button>
 
-      <!-- Language Selector -->
-      <div class="flex items-center justify-between pt-2 text-sm text-stone-gray">
+      <div class="flex items-center justify-between pt-2 text-sm text-stone-gray font-serif">
         <span>Dil / Language:</span>
         <a
           href={switchLangUrl}
-          class="flex items-center font-semibold text-ink border border-sand bg-parchment px-3 py-1 rounded text-xs hover:border-ink/50 transition-colors"
+          class="flex items-center font-bold text-ink border border-sand bg-parchment px-3 py-1 rounded text-xs hover:border-olive transition-colors"
         >
           <span class={lang === 'tr' ? 'text-olive font-bold' : 'text-stone-gray'}>TR</span>
           <span class="mx-1 text-sand">|</span>
@@ -269,7 +265,6 @@ const homeUrl = lang === 'tr' ? '/' : '/en';
     });
   }
 
-  // Setup on initial load and page transitions
   setupMobileDrawer();
   document.addEventListener('astro:page-load', setupMobileDrawer);
 </script>

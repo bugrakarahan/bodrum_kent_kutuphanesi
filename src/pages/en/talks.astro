@@ -11,7 +11,7 @@ const featuredTalks = allTalks.filter((t) => t.data.featured);
 const pastTalks = allTalks.filter((t) => !t.data.featured);
 
 const categoriesEn = [
-  "ALL", "LITERATURE", "CULTURE", "ARTS", "HISTORY", "ANCIENT HISTORY", "ARCHAEOLOGY", "PHILOSOPHY", "SOCIOLOGY", "PSYCHOLOGY", "SCIENCE", "ECOLOGY"
+  "ALL", "AUTHORS", "LITERATURE", "CULTURE", "ARTS", "HISTORY", "PHILOSOPHY", "ARCHAEOLOGY", "SOCIOLOGY", "PSYCHOLOGY", "ECOLOGY", "SCIENCE"
 ];
 ---
 
@@ -36,12 +36,12 @@ const categoriesEn = [
   </section>
 
   <!-- Category Pills Bar -->
-  <div class="border-b border-sand bg-parchment py-4 px-5 md:px-12 sticky top-20 z-30 overflow-x-auto">
-    <div class="max-w-[1280px] mx-auto flex items-center gap-2 min-w-max">
+  <div class="border-b border-sand bg-parchment py-4 px-5 md:px-12 sticky top-22 z-30 overflow-x-auto">
+    <div class="max-w-[1280px] mx-auto flex items-center gap-2.5 min-w-max">
       {categoriesEn.map((cat, idx) => (
         <button
           type="button"
-          class={`px-3.5 py-1.5 text-xs font-serif font-semibold uppercase tracking-wider transition-colors ${
+          class={`px-4 py-2 text-sm font-serif font-bold uppercase tracking-wider transition-colors ${
             idx === 0
               ? 'bg-olive text-white shadow-xs'
               : 'bg-surface-container-low border border-sand text-ink hover:border-olive hover:text-olive'
@@ -55,29 +55,29 @@ const categoriesEn = [
 
   <div class="max-w-[1280px] mx-auto px-5 md:px-12 py-16 space-y-20">
     
-    <!-- Featured Sessions -->
+    <!-- Featured Talks -->
     <section>
       <h2 class="font-serif text-2xl sm:text-3xl text-ink font-bold mb-8 pb-3 border-b border-sand">
-        Featured Sessions
+        Featured Talks
       </h2>
 
       <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
         {featuredTalks.map((talk) => (
-          <div class="bg-surface-container-low border border-sand p-6 flex flex-col justify-between shadow-xs">
+          <div class="bg-surface-container-low border-2 border-olive p-8 flex flex-col justify-between shadow-xs">
             <div>
               <div 
-                class="relative aspect-[16/9] overflow-hidden bg-black mb-5 cursor-pointer group"
+                class="relative aspect-[16/9] overflow-hidden bg-black mb-6 cursor-pointer group border border-sand"
                 data-youtube-id={talk.data.youtubeId}
               >
                 <img
                   src={talk.data.thumbnail}
                   alt={talk.data.titleEn}
-                  class="w-full h-full object-cover opacity-90 group-hover:opacity-100 group-hover:scale-105 transition-all duration-500"
+                  class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                 />
                 
-                <div class="absolute inset-0 bg-gradient-to-t from-ink/80 via-transparent to-transparent flex items-center justify-center">
-                  <div class="w-14 h-14 rounded-full bg-olive text-white flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform">
-                    <span class="material-symbols-outlined text-3xl">play_arrow</span>
+                <div class="absolute inset-0 bg-gradient-to-t from-ink/70 via-transparent to-transparent flex items-center justify-center">
+                  <div class="w-16 h-16 rounded-full bg-olive text-white flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform">
+                    <span class="material-symbols-outlined text-4xl">play_arrow</span>
                   </div>
                 </div>
 
@@ -87,15 +87,15 @@ const categoriesEn = [
               </div>
 
               <div class="flex items-center justify-between text-xs text-stone-gray font-mono mb-2">
-                <span class="text-olive font-serif font-bold">{talk.data.guestEn}</span>
-                <span>{talk.data.date}</span>
+                <span class="text-olive font-serif font-bold text-sm">{talk.data.guestEn}</span>
+                <span class="font-bold">{talk.data.date}</span>
               </div>
 
-              <h3 class="font-serif text-xl sm:text-2xl text-ink font-bold leading-tight mb-3">
+              <h3 class="font-serif text-xl sm:text-2xl text-ink font-bold leading-tight mb-4">
                 {talk.data.titleEn}
               </h3>
 
-              <p class="font-serif text-sm text-ink/80 leading-relaxed mb-6">
+              <p class="font-serif text-base text-ink/85 leading-relaxed mb-6">
                 {talk.data.summaryEn}
               </p>
             </div>
@@ -103,9 +103,9 @@ const categoriesEn = [
             <button
               type="button"
               data-youtube-id={talk.data.youtubeId}
-              class="w-full py-3 bg-ink hover:bg-olive text-parchment text-xs font-serif font-semibold uppercase tracking-wider transition-colors flex items-center justify-center gap-2"
+              class="w-full py-3.5 bg-olive hover:bg-bodrum-blue-dark text-white text-sm font-serif font-bold uppercase tracking-wider transition-colors flex items-center justify-center gap-2 shadow-xs"
             >
-              <span class="material-symbols-outlined text-sm">play_circle</span>
+              <span class="material-symbols-outlined text-base">play_circle</span>
               <span>Watch Video</span>
             </button>
           </div>
@@ -113,15 +113,15 @@ const categoriesEn = [
       </div>
     </section>
 
-    <!-- Past Sessions -->
+    <!-- Past Talks -->
     <section>
       <h2 class="font-serif text-2xl sm:text-3xl text-ink font-bold mb-8 pb-3 border-b border-sand">
-        Past Sessions and Archive
+        Past Talks and Archive
       </h2>
 
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {pastTalks.map((talk) => (
-          <div class="bg-surface-container-low border border-sand p-6 flex flex-col justify-between">
+          <div class="bg-surface-container-low border-2 border-olive p-6 flex flex-col justify-between shadow-xs">
             <div>
               <div 
                 class="relative aspect-[16/9] overflow-hidden bg-black mb-4 cursor-pointer group border border-sand"
@@ -130,11 +130,11 @@ const categoriesEn = [
                 <img
                   src={talk.data.thumbnail}
                   alt={talk.data.titleEn}
-                  class="w-full h-full object-cover opacity-90 group-hover:opacity-100 transition-opacity duration-300"
+                  class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                 />
                 <div class="absolute inset-0 flex items-center justify-center">
-                  <div class="w-10 h-10 rounded-full bg-olive text-white flex items-center justify-center shadow group-hover:scale-110 transition-transform">
-                    <span class="material-symbols-outlined text-2xl">play_arrow</span>
+                  <div class="w-12 h-12 rounded-full bg-olive text-white flex items-center justify-center shadow group-hover:scale-110 transition-transform">
+                    <span class="material-symbols-outlined text-3xl">play_arrow</span>
                   </div>
                 </div>
                 <div class="absolute bottom-2 right-2 px-1.5 py-0.5 bg-black/80 text-white font-mono text-[10px]">
@@ -142,15 +142,15 @@ const categoriesEn = [
                 </div>
               </div>
 
-              <div class="text-xs text-olive font-serif font-bold mb-1">
+              <div class="text-sm text-olive font-serif font-bold mb-1">
                 {talk.data.guestEn}
               </div>
 
-              <h3 class="font-serif text-lg text-ink font-bold leading-snug mb-2">
+              <h3 class="font-serif text-lg sm:text-xl text-ink font-bold leading-snug mb-2">
                 {talk.data.titleEn}
               </h3>
 
-              <p class="font-serif text-xs text-ink/75 leading-relaxed mb-4">
+              <p class="font-serif text-sm text-ink/75 leading-relaxed mb-4">
                 {talk.data.summaryEn}
               </p>
             </div>
@@ -158,7 +158,7 @@ const categoriesEn = [
             <button
               type="button"
               data-youtube-id={talk.data.youtubeId}
-              class="w-full py-2 bg-parchment border border-sand hover:border-olive hover:text-olive text-xs font-serif font-semibold uppercase tracking-wider transition-colors flex items-center justify-center gap-1.5"
+              class="w-full py-2.5 bg-parchment border border-olive text-olive hover:bg-olive hover:text-white text-xs font-serif font-bold uppercase tracking-wider transition-colors flex items-center justify-center gap-1.5"
             >
               <span>Watch</span>
               <span class="material-symbols-outlined text-xs">arrow_forward</span>
