@@ -22,7 +22,6 @@ const links = navRoutes.map((route) => {
   };
 });
 
-// Opposite language path for the language switch
 const targetLang = lang === 'tr' ? 'en' : 'tr';
 const currentRouteObj = navRoutes.find(
   (r) => r.pathTr === currentPath || r.pathEn === currentPath
@@ -38,39 +37,33 @@ const switchUrl = currentRouteObj
 
 <header
   id="main-header"
-  class="fixed top-0 left-0 right-0 z-50 bg-olive text-parchment border-b border-white/15 h-22 transition-all duration-200 shadow-sm"
+  class="fixed top-0 left-0 right-0 z-50 bg-olive text-parchment border-b border-white/15 h-24 transition-all duration-200 shadow-sm flex items-center"
 >
-  <div class="max-w-[1280px] mx-auto h-full px-5 md:px-12 flex items-center justify-between gap-4">
+  <div class="max-w-[1280px] mx-auto w-full px-5 md:px-12 flex items-center justify-between gap-4">
     
-    <!-- 1. Left: Brand Logo & Title (Aligned with page content) -->
+    <!-- 1. Left: Brand Logo & Title -->
     <a
       href={lang === 'tr' ? '/' : '/en'}
-      class="flex items-center gap-3 shrink-0 group focus:outline-none focus-visible:ring-2 focus-visible:ring-parchment"
+      class="flex items-center gap-3.5 shrink-0 group focus:outline-none focus-visible:ring-2 focus-visible:ring-parchment"
       aria-label={`${t.siteTitle} ${t.home}`}
     >
-      <!-- Official Emblem Logo -->
       <img
         src="/images/logo.png"
         alt="Bodrum Kent Kütüphanesi Logosu"
-        class="w-11 h-11 sm:w-12 sm:h-12 object-contain rounded-xs border border-white/20 bg-white/5 shadow-2xs group-hover:scale-105 transition-transform"
+        class="w-12 h-12 object-contain rounded-xs border border-white/20 bg-white/5 shadow-2xs group-hover:scale-105 transition-transform"
       />
       
-      <div class="flex flex-col">
-        <span class="font-serif text-xl sm:text-2xl font-bold tracking-tight text-white leading-tight">
-          {t.siteTitle}
-        </span>
-        <span class="text-[10.5px] font-mono tracking-widest text-parchment/80 uppercase">
-          KIZILAĞAÇ • BODRUM
-        </span>
-      </div>
+      <span class="font-serif text-2xl sm:text-[26px] font-bold tracking-tight text-white leading-tight">
+        {t.siteTitle}
+      </span>
     </a>
 
-    <!-- 2. Center: Desktop Navigation Links (Centered, Single-line where needed, Centered text) -->
-    <nav class="hidden xl:flex items-center justify-center gap-4 2xl:gap-6 flex-1 px-4" aria-label="Ana Menü">
+    <!-- 2. Center: Desktop Navigation Links (HB removed, perfectly spaced) -->
+    <nav class="hidden xl:flex items-center justify-center gap-5 2xl:gap-8 flex-1 px-4" aria-label="Ana Menü">
       {links.map((link) => (
         <a
           href={link.href}
-          class={`font-serif text-[13px] 2xl:text-[14px] uppercase tracking-wider font-bold text-center transition-all duration-150 py-1.5 px-1 whitespace-nowrap ${
+          class={`font-serif text-[14px] 2xl:text-[15px] uppercase tracking-wider font-bold text-center transition-all duration-150 py-1 px-1 whitespace-nowrap ${
             link.isActive
               ? 'text-white border-b-2 border-parchment shadow-xs'
               : 'text-parchment/85 hover:text-white hover:border-b border-parchment/50'
@@ -84,14 +77,14 @@ const switchUrl = currentRouteObj
     <!-- 3. Right: Utility Controls (Search Modal Trigger, Language Toggle, Mobile Hamburger) -->
     <div class="flex items-center gap-2.5 sm:gap-3 shrink-0">
       
-      <!-- Instant Search Modal Trigger Button -->
+      <!-- Search Modal Trigger Button -->
       <button
         type="button"
         data-search-trigger
         class="flex items-center gap-1.5 px-3 py-1.5 text-xs font-serif font-bold text-parchment/90 bg-white/10 border border-white/20 hover:bg-white/20 hover:text-white rounded-xs transition-colors shadow-2xs"
         aria-label="Site İçi Arama"
       >
-        <span class="material-symbols-outlined text-[17px]">search</span>
+        <span class="material-symbols-outlined text-[18px]">search</span>
         <span class="hidden sm:inline font-mono uppercase text-[11px] tracking-wider">ARA</span>
         <kbd class="hidden md:inline-block text-[10px] font-mono bg-black/20 text-parchment/80 px-1 py-0.2 rounded border border-white/20">
           ⌘K
@@ -104,11 +97,11 @@ const switchUrl = currentRouteObj
         class="px-3 py-1.5 text-xs font-mono font-bold tracking-wider uppercase text-parchment/90 bg-white/10 border border-white/20 hover:bg-white/20 hover:text-white rounded-xs transition-colors flex items-center gap-1 shadow-2xs"
         aria-label={`Dili Değiştir (${targetLang.toUpperCase()})`}
       >
-        <span class="material-symbols-outlined text-[15px]">language</span>
+        <span class="material-symbols-outlined text-[16px]">language</span>
         <span>{lang === 'tr' ? 'EN' : 'TR'}</span>
       </a>
 
-      <!-- Mobile Hamburger Button (Below xl breakpoint) -->
+      <!-- Mobile Hamburger Button -->
       <button
         type="button"
         id="mobile-menu-toggle"
@@ -126,7 +119,7 @@ const switchUrl = currentRouteObj
   <!-- Mobile Drawer Menu -->
   <div
     id="mobile-menu-drawer"
-    class="xl:hidden hidden bg-olive border-b border-white/15 px-5 py-6 space-y-4 shadow-xl"
+    class="xl:hidden hidden bg-olive border-b border-white/15 px-5 py-6 space-y-4 shadow-xl absolute top-24 left-0 right-0"
   >
     <nav class="flex flex-col space-y-3" aria-label="Mobil Menü">
       {links.map((link) => (
@@ -146,7 +139,6 @@ const switchUrl = currentRouteObj
 </header>
 
 <script>
-  // Mobile drawer toggle interaction
   const toggleBtn = document.getElementById('mobile-menu-toggle');
   const drawer = document.getElementById('mobile-menu-drawer');
   const menuIcon = document.getElementById('menu-icon');

@@ -18,7 +18,7 @@ const t = getT(lang);
     <div class="absolute inset-0 z-0 opacity-10 pointer-events-none">
       <div
         class="w-full h-full bg-cover bg-center filter grayscale contrast-125"
-        style="background-image: url('https://lh3.googleusercontent.com/aida/AP1WRLvo60AOVtg-X2yx5_UsWAYHm8SVZyT_7GmTxiGOeYNbsSg0TADSsk0S_nyvd794vLfkUY3I7nwaPhBWhJdlPkO45ZzOwy2dFyAdRBD_sw9MQ0ohoBLQsfabJSdYSm4TbUmg_2DEzDzqMqJbLKVQjdUYWpK6uJXcvx1KUMGHoDWpGghWlQBy8J7PfXLubkb5erCLKPe8Nznl46CMhd-jcSxP8dhqHD4evmD0Zl-vA-Sxo0_PqpRIAuZpIWo');"
+        style="background-image: url('/images/logo.png');"
       ></div>
       <div class="absolute inset-0 bg-gradient-to-b from-parchment/70 via-parchment/90 to-parchment"></div>
     </div>
@@ -48,19 +48,19 @@ const t = getT(lang);
           </div>
         </div>
 
-        <!-- Right: Atmospheric Photo -->
+        <!-- Right: Official Logo Showcase -->
         <div class="lg:col-span-5">
           <div class="relative group">
-            <div class="relative bg-parchment border-2 border-olive p-3 shadow-md rounded-xs">
-              <div class="aspect-[4/3] overflow-hidden bg-surface-container-high relative border border-sand/60">
+            <div class="relative bg-parchment border-2 border-olive p-4 shadow-md rounded-xs">
+              <div class="aspect-square overflow-hidden bg-olive flex items-center justify-center p-4 rounded-xs border border-sand/60 shadow-inner">
                 <img
-                  src="https://lh3.googleusercontent.com/aida-public/AB6AXuDQ_kg3bbgJ4ynOz1o7DQcY3YaIdeG_zUESiNKW-81FsNfEZqrXlPi-ZAYWzb2FYdKriB4ESdIgn04zGCTSrnOaQAobk2tEQSDMKK4TlQhdPdjUJk74KLsSusQUSR9nHe1QycFJgHdfJUQSr8eFa2k0wQHdX3j1D5aQBbxg9mUEAGpQs_UGA_l1geAuKfbBil5Wy-_VugN7cjAepbQ_HoOugyaLOfsfF-vsYSCOhY75Ao3sAvwHFdv3nGJYn9whKvXn8vnrP8j4yEE"
-                  alt="Bodrum City Library Cultural Memory"
-                  class="w-full h-full object-cover"
+                  src="/images/logo.png"
+                  alt="Bodrum City Library Emblem"
+                  class="w-full h-full object-contain drop-shadow-md"
                   loading="eager"
                 />
               </div>
-              <div class="pt-3 pb-1 px-1 flex items-center justify-between text-sm text-stone-gray font-serif italic">
+              <div class="pt-3 pb-1 px-1 flex items-center justify-between text-xs sm:text-sm text-stone-gray font-serif italic">
                 <span class="font-bold text-ink">Bodrum City Library</span>
                 <span class="font-mono text-xs not-italic">Kizilagac • 2019</span>
               </div>
@@ -70,47 +70,70 @@ const t = getT(lang);
 
       </div>
 
-      <!-- 3 Institutional Boxes -->
+      <!-- 3 Institutional Boxes with Logos -->
       <div class="mt-12 pt-8 border-t border-sand grid grid-cols-1 md:grid-cols-3 gap-6 text-ink">
         
-        <div class="bg-parchment p-6 border-2 border-olive rounded-xs shadow-xs flex flex-col justify-between">
-          <div>
-            <h3 class="font-serif text-xl font-bold text-olive mb-2">
+        <div class="bg-parchment p-6 border-2 border-olive rounded-xs shadow-xs flex flex-col items-center justify-between text-center">
+          <div class="w-full flex flex-col items-center">
+            <h3 class="font-serif text-xl font-bold text-olive mb-3 text-center">
               Olive Seeds Library
             </h3>
-            <p class="font-serif text-base text-ink/85 leading-relaxed mb-4">
+
+            <div class="w-24 h-24 my-2 flex items-center justify-center overflow-hidden">
+              <img
+                src="/images/ztk_logo.png"
+                alt="Olive Seeds Library Logo"
+                class="max-w-full max-h-full object-contain"
+              />
+            </div>
+
+            <p class="font-serif text-base text-ink/85 leading-relaxed my-3 text-center">
               Library initiative for children, youth, parents, and educators
             </p>
           </div>
-          <div class="pt-2 border-t border-olive/20 text-xs font-serif italic text-stone-gray">
+          <div class="pt-2 border-t border-olive/20 text-xs font-serif italic text-stone-gray w-full text-center">
             Web page under preparation
           </div>
         </div>
 
-        <div class="bg-parchment p-6 border-2 border-olive rounded-xs shadow-xs flex flex-col justify-between">
-          <div>
-            <h3 class="font-serif text-xl font-bold text-olive mb-2">
+        <div class="bg-parchment p-6 border-2 border-olive rounded-xs shadow-xs flex flex-col items-center justify-between text-center">
+          <div class="w-full flex flex-col items-center">
+            <h3 class="font-serif text-xl font-bold text-olive mb-3 text-center">
               Children of Halicarnassus
             </h3>
-            <p class="font-serif text-base text-ink/85 leading-relaxed mb-4">
+
+            <div class="w-24 h-24 my-2 flex items-center justify-center overflow-hidden rounded-xs border border-sand">
+              <img
+                src="/images/hc_logo.jpg"
+                alt="Children of Halicarnassus Arts Program"
+                class="w-full h-full object-cover"
+              />
+            </div>
+
+            <p class="font-serif text-base text-ink/85 leading-relaxed my-3 text-center">
               Arts and cultural workshops for all ages
             </p>
           </div>
-          <div class="pt-2 border-t border-olive/20 text-xs font-serif italic text-stone-gray">
+          <div class="pt-2 border-t border-olive/20 text-xs font-serif italic text-stone-gray w-full text-center">
             Web page under preparation
           </div>
         </div>
 
-        <div class="bg-parchment p-6 border-2 border-olive rounded-xs shadow-xs flex flex-col justify-between">
-          <div>
-            <h3 class="font-serif text-xl font-bold text-olive mb-2">
-              Halicarnassus Culture, Arts, Education & Ecology Association
+        <div class="bg-parchment p-6 border-2 border-olive rounded-xs shadow-xs flex flex-col items-center justify-between text-center">
+          <div class="w-full flex flex-col items-center">
+            <h3 class="font-serif text-xl font-bold text-olive mb-3 text-center leading-snug">
+              Halicarnassus Culture, Arts, Education<br />& Ecology Association
             </h3>
-            <p class="font-serif text-base text-ink/85 leading-relaxed mb-4">
+
+            <div class="w-24 h-24 my-2 flex items-center justify-center bg-olive/10 text-olive rounded-full border border-olive/30">
+              <span class="material-symbols-outlined text-4xl">account_balance</span>
+            </div>
+
+            <p class="font-serif text-base text-ink/85 leading-relaxed my-3 text-center">
               Official institutional umbrella for all our initiatives
             </p>
           </div>
-          <div class="pt-2 border-t border-olive/20 text-xs font-serif italic text-stone-gray">
+          <div class="pt-2 border-t border-olive/20 text-xs font-serif italic text-stone-gray w-full text-center">
             Web page under preparation
           </div>
         </div>

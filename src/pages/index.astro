@@ -19,7 +19,7 @@ const t = getT(lang);
     <div class="absolute inset-0 z-0 opacity-10 pointer-events-none">
       <div
         class="w-full h-full bg-cover bg-center filter grayscale contrast-125"
-        style="background-image: url('https://lh3.googleusercontent.com/aida/AP1WRLvo60AOVtg-X2yx5_UsWAYHm8SVZyT_7GmTxiGOeYNbsSg0TADSsk0S_nyvd794vLfkUY3I7nwaPhBWhJdlPkO45ZzOwy2dFyAdRBD_sw9MQ0ohoBLQsfabJSdYSm4TbUmg_2DEzDzqMqJbLKVQjdUYWpK6uJXcvx1KUMGHoDWpGghWlQBy8J7PfXLubkb5erCLKPe8Nznl46CMhd-jcSxP8dhqHD4evmD0Zl-vA-Sxo0_PqpRIAuZpIWo');"
+        style="background-image: url('/images/logo.png');"
       ></div>
       <div class="absolute inset-0 bg-gradient-to-b from-parchment/70 via-parchment/90 to-parchment"></div>
     </div>
@@ -52,19 +52,19 @@ const t = getT(lang);
           </div>
         </div>
 
-        <!-- Right: Atmospheric Heritage Photo -->
+        <!-- Right: Official Blue BKK Logo Showcase (Replacing previous scenic view) -->
         <div class="lg:col-span-5">
           <div class="relative group">
-            <div class="relative bg-parchment border-2 border-olive p-3 shadow-md rounded-xs">
-              <div class="aspect-[4/3] overflow-hidden bg-surface-container-high relative border border-sand/60">
+            <div class="relative bg-parchment border-2 border-olive p-4 shadow-md rounded-xs">
+              <div class="aspect-square overflow-hidden bg-olive flex items-center justify-center p-4 rounded-xs border border-sand/60 shadow-inner">
                 <img
-                  src="https://lh3.googleusercontent.com/aida-public/AB6AXuDQ_kg3bbgJ4ynOz1o7DQcY3YaIdeG_zUESiNKW-81FsNfEZqrXlPi-ZAYWzb2FYdKriB4ESdIgn04zGCTSrnOaQAobk2tEQSDMKK4TlQhdPdjUJk74KLsSusQUSR9nHe1QycFJgHdfJUQSr8eFa2k0wQHdX3j1D5aQBbxg9mUEAGpQs_UGA_l1geAuKfbBil5Wy-_VugN7cjAepbQ_HoOugyaLOfsfF-vsYSCOhY75Ao3sAvwHFdv3nGJYn9whKvXn8vnrP8j4yEE"
-                  alt="Bodrum Kent Kütüphanesi Kültürel Hafıza"
-                  class="w-full h-full object-cover"
+                  src="/images/logo.png"
+                  alt="Bodrum Kent Kütüphanesi Logosu"
+                  class="w-full h-full object-contain drop-shadow-md"
                   loading="eager"
                 />
               </div>
-              <div class="pt-3 pb-1 px-1 flex items-center justify-between text-sm text-stone-gray font-serif italic">
+              <div class="pt-3 pb-1 px-1 flex items-center justify-between text-xs sm:text-sm text-stone-gray font-serif italic">
                 <span class="font-bold text-ink">Bodrum Kent Kütüphanesi</span>
                 <span class="font-mono text-xs not-italic">Kızılağaç • 2019</span>
               </div>
@@ -74,50 +74,76 @@ const t = getT(lang);
 
       </div>
 
-      <!-- 3 Strategic Institutional Headings & Lowercase Descriptions -->
+      <!-- 3 Strategic Institutional Headings with Logos & Centered Alignment -->
       <div class="mt-12 pt-8 border-t border-sand grid grid-cols-1 md:grid-cols-3 gap-6 text-ink">
         
-        <!-- 1. Zeytin Taneleri Kütüphanesi -->
-        <div class="bg-parchment p-6 border-2 border-olive rounded-xs shadow-xs flex flex-col justify-between">
-          <div>
-            <h3 class="font-serif text-xl font-bold text-olive mb-2">
+        <!-- 1. Zeytin Taneleri Kütüphanesi (With ZTK Logo) -->
+        <div class="bg-parchment p-6 border-2 border-olive rounded-xs shadow-xs flex flex-col items-center justify-between text-center">
+          <div class="w-full flex flex-col items-center">
+            <h3 class="font-serif text-xl font-bold text-olive mb-3 text-center">
               Zeytin Taneleri Kütüphanesi
             </h3>
-            <p class="font-serif text-base text-ink/85 leading-relaxed mb-4">
+
+            <!-- ZTK Logo -->
+            <div class="w-24 h-24 my-2 flex items-center justify-center overflow-hidden">
+              <img
+                src="/images/ztk_logo.png"
+                alt="Zeytin Taneleri Kütüphanesi Logosu"
+                class="max-w-full max-h-full object-contain"
+              />
+            </div>
+
+            <p class="font-serif text-base text-ink/85 leading-relaxed my-3 text-center">
               Çocuk, genç, ebeveyn ve eğitimcilere yönelik kütüphane
             </p>
           </div>
-          <div class="pt-2 border-t border-olive/20 text-xs font-serif italic text-stone-gray">
+          <div class="pt-2 border-t border-olive/20 text-xs font-serif italic text-stone-gray w-full text-center">
             Web sayfası hazırlanmakta
           </div>
         </div>
 
-        <!-- 2. Halikarnaslı Çocuklar -->
-        <div class="bg-parchment p-6 border-2 border-olive rounded-xs shadow-xs flex flex-col justify-between">
-          <div>
-            <h3 class="font-serif text-xl font-bold text-olive mb-2">
+        <!-- 2. Halikarnaslı Çocuklar (With HC Artwork Logo) -->
+        <div class="bg-parchment p-6 border-2 border-olive rounded-xs shadow-xs flex flex-col items-center justify-between text-center">
+          <div class="w-full flex flex-col items-center">
+            <h3 class="font-serif text-xl font-bold text-olive mb-3 text-center">
               Halikarnaslı Çocuklar
             </h3>
-            <p class="font-serif text-base text-ink/85 leading-relaxed mb-4">
+
+            <!-- HC Logo/Artwork -->
+            <div class="w-24 h-24 my-2 flex items-center justify-center overflow-hidden rounded-xs border border-sand">
+              <img
+                src="/images/hc_logo.jpg"
+                alt="Halikarnaslı Çocuklar Sanat Çalışmaları"
+                class="w-full h-full object-cover"
+              />
+            </div>
+
+            <p class="font-serif text-base text-ink/85 leading-relaxed my-3 text-center">
               Her yaşa yönelik sanat çalışmaları
             </p>
           </div>
-          <div class="pt-2 border-t border-olive/20 text-xs font-serif italic text-stone-gray">
+          <div class="pt-2 border-t border-olive/20 text-xs font-serif italic text-stone-gray w-full text-center">
             Web sayfası hazırlanmakta
           </div>
         </div>
 
-        <!-- 3. Halikarnas Derneği -->
-        <div class="bg-parchment p-6 border-2 border-olive rounded-xs shadow-xs flex flex-col justify-between">
-          <div>
-            <h3 class="font-serif text-xl font-bold text-olive mb-2">
-              Halikarnas Kültür, Sanat, Eğitim ve Ekoloji Derneği
+        <!-- 3. Halikarnas Derneği (2-line centered title) -->
+        <div class="bg-parchment p-6 border-2 border-olive rounded-xs shadow-xs flex flex-col items-center justify-between text-center">
+          <div class="w-full flex flex-col items-center">
+            <h3 class="font-serif text-xl font-bold text-olive mb-3 text-center leading-snug">
+              Halikarnas Kültür, Sanat, Eğitim<br />ve Ekoloji Derneği
             </h3>
-            <p class="font-serif text-base text-ink/85 leading-relaxed mb-4">
+
+            <!-- Institutional Umbrella Icon -->
+            <div class="w-24 h-24 my-2 flex items-center justify-center bg-olive/10 text-olive rounded-full border border-olive/30">
+              <span class="material-symbols-outlined text-4xl">account_balance</span>
+            </div>
+
+            <p class="font-serif text-base text-ink/85 leading-relaxed my-3 text-center">
               Tüm çalışmalarımızın resmî çatısı
             </p>
           </div>
-          <div class="pt-2 border-t border-olive/20 text-xs font-serif italic text-stone-gray">
+          <div class="pt-2 border-t border-olive/20 text-xs font-serif italic text-stone-gray w-full text-center">
             Web sayfası hazırlanmakta
           </div>
         </div>

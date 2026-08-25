@@ -6,7 +6,6 @@ export const translations = {
     about: "HAKKIMIZDA",
     events: "ETKİNLİKLER",
     talks: "SÖYLEŞİLER",
-    fisherman: "HALİKARNAS BALIKÇISI",
     contact: "İLETİŞİM",
     support: "DESTEK & GÖNÜLLÜ KATILIM",
     allEvents: "Tüm Etkinlikler",
@@ -41,7 +40,6 @@ export const translations = {
       about: "HAKKIMIZDA",
       events: "ETKİNLİKLER",
       talks: "SÖYLEŞİLER",
-      fisherman: "HALİKARNAS BALIKÇISI",
       support: "DESTEK & GÖNÜLLÜ KATILIM",
       contact: "İLETİŞİM"
     },
@@ -50,7 +48,6 @@ export const translations = {
       about: "Hakkımızda",
       events: "Etkinlikler",
       talks: "Söyleşiler",
-      fisherman: "Halikarnas Balıkçısı",
       support: "Destek & Gönüllü Katılım",
       contact: "İletişim"
     },
@@ -63,6 +60,7 @@ export const translations = {
       openingHours: "Salı – Pazar: 09:00 – 19:00",
       closedMondays: "Pazartesi günleri kapalıdır.",
       missionSnippet: "Bodrum’un tarihĭ, kültürel, sanatsal ve edebĭ mirasını koruyan ve geleceğe taşıyan; yaşayan bir kent kütüphanesi",
+      designerCredit: "WEB TASARIM & GELİŞTİRME: BUĞRA KARAHAN",
       kvkk: "KVKK Aydınlatma Metni",
       privacy: "Gizlilik Politikası",
       cookies: "Çerez Politikası",
@@ -88,7 +86,6 @@ export const translations = {
     about: "ABOUT US",
     events: "EVENTS",
     talks: "TALKS",
-    fisherman: "FISHERMAN OF HALICARNASSUS",
     contact: "CONTACT",
     support: "SUPPORT & VOLUNTEER",
     allEvents: "All Events",
@@ -123,7 +120,6 @@ export const translations = {
       about: "ABOUT US",
       events: "EVENTS",
       talks: "TALKS",
-      fisherman: "FISHERMAN OF HALICARNASSUS",
       support: "SUPPORT & VOLUNTEER",
       contact: "CONTACT"
     },
@@ -132,7 +128,6 @@ export const translations = {
       about: "About Us",
       events: "Events",
       talks: "Talks",
-      fisherman: "The Fisherman of Halicarnassus",
       support: "Support & Volunteer",
       contact: "Contact"
     },
@@ -145,6 +140,7 @@ export const translations = {
       openingHours: "Tuesday – Sunday: 09:00 – 19:00",
       closedMondays: "Closed on Mondays.",
       missionSnippet: "A living city library preserving and carrying Bodrum's historical, cultural, and artistic heritage into the future.",
+      designerCredit: "WEB DESIGN & DEVELOPMENT: BUGRA KARAHAN",
       kvkk: "Personal Data Protection Law (KVKK)",
       privacy: "Privacy Policy",
       cookies: "Cookie Policy",
@@ -178,7 +174,6 @@ export const navRoutes: RouteItem[] = [
   { key: 'about', pathTr: '/hakkimizda', pathEn: '/en/about' },
   { key: 'events', pathTr: '/etkinlikler', pathEn: '/en/events' },
   { key: 'talks', pathTr: '/soylesiler', pathEn: '/en/talks' },
-  { key: 'fisherman', pathTr: '/halikarnas-balikcisi', pathEn: '/en/fisherman-of-halicarnassus' },
   { key: 'support', pathTr: '/destek', pathEn: '/en/support' },
   { key: 'contact', pathTr: '/iletisim', pathEn: '/en/contact' }
 ];
@@ -202,6 +197,9 @@ export function getEquivalentLanguageUrl(currentPath: string, targetLang: Lang):
   );
   if (currentRoute) {
     return targetLang === 'tr' ? currentRoute.pathTr : currentRoute.pathEn;
+  }
+  if (cleanPath === '/halikarnas-balikcisi' || cleanPath === '/en/fisherman-of-halicarnassus') {
+    return targetLang === 'tr' ? '/halikarnas-balikcisi' : '/en/fisherman-of-halicarnassus';
   }
   if (targetLang === 'tr') {
     return cleanPath.replace(/^\/en/, '') || '/';

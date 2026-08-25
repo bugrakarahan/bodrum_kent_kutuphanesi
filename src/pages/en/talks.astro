@@ -7,8 +7,6 @@ const lang = 'en';
 const t = getT(lang);
 
 const allTalks = await getCollection('talks');
-const featuredTalks = allTalks.filter((t) => t.data.featured);
-const otherTalks = allTalks.filter((t) => !t.data.featured);
 
 const categoriesEn = [
   "ALL", "AUTHORS", "LITERATURE", "CULTURE", "ARTS", "HISTORY", "PHILOSOPHY", "ARCHAEOLOGY", "SOCIOLOGY", "PSYCHOLOGY", "ECOLOGY", "SCIENCE"
@@ -22,13 +20,13 @@ const categoriesEn = [
   currentPath="/en/talks"
 >
   <!-- Hero Section -->
-  <section class="py-12 md:py-16 px-5 md:px-12 bg-surface-bright border-b border-sand">
+  <section class="py-10 md:py-14 px-5 md:px-12 bg-surface-bright border-b border-sand">
     <div class="max-w-[1280px] mx-auto">
       <div class="max-w-3xl">
-        <h1 class="font-serif text-3xl sm:text-4xl text-ink font-bold leading-tight mb-4">
+        <h1 class="font-serif text-3xl sm:text-4xl text-ink font-bold leading-tight mb-3">
           Culture, Art and Science Talks
         </h1>
-        <p class="font-serif text-lg sm:text-xl text-ink/80 leading-relaxed">
+        <p class="font-serif text-base sm:text-lg text-ink/80 leading-relaxed">
           Video recordings of our conversations with authors, artists, scientists, and researchers who enrich our cultural, social, and scientific world.
         </p>
       </div>
@@ -36,8 +34,8 @@ const categoriesEn = [
   </section>
 
   <!-- Category Pills Bar -->
-  <div class="border-b border-sand bg-parchment py-3.5 px-5 md:px-12 sticky top-22 z-30 overflow-x-auto">
-    <div class="max-w-[1280px] mx-auto flex items-center gap-2 min-w-max">
+  <div class="border-b border-sand bg-parchment py-3.5 px-5 md:px-12 sticky top-24 z-30 overflow-x-auto">
+    <div class="max-w-[1280px] mx-auto flex items-center justify-center gap-2 min-w-max">
       {categoriesEn.map((cat, idx) => (
         <button
           type="button"
@@ -53,120 +51,58 @@ const categoriesEn = [
     </div>
   </div>
 
-  <div class="max-w-[1280px] mx-auto px-5 md:px-12 py-12 space-y-16">
+  <div class="max-w-[1280px] mx-auto px-5 md:px-12 py-10 md:py-14">
     
-    <!-- Featured Talks -->
-    <section>
-      <h2 class="font-serif text-2xl sm:text-3xl text-ink font-bold mb-6 pb-3 border-b border-sand">
-        Featured Talks
-      </h2>
-
-      <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
-        {featuredTalks.map((talk) => (
-          <div class="bg-surface-container-low border-2 border-olive p-6 sm:p-8 flex flex-col justify-between shadow-xs rounded-xs">
-            <div>
-              <div 
-                class="relative aspect-[16/9] overflow-hidden bg-black mb-5 cursor-pointer group border border-sand rounded-2xs"
-                data-youtube-id={talk.data.youtubeId}
-              >
-                <img
-                  src={talk.data.thumbnail}
-                  alt={talk.data.titleEn}
-                  class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                />
-                
-                <div class="absolute inset-0 bg-gradient-to-t from-ink/70 via-transparent to-transparent flex items-center justify-center">
-                  <div class="w-14 h-14 rounded-full bg-olive text-white flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform">
-                    <span class="material-symbols-outlined text-3xl">play_arrow</span>
-                  </div>
-                </div>
-
-                <div class="absolute bottom-3 right-3 px-2 py-0.5 bg-black/80 text-white font-mono text-xs rounded-xs">
-                  {talk.data.duration}
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      {allTalks.map((talk) => (
+        <div class="bg-surface-container-low border-2 border-olive p-5 flex flex-col justify-between shadow-xs rounded-xs">
+          <div>
+            <div 
+              class="relative aspect-[16/9] overflow-hidden bg-black mb-4 cursor-pointer group border border-sand rounded-2xs"
+              data-youtube-id={talk.data.youtubeId}
+            >
+              <img
+                src={talk.data.thumbnail}
+                alt={talk.data.titleEn}
+                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+              />
+              
+              <div class="absolute inset-0 bg-gradient-to-t from-ink/70 via-transparent to-transparent flex items-center justify-center">
+                <div class="w-12 h-12 rounded-full bg-olive text-white flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform">
+                  <span class="material-symbols-outlined text-2xl">play_arrow</span>
                 </div>
               </div>
 
-              <div class="flex items-center justify-between text-xs text-stone-gray font-mono mb-2">
-                <span class="text-olive font-serif font-bold text-sm">{talk.data.guestEn}</span>
-                <span class="font-bold">{talk.data.date}</span>
+              <div class="absolute bottom-2.5 right-2.5 px-2 py-0.5 bg-black/80 text-white font-mono text-[11px] rounded-xs">
+                {talk.data.duration}
               </div>
-
-              <h3 class="font-serif text-xl sm:text-2xl text-ink font-bold leading-tight mb-3">
-                {talk.data.titleEn}
-              </h3>
-
-              <p class="font-serif text-base text-ink/85 leading-relaxed mb-6 text-justify">
-                {talk.data.summaryEn}
-              </p>
             </div>
 
-            <button
-              type="button"
-              data-youtube-id={talk.data.youtubeId}
-              class="w-full py-3 bg-olive hover:bg-bodrum-blue-dark text-white text-xs sm:text-sm font-serif font-bold uppercase tracking-wider transition-colors flex items-center justify-center gap-2 shadow-xs rounded-xs"
-            >
-              <span class="material-symbols-outlined text-base">play_circle</span>
-              <span>Watch Video</span>
-            </button>
-          </div>
-        ))}
-      </div>
-    </section>
-
-    <!-- Other Talks and Archive -->
-    <section>
-      <h2 class="font-serif text-2xl sm:text-3xl text-ink font-bold mb-6 pb-3 border-b border-sand">
-        Other Talks and Archive
-      </h2>
-
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-        {otherTalks.map((talk) => (
-          <div class="bg-surface-container-low border-2 border-olive p-6 flex flex-col justify-between shadow-xs rounded-xs">
-            <div>
-              <div 
-                class="relative aspect-[16/9] overflow-hidden bg-black mb-4 cursor-pointer group border border-sand rounded-2xs"
-                data-youtube-id={talk.data.youtubeId}
-              >
-                <img
-                  src={talk.data.thumbnail}
-                  alt={talk.data.titleEn}
-                  class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-                />
-                <div class="absolute inset-0 flex items-center justify-center">
-                  <div class="w-12 h-12 rounded-full bg-olive text-white flex items-center justify-center shadow group-hover:scale-110 transition-transform">
-                    <span class="material-symbols-outlined text-3xl">play_arrow</span>
-                  </div>
-                </div>
-                <div class="absolute bottom-2 right-2 px-1.5 py-0.5 bg-black/80 text-white font-mono text-[10px]">
-                  {talk.data.duration}
-                </div>
-              </div>
-
-              <div class="text-sm text-olive font-serif font-bold mb-1">
-                {talk.data.guestEn}
-              </div>
-
-              <h3 class="font-serif text-lg sm:text-xl text-ink font-bold leading-snug mb-2">
-                {talk.data.titleEn}
-              </h3>
-
-              <p class="font-serif text-sm text-ink/75 leading-relaxed mb-4 text-justify">
-                {talk.data.summaryEn}
-              </p>
+            <div class="flex items-center justify-between text-xs text-stone-gray font-mono mb-2 pb-1 border-b border-sand/60">
+              <span class="text-olive font-serif font-bold text-xs">{talk.data.guestEn}</span>
+              <span class="font-bold">{talk.data.date}</span>
             </div>
 
-            <button
-              type="button"
-              data-youtube-id={talk.data.youtubeId}
-              class="w-full py-2.5 bg-parchment border border-olive text-olive hover:bg-olive hover:text-white text-xs font-serif font-bold uppercase tracking-wider transition-colors flex items-center justify-center gap-1.5 rounded-xs"
-            >
-              <span>Watch</span>
-              <span class="material-symbols-outlined text-xs">arrow_forward</span>
-            </button>
+            <h3 class="font-serif text-lg sm:text-xl text-ink font-bold leading-snug mb-3 whitespace-pre-line">
+              {talk.data.titleEn}
+            </h3>
+
+            <p class="font-serif text-xs sm:text-sm text-ink/85 leading-relaxed mb-4 text-justify">
+              {talk.data.summaryEn}
+            </p>
           </div>
-        ))}
-      </div>
-    </section>
+
+          <button
+            type="button"
+            data-youtube-id={talk.data.youtubeId}
+            class="w-full py-2.5 bg-olive hover:bg-bodrum-blue-dark text-white text-xs font-serif font-bold uppercase tracking-wider transition-colors flex items-center justify-center gap-1.5 shadow-xs rounded-xs mt-2"
+          >
+            <span class="material-symbols-outlined text-sm">play_circle</span>
+            <span>Watch Video</span>
+          </button>
+        </div>
+      ))}
+    </div>
 
   </div>
 </Layout>
