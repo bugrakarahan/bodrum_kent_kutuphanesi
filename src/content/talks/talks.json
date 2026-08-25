@@ -14,7 +14,12 @@
     "thumbnail": "/images/drive/timucin_binder_1.jpg",
     "summaryTr": "Latmos bölgesinin arkeolojik, kültürel ve ekolojik önemi. Bodrum’un yapısal, sosyal ve ekolojik değişimi. Ekolojik yaşam / yaban hayatının korunması, habitatın sürdürülebilirliği.",
     "summaryEn": "Archaeological, cultural, and ecological significance of the Latmos region. Structural, social, and ecological changes in Bodrum. Ecological living, wildlife conservation, and habitat sustainability.",
-    "featured": true
+    "featured": true,
+    "chapters": [
+      { "time": "03:15", "seconds": 195, "titleTr": "Latmos Kaya Resimleri & Tarih", "titleEn": "Latmos Rock Paintings & History" },
+      { "time": "14:40", "seconds": 880, "titleTr": "Bodrum’un Ekolojik Değişimi", "titleEn": "Ecological Transformation of Bodrum" },
+      { "time": "28:10", "seconds": 1690, "titleTr": "Yaban Hayatı & Habitat Koruma", "titleEn": "Wildlife & Habitat Conservation" }
+    ]
   },
   {
     "id": "talk-timucin-binder-2",
@@ -31,7 +36,12 @@
     "thumbnail": "/images/drive/timucin_binder_2.jpg",
     "summaryTr": "Latmos Platformu ekolojik mücadele, yapısal çıkmazlar, sürdürülebilir çözümler; teknoloji, tüketim, ilerleme,… kavramlarının eleştirisi. Ekolojik @kayik1934 projesinin detayları.",
     "summaryEn": "The ecological struggle of Latmos Platform, structural dilemmas, sustainable solutions; critique of technology, consumption, and progress. Details of the ecological @kayik1934 project.",
-    "featured": true
+    "featured": true,
+    "chapters": [
+      { "time": "05:20", "seconds": 320, "titleTr": "Latmos Platformu & Mücadele", "titleEn": "Latmos Platform & Activism" },
+      { "time": "19:05", "seconds": 1145, "titleTr": "Tüketim Kültürünün Eleştirisi", "titleEn": "Critique of Consumerism" },
+      { "time": "30:45", "seconds": 1845, "titleTr": "@kayik1934 Ekolojik Projesi", "titleEn": "@kayik1934 Ecological Project" }
+    ]
   },
   {
     "id": "talk-mine-sogut",
@@ -48,7 +58,11 @@
     "thumbnail": "/images/drive/mine_sogut_sule_tuzul.jpg",
     "summaryTr": "Edebiyatta cesaret, kadın hikayeleri, toplumsal vicdan ve yazarlık serüveni üzerine derinlikli bir buluşma.",
     "summaryEn": "An insightful literary session on courage, women's narratives, collective conscience, and creative writing.",
-    "featured": false
+    "featured": false,
+    "chapters": [
+      { "time": "04:10", "seconds": 250, "titleTr": "Edebiyatta Vicdan & Kadın", "titleEn": "Conscience & Women in Literature" },
+      { "time": "22:30", "seconds": 1350, "titleTr": "Bodrum ve Yaratıcı Yazarlık", "titleEn": "Bodrum & Creative Writing" }
+    ]
   },
   {
     "id": "talk-nazli-eray",
@@ -65,6 +79,10 @@
     "thumbnail": "/images/drive/nazli_eray_sona_ertekin.jpg",
     "summaryTr": "Türk edebiyatında fantastik kurgu, anılar, rüyalar ve Bodrum'un yaratıcı zihne ilham veren atmosferi.",
     "summaryEn": "Fantastic realism in modern literature, memories, dreams, and Bodrum's inspiring creative atmosphere.",
-    "featured": false
+    "featured": false,
+    "chapters": [
+      { "time": "06:15", "seconds": 375, "titleTr": "Büyülü Gerçekçilik & Düşler", "titleEn": "Magical Realism & Dreams" },
+      { "time": "24:45", "seconds": 1485, "titleTr": "Halikarnas İlhamı ve Anılar", "titleEn": "Halicarnassus Inspiration" }
+    ]
   }
 ]

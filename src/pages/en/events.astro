@@ -28,7 +28,7 @@ const pastEventCategoriesEn = [
         <h1 class="font-serif text-3xl sm:text-4xl text-ink font-bold leading-tight mb-3">
           Events in the Light of Knowledge and Art
         </h1>
-        <p class="font-serif text-base sm:text-lg text-ink/80 leading-relaxed">
+        <p class="font-sans text-base sm:text-lg text-ink/80 leading-relaxed">
           We look forward to welcoming you to our events in Literature, History, Archaeology, Philosophy, Sociology, and Arts…
         </p>
       </div>
@@ -47,7 +47,7 @@ const pastEventCategoriesEn = [
       {upcomingEvents.map((event) => (
         <div class="bg-surface-container-low border-2 border-olive p-6 sm:p-10 shadow-xs rounded-xs">
           <div>
-            <div class="inline-block px-3.5 py-1 bg-olive text-white text-xs font-serif uppercase tracking-widest font-bold mb-4 rounded-xs">
+            <div class="inline-block px-3.5 py-1 bg-olive text-white text-xs font-sans uppercase tracking-widest font-bold mb-4 rounded-xs">
               {event.data.categoryLabelEn}
             </div>
 
@@ -55,7 +55,7 @@ const pastEventCategoriesEn = [
               {event.data.titleEn}
             </h3>
 
-            <div class="space-y-6 text-ink/90 font-serif text-base sm:text-lg leading-relaxed text-justify">
+            <div class="space-y-6 text-ink/90 font-sans text-base sm:text-lg leading-relaxed text-justify">
               <p>
                 We aim to be a distinctive book club that challenges conventional thinking. The books we select and the topics we discuss will be thought-provoking and inquisitive.
               </p>
@@ -73,7 +73,7 @@ const pastEventCategoriesEn = [
                     class="w-full h-full object-cover"
                   />
                 </div>
-                <div class="pt-2 text-center text-xs text-stone-gray font-serif italic">
+                <div class="pt-2 text-center text-xs text-stone-gray font-sans italic">
                   Bodrum City Library • Book Club Sessions
                 </div>
               </div>
@@ -83,15 +83,31 @@ const pastEventCategoriesEn = [
               </p>
             </div>
 
-            <div class="flex flex-col sm:flex-row sm:items-center gap-4 pt-6 mt-6 border-t border-sand">
-              <button
-                type="button"
-                id="btn-join-bookclub-en"
-                class="px-7 py-3 bg-olive text-white hover:bg-bodrum-blue-dark text-xs sm:text-sm font-serif font-bold tracking-wider uppercase transition-colors shadow-xs shrink-0 rounded-xs"
-              >
-                JOIN OUR BOOK CLUB
-              </button>
-              <span class="text-xs sm:text-sm font-serif italic text-ink/80 leading-snug">
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pt-6 mt-6 border-t border-sand">
+              <div class="flex flex-wrap items-center gap-3">
+                <a
+                  href="https://wa.me/905423739748?text=Hello,%20I%20would%20like%20to%20join%20the%20Bodrum%20City%20Library%20Book%20Club."
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="px-6 py-3 bg-olive hover:bg-bodrum-blue-dark text-white text-xs sm:text-sm font-sans font-bold tracking-wider uppercase transition-colors shadow-xs shrink-0 rounded-xs inline-flex items-center gap-2"
+                >
+                  <span class="material-symbols-outlined text-base">chat</span>
+                  <span>JOIN OUR BOOK CLUB</span>
+                </a>
+
+                <a
+                  href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Bodrum+City+Library+Book+Club&details=Bodrum+City+Library+Book+Club+Meeting&location=Kizilagac%2C+Bodrum"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="px-4 py-3 bg-parchment border border-olive text-olive hover:bg-olive hover:text-white text-xs sm:text-sm font-sans font-bold tracking-wider uppercase transition-colors shadow-xs shrink-0 rounded-xs inline-flex items-center gap-1.5"
+                  title="Add to Google Calendar"
+                >
+                  <span class="material-symbols-outlined text-base">calendar_add_on</span>
+                  <span>Add to Calendar</span>
+                </a>
+              </div>
+
+              <span class="text-xs sm:text-sm font-sans italic text-ink/80 leading-snug">
                 Announcements and initial meeting schedule have been shared on Instagram and WhatsApp.
               </span>
             </div>
@@ -107,7 +123,7 @@ const pastEventCategoriesEn = [
       </h2>
 
       <!-- Topic Badges: Centered -->
-      <div class="flex flex-wrap items-center justify-center gap-2 mb-8 text-xs font-serif font-bold pt-2">
+      <div class="flex flex-wrap items-center justify-center gap-2 mb-8 text-xs font-sans font-bold pt-2">
         {pastEventCategoriesEn.map((cat, idx) => (
           <span class={`px-3 py-1.5 uppercase tracking-wider rounded-xs transition-colors shadow-2xs ${
             idx === 0
@@ -125,21 +141,21 @@ const pastEventCategoriesEn = [
             <div>
               <div 
                 class="aspect-[16/10] overflow-hidden bg-surface-container-high mb-4 border border-sand rounded-2xs cursor-pointer group relative"
-                onclick={`alert('Archival photo gallery is available.')`}
+                onclick={`alert('${event.data.titleEn}\\n\\nPhoto archive is available at the library repository.')`}
               >
                 <img
                   src={event.data.image}
                   alt={event.data.titleEn}
                   class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                 />
-                <div class="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center text-white text-xs font-serif font-bold uppercase tracking-wider gap-1">
+                <div class="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center text-white text-xs font-sans font-bold uppercase tracking-wider gap-1">
                   <span class="material-symbols-outlined text-base">photo_library</span>
                   <span>View Photos</span>
                 </div>
               </div>
 
               <div class="flex items-center justify-between text-xs text-stone-gray font-mono mb-2">
-                <span class="text-olive font-serif font-bold text-xs uppercase">{event.data.categoryLabelEn}</span>
+                <span class="text-olive font-sans font-bold text-xs uppercase">{event.data.categoryLabelEn}</span>
                 <span class="font-bold">{event.data.displayDateEn}</span>
               </div>
 
@@ -149,7 +165,7 @@ const pastEventCategoriesEn = [
                 Sky Myths of Ancient Aegean
               </h3>
 
-              <div class="text-sm text-ink/85 font-serif leading-relaxed mb-5 space-y-2 whitespace-pre-line text-justify">
+              <div class="text-sm text-ink/85 font-sans leading-relaxed mb-5 space-y-2 whitespace-pre-line text-justify">
                 {event.data.summaryEn}
               </div>
             </div>
@@ -157,7 +173,7 @@ const pastEventCategoriesEn = [
             <div class="flex items-center justify-center gap-3 pt-3 border-t border-sand">
               <button
                 type="button"
-                class="px-4 py-1.5 bg-olive text-white hover:bg-bodrum-blue-dark text-xs font-serif font-bold uppercase tracking-wider transition-colors rounded-xs shadow-2xs"
+                class="px-4 py-1.5 bg-olive text-white hover:bg-bodrum-blue-dark text-xs font-sans font-bold uppercase tracking-wider transition-colors rounded-xs shadow-2xs cursor-pointer"
                 onclick={`alert('${event.data.titleEn}\\n\\n${event.data.summaryEn}')`}
               >
                 Details
@@ -165,8 +181,8 @@ const pastEventCategoriesEn = [
 
               <button
                 type="button"
-                class="px-4 py-1.5 bg-parchment border border-olive text-olive hover:bg-olive hover:text-white text-xs font-serif font-bold uppercase tracking-wider transition-colors rounded-xs shadow-2xs"
-                onclick="alert('Archival photo gallery will be available soon.')"
+                class="px-4 py-1.5 bg-parchment border border-olive text-olive hover:bg-olive hover:text-white text-xs font-sans font-bold uppercase tracking-wider transition-colors rounded-xs shadow-2xs cursor-pointer"
+                onclick="alert('Archival photo gallery is in collection.')"
               >
                 Gallery
               </button>

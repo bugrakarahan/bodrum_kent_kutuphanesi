@@ -19,14 +19,14 @@ const categories = [
   lang={lang}
   currentPath="/soylesiler"
 >
-  <!-- Hero Section (Standardized Headline Size) -->
+  <!-- Hero Section -->
   <section class="py-10 md:py-14 px-5 md:px-12 bg-surface-bright border-b border-sand">
     <div class="max-w-[1280px] mx-auto">
       <div class="max-w-3xl">
         <h1 class="font-serif text-3xl sm:text-4xl text-ink font-bold leading-tight mb-3">
           Kültür, Sanat ve Bilim Söyleşileri
         </h1>
-        <p class="font-serif text-base sm:text-lg text-ink/80 leading-relaxed">
+        <p class="font-sans text-base sm:text-lg text-ink/80 leading-relaxed">
           Kültür, sanat, toplumsal ve bilimsel dünyamızı aydınlatan ve zenginleştiren yazarlar, sanatçılar, bilim insanları ve araştırmacılar ile yaptığımız sohbetlerin video kayıtları.
         </p>
       </div>
@@ -34,12 +34,12 @@ const categories = [
   </section>
 
   <!-- Category Pills Bar: Centered, Single Line in Bodrum Blue -->
-  <div class="border-b border-sand bg-parchment py-3.5 px-5 md:px-12 sticky top-24 z-30 overflow-x-auto">
+  <div class="border-b border-sand bg-parchment py-3.5 px-5 md:px-12 sticky top-20 z-30 overflow-x-auto">
     <div class="max-w-[1280px] mx-auto flex items-center justify-center gap-2 min-w-max">
       {categories.map((cat, idx) => (
         <button
           type="button"
-          class={`px-3 py-1.5 text-xs font-serif font-bold uppercase tracking-wider rounded-xs transition-colors shadow-2xs ${
+          class={`px-3 py-1.5 text-xs font-sans font-bold uppercase tracking-wider rounded-xs transition-colors shadow-2xs ${
             idx === 0
               ? 'bg-olive text-white ring-2 ring-olive/40'
               : 'bg-olive text-white hover:bg-bodrum-blue-dark'
@@ -51,7 +51,7 @@ const categories = [
     </div>
   </div>
 
-  <!-- Söyleşiler Grid (3 columns per row) -->
+  <!-- Söyleşiler Grid (3 columns per row with interactive Chapters) -->
   <div class="max-w-[1280px] mx-auto px-5 md:px-12 py-10 md:py-14">
     
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -62,6 +62,8 @@ const categories = [
             <div 
               class="relative aspect-[16/9] overflow-hidden bg-black mb-4 cursor-pointer group border border-sand rounded-2xs"
               data-youtube-id={talk.data.youtubeId}
+              data-video-title={talk.data.titleTr}
+              data-video-subtitle={talk.data.guestTr}
             >
               <img
                 src={talk.data.thumbnail}
@@ -82,7 +84,7 @@ const categories = [
 
             <!-- Moderator & Date Header -->
             <div class="flex items-center justify-between text-xs text-stone-gray font-mono mb-2 pb-1 border-b border-sand/60">
-              <span class="text-olive font-serif font-bold text-xs">{talk.data.guestTr}</span>
+              <span class="text-olive font-sans font-bold text-xs">{talk.data.guestTr}</span>
               <span class="font-bold">{talk.data.date}</span>
             </div>
 
@@ -91,18 +93,49 @@ const categories = [
               {talk.data.titleTr}
             </h3>
 
-            <p class="font-serif text-xs sm:text-sm text-ink/85 leading-relaxed mb-4 text-justify">
+            <p class="font-sans text-xs sm:text-sm text-ink/85 leading-relaxed mb-4 text-justify">
               {talk.data.summaryTr}
             </p>
+
+            <!-- Video Chapters / Zaman Damgaları -->
+            {talk.data.chapters && talk.data.chapters.length > 0 && (
+              <div class="mt-4 pt-3 border-t border-sand/80">
+                <div class="text-[11px] uppercase tracking-wider font-bold text-stone-gray mb-2 flex items-center gap-1">
+                  <span class="material-symbols-outlined text-[14px] text-olive">bookmarks</span>
+                  <span>Önemli Başlıklar (Zaman Damgaları)</span>
+                </div>
+                <div class="space-y-1.5">
+                  {talk.data.chapters.map((chap) => (
+                    <button
+                      type="button"
+                      data-youtube-id={talk.data.youtubeId}
+                      data-start-time={chap.seconds}
+                      data-video-title={talk.data.titleTr}
+                      data-video-subtitle={`${chap.time} - ${chap.titleTr}`}
+                      class="w-full text-left flex items-center justify-between px-2.5 py-1.5 bg-parchment hover:bg-bodrum-blue-light border border-sand/70 rounded-2xs text-xs transition-colors group cursor-pointer"
+                    >
+                      <span class="text-ink font-sans font-medium text-[12px] group-hover:text-olive truncate mr-2">
+                        {chap.titleTr}
+                      </span>
+                      <span class="font-mono text-[11px] font-bold text-olive bg-olive/10 px-1.5 py-0.5 rounded-2xs shrink-0">
+                        {chap.time}
+                      </span>
+                    </button>
+                  ))}
+                </div>
+              </div>
+            )}
           </div>
 
           <button
             type="button"
             data-youtube-id={talk.data.youtubeId}
-            class="w-full py-2.5 bg-olive hover:bg-bodrum-blue-dark text-white text-xs font-serif font-bold uppercase tracking-wider transition-colors flex items-center justify-center gap-1.5 shadow-xs rounded-xs mt-2"
+            data-video-title={talk.data.titleTr}
+            data-video-subtitle={talk.data.guestTr}
+            class="w-full py-2.5 bg-olive hover:bg-bodrum-blue-dark text-white text-xs font-sans font-bold uppercase tracking-wider transition-colors flex items-center justify-center gap-1.5 shadow-xs rounded-xs mt-4"
           >
             <span class="material-symbols-outlined text-sm">play_circle</span>
-            <span>Videoyu İzle</span>
+            <span>Videoyu Baştan İzle</span>
           </button>
         </div>
       ))}

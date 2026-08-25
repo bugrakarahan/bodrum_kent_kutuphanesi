@@ -34,7 +34,12 @@ const booksCollection = defineCollection({
     summaryTr: z.string(),
     summaryEn: z.string(),
     isRare: z.boolean().default(false),
-    order: z.number()
+    order: z.number(),
+    publisher: z.string().optional(),
+    genreTr: z.string().optional(),
+    genreEn: z.string().optional(),
+    quoteTr: z.string().optional(),
+    quoteEn: z.string().optional()
   })
 });
 
@@ -55,7 +60,13 @@ const talksCollection = defineCollection({
     thumbnail: z.string(),
     summaryTr: z.string(),
     summaryEn: z.string(),
-    featured: z.boolean().default(false)
+    featured: z.boolean().default(false),
+    chapters: z.array(z.object({
+      time: z.string(),
+      seconds: z.number(),
+      titleTr: z.string(),
+      titleEn: z.string()
+    })).optional()
   })
 });
 

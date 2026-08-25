@@ -7,101 +7,120 @@ const t = getT(lang);
 
 const whyJoinUsEn = [
   {
-    title: "To carry Bodrum's cultural and historical heritage into the future",
-    desc: "To research, document, narrate, and pass on millennia of heritage from Halicarnassus to Caria to upcoming generations."
+    title: "To carry Bodrum’s cultural and historical heritage into the future",
+    desc: "We are building an independent cultural sanctuary that documents the city's ancient memory, oral history, and Mediterranean identity for generations to come."
   },
   {
-    title: "To make Bodrum a vibrant hub of culture and thought",
-    desc: "To establish a lively forum where books, scholarly research, panels, conferences, and diverse disciplines converge."
+    title: "To support children and youth in accessing books, art, and science",
+    desc: "Through the Olive Seeds Library and Children of Halicarnassus initiatives, we nurture critical thinking, imagination, and creative exploration."
   },
   {
-    title: "To connect authors, scholars, and researchers with readers",
-    desc: "To bring renowned writers, academics, and artists from across the globe to Bodrum, cultivating enriching intellectual exchange."
+    title: "To foster direct engagements with literature, arts, and academia",
+    desc: "We host workshops and intellectual forums bringing authors, scholars, artists, and researchers into dialogue with the Bodrum community."
   },
   {
-    title: "To strengthen Bodrum's cultural bridges with the world",
-    desc: "To create collaborative national and international cultural, artistic, and scientific projects across the Aegean and Mediterranean."
-  },
-  {
-    title: "To create an open space for diverse ideas and constructive dialogue",
-    desc: "To foster a distinguished intellectual climate in Bodrum by nurturing cultures of reading, inquiry, and sharing."
-  },
-  {
-    title: "To expand access to knowledge and books",
-    desc: "To establish an accessible library culture where people of all ages can read, learn, and grow."
-  },
-  {
-    title: "To nurture children and youth within this cultural environment",
-    desc: "To support tomorrow's readers, researchers, and creators through initiatives engaging them in books, science, and the arts."
-  },
-  {
-    title: "To accomplish this together",
-    desc: "To expand our cultural, artistic, and ecological initiatives with broad civic participation under our founding association."
+    title: "To cultivate a living, creating, and sharing Bodrum community",
+    desc: "By prioritizing creation over consumption and solidarity over isolation, we contribute lasting value to Bodrum's intellectual ecosystem."
   }
 ];
 
 const supportTypesEn = [
   {
     title: "Book Donations",
-    desc: "Enrich our collection with literature, history, archaeology, and scientific works concerning Bodrum, Caria, and the Mediterranean."
+    desc: "You may donate quality volumes and collections to our library and the Olive Seeds Library."
   },
   {
-    title: "Knowledge & Expertise",
-    desc: "Contribute to our talks, conferences, and workshops as a researcher, scholar, author, or specialist."
+    title: "Expertise & Speaking",
+    desc: "Contribute your domain expertise by hosting a talk, seminar, or workshop for our patrons."
   },
   {
     title: "Financial & Corporate Sponsorship",
-    desc: "Support our library operations, publication programs, academic research, and international cultural projects."
+    desc: "Provide institutional or individual backing for physical facilities, events, and archival digitization."
   },
   {
     title: "Volunteering",
-    desc: "Offer your skills and time across event coordination, research, archiving, communications, and library services."
+    desc: "Join our active volunteer team in organizing events, archiving materials, or managing children's workshops."
   },
   {
-    title: "Research & Project Support",
-    desc: "Participate in local historical investigations, oral history recording, and archival documentation of Bodrum."
+    title: "Research & Archival Support",
+    desc: "Entrust historical documents, photographs, and archival materials related to Bodrum and the Mediterranean to our repository."
   },
   {
     title: "Venue & Equipment Support",
-    desc: "Provide spaces, event venues, or technical equipment for workshops, lectures, and exhibitions."
+    desc: "Offer audio/visual equipment, workshop materials, or venue provisions for our cultural calendar."
   },
   {
-    title: "Institutional Partnerships",
-    desc: "Help connect authors, academic bodies, NGOs, and cultural institutions with Bodrum City Library."
+    title: "National & International Networking",
+    desc: "Connect our library with global cultural centers, foundations, and academic institutions."
   },
   {
-    title: "Community Outreach",
-    desc: "Share our mission with your network, bringing together new readers, volunteers, and benefactors."
+    title: "Other Collaborations",
+    desc: "Share distinct collaborative models or creative ideas you envision for the library."
+  }
+];
+
+const wishlistItemsEn = [
+  {
+    id: "wish-1",
+    category: "Books & Archive",
+    title: "First Editions of the Fisherman & Rare Bodrum Volumes",
+    desc: "Original 1940-1970 print editions and regional historical chronicles for the Special Archival Room.",
+    status: "Seeking",
+    selectValue: "books"
+  },
+  {
+    id: "wish-2",
+    category: "Children & Art",
+    title: "Olive Seeds Library Art Workshop Materials",
+    desc: "Wooden seating cushions, painting easels, watercolor sets, and foundational children's literature classics.",
+    status: "In Progress",
+    selectValue: "equipment"
+  },
+  {
+    id: "wish-3",
+    category: "Digital & Recording",
+    title: "Oral History & Interview Recording Kit",
+    desc: "Wireless lavalier microphone system and lighting for documenting Bodrum's sponge divers and elders.",
+    status: "Seeking",
+    selectValue: "equipment"
+  },
+  {
+    id: "wish-4",
+    category: "Campus & Garden",
+    title: "Outdoor Reading & Discussion Garden Wooden Benches",
+    desc: "Durable wooden outdoor benches and tables for open-air reading sessions and acoustic recitals in Kizilagac.",
+    status: "Community Support",
+    selectValue: "financial"
   }
 ];
 ---
 
 <Layout
   title={`Support & Volunteer | ${t.siteTitle}`}
-  description="Support Bodrum City Library, volunteer, and contribute to Bodrum's shared cultural future."
+  description="Support Bodrum City Library, join as a volunteer, and become a partner in Bodrum's intellectual future."
   lang={lang}
   currentPath="/en/support"
 >
   <!-- Hero Section -->
-  <section class="py-12 md:py-16 px-5 md:px-12 bg-surface-bright border-b border-sand">
+  <section class="py-10 md:py-14 px-5 md:px-12 bg-surface-bright border-b border-sand">
     <div class="max-w-[1280px] mx-auto">
       <div class="max-w-3xl">
-        <h1 class="font-serif text-3xl sm:text-4xl text-ink font-bold leading-tight mb-4">
+        <h1 class="font-serif text-3xl sm:text-4xl text-ink font-bold leading-tight mb-3">
           Support & Volunteer
         </h1>
-        <p class="font-serif text-lg sm:text-xl text-ink/80 leading-relaxed">
+        <p class="font-sans text-base sm:text-lg text-ink/80 leading-relaxed">
           Join us in building Bodrum's cultural memory and collective intellectual future.
         </p>
       </div>
     </div>
   </section>
 
-  <div class="max-w-[1280px] mx-auto px-5 md:px-12 py-12 space-y-16">
+  <div class="max-w-[1280px] mx-auto px-5 md:px-12 py-10 md:py-14 space-y-16">
     
     <!-- 1. Why Join Us -->
     <section>
       <h2 class="font-serif text-2xl sm:text-3xl text-ink font-bold mb-8 pb-3 border-b border-sand">
-        Why Should You Join This Vision?
+        Why Partner with This Vision?
       </h2>
 
       <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -114,7 +133,7 @@ const supportTypesEn = [
               <h3 class="font-serif text-xl text-ink font-bold mb-2 leading-snug">
                 {item.title}
               </h3>
-              <p class="font-serif text-base text-ink/85 leading-relaxed">
+              <p class="font-sans text-sm sm:text-base text-ink/85 leading-relaxed">
                 {item.desc}
               </p>
             </div>
@@ -123,10 +142,59 @@ const supportTypesEn = [
       </div>
     </section>
 
-    <!-- 2. Ways to Contribute -->
+    <!-- 2. Transparent Needs Board -->
+    <section>
+      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6 pb-3 border-b border-sand">
+        <div>
+          <span class="text-xs uppercase tracking-widest text-olive font-sans font-bold block mb-1">TRANSPARENT WISHLIST</span>
+          <h2 class="font-serif text-2xl sm:text-3xl text-ink font-bold">
+            Library Community Needs & Wishlist
+          </h2>
+        </div>
+        <span class="text-xs font-sans text-stone-gray">
+          Empower our library by sponsoring a tangible need.
+        </span>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        {wishlistItemsEn.map((wish) => (
+          <div class="bg-parchment border-2 border-olive rounded-xs p-6 flex flex-col justify-between shadow-xs hover:shadow-md transition-all">
+            <div>
+              <div class="flex items-center justify-between gap-2 mb-3">
+                <span class="px-2.5 py-1 bg-olive/10 text-olive text-[11px] font-sans font-bold uppercase rounded-2xs">
+                  {wish.category}
+                </span>
+                <span class="px-2.5 py-1 bg-amber-100 text-amber-900 text-[11px] font-sans font-bold rounded-2xs">
+                  {wish.status}
+                </span>
+              </div>
+
+              <h3 class="font-serif text-lg sm:text-xl font-bold text-ink mb-2">
+                {wish.title}
+              </h3>
+
+              <p class="font-sans text-sm text-ink/80 leading-relaxed mb-4">
+                {wish.desc}
+              </p>
+            </div>
+
+            <button
+              type="button"
+              class="btn-fulfill-wish-en w-full py-2.5 bg-olive hover:bg-bodrum-blue-dark text-white text-xs font-sans font-bold uppercase tracking-wider rounded-xs transition-colors shadow-2xs flex items-center justify-center gap-1.5 cursor-pointer mt-2"
+              data-wish-title={wish.title}
+            >
+              <span class="material-symbols-outlined text-sm">volunteer_activism</span>
+              <span>Sponsor this Need / Support</span>
+            </button>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <!-- 3. Support Types -->
     <section>
       <h2 class="font-serif text-2xl sm:text-3xl text-ink font-bold mb-8 pb-3 border-b border-sand">
-        How Can You Contribute?
+        How You Can Contribute
       </h2>
 
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -139,7 +207,7 @@ const supportTypesEn = [
               <h3 class="font-serif text-lg text-ink font-bold mb-2 leading-snug">
                 {item.title}
               </h3>
-              <p class="font-serif text-sm text-ink/80 leading-relaxed">
+              <p class="font-sans text-sm text-ink/80 leading-relaxed">
                 {item.desc}
               </p>
             </div>
@@ -148,81 +216,86 @@ const supportTypesEn = [
       </div>
     </section>
 
-    <!-- 3. Direct Contact & Application Form -->
-    <section class="bg-surface-container-low border-2 border-olive rounded-xs p-8 sm:p-12 shadow-xs">
+    <!-- 4. Application Form -->
+    <section id="application-area-en" class="bg-surface-container-low border-2 border-olive rounded-xs p-8 sm:p-12 shadow-xs">
       <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
         
-        <!-- Left: Direct Contact -->
         <div class="lg:col-span-5 space-y-6">
           <div>
-            <span class="text-xs uppercase tracking-widest text-olive font-serif font-bold block mb-2">DIRECT CONTACT</span>
+            <span class="text-xs uppercase tracking-widest text-olive font-sans font-bold block mb-2">DIRECT CONTACT</span>
             <h3 class="font-serif text-2xl sm:text-3xl text-ink font-bold leading-tight mb-3">
-              Speak with Our Library Coordinator
+              Connect with Our Coordinator
             </h3>
-            <p class="font-serif text-base text-ink/85 leading-relaxed">
-              Reach out to discuss your contributions and participation directly.
+            <p class="font-sans text-base text-ink/85 leading-relaxed">
+              Reach out directly regarding donations, partnerships, and sponsorships.
             </p>
           </div>
 
-          <div class="space-y-4 pt-4 border-t border-sand text-base font-serif">
-            <div class="flex items-center gap-3">
-              <span class="material-symbols-outlined text-olive text-2xl">call</span>
+          <div class="space-y-4 pt-4 border-t border-sand">
+            <div class="flex items-center gap-4">
+              <div class="w-10 h-10 rounded-full bg-olive text-white flex items-center justify-center shrink-0">
+                <span class="material-symbols-outlined text-xl">call</span>
+              </div>
               <div>
                 <div class="text-xs text-stone-gray font-sans font-bold uppercase tracking-wider">Phone</div>
-                <a href="tel:+905423739748" class="text-ink font-bold text-lg hover:text-olive transition-colors">
+                <a href="tel:+905423739748" class="text-ink font-bold text-base hover:text-olive transition-colors">
                   +90 (0) 542 373 97 48
                 </a>
               </div>
             </div>
 
-            <div class="flex items-center gap-3">
-              <span class="material-symbols-outlined text-olive text-2xl">mail</span>
+            <div class="flex items-center gap-4">
+              <div class="w-10 h-10 rounded-full bg-olive text-white flex items-center justify-center shrink-0">
+                <span class="material-symbols-outlined text-xl">mail</span>
+              </div>
               <div>
-                <div class="text-xs text-stone-gray font-sans font-bold uppercase tracking-wider">Support Coordination</div>
+                <div class="text-xs text-stone-gray font-sans font-bold uppercase tracking-wider">Email (Support Team)</div>
                 <a href="mailto:destek@bodrumkentkutuphanesi.org" class="text-ink font-bold text-base hover:text-olive transition-colors">
                   destek@bodrumkentkutuphanesi.org
                 </a>
               </div>
             </div>
 
-            <div class="flex items-start gap-3">
-              <span class="material-symbols-outlined text-olive text-2xl mt-0.5">location_on</span>
+            <div class="flex items-center gap-4">
+              <div class="w-10 h-10 rounded-full bg-olive text-white flex items-center justify-center shrink-0">
+                <span class="material-symbols-outlined text-xl">location_on</span>
+              </div>
               <div>
                 <div class="text-xs text-stone-gray font-sans font-bold uppercase tracking-wider">Campus</div>
-                <div class="text-ink font-bold text-base">Kizilagac, Bodrum / Mugla, Turkiye</div>
+                <div class="text-ink font-bold text-base">Kizilagac, Bodrum / Mugla</div>
               </div>
             </div>
           </div>
         </div>
 
-        <!-- Right Column: Form -->
         <div class="lg:col-span-7 bg-parchment border-2 border-olive rounded-xs p-6 sm:p-8 shadow-xs">
           <h3 class="font-serif text-2xl text-ink font-bold mb-2">
             Support & Volunteer Application Form
           </h3>
-          <p class="font-serif text-base text-ink/85 mb-6 leading-relaxed">
+          <p class="font-sans text-base text-ink/85 mb-6 leading-relaxed">
             Please select your preferred contribution area and submit your details; our representative will contact you shortly.
           </p>
 
-          <form id="support-form-en" class="space-y-4 font-serif">
+          <form id="support-form-en" class="space-y-4 font-sans">
             <div>
               <label class="block text-xs font-bold text-ink uppercase tracking-wider mb-1">Full Name *</label>
               <input 
                 type="text" 
+                id="form-name-en"
                 required 
                 placeholder="Your Full Name"
-                class="w-full px-4 py-2.5 bg-surface-bright border border-sand text-ink text-base focus:outline-none focus:border-olive" 
+                class="w-full px-4 py-2.5 bg-surface-bright border border-sand text-ink text-base focus:outline-none focus:border-olive rounded-xs" 
               />
             </div>
 
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div>
-                <label class="block text-xs font-bold text-ink uppercase tracking-wider mb-1">Email Address *</label>
+                <label class="block text-xs font-bold text-ink uppercase tracking-wider mb-1">Email *</label>
                 <input 
                   type="email" 
                   required 
-                  placeholder="name@domain.com"
-                  class="w-full px-4 py-2.5 bg-surface-bright border border-sand text-ink text-base focus:outline-none focus:border-olive" 
+                  placeholder="example@domain.com"
+                  class="w-full px-4 py-2.5 bg-surface-bright border border-sand text-ink text-base focus:outline-none focus:border-olive rounded-xs" 
                 />
               </div>
               <div>
@@ -230,22 +303,22 @@ const supportTypesEn = [
                 <input 
                   type="tel" 
                   placeholder="+90 5XX XXX XX XX"
-                  class="w-full px-4 py-2.5 bg-surface-bright border border-sand text-ink text-base focus:outline-none focus:border-olive" 
+                  class="w-full px-4 py-2.5 bg-surface-bright border border-sand text-ink text-base focus:outline-none focus:border-olive rounded-xs" 
                 />
               </div>
             </div>
 
             <div>
-              <label class="block text-xs font-bold text-ink uppercase tracking-wider mb-1">Support Category *</label>
-              <select required class="w-full px-4 py-2.5 bg-surface-bright border border-sand text-ink text-base focus:outline-none focus:border-olive">
-                <option value="">Select category...</option>
-                <option value="books">Book Donation</option>
-                <option value="expertise">Knowledge & Expertise</option>
-                <option value="financial">Financial / Corporate Sponsorship</option>
+              <label class="block text-xs font-bold text-ink uppercase tracking-wider mb-1">Preferred Contribution Area *</label>
+              <select id="form-support-type-en" required class="w-full px-4 py-2.5 bg-surface-bright border border-sand text-ink text-base focus:outline-none focus:border-olive rounded-xs">
+                <option value="">Select an area...</option>
+                <option value="books">Book Donations</option>
+                <option value="expertise">Expertise / Speaking</option>
+                <option value="financial">Financial & Corporate Sponsorship</option>
                 <option value="volunteer">Volunteering</option>
                 <option value="research">Research & Archival Support</option>
-                <option value="venue">Venue & Equipment Support</option>
-                <option value="network">Institutional Partnerships</option>
+                <option value="equipment">Venue & Equipment Support</option>
+                <option value="network">Networking & Collaborations</option>
                 <option value="other">Other</option>
               </select>
             </div>
@@ -253,15 +326,16 @@ const supportTypesEn = [
             <div>
               <label class="block text-xs font-bold text-ink uppercase tracking-wider mb-1">Your Message / Proposal</label>
               <textarea 
+                id="form-message-en"
                 rows="4" 
-                placeholder="Briefly describe your proposed contribution..."
-                class="w-full px-4 py-2.5 bg-surface-bright border border-sand text-ink text-base focus:outline-none focus:border-olive"
+                placeholder="Briefly describe how you would like to contribute..."
+                class="w-full px-4 py-2.5 bg-surface-bright border border-sand text-ink text-base focus:outline-none focus:border-olive rounded-xs"
               ></textarea>
             </div>
 
             <button 
               type="submit" 
-              class="w-full py-3.5 bg-olive text-white hover:bg-bodrum-blue-dark text-base font-serif font-bold tracking-wider uppercase transition-colors shadow-xs"
+              class="w-full py-3.5 bg-olive text-white hover:bg-bodrum-blue-dark text-base font-sans font-bold tracking-wider uppercase transition-colors shadow-xs rounded-xs cursor-pointer"
             >
               Submit Application
             </button>
@@ -273,3 +347,38 @@ const supportTypesEn = [
 
   </div>
 </Layout>
+
+<script>
+  document.querySelectorAll('.btn-fulfill-wish-en').forEach((btn) => {
+    btn.addEventListener('click', (e) => {
+      const target = e.currentTarget as HTMLElement;
+      const wishTitle = target.getAttribute('data-wish-title') || '';
+
+      const formMsg = document.getElementById('form-message-en') as HTMLTextAreaElement | null;
+      const formName = document.getElementById('form-name-en') as HTMLInputElement | null;
+      const formSection = document.getElementById('application-area-en');
+
+      if (formMsg && wishTitle) {
+        formMsg.value = `I would like to contribute towards the "${wishTitle}" wishlist need.`;
+      }
+
+      formSection?.scrollIntoView({ behavior: 'smooth' });
+      formName?.focus();
+    });
+  });
+
+  const supportFormEn = document.getElementById('support-form-en');
+  if (supportFormEn) {
+    supportFormEn.addEventListener('submit', (e) => {
+      e.preventDefault();
+      if ((window as any).showToast) {
+        (window as any).showToast(
+          'Your support application has been received! Our coordinator will get in touch with you shortly.',
+          'success',
+          5000
+        );
+      }
+      (supportFormEn as HTMLFormElement).reset();
+    });
+  }
+</script>

@@ -76,7 +76,7 @@ const t = getT(lang);
 
     let previousActiveElement: HTMLElement | null = null;
 
-    function openModal(youtubeId: string, title?: string, subtitle?: string) {
+    function openModal(youtubeId: string, title?: string, subtitle?: string, startTime?: number) {
       if (!youtubeId || !iframe) return;
 
       previousActiveElement = document.activeElement as HTMLElement | null;
@@ -88,8 +88,9 @@ const t = getT(lang);
         captionEl.textContent = subtitle;
       }
 
+      const startParam = startTime ? `&start=${encodeURIComponent(String(startTime))}` : '';
       // Safe embed url with nocookie, autoplay and rel=0
-      iframe.src = `https://www.youtube-nocookie.com/embed/${encodeURIComponent(youtubeId)}?autoplay=1&rel=0&modestbranding=1`;
+      iframe.src = `https://www.youtube-nocookie.com/embed/${encodeURIComponent(youtubeId)}?autoplay=1&rel=0&modestbranding=1${startParam}`;
 
       backdrop?.classList.remove('opacity-0', 'pointer-events-none');
       backdrop?.classList.add('opacity-100');
@@ -120,7 +121,7 @@ const t = getT(lang);
     // Listen for custom dispatch event
     window.addEventListener('open-video-modal', ((e: CustomEvent) => {
       if (e.detail) {
-        openModal(e.detail.youtubeId || e.detail.videoId, e.detail.title, e.detail.subtitle);
+        openModal(e.detail.youtubeId || e.detail.videoId, e.detail.title, e.detail.subtitle, e.detail.startTime);
       }
     }) as EventListener);
 
@@ -132,7 +133,9 @@ const t = getT(lang);
         const youtubeId = target.getAttribute('data-youtube-id') || '';
         const title = target.getAttribute('data-video-title') || '';
         const subtitle = target.getAttribute('data-video-subtitle') || '';
-        openModal(youtubeId, title, subtitle);
+        const startTimeStr = target.getAttribute('data-start-time');
+        const startTime = startTimeStr ? parseInt(startTimeStr, 10) : undefined;
+        openModal(youtubeId, title, subtitle, startTime);
       }
     });
 

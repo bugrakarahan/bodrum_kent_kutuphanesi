@@ -4,6 +4,42 @@ import { getT } from '../utils/i18n';
 
 const lang = 'tr';
 const t = getT(lang);
+
+const balıkçıQuotes = [
+  {
+    quote: "Yokuş başına geldiğinde Bodrum'u göreceksin, sanma ki sen geldiğin gibi gideceksin. Senden öncekiler de böyleydiler; akıllarını hep Bodrum'da bırakıp gittiler...",
+    source: "Mavi Sürgün"
+  },
+  {
+    quote: "Deniz, insanın içindeki sonsuzluğu uyandırır. Akdeniz'e bir kere gönül veren, artık karanın dar kalıplarına sığamaz.",
+    source: "Merhaba Akdeniz"
+  },
+  {
+    quote: "Bizim hümanizmamız masa başında değil, Ege'nin tuzlu sularında ve Anadolu'nun bin yıllık kadim toprağında yoğrulmuştur.",
+    source: "Altıncı Kıta Akdeniz"
+  }
+];
+
+const initialGuestbookNotes = [
+  {
+    name: "Defne S.",
+    location: "Bodrum / Gümüşlük",
+    date: "Ağustos 2026",
+    note: "Bodrum’un ruhunu ve Balıkçı’nın mirasını böylesine yaşayan bir kütüphanede görmek paha biçilemez. Zeytin Taneleri Kütüphanesi’ni sabırsızlıkla bekliyoruz!"
+  },
+  {
+    name: "Prof. Dr. Murat A.",
+    location: "İzmir",
+    date: "Temmuz 2026",
+    note: "Ege ve Akdeniz araştırmaları için bağımsız ve çağdaş bir kültür vahası. Arşivdeki nadir eserler koleksiyonu çok değerli."
+  },
+  {
+    name: "Selin & Caner",
+    location: "İstanbul",
+    date: "Ağustos 2026",
+    note: "Kitap kulübü tartışmalarına katılmak için gün sayıyoruz. Bodrum’a kazandırdığınız bu kıymetli nefes alanı için teşekkürler."
+  }
+];
 ---
 
 <Layout
@@ -35,13 +71,11 @@ const t = getT(lang);
         
         <!-- Left: Standardized Heading & Justified Manifesto -->
         <div class="lg:col-span-7 space-y-6">
-          
-          <!-- Standardized Main Heading with Comma (Playfair Display) -->
           <h1 class="font-serif text-3xl sm:text-4xl lg:text-[38px] text-ink font-bold leading-[1.25] tracking-tight">
             Bodrum’un Kültürel Hafızası İçin, Yaşayan Bir Kütüphane
           </h1>
 
-          <!-- Main Manifesto Text: Plus Jakarta Sans with Text-Justify Balance -->
+          <!-- Main Manifesto Text -->
           <div class="bg-parchment border border-sand p-6 sm:p-8 rounded-xs shadow-xs space-y-4">
             <p class="font-sans text-base sm:text-[17px] text-ink/90 leading-relaxed text-justify">
               Bodrum Kent Kütüphanesi, Bodrum’da yaşayanlar ile kenti ziyaret eden kitapseverleri, edebiyat, sanat ve bilim dünyasının değerli isimleriyle ve kitaplarıyla buluşturmayı amaçlayan, çok amaçlı ve yaşayan bir kütüphane projesidir.
@@ -77,14 +111,13 @@ const t = getT(lang);
       <!-- 3 Strategic Institutional Headings with Logos & Centered Alignment -->
       <div class="mt-12 pt-8 border-t border-sand grid grid-cols-1 md:grid-cols-3 gap-6 text-ink">
         
-        <!-- 1. Zeytin Taneleri Kütüphanesi (With ZTK Logo) -->
+        <!-- 1. Zeytin Taneleri Kütüphanesi -->
         <div class="bg-parchment p-6 border-2 border-olive rounded-xs shadow-xs flex flex-col items-center justify-between text-center">
           <div class="w-full flex flex-col items-center">
             <h3 class="font-serif text-xl font-bold text-olive mb-3 text-center">
               Zeytin Taneleri Kütüphanesi
             </h3>
 
-            <!-- ZTK Logo -->
             <div class="w-24 h-24 my-2 flex items-center justify-center overflow-hidden">
               <img
                 src="/images/ztk_logo.png"
@@ -102,14 +135,13 @@ const t = getT(lang);
           </div>
         </div>
 
-        <!-- 2. Halikarnaslı Çocuklar (With HC Artwork Logo) -->
+        <!-- 2. Halikarnaslı Çocuklar -->
         <div class="bg-parchment p-6 border-2 border-olive rounded-xs shadow-xs flex flex-col items-center justify-between text-center">
           <div class="w-full flex flex-col items-center">
             <h3 class="font-serif text-xl font-bold text-olive mb-3 text-center">
               Halikarnaslı Çocuklar
             </h3>
 
-            <!-- HC Logo/Artwork -->
             <div class="w-24 h-24 my-2 flex items-center justify-center overflow-hidden rounded-xs border border-sand">
               <img
                 src="/images/hc_logo.jpg"
@@ -127,14 +159,13 @@ const t = getT(lang);
           </div>
         </div>
 
-        <!-- 3. Halikarnas Derneği (2-line centered title) -->
+        <!-- 3. Halikarnas Derneği -->
         <div class="bg-parchment p-6 border-2 border-olive rounded-xs shadow-xs flex flex-col items-center justify-between text-center">
           <div class="w-full flex flex-col items-center">
             <h3 class="font-serif text-xl font-bold text-olive mb-3 text-center leading-snug">
               Halikarnas Kültür, Sanat, Eğitim<br />ve Ekoloji Derneği
             </h3>
 
-            <!-- Institutional Umbrella Icon -->
             <div class="w-24 h-24 my-2 flex items-center justify-center bg-olive/10 text-olive rounded-full border border-olive/30">
               <span class="material-symbols-outlined text-4xl">account_balance</span>
             </div>
@@ -152,4 +183,188 @@ const t = getT(lang);
 
     </div>
   </section>
+
+  <!-- 2. Günün Balıkçı Alıntısı / "Merhaba" Edebiyat Vitrini -->
+  <section class="py-12 md:py-16 px-5 md:px-12 bg-surface-container-low border-b border-sand">
+    <div class="max-w-[1280px] mx-auto">
+      <div class="bg-parchment border-2 border-olive rounded-xs p-8 sm:p-12 shadow-md relative overflow-hidden">
+        
+        <div class="absolute -right-8 -bottom-8 opacity-5 pointer-events-none select-none">
+          <span class="material-symbols-outlined text-[200px] text-olive leading-none">format_quote</span>
+        </div>
+
+        <div class="relative z-10 max-w-4xl mx-auto text-center space-y-6">
+          <div class="inline-flex items-center gap-2 px-3 py-1 bg-olive/10 text-olive text-xs font-sans font-bold uppercase tracking-widest rounded-xs">
+            <span class="material-symbols-outlined text-sm">auto_stories</span>
+            <span>HALİKARNAS BALIKÇISI’NDAN BİR SELAM</span>
+          </div>
+
+          <blockquote id="quote-display" class="font-serif italic text-xl sm:text-2xl md:text-3xl text-ink leading-relaxed">
+            "{balıkçıQuotes[0].quote}"
+          </blockquote>
+
+          <div class="flex items-center justify-center gap-3 text-sm font-sans">
+            <span class="font-bold text-olive font-serif text-base">Cevat Şakir Kabaağaçlı</span>
+            <span class="text-stone-gray">•</span>
+            <cite id="quote-source" class="not-italic text-stone-gray font-medium">{balıkçıQuotes[0].source}</cite>
+          </div>
+
+          <div class="pt-2 flex items-center justify-center gap-2">
+            <button
+              type="button"
+              id="next-quote-btn"
+              class="px-4 py-1.5 bg-olive text-white hover:bg-bodrum-blue-dark text-xs font-sans font-bold uppercase tracking-wider rounded-xs transition-colors shadow-2xs flex items-center gap-1.5 cursor-pointer"
+            >
+              <span class="material-symbols-outlined text-sm">refresh</span>
+              <span>Başka Bir Alıntı Göster</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3. Ziyaretçi Defteri / "Bodrum'a Bir Cümle Bırak" -->
+  <section class="py-12 md:py-16 px-5 md:px-12 bg-surface-bright border-b border-sand">
+    <div class="max-w-[1280px] mx-auto">
+      
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
+        
+        <!-- Sol: Tanıtım ve Form -->
+        <div class="lg:col-span-5 space-y-5">
+          <div class="inline-flex items-center gap-2 px-3 py-1 bg-olive text-white text-xs font-sans font-bold uppercase tracking-widest rounded-xs shadow-2xs">
+            <span>DİJİTAL ANI DEFTERİ</span>
+          </div>
+
+          <h2 class="font-serif text-2xl sm:text-3xl text-ink font-bold leading-tight">
+            Bodrum’a ve Kütüphaneye Bir Cümle Bırakın
+          </h2>
+
+          <p class="font-sans text-sm sm:text-base text-ink/80 leading-relaxed text-justify">
+            Bodrum Kent Kütüphanesi, okurlarının ve dostlarının izleriyle büyüyor. Siz de kütüphanemiz, Bodrum ve Halikarnas Balıkçısı hakkındaki duygu ve anılarınızı buraya yazabilirsiniz.
+          </p>
+
+          <form id="guestbook-form" class="bg-parchment border-2 border-olive p-5 rounded-xs shadow-xs space-y-3 font-sans">
+            <div>
+              <label class="block text-xs font-bold text-ink uppercase tracking-wider mb-1">Adınız / Rumuz *</label>
+              <input
+                type="text"
+                id="guest-name"
+                required
+                placeholder="Örn: Ege Sevdalısı"
+                class="w-full px-3 py-2 bg-surface-bright border border-sand text-ink text-sm rounded-xs focus:outline-none focus:border-olive"
+              />
+            </div>
+
+            <div>
+              <label class="block text-xs font-bold text-ink uppercase tracking-wider mb-1">Şehir / Semt</label>
+              <input
+                type="text"
+                id="guest-location"
+                placeholder="Örn: Bodrum / Yalıkavak"
+                class="w-full px-3 py-2 bg-surface-bright border border-sand text-ink text-sm rounded-xs focus:outline-none focus:border-olive"
+              />
+            </div>
+
+            <div>
+              <label class="block text-xs font-bold text-ink uppercase tracking-wider mb-1">Kütüphane Notunuz *</label>
+              <textarea
+                id="guest-note"
+                rows="3"
+                required
+                placeholder="Bodrum'a ve kütüphaneye dair cümleniz..."
+                class="w-full px-3 py-2 bg-surface-bright border border-sand text-ink text-sm rounded-xs focus:outline-none focus:border-olive"
+              ></textarea>
+            </div>
+
+            <button
+              type="submit"
+              class="w-full py-2.5 bg-olive hover:bg-bodrum-blue-dark text-white text-xs font-bold uppercase tracking-wider rounded-xs transition-colors shadow-xs flex items-center justify-center gap-1.5 cursor-pointer"
+            >
+              <span class="material-symbols-outlined text-sm">edit_note</span>
+              <span>Anı Defterine Ekle</span>
+            </button>
+          </form>
+        </div>
+
+        <!-- Sağ: Ziyaretçi Notları Akışı -->
+        <div class="lg:col-span-7 space-y-4">
+          <div class="flex items-center justify-between pb-2 border-b border-sand">
+            <h3 class="font-serif text-xl font-bold text-ink">
+              Kitapseverlerin & Dostlarımızın Notları
+            </h3>
+            <span class="text-xs font-mono text-stone-gray font-bold">Son Notlar</span>
+          </div>
+
+          <div id="guestbook-list" class="space-y-3.5">
+            {initialGuestbookNotes.map((item) => (
+              <div class="bg-parchment border border-sand p-4 sm:p-5 rounded-xs shadow-2xs space-y-2 transition-all hover:border-olive">
+                <p class="font-serif italic text-base sm:text-lg text-ink/90 leading-relaxed">
+                  "{item.note}"
+                </p>
+                <div class="flex items-center justify-between text-xs font-sans text-stone-gray pt-2 border-t border-sand/50">
+                  <span class="font-bold text-olive">{item.name} <span class="font-normal text-stone-gray/80">• {item.location}</span></span>
+                  <span class="font-mono text-[11px]">{item.date}</span>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
 </Layout>
+
+<script is:inline define:vars={{ balıkçıQuotes }}>
+  let quoteIndex = 0;
+  const quoteDisplay = document.getElementById('quote-display');
+  const quoteSource = document.getElementById('quote-source');
+  const nextQuoteBtn = document.getElementById('next-quote-btn');
+
+  if (nextQuoteBtn && quoteDisplay && quoteSource) {
+    nextQuoteBtn.addEventListener('click', () => {
+      quoteIndex = (quoteIndex + 1) % balıkçıQuotes.length;
+      quoteDisplay.textContent = `"${balıkçıQuotes[quoteIndex].quote}"`;
+      quoteSource.textContent = balıkçıQuotes[quoteIndex].source;
+    });
+  }
+
+  const guestbookForm = document.getElementById('guestbook-form');
+  const guestbookList = document.getElementById('guestbook-list');
+
+  if (guestbookForm && guestbookList) {
+    guestbookForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const nameInput = document.getElementById('guest-name');
+      const locationInput = document.getElementById('guest-location');
+      const noteInput = document.getElementById('guest-note');
+
+      const name = nameInput.value.trim();
+      const location = locationInput.value.trim() || 'Bodrum';
+      const note = noteInput.value.trim();
+
+      if (!name || !note) return;
+
+      const newCard = document.createElement('div');
+      newCard.className = 'bg-parchment border-2 border-olive p-4 sm:p-5 rounded-xs shadow-xs space-y-2 transition-all animate-fadeIn';
+      newCard.innerHTML = `
+        <p class="font-serif italic text-base sm:text-lg text-ink leading-relaxed">
+          "${note}"
+        </p>
+        <div class="flex items-center justify-between text-xs font-sans text-stone-gray pt-2 border-t border-sand/50">
+          <span class="font-bold text-olive">${name} <span class="font-normal text-stone-gray/80">• ${location}</span></span>
+          <span class="font-mono text-[11px] font-bold text-emerald-700 bg-emerald-50 px-1.5 py-0.5 rounded-2xs">Şimdi</span>
+        </div>
+      `;
+
+      guestbookList.prepend(newCard);
+      guestbookForm.reset();
+
+      if (window.showToast) {
+        window.showToast('Notunuz Bodrum Kent Kütüphanesi Dijital Anı Defteri’ne eklendi! Teşekkür ederiz.', 'success', 5000);
+      }
+    });
+  }
+</script>

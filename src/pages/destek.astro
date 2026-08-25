@@ -8,70 +8,89 @@ const t = getT(lang);
 const whyJoinUs = [
   {
     title: "Bodrum’un kültürel ve tarihsel mirasını geleceğe taşımak için",
-    desc: "Halikarnas’tan Karya’ya uzanan binlerce yıllık birikimi araştırmak, belgelemek, anlatmak ve yeni kuşaklarla buluşturmak için."
+    desc: "Kentin kadim hafızasını, sözlü tarihini ve Akdeniz kimliğini belgeleyip gelecek kuşaklara aktaran bağımsız bir kültür ocağı inşa ediyoruz."
   },
   {
-    title: "Bodrum’u yaşayan bir kültür ve düşünce merkezi haline getirmek için",
-    desc: "Kitapların, araştırmaların, söyleşilerin, konferansların, sergilerin ve farklı disiplinlerin bir araya geldiği canlı bir buluşma alanı oluşturmak için."
+    title: "Çocukların ve gençlerin kitaba, sanata ve bilime erişimini desteklemek için",
+    desc: "Zeytin Taneleri Kütüphanesi ve Halikarnaslı Çocuklar projeleriyle her yaştan gencin hayal gücünü ve eleştirel düşüncesini besliyoruz."
   },
   {
-    title: "Yazarları, araştırmacıları ve bilim insanlarını okurlarla buluşturmak için",
-    desc: "Türkiye’den ve dünyanın farklı ülkelerinden yazar, akademisyen, araştırmacı ve sanatçıları Bodrum’da okurlar ve ilgililerle buluşturarak bilgi ve düşünce alışverişini güçlendirmek için."
+    title: "Edebiyat, sanat ve bilim dünyasıyla doğrudan buluşmalar yaratmak için",
+    desc: "Yazarlar, akademisyenler, sanatçılar ve araştırmacılarla Bodrum halkını aynı masa etrafında buluşturan yaşayan atölyeler ve söyleşiler düzenliyoruz."
   },
   {
-    title: "Bodrum’un dünyayla kültürel bağlarını güçlendirmek için",
-    desc: "Ege, Akdeniz ve komşu coğrafyalardan başlayarak ulusal ve uluslararası kültür, sanat ve bilim projeleri geliştirmek ve ortak çalışmalar üretmek için."
-  },
-  {
-    title: "Farklı düşüncelerin bir arada özgürce konuşulabildiği bir ortam yaratmak için",
-    desc: "Okuma, tartışma, araştırma ve paylaşma kültürünü güçlendirerek Bodrum’da nitelikli bir düşünce ortamının oluşmasına katkıda bulunmak için."
-  },
-  {
-    title: "Bilgiye ve kitaba erişimi yaygınlaştırmak için",
-    desc: "Her yaştan insanın okuyabileceği, öğrenebileceği, araştırabileceği ve kendisini geliştirebileceği açık ve erişilebilir bir kütüphane kültürü oluşturmak için."
-  },
-  {
-    title: "Çocukların ve gençlerin bu kültürün içinde yetişmesini sağlamak için",
-    desc: "Onları kitap, sanat, bilim ve düşünceyle buluşturan çalışmalarla geleceğin okurlarını, araştırmacılarını ve sanatçılarını desteklemek için."
-  },
-  {
-    title: "Bunu birlikte yapmak için",
-    desc: "Bodrum Kent Kütüphanesi başta olmak üzere kültür, sanat ve ekoloji alanındaki projelerimizi kurulmakta olan derneğimizin çatısı altında, toplumun katılımıyla büyütmek istiyoruz."
+    title: "Yaşayan, üreten ve paylaşan bir Bodrum topluluğu inşa etmek için",
+    desc: "Tüketim yerine üretimi, yalnızlık yerine dayanışmayı koyarak Bodrum’un entelektüel hayatına kalıcı harç koyuyoruz."
   }
 ];
 
 const supportTypes = [
   {
-    title: "Kitap bağışlayabilirsiniz",
-    desc: "Kütüphanemizin koleksiyonunu zenginleştirebilir; özellikle Bodrum, Halikarnas, Karya, Ege ve Akdeniz tarihi, arkeoloji, sanat, edebiyat ve bilim alanlarında kaynakların çoğalmasına katkıda bulunabilirsiniz."
+    title: "Kitap Bağışı",
+    desc: "Kütüphane koleksiyonumuza ve Zeytin Taneleri Kütüphanesi’ne nitelikli kitap bağışında bulunabilirsiniz."
   },
   {
-    title: "Bilginiz ve uzmanlığınızla katkıda bulunabilirsiniz",
-    desc: "Yazar, araştırmacı, akademisyen, bilim insanı, sanatçı veya farklı bir alanda uzman olarak söyleşi, konferans, atölye ve araştırma çalışmalarımıza katılabilirsiniz."
+    title: "Bilgi ve Uzmanlık / Konuşmacı",
+    desc: "Uzmanlık alanınızda atölye, söyleşi, seminer veya eğitim vererek katkı sunabilirsiniz."
   },
   {
-    title: "Maddi destek sağlayabilirsiniz",
-    desc: "Kütüphanenin gelişimi, etkinlikler, yayınlar, araştırmalar, kültür-sanat projeleri ve ulusal/uluslararası çalışmaların gerçekleştirilmesine katkıda bulunabilirsiniz."
+    title: "Maddi / Kurumsal Destek",
+    desc: "Kütüphanenin fiziki alanlarının tefrişi, etkinliklerin sürdürülebilirliği ve yayınlar için kurumsal/bireysel destek sağlayabilirsiniz."
   },
   {
-    title: "Gönüllü olabilirsiniz",
-    desc: "Kütüphane çalışmalarından etkinlik organizasyonlarına, araştırmalardan iletişim ve tanıtıma kadar farklı alanlarda zamanınız ve becerilerinizle katkı sunabilirsiniz."
+    title: "Gönüllü Katılım",
+    desc: "Etkinlik organizasyonu, arşivleme, çocuk atölyeleri, kütüphane düzeni veya dijital içerik üretiminde gönüllü olabilirsiniz."
   },
   {
-    title: "Araştırma ve proje çalışmalarına destek olabilirsiniz",
-    desc: "Bodrum’un tarihi, kültürü, sanatı, doğası ve toplumsal yaşamına ilişkin araştırma, arşiv, sözlü tarih ve yayın çalışmalarına katkıda bulunabilirsiniz."
+    title: "Araştırma & Arşiv Desteği",
+    desc: "Bodrum tarihi, Halikarnas Balıkçısı veya Ege kültürüyle ilgili belge, fotoğraf ve arşiv belgelerini kütüphanemize kazandırabilirsiniz."
   },
   {
-    title: "Mekân, ekipman ve malzeme desteği sağlayabilirsiniz",
-    desc: "Etkinlik, sergi, toplantı ve atölyeler için mekânlarınızı veya ihtiyaç duyulan teknik ekipman ve malzemeleri paylaşabilirsiniz."
+    title: "Mekân, Ekipman ve Malzeme Desteği",
+    desc: "Etkinlikler için mekân temini, ses/görüntü ekipmanı veya atölye malzemesi desteğinde bulunabilirsiniz."
   },
   {
-    title: "Ulusal ve uluslararası bağlantılar kurmamıza yardımcı olabilirsiniz",
-    desc: "Yazarları, bilim insanlarını, sanatçıları, kurumları, üniversiteleri ve kültür kuruluşlarını Bodrum Kent Kütüphanesi ile buluşturarak yeni iş birliklerinin oluşmasına katkıda bulunabilirsiniz."
+    title: "Ulusal / Uluslararası Bağlantı ve İletişim",
+    desc: "Kütüphanemizin yurt içi ve yurt dışındaki kurumlarla, kütüphanelerle ve STK’larla ortak projeler geliştirmesine köprü olabilirsiniz."
   },
   {
-    title: "Bu çalışmaları çevrenizle paylaşabilirsiniz",
-    desc: "Kütüphaneyi ve projelerimizi daha fazla insana ulaştırarak okurların, gönüllülerin, üreticilerin ve destekçilerin bu ortak hayale katılmasını sağlayabilirsiniz."
+    title: "Diğer Katkılar",
+    desc: "Aklınızdaki farklı bir proje, fikir veya katkı modelini bizimle paylaşabilirsiniz."
+  }
+];
+
+const wishlistItems = [
+  {
+    id: "wish-1",
+    category: "Kitap & Arşiv",
+    title: "Halikarnas Balıkçısı İlk Baskıları & Nadir Bodrum Eserleri",
+    desc: "Kütüphanemiz Özel Arşiv Odası için 1940-1970 arası döneme ait orijinal baskılar ve Bodrum tarihçesi yayınları.",
+    status: "Aranıyor",
+    selectValue: "kitap"
+  },
+  {
+    id: "wish-2",
+    category: "Çocuk & Sanat",
+    title: "Zeytin Taneleri Kütüphanesi Çocuk Atölyesi Malzemeleri",
+    desc: "Ahşap oturma minderleri, resim şövaleleri, suluboya takımları ve temel çocuk edebiyatı klasikleri seti.",
+    status: "Devam Ediyor",
+    selectValue: "mekan"
+  },
+  {
+    id: "wish-3",
+    category: "Dijital & Kayıt",
+    title: "Sözlü Tarih & Söyleşi Dijital Kayıt Seti",
+    desc: "Bodrum’un süngercileri, kaptanları ve yazarlarıyla yapılan arşiv kayıtları için kablosuz yaka mikrofonu seti.",
+    status: "Aranıyor",
+    selectValue: "mekan"
+  },
+  {
+    id: "wish-4",
+    category: "Yerleşke & Bahçe",
+    title: "Açık Hava Okuma ve Sohbet Bahçesi Ahşap Bankları",
+    desc: "Kızılağaç yerleşkemizde ağaç altı okuma saatleri ve küçük dinletiler için dayanıklı ahşap bank ve masa düzeni.",
+    status: "İmece Aşamasında",
+    selectValue: "maddi"
   }
 ];
 ---
@@ -83,20 +102,20 @@ const supportTypes = [
   currentPath="/destek"
 >
   <!-- Hero Section -->
-  <section class="py-12 md:py-16 px-5 md:px-12 bg-surface-bright border-b border-sand">
+  <section class="py-10 md:py-14 px-5 md:px-12 bg-surface-bright border-b border-sand">
     <div class="max-w-[1280px] mx-auto">
       <div class="max-w-3xl">
-        <h1 class="font-serif text-3xl sm:text-4xl text-ink font-bold leading-tight mb-4">
+        <h1 class="font-serif text-3xl sm:text-4xl text-ink font-bold leading-tight mb-3">
           Destek & Gönüllü Katılım
         </h1>
-        <p class="font-serif text-lg sm:text-xl text-ink/80 leading-relaxed">
+        <p class="font-sans text-base sm:text-lg text-ink/80 leading-relaxed">
           Bodrum’un kültürel belleğini ve geleceğini birlikte inşa etmek, bilginin ışığını çoğaltmak için siz de bu ortak hayale katılabilirsiniz.
         </p>
       </div>
     </div>
   </section>
 
-  <div class="max-w-[1280px] mx-auto px-5 md:px-12 py-12 space-y-16">
+  <div class="max-w-[1280px] mx-auto px-5 md:px-12 py-10 md:py-14 space-y-16">
     
     <!-- 1. Bu Hayale Neden Ortak Olmalısınız? -->
     <section>
@@ -114,7 +133,7 @@ const supportTypes = [
               <h3 class="font-serif text-xl text-ink font-bold mb-2 leading-snug">
                 {item.title}
               </h3>
-              <p class="font-serif text-base text-ink/85 leading-relaxed">
+              <p class="font-sans text-sm sm:text-base text-ink/85 leading-relaxed">
                 {item.desc}
               </p>
             </div>
@@ -123,7 +142,57 @@ const supportTypes = [
       </div>
     </section>
 
-    <!-- 2. Ne Tür Desteklerde Bulunabilirsiniz? -->
+    <!-- 2. Şeffaf İmece & İhtiyaç Panosu -->
+    <section>
+      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6 pb-3 border-b border-sand">
+        <div>
+          <span class="text-xs uppercase tracking-widest text-olive font-sans font-bold block mb-1">ŞEFFAF İMECE</span>
+          <h2 class="font-serif text-2xl sm:text-3xl text-ink font-bold">
+            Kütüphanemizin İmece İhtiyaçları
+          </h2>
+        </div>
+        <span class="text-xs font-sans text-stone-gray">
+          Doğrudan somut bir ihtiyacı üstlenerek kütüphanemize güç verebilirsiniz.
+        </span>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        {wishlistItems.map((wish) => (
+          <div class="bg-parchment border-2 border-olive rounded-xs p-6 flex flex-col justify-between shadow-xs hover:shadow-md transition-all">
+            <div>
+              <div class="flex items-center justify-between gap-2 mb-3">
+                <span class="px-2.5 py-1 bg-olive/10 text-olive text-[11px] font-sans font-bold uppercase rounded-2xs">
+                  {wish.category}
+                </span>
+                <span class="px-2.5 py-1 bg-amber-100 text-amber-900 text-[11px] font-sans font-bold rounded-2xs">
+                  {wish.status}
+                </span>
+              </div>
+
+              <h3 class="font-serif text-lg sm:text-xl font-bold text-ink mb-2">
+                {wish.title}
+              </h3>
+
+              <p class="font-sans text-sm text-ink/80 leading-relaxed mb-4">
+                {wish.desc}
+              </p>
+            </div>
+
+            <button
+              type="button"
+              class="btn-fulfill-wish w-full py-2.5 bg-olive hover:bg-bodrum-blue-dark text-white text-xs font-sans font-bold uppercase tracking-wider rounded-xs transition-colors shadow-2xs flex items-center justify-center gap-1.5 cursor-pointer mt-2"
+              data-wish-select={wish.selectValue}
+              data-wish-title={wish.title}
+            >
+              <span class="material-symbols-outlined text-sm">volunteer_activism</span>
+              <span>Bu İhtiyacı Üstlen / Destek Ol</span>
+            </button>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <!-- 3. Ne Tür Desteklerde Bulunabilirsiniz? -->
     <section>
       <h2 class="font-serif text-2xl sm:text-3xl text-ink font-bold mb-8 pb-3 border-b border-sand">
         Ne Tür Desteklerde Bulunabilirsiniz?
@@ -139,7 +208,7 @@ const supportTypes = [
               <h3 class="font-serif text-lg text-ink font-bold mb-2 leading-snug">
                 {item.title}
               </h3>
-              <p class="font-serif text-sm text-ink/80 leading-relaxed">
+              <p class="font-sans text-sm text-ink/80 leading-relaxed">
                 {item.desc}
               </p>
             </div>
@@ -148,45 +217,51 @@ const supportTypes = [
       </div>
     </section>
 
-    <!-- 3. Doğrudan İletişim & Başvuru Formu -->
-    <section class="bg-surface-container-low border-2 border-olive rounded-xs p-8 sm:p-12 shadow-xs">
+    <!-- 4. Doğrudan İletişim & Başvuru Formu -->
+    <section id="basvuru-alani" class="bg-surface-container-low border-2 border-olive rounded-xs p-8 sm:p-12 shadow-xs">
       <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
         
         <!-- Sol Taraf: Doğrudan İletişim -->
         <div class="lg:col-span-5 space-y-6">
           <div>
-            <span class="text-xs uppercase tracking-widest text-olive font-serif font-bold block mb-2">DOĞRUDAN İLETİŞİM</span>
+            <span class="text-xs uppercase tracking-widest text-olive font-sans font-bold block mb-2">DOĞRUDAN İLETİŞİM</span>
             <h3 class="font-serif text-2xl sm:text-3xl text-ink font-bold leading-tight mb-3">
               Kütüphane Yetkilimiz ile Görüşün
             </h3>
-            <p class="font-serif text-base text-ink/85 leading-relaxed">
+            <p class="font-sans text-base text-ink/85 leading-relaxed">
               Katkıda bulunmak istediğiniz destek ile ilgili bize doğrudan ulaşabilirsiniz.
             </p>
           </div>
 
-          <div class="space-y-4 pt-4 border-t border-sand text-base font-serif">
-            <div class="flex items-center gap-3">
-              <span class="material-symbols-outlined text-olive text-2xl">call</span>
+          <div class="space-y-4 pt-4 border-t border-sand">
+            <div class="flex items-center gap-4">
+              <div class="w-10 h-10 rounded-full bg-olive text-white flex items-center justify-center shrink-0">
+                <span class="material-symbols-outlined text-xl">call</span>
+              </div>
               <div>
                 <div class="text-xs text-stone-gray font-sans font-bold uppercase tracking-wider">Telefon</div>
-                <a href="tel:+905423739748" class="text-ink font-bold text-lg hover:text-olive transition-colors">
+                <a href="tel:+905423739748" class="text-ink font-bold text-base hover:text-olive transition-colors">
                   +90 (0) 542 373 97 48
                 </a>
               </div>
             </div>
 
-            <div class="flex items-center gap-3">
-              <span class="material-symbols-outlined text-olive text-2xl">mail</span>
+            <div class="flex items-center gap-4">
+              <div class="w-10 h-10 rounded-full bg-olive text-white flex items-center justify-center shrink-0">
+                <span class="material-symbols-outlined text-xl">mail</span>
+              </div>
               <div>
-                <div class="text-xs text-stone-gray font-sans font-bold uppercase tracking-wider">Destek Koordinasyonu</div>
+                <div class="text-xs text-stone-gray font-sans font-bold uppercase tracking-wider">E-Posta (Destek & Koordinasyon)</div>
                 <a href="mailto:destek@bodrumkentkutuphanesi.org" class="text-ink font-bold text-base hover:text-olive transition-colors">
                   destek@bodrumkentkutuphanesi.org
                 </a>
               </div>
             </div>
 
-            <div class="flex items-start gap-3">
-              <span class="material-symbols-outlined text-olive text-2xl mt-0.5">location_on</span>
+            <div class="flex items-center gap-4">
+              <div class="w-10 h-10 rounded-full bg-olive text-white flex items-center justify-center shrink-0">
+                <span class="material-symbols-outlined text-xl">location_on</span>
+              </div>
               <div>
                 <div class="text-xs text-stone-gray font-sans font-bold uppercase tracking-wider">Yerleşke</div>
                 <div class="text-ink font-bold text-base">Kızılağaç, Bodrum / Muğla</div>
@@ -200,18 +275,19 @@ const supportTypes = [
           <h3 class="font-serif text-2xl text-ink font-bold mb-2">
             Destek ve Gönüllü Katılım Başvuru Formu
           </h3>
-          <p class="font-serif text-base text-ink/85 mb-6 leading-relaxed">
+          <p class="font-sans text-base text-ink/85 mb-6 leading-relaxed">
             Lütfen ilgilendiğiniz destek alanını ve bilgilerinizi iletin; yetkilimiz sizinle irtibata geçecektir.
           </p>
 
-          <form id="support-form" class="space-y-4 font-serif">
+          <form id="support-form" class="space-y-4 font-sans">
             <div>
               <label class="block text-xs font-bold text-ink uppercase tracking-wider mb-1">Ad Soyad *</label>
               <input 
                 type="text" 
+                id="form-name"
                 required 
                 placeholder="Adınız Soyadınız"
-                class="w-full px-4 py-2.5 bg-surface-bright border border-sand text-ink text-base focus:outline-none focus:border-olive" 
+                class="w-full px-4 py-2.5 bg-surface-bright border border-sand text-ink text-base focus:outline-none focus:border-olive rounded-xs" 
               />
             </div>
 
@@ -222,7 +298,7 @@ const supportTypes = [
                   type="email" 
                   required 
                   placeholder="ornek@alanadi.com"
-                  class="w-full px-4 py-2.5 bg-surface-bright border border-sand text-ink text-base focus:outline-none focus:border-olive" 
+                  class="w-full px-4 py-2.5 bg-surface-bright border border-sand text-ink text-base focus:outline-none focus:border-olive rounded-xs" 
                 />
               </div>
               <div>
@@ -230,14 +306,14 @@ const supportTypes = [
                 <input 
                   type="tel" 
                   placeholder="05XX XXX XX XX"
-                  class="w-full px-4 py-2.5 bg-surface-bright border border-sand text-ink text-base focus:outline-none focus:border-olive" 
+                  class="w-full px-4 py-2.5 bg-surface-bright border border-sand text-ink text-base focus:outline-none focus:border-olive rounded-xs" 
                 />
               </div>
             </div>
 
             <div>
               <label class="block text-xs font-bold text-ink uppercase tracking-wider mb-1">İlgilenilen Destek Türü *</label>
-              <select required class="w-full px-4 py-2.5 bg-surface-bright border border-sand text-ink text-base focus:outline-none focus:border-olive">
+              <select id="form-support-type" required class="w-full px-4 py-2.5 bg-surface-bright border border-sand text-ink text-base focus:outline-none focus:border-olive rounded-xs">
                 <option value="">Destek türü seçiniz...</option>
                 <option value="kitap">Kitap Bağışı</option>
                 <option value="uzmanlik">Bilgi ve Uzmanlık / Konuşmacı</option>
@@ -253,17 +329,18 @@ const supportTypes = [
             <div>
               <label class="block text-xs font-bold text-ink uppercase tracking-wider mb-1">Mesajınız / Katkı Öneriniz</label>
               <textarea 
+                id="form-message"
                 rows="4" 
                 placeholder="Yapmak istediğiniz katkıyı kısaca açıklayınız..."
-                class="w-full px-4 py-2.5 bg-surface-bright border border-sand text-ink text-base focus:outline-none focus:border-olive"
+                class="w-full px-4 py-2.5 bg-surface-bright border border-sand text-ink text-base focus:outline-none focus:border-olive rounded-xs"
               ></textarea>
             </div>
 
             <button 
               type="submit" 
-              class="w-full py-3.5 bg-olive text-white hover:bg-bodrum-blue-dark text-base font-serif font-bold tracking-wider uppercase transition-colors shadow-xs"
+              class="w-full py-3.5 bg-olive text-white hover:bg-bodrum-blue-dark text-base font-sans font-bold tracking-wider uppercase transition-colors shadow-xs rounded-xs cursor-pointer"
             >
-              Başvuruyu Gönder
+              Başvuruyu İlet
             </button>
           </form>
         </div>
@@ -275,14 +352,41 @@ const supportTypes = [
 </Layout>
 
 <script>
-  const form = document.getElementById('support-form') as HTMLFormElement;
-  if (form) {
-    form.addEventListener('submit', (e) => {
+  document.querySelectorAll('.btn-fulfill-wish').forEach((btn) => {
+    btn.addEventListener('click', (e) => {
+      const target = e.currentTarget as HTMLElement;
+      const selectVal = target.getAttribute('data-wish-select') || '';
+      const wishTitle = target.getAttribute('data-wish-title') || '';
+
+      const formSelect = document.getElementById('form-support-type') as HTMLSelectElement | null;
+      const formMsg = document.getElementById('form-message') as HTMLTextAreaElement | null;
+      const formName = document.getElementById('form-name') as HTMLInputElement | null;
+      const formSection = document.getElementById('basvuru-alani');
+
+      if (formSelect && selectVal) {
+        formSelect.value = selectVal;
+      }
+      if (formMsg && wishTitle) {
+        formMsg.value = `"${wishTitle}" ihtiyacı ile ilgili destek olmak istiyorum.`;
+      }
+
+      formSection?.scrollIntoView({ behavior: 'smooth' });
+      formName?.focus();
+    });
+  });
+
+  const supportForm = document.getElementById('support-form');
+  if (supportForm) {
+    supportForm.addEventListener('submit', (e) => {
       e.preventDefault();
       if ((window as any).showToast) {
-        (window as any).showToast('Destek ve katılım başvurunuz başarıyla alındı. Teşekkür ederiz.', 'success', 5000);
+        (window as any).showToast(
+          'Destek başvurunuz başarıyla alındı! Kütüphane koordinatörümüz sizinle en kısa sürede iletişime geçecektir.',
+          'success',
+          5000
+        );
       }
-      form.reset();
+      (supportForm as HTMLFormElement).reset();
     });
   }
 </script>
