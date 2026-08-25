@@ -5,13 +5,13 @@ export default {
   theme: {
     extend: {
       colors: {
-        parchment: '#FCFBF8', // Daha açık, duru krem zemin rengi
-        ink: '#111827',       // Siyah / koyu metin
+        parchment: '#FCFBF8', // Duru krem zemin
+        ink: '#111827',       // Koyu metin
         olive: '#005B94',     // Bodrum mavisi
         'bodrum-blue': '#005B94', // Bodrum mavisi
         'bodrum-blue-light': '#EBF3F9',
         'bodrum-blue-dark': '#00436E',
-        sand: '#EAE5DB',      // Yumuşak sınır ve ayırıcı tonu
+        sand: '#EAE5DB',      // Ayırıcı ton
         'stone-gray': '#555A64',
         primary: '#005B94',
         'primary-container': '#EBF3F9',
@@ -36,30 +36,18 @@ export default {
         'outline-variant': '#D1D5DB'
       },
       borderRadius: {
-        DEFAULT: '0.125rem',
+        DEFAULT: '0.25rem',
         sm: '0.125rem',
         md: '0.25rem',
         lg: '0.375rem',
         xl: '0.5rem',
         full: '9999px'
       },
-      spacing: {
-        'margin-desktop': '64px',
-        'margin-mobile': '20px',
-        gutter: '24px',
-        'container-max': '1280px',
-        base: '8px'
-      },
       fontFamily: {
-        serif: ['"EB Garamond"', 'Georgia', 'serif'],
-        sans: ['"EB Garamond"', 'Georgia', 'serif'],
-        'headline-lg': ['"EB Garamond"', 'serif'],
-        'headline-md': ['"EB Garamond"', 'serif'],
-        'display-lg': ['"EB Garamond"', 'serif'],
-        'body-lg': ['"EB Garamond"', 'serif'],
-        'body-md': ['"EB Garamond"', 'serif'],
-        'label-md': ['"EB Garamond"', 'serif'],
-        caption: ['"EB Garamond"', 'serif']
+        serif: ['"Playfair Display"', '"EB Garamond"', 'Georgia', 'serif'],
+        sans: ['"Plus Jakarta Sans"', 'system-ui', '-apple-system', 'sans-serif'],
+        display: ['"Playfair Display"', 'Georgia', 'serif'],
+        body: ['"Plus Jakarta Sans"', 'system-ui', 'sans-serif']
       }
     }
   },
