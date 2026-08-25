@@ -11,52 +11,52 @@ const currentYear = new Date().getFullYear();
 
 const links = navRoutes.map((route) => ({
   href: lang === 'tr' ? route.pathTr : route.pathEn,
-  label: t.nav[route.key]
+  label: t.navFooter[route.key] || t.nav[route.key]
 }));
 ---
 
-<footer class="bg-surface-container-high border-t border-sand py-16 px-5 md:px-12 text-ink">
+<footer class="bg-olive text-parchment border-t border-white/15 py-8 md:py-10 px-5 md:px-12">
   <div class="max-w-[1280px] mx-auto">
-    <!-- Top 4 Columns Grid -->
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-8 pb-12 border-b border-sand">
+    <!-- Top 4 Columns Grid (Compact vertical padding) -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-8 pb-8 border-b border-white/15">
       
       <!-- Column 1: Institutional Brand & Mission Statement -->
-      <div class="flex flex-col gap-4">
+      <div class="flex flex-col gap-3">
         <a 
           href={lang === 'tr' ? '/' : '/en'} 
-          class="font-serif text-2xl font-bold tracking-tight text-ink hover:text-olive transition-colors inline-block"
+          class="font-serif text-2xl font-bold tracking-tight text-white hover:text-parchment/80 transition-colors inline-block"
         >
           {t.siteTitle}
         </a>
-        <p class="text-base text-ink/85 leading-relaxed font-serif">
+        <p class="text-sm sm:text-base text-parchment/90 leading-relaxed font-serif">
           {t.footer.missionSnippet}
         </p>
         
         <!-- Ex Libris Motif / Emblem -->
-        <div class="mt-2 pt-2 flex items-center gap-3 text-stone-gray">
-          <div class="w-10 h-10 rounded-full border border-sand bg-parchment flex items-center justify-center shadow-2xs">
-            <svg class="w-5 h-5 text-olive" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <div class="mt-1 flex items-center gap-3 text-parchment/75">
+          <div class="w-8 h-8 rounded-full border border-white/20 bg-white/10 flex items-center justify-center shadow-2xs">
+            <svg class="w-4 h-4 text-parchment" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
               <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18a8.967 8.967 0 00-6 2.292m0-14.25v14.25" />
             </svg>
           </div>
           <div class="text-xs uppercase tracking-widest leading-tight">
-            <span class="font-serif font-bold text-ink block">EX LIBRIS</span>
-            <span class="text-stone-gray font-mono text-[11px]">BODRUM • 2019</span>
+            <span class="font-serif font-bold text-white block">EX LIBRIS</span>
+            <span class="text-parchment/70 font-mono text-[10px]">BODRUM • 2019</span>
           </div>
         </div>
       </div>
 
-      <!-- Column 2: Menu / Navigation Links -->
-      <div class="flex flex-col gap-4">
-        <h3 class="font-serif text-xl text-ink font-bold tracking-tight">
+      <!-- Column 2: Menu / Navigation Links (Title Case) -->
+      <div class="flex flex-col gap-3">
+        <h3 class="font-serif text-xl text-white font-bold tracking-tight">
           {t.footer.navigation}
         </h3>
-        <ul class="space-y-2.5 text-base font-serif" role="list">
+        <ul class="space-y-1.5 text-sm sm:text-base font-serif" role="list">
           {links.map((link) => (
             <li>
               <a
                 href={link.href}
-                class="text-ink/80 hover:text-olive hover:underline decoration-olive underline-offset-4 transition-colors inline-block font-semibold"
+                class="text-parchment/85 hover:text-white hover:underline underline-offset-4 transition-colors inline-block font-medium"
               >
                 {link.label}
               </a>
@@ -65,22 +65,21 @@ const links = navRoutes.map((route) => ({
         </ul>
       </div>
 
-      <!-- Column 3: Social Media & WhatsApp -->
-      <div class="flex flex-col gap-4">
-        <h3 class="font-serif text-xl text-ink font-bold tracking-tight">
+      <!-- Column 3: Sosyal Medya -->
+      <div class="flex flex-col gap-3">
+        <h3 class="font-serif text-xl text-white font-bold tracking-tight">
           {t.footer.socialMedia}
         </h3>
-        <ul class="space-y-3 text-base font-serif" role="list">
-          <!-- WhatsApp Channel -->
+        <ul class="space-y-2.5 text-sm sm:text-base font-serif" role="list">
           <li>
             <a
               href="https://wa.me/905423739748"
               target="_blank"
               rel="noopener noreferrer"
-              class="group flex items-center gap-2.5 text-ink/80 hover:text-olive transition-colors font-medium"
+              class="group flex items-center gap-2.5 text-parchment/85 hover:text-white transition-colors font-medium"
             >
-              <span class="w-8 h-8 rounded border border-sand bg-parchment flex items-center justify-center group-hover:border-olive/60 transition-colors">
-                <svg class="w-4 h-4 text-olive" viewBox="0 0 24 24" fill="currentColor">
+              <span class="w-7 h-7 rounded border border-white/20 bg-white/10 flex items-center justify-center group-hover:border-white transition-colors">
+                <svg class="w-3.5 h-3.5 text-parchment" viewBox="0 0 24 24" fill="currentColor">
                   <path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.711 2.598 2.664-.699c.971.53 1.771.821 2.796.822 3.185 0 5.772-2.587 5.772-5.768 0-3.184-2.587-5.774-5.772-5.774zm3.376 8.204c-.149.418-.752.766-1.042.813-.289.047-.665.066-1.077-.067-.253-.082-.584-.199-1.009-.383-1.796-.777-2.964-2.593-3.054-2.713-.09-.12-.733-.974-.733-1.859 0-.885.464-1.32.63-1.498.165-.178.36-.223.479-.223.12 0 .24.001.344.006.111.006.26-.042.407.311.15.359.51 1.242.555 1.332.045.09.075.195.015.315-.06.12-.09.195-.18.299-.09.105-.189.234-.27.314-.09.09-.184.187-.079.367.105.18.468.772.998 1.246.685.611 1.264.8 1.444.89.18.09.285.075.39-.045.105-.12.45-.524.57-.704.12-.18.24-.15.405-.09.165.06 1.05.495 1.23.585.18.09.3.135.345.21.045.075.045.435-.104.853z"/>
                 </svg>
               </span>
@@ -88,16 +87,15 @@ const links = navRoutes.map((route) => ({
             </a>
           </li>
 
-          <!-- Instagram -->
           <li>
             <a
               href="https://instagram.com"
               target="_blank"
               rel="noopener noreferrer"
-              class="group flex items-center gap-2.5 text-ink/80 hover:text-olive transition-colors font-medium"
+              class="group flex items-center gap-2.5 text-parchment/85 hover:text-white transition-colors font-medium"
             >
-              <span class="w-8 h-8 rounded border border-sand bg-parchment flex items-center justify-center group-hover:border-olive/60 transition-colors">
-                <svg class="w-4 h-4 text-olive" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <span class="w-7 h-7 rounded border border-white/20 bg-white/10 flex items-center justify-center group-hover:border-white transition-colors">
+                <svg class="w-3.5 h-3.5 text-parchment" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                   <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
                   <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
                   <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
@@ -107,16 +105,15 @@ const links = navRoutes.map((route) => ({
             </a>
           </li>
 
-          <!-- YouTube -->
           <li>
             <a
               href="https://youtube.com"
               target="_blank"
               rel="noopener noreferrer"
-              class="group flex items-center gap-2.5 text-ink/80 hover:text-olive transition-colors font-medium"
+              class="group flex items-center gap-2.5 text-parchment/85 hover:text-white transition-colors font-medium"
             >
-              <span class="w-8 h-8 rounded border border-sand bg-parchment flex items-center justify-center group-hover:border-olive/60 transition-colors">
-                <svg class="w-4 h-4 text-olive" viewBox="0 0 24 24" fill="currentColor">
+              <span class="w-7 h-7 rounded border border-white/20 bg-white/10 flex items-center justify-center group-hover:border-white transition-colors">
+                <svg class="w-3.5 h-3.5 text-parchment" viewBox="0 0 24 24" fill="currentColor">
                   <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
                 </svg>
               </span>
@@ -124,12 +121,12 @@ const links = navRoutes.map((route) => ({
             </a>
           </li>
 
-          <li class="pt-1">
+          <li class="pt-0.5">
             <a
               href="mailto:bilgi@bodrumkentkutuphanesi.org"
-              class="flex items-center gap-2 text-sm font-mono text-ink/80 hover:text-olive break-all transition-colors"
+              class="flex items-center gap-1.5 text-xs font-mono text-parchment/85 hover:text-white break-all transition-colors"
             >
-              <span class="material-symbols-outlined text-[18px] text-olive shrink-0">mail</span>
+              <span class="material-symbols-outlined text-[16px] text-parchment shrink-0">mail</span>
               <span>bilgi@bodrumkentkutuphanesi.org</span>
             </a>
           </li>
@@ -137,21 +134,21 @@ const links = navRoutes.map((route) => ({
       </div>
 
       <!-- Column 4: Campus & Visiting -->
-      <div class="flex flex-col gap-4">
-        <h3 class="font-serif text-xl text-ink font-bold tracking-tight">
+      <div class="flex flex-col gap-3">
+        <h3 class="font-serif text-xl text-white font-bold tracking-tight">
           {t.footer.campusAndVisit}
         </h3>
-        <div class="space-y-3 text-base font-serif text-ink/80">
+        <div class="space-y-2 text-sm sm:text-base font-serif text-parchment/90">
           <p class="flex items-start gap-2">
-            <span class="material-symbols-outlined text-[20px] text-olive shrink-0 mt-0.5">location_on</span>
+            <span class="material-symbols-outlined text-[18px] text-parchment shrink-0 mt-0.5">location_on</span>
             <span>{t.footer.address}</span>
           </p>
           <p class="flex items-start gap-2">
-            <span class="material-symbols-outlined text-[20px] text-olive shrink-0 mt-0.5">call</span>
-            <a href="tel:+905423739748" class="hover:text-olive transition-colors font-bold text-ink">{t.footer.phone}</a>
+            <span class="material-symbols-outlined text-[18px] text-parchment shrink-0 mt-0.5">call</span>
+            <a href="tel:+905423739748" class="hover:text-white transition-colors font-bold text-white">{t.footer.phone}</a>
           </p>
           <p class="flex items-start gap-2">
-            <span class="material-symbols-outlined text-[20px] text-olive shrink-0 mt-0.5">schedule</span>
+            <span class="material-symbols-outlined text-[18px] text-parchment shrink-0 mt-0.5">schedule</span>
             <span>{t.footer.openingHours}</span>
           </p>
         </div>
@@ -160,7 +157,7 @@ const links = navRoutes.map((route) => ({
     </div>
 
     <!-- Bottom Bar: Copyright & Legal Policies -->
-    <div class="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-sm font-serif text-stone-gray">
+    <div class="pt-5 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs sm:text-sm font-serif text-parchment/70">
       <p class="text-center sm:text-left">
         &copy; {currentYear} {t.siteTitle}. {t.footer.rightsReserved}
       </p>
@@ -168,21 +165,21 @@ const links = navRoutes.map((route) => ({
       <div class="flex items-center gap-4 sm:gap-6 flex-wrap justify-center">
         <a 
           href={lang === 'tr' ? '/iletisim#kvkk' : '/en/contact#kvkk'} 
-          class="hover:text-olive transition-colors"
+          class="hover:text-white transition-colors"
         >
           {t.footer.kvkk}
         </a>
-        <span class="text-sand hidden sm:inline">•</span>
+        <span class="text-white/30 hidden sm:inline">•</span>
         <a 
           href={lang === 'tr' ? '/iletisim#gizlilik' : '/en/contact#privacy'} 
-          class="hover:text-olive transition-colors"
+          class="hover:text-white transition-colors"
         >
           {t.footer.privacy}
         </a>
-        <span class="text-sand hidden sm:inline">•</span>
+        <span class="text-white/30 hidden sm:inline">•</span>
         <a 
           href={lang === 'tr' ? '/iletisim#cerezler' : '/en/contact#cookies'} 
-          class="hover:text-olive transition-colors"
+          class="hover:text-white transition-colors"
         >
           {t.footer.cookies}
         </a>

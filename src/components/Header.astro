@@ -1,270 +1,162 @@
 ---
-import { getT, navRoutes, getEquivalentLanguageUrl, type Lang } from '../utils/i18n';
+import { getT, navRoutes, type Lang } from '../utils/i18n';
 
 export interface Props {
   lang?: Lang;
   currentPath?: string;
 }
 
-const { lang = 'tr', currentPath = Astro.url.pathname } = Astro.props;
+const { lang = 'tr', currentPath = '/' } = Astro.props;
 const t = getT(lang);
-
-// Helper to normalize path for active route comparison
-const normalizePath = (path: string) => {
-  const p = path.replace(/\/$/, '') || '/';
-  return p;
-};
-
-const activePath = normalizePath(currentPath);
 
 const links = navRoutes.map((route) => {
   const href = lang === 'tr' ? route.pathTr : route.pathEn;
-  const label = t.nav[route.key];
-  const normalizedHref = normalizePath(href);
-  
-  const isActive = normalizedHref === '/' || normalizedHref === '/en'
-    ? activePath === normalizedHref
-    : activePath === normalizedHref || activePath.startsWith(`${normalizedHref}/`);
+  const isExactActive = currentPath === href;
+  const isNestedActive = href !== '/' && href !== '/en' && currentPath.startsWith(href);
+  const isActive = isExactActive || isNestedActive;
 
-  return { href, label, isActive };
+  return {
+    href,
+    label: t.nav[route.key],
+    isActive
+  };
 });
 
-const targetLang: Lang = lang === 'tr' ? 'en' : 'tr';
-const switchLangUrl = getEquivalentLanguageUrl(currentPath, targetLang);
-const homeUrl = lang === 'tr' ? '/' : '/en';
+// Opposite language path for the language switch
+const targetLang = lang === 'tr' ? 'en' : 'tr';
+const currentRouteObj = navRoutes.find(
+  (r) => r.pathTr === currentPath || r.pathEn === currentPath
+);
+const switchUrl = currentRouteObj
+  ? targetLang === 'tr'
+    ? currentRouteObj.pathTr
+    : currentRouteObj.pathEn
+  : targetLang === 'tr'
+    ? '/'
+    : '/en';
 ---
 
-<header class="sticky top-0 z-40 w-full bg-parchment/95 backdrop-blur-md border-b border-sand h-22 transition-all duration-300">
-  <div class="max-w-[1280px] mx-auto h-full px-5 md:px-10 flex items-center justify-between gap-4">
+<header
+  id="main-header"
+  class="fixed top-0 left-0 right-0 z-50 bg-olive text-parchment border-b border-white/15 h-22 transition-all duration-200 shadow-sm"
+>
+  <div class="max-w-[1280px] mx-auto h-full px-5 md:px-12 flex items-center justify-between gap-4">
     
-    <!-- Brand / Logo with Bodrum Emblem -->
-    <a 
-      href={homeUrl} 
-      class="group flex items-center gap-3 focus:outline-none focus-visible:ring-2 focus-visible:ring-olive rounded-sm py-1 shrink-0"
-      aria-label={`${t.siteTitle} - ${t.nav.home}`}
+    <!-- 1. Left: Brand Logo & Title (Aligned with page content) -->
+    <a
+      href={lang === 'tr' ? '/' : '/en'}
+      class="flex items-center gap-3 shrink-0 group focus:outline-none focus-visible:ring-2 focus-visible:ring-parchment"
+      aria-label={`${t.siteTitle} ${t.home}`}
     >
-      <div class="w-10 h-10 rounded-full bg-olive text-white flex items-center justify-center shadow-xs transition-transform group-hover:scale-105">
-        <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-          <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18a8.967 8.967 0 00-6 2.292m0-14.25v14.25" />
-        </svg>
+      <!-- Official Emblem Logo -->
+      <img
+        src="/images/logo.png"
+        alt="Bodrum Kent Kütüphanesi Logosu"
+        class="w-11 h-11 sm:w-12 sm:h-12 object-contain rounded-xs border border-white/20 bg-white/5 shadow-2xs group-hover:scale-105 transition-transform"
+      />
+      
+      <div class="flex flex-col">
+        <span class="font-serif text-xl sm:text-2xl font-bold tracking-tight text-white leading-tight">
+          {t.siteTitle}
+        </span>
+        <span class="text-[10.5px] font-mono tracking-widest text-parchment/80 uppercase">
+          KIZILAĞAÇ • BODRUM
+        </span>
       </div>
-      <span class="font-serif text-xl sm:text-2xl font-bold text-ink tracking-tight group-hover:text-olive transition-colors duration-200">
-        {t.siteTitle}
-      </span>
     </a>
 
-    <!-- Desktop Navigation: Bold, Upper Case, Prominent Font Size -->
-    <nav class="hidden xl:flex items-center gap-4 2xl:gap-6" aria-label="Ana Menü">
+    <!-- 2. Center: Desktop Navigation Links (Centered, Single-line where needed, Centered text) -->
+    <nav class="hidden xl:flex items-center justify-center gap-4 2xl:gap-6 flex-1 px-4" aria-label="Ana Menü">
       {links.map((link) => (
         <a
           href={link.href}
-          class={`text-[15px] 2xl:text-[16px] font-bold font-serif uppercase tracking-wider transition-all duration-200 ${
+          class={`font-serif text-[13px] 2xl:text-[14px] uppercase tracking-wider font-bold text-center transition-all duration-150 py-1.5 px-1 whitespace-nowrap ${
             link.isActive
-              ? 'border-b-2 border-olive pb-1 text-olive'
-              : 'text-ink/85 hover:text-olive hover:border-b-2 hover:border-sand pb-1'
+              ? 'text-white border-b-2 border-parchment shadow-xs'
+              : 'text-parchment/85 hover:text-white hover:border-b border-parchment/50'
           }`}
-          aria-current={link.isActive ? 'page' : undefined}
         >
           {link.label}
         </a>
       ))}
     </nav>
 
-    <!-- Desktop Utility Actions: Search & Language Switcher -->
-    <div class="hidden xl:flex items-center gap-3">
-      <!-- Search Trigger Button -->
+    <!-- 3. Right: Utility Controls (Search Modal Trigger, Language Toggle, Mobile Hamburger) -->
+    <div class="flex items-center gap-2.5 sm:gap-3 shrink-0">
+      
+      <!-- Instant Search Modal Trigger Button -->
       <button
         type="button"
         data-search-trigger
-        class="flex items-center gap-2 px-3 py-1.5 rounded border border-sand bg-surface-container-low hover:bg-surface-container hover:border-olive/40 text-ink/80 hover:text-olive transition-all text-xs font-serif focus:outline-none focus-visible:ring-2 focus-visible:ring-olive cursor-pointer"
-        aria-label={t.search.title}
-        title={`${t.search.title} (⌘K)`}
+        class="flex items-center gap-1.5 px-3 py-1.5 text-xs font-serif font-bold text-parchment/90 bg-white/10 border border-white/20 hover:bg-white/20 hover:text-white rounded-xs transition-colors shadow-2xs"
+        aria-label="Site İçi Arama"
       >
-        <span class="material-symbols-outlined text-[18px] text-olive">search</span>
-        <span class="text-xs font-semibold text-ink/80">{t.search.title}</span>
-        <kbd class="font-mono text-[10px] bg-parchment border border-sand px-1.5 py-0.5 rounded text-stone-gray shadow-xs">
+        <span class="material-symbols-outlined text-[17px]">search</span>
+        <span class="hidden sm:inline font-mono uppercase text-[11px] tracking-wider">ARA</span>
+        <kbd class="hidden md:inline-block text-[10px] font-mono bg-black/20 text-parchment/80 px-1 py-0.2 rounded border border-white/20">
           ⌘K
         </kbd>
       </button>
 
-      <!-- Language Switcher Toggle -->
+      <!-- Language Toggle Switcher -->
       <a
-        href={switchLangUrl}
-        class="flex items-center text-xs tracking-wider font-bold text-ink border border-sand hover:border-olive/50 bg-surface-container-low px-2.5 py-1.5 rounded transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-olive font-serif"
-        title={lang === 'tr' ? 'Switch to English' : 'Türkçe\'ye geç'}
-        aria-label={lang === 'tr' ? 'Switch website to English' : 'Web sitesini Türkçe\'ye çevir'}
+        href={switchUrl}
+        class="px-3 py-1.5 text-xs font-mono font-bold tracking-wider uppercase text-parchment/90 bg-white/10 border border-white/20 hover:bg-white/20 hover:text-white rounded-xs transition-colors flex items-center gap-1 shadow-2xs"
+        aria-label={`Dili Değiştir (${targetLang.toUpperCase()})`}
       >
-        <span class={lang === 'tr' ? 'font-bold text-olive' : 'text-stone-gray hover:text-ink'}>TR</span>
-        <span class="mx-1 text-sand">|</span>
-        <span class={lang === 'en' ? 'font-bold text-olive' : 'text-stone-gray hover:text-ink'}>EN</span>
+        <span class="material-symbols-outlined text-[15px]">language</span>
+        <span>{lang === 'tr' ? 'EN' : 'TR'}</span>
       </a>
-    </div>
 
-    <!-- Mobile Action Buttons -->
-    <div class="flex xl:hidden items-center gap-2">
-      <!-- Mobile Search Button -->
+      <!-- Mobile Hamburger Button (Below xl breakpoint) -->
       <button
         type="button"
-        data-search-trigger
-        class="p-2 text-ink/80 hover:text-olive focus:outline-none focus-visible:ring-2 focus-visible:ring-olive rounded"
-        aria-label={t.search.title}
-      >
-        <span class="material-symbols-outlined text-2xl">search</span>
-      </button>
-
-      <!-- Mobile Menu Hamburger Button -->
-      <button
-        type="button"
-        id="mobile-menu-open-btn"
-        class="p-2 text-ink/80 hover:text-olive focus:outline-none focus-visible:ring-2 focus-visible:ring-olive rounded"
+        id="mobile-menu-toggle"
+        class="xl:hidden p-2 text-parchment hover:text-white hover:bg-white/10 rounded-xs transition-colors"
         aria-label="Menüyü Aç"
         aria-expanded="false"
-        aria-controls="mobile-drawer"
       >
-        <span class="material-symbols-outlined text-2xl">menu</span>
+        <span class="material-symbols-outlined text-2xl" id="menu-icon">menu</span>
       </button>
+
     </div>
 
   </div>
-</header>
 
-<!-- Mobile Navigation Drawer -->
-<div
-  id="mobile-drawer"
-  class="fixed inset-0 z-50 transform -translate-x-full transition-transform duration-300 ease-in-out xl:hidden"
-  aria-hidden="true"
-  role="dialog"
-  aria-modal="true"
-  aria-label="Mobil Menü"
->
-  <!-- Backdrop overlay -->
-  <div 
-    id="mobile-drawer-backdrop" 
-    class="fixed inset-0 bg-ink/60 backdrop-blur-xs opacity-0 transition-opacity duration-300"
-  ></div>
-
-  <!-- Drawer panel content -->
-  <div class="relative w-full max-w-sm bg-parchment h-full flex flex-col shadow-2xl border-r border-sand overflow-y-auto">
-    
-    <!-- Drawer Header -->
-    <div class="p-6 border-b border-sand flex items-center justify-between">
-      <div class="flex items-center gap-2.5">
-        <div class="w-8 h-8 rounded-full bg-olive text-white flex items-center justify-center shadow-xs">
-          <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18a8.967 8.967 0 00-6 2.292m0-14.25v14.25" />
-          </svg>
-        </div>
-        <span class="font-serif text-lg font-bold text-ink">
-          {t.siteTitle}
-        </span>
-      </div>
-
-      <button
-        type="button"
-        id="mobile-menu-close-btn"
-        class="p-2 text-ink/70 hover:text-olive focus:outline-none focus-visible:ring-2 focus-visible:ring-olive rounded"
-        aria-label="Menüyü Kapat"
-      >
-        <span class="material-symbols-outlined text-2xl">close</span>
-      </button>
-    </div>
-
-    <!-- Drawer Navigation Links -->
-    <nav class="p-6 flex flex-col gap-3 flex-1" aria-label="Mobil Menü Linkleri">
+  <!-- Mobile Drawer Menu -->
+  <div
+    id="mobile-menu-drawer"
+    class="xl:hidden hidden bg-olive border-b border-white/15 px-5 py-6 space-y-4 shadow-xl"
+  >
+    <nav class="flex flex-col space-y-3" aria-label="Mobil Menü">
       {links.map((link) => (
         <a
           href={link.href}
-          class={`text-base font-serif font-bold uppercase tracking-wider transition-colors py-2.5 border-b border-sand/60 flex items-center justify-between ${
+          class={`font-serif text-base uppercase tracking-wider font-bold py-2 px-3 rounded-xs transition-colors text-center ${
             link.isActive
-              ? 'text-olive font-bold'
-              : 'text-ink hover:text-olive'
+              ? 'bg-white/20 text-white font-bold'
+              : 'text-parchment/90 hover:bg-white/10 hover:text-white'
           }`}
         >
-          <span>{link.label}</span>
-          <span class="material-symbols-outlined text-sm text-olive">chevron_right</span>
+          {link.label}
         </a>
       ))}
     </nav>
-
-    <!-- Drawer Footer Actions -->
-    <div class="p-6 border-t border-sand bg-surface-container-low flex flex-col gap-4">
-      <button
-        type="button"
-        data-search-trigger
-        class="w-full flex items-center justify-center gap-2 py-2.5 px-4 rounded border border-sand bg-parchment text-ink text-sm font-serif hover:bg-surface-container transition-colors"
-      >
-        <span class="material-symbols-outlined text-lg text-olive">search</span>
-        <span>{t.search.placeholder}</span>
-      </button>
-
-      <div class="flex items-center justify-between pt-2 text-sm text-stone-gray font-serif">
-        <span>Dil / Language:</span>
-        <a
-          href={switchLangUrl}
-          class="flex items-center font-bold text-ink border border-sand bg-parchment px-3 py-1 rounded text-xs hover:border-olive transition-colors"
-        >
-          <span class={lang === 'tr' ? 'text-olive font-bold' : 'text-stone-gray'}>TR</span>
-          <span class="mx-1 text-sand">|</span>
-          <span class={lang === 'en' ? 'text-olive font-bold' : 'text-stone-gray'}>EN</span>
-        </a>
-      </div>
-    </div>
-
   </div>
-</div>
+</header>
 
 <script>
-  function setupMobileDrawer() {
-    const openBtn = document.getElementById('mobile-menu-open-btn');
-    const closeBtn = document.getElementById('mobile-menu-close-btn');
-    const drawer = document.getElementById('mobile-drawer');
-    const backdrop = document.getElementById('mobile-drawer-backdrop');
+  // Mobile drawer toggle interaction
+  const toggleBtn = document.getElementById('mobile-menu-toggle');
+  const drawer = document.getElementById('mobile-menu-drawer');
+  const menuIcon = document.getElementById('menu-icon');
 
-    if (!openBtn || !closeBtn || !drawer || !backdrop) return;
-
-    const elOpenBtn = openBtn;
-    const elCloseBtn = closeBtn;
-    const elDrawer = drawer;
-    const elBackdrop = backdrop;
-
-    function openDrawer() {
-      elDrawer.classList.remove('-translate-x-full');
-      elDrawer.setAttribute('aria-hidden', 'false');
-      elOpenBtn.setAttribute('aria-expanded', 'true');
-      document.body.style.overflow = 'hidden';
-      setTimeout(() => {
-        elBackdrop.classList.remove('opacity-0');
-        elBackdrop.classList.add('opacity-100');
-      }, 10);
-    }
-
-    function closeDrawer() {
-      elBackdrop.classList.remove('opacity-100');
-      elBackdrop.classList.add('opacity-0');
-      elDrawer.classList.add('-translate-x-full');
-      elDrawer.setAttribute('aria-hidden', 'true');
-      elOpenBtn.setAttribute('aria-expanded', 'false');
-      document.body.style.overflow = '';
-    }
-
-    elOpenBtn.addEventListener('click', openDrawer);
-    elCloseBtn.addEventListener('click', closeDrawer);
-    elBackdrop.addEventListener('click', closeDrawer);
-
-    // Close on Escape key
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape' && !elDrawer.classList.contains('-translate-x-full')) {
-        closeDrawer();
-      }
-    });
-
-    // Close drawer when a navigation link is clicked
-    const navLinks = elDrawer.querySelectorAll('nav a');
-    navLinks.forEach((link) => {
-      link.addEventListener('click', closeDrawer);
+  if (toggleBtn && drawer && menuIcon) {
+    toggleBtn.addEventListener('click', () => {
+      const isExpanded = toggleBtn.getAttribute('aria-expanded') === 'true';
+      toggleBtn.setAttribute('aria-expanded', String(!isExpanded));
+      drawer.classList.toggle('hidden');
+      menuIcon.textContent = isExpanded ? 'menu' : 'close';
     });
   }
-
-  setupMobileDrawer();
-  document.addEventListener('astro:page-load', setupMobileDrawer);
 </script>

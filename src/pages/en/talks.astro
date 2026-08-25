@@ -8,7 +8,7 @@ const t = getT(lang);
 
 const allTalks = await getCollection('talks');
 const featuredTalks = allTalks.filter((t) => t.data.featured);
-const pastTalks = allTalks.filter((t) => !t.data.featured);
+const otherTalks = allTalks.filter((t) => !t.data.featured);
 
 const categoriesEn = [
   "ALL", "AUTHORS", "LITERATURE", "CULTURE", "ARTS", "HISTORY", "PHILOSOPHY", "ARCHAEOLOGY", "SOCIOLOGY", "PSYCHOLOGY", "ECOLOGY", "SCIENCE"
@@ -22,10 +22,10 @@ const categoriesEn = [
   currentPath="/en/talks"
 >
   <!-- Hero Section -->
-  <section class="py-16 md:py-24 px-5 md:px-12 bg-surface-bright border-b border-sand">
+  <section class="py-12 md:py-16 px-5 md:px-12 bg-surface-bright border-b border-sand">
     <div class="max-w-[1280px] mx-auto">
       <div class="max-w-3xl">
-        <h1 class="font-serif text-3xl sm:text-4xl md:text-5xl text-ink font-bold leading-tight mb-4">
+        <h1 class="font-serif text-3xl sm:text-4xl text-ink font-bold leading-tight mb-4">
           Culture, Art and Science Talks
         </h1>
         <p class="font-serif text-lg sm:text-xl text-ink/80 leading-relaxed">
@@ -36,15 +36,15 @@ const categoriesEn = [
   </section>
 
   <!-- Category Pills Bar -->
-  <div class="border-b border-sand bg-parchment py-4 px-5 md:px-12 sticky top-22 z-30 overflow-x-auto">
-    <div class="max-w-[1280px] mx-auto flex items-center gap-2.5 min-w-max">
+  <div class="border-b border-sand bg-parchment py-3.5 px-5 md:px-12 sticky top-22 z-30 overflow-x-auto">
+    <div class="max-w-[1280px] mx-auto flex items-center gap-2 min-w-max">
       {categoriesEn.map((cat, idx) => (
         <button
           type="button"
-          class={`px-4 py-2 text-sm font-serif font-bold uppercase tracking-wider transition-colors ${
+          class={`px-3 py-1.5 text-xs font-serif font-bold uppercase tracking-wider rounded-xs transition-colors shadow-2xs ${
             idx === 0
-              ? 'bg-olive text-white shadow-xs'
-              : 'bg-surface-container-low border border-sand text-ink hover:border-olive hover:text-olive'
+              ? 'bg-olive text-white ring-2 ring-olive/40'
+              : 'bg-olive text-white hover:bg-bodrum-blue-dark'
           }`}
         >
           {cat}
@@ -53,20 +53,20 @@ const categoriesEn = [
     </div>
   </div>
 
-  <div class="max-w-[1280px] mx-auto px-5 md:px-12 py-16 space-y-20">
+  <div class="max-w-[1280px] mx-auto px-5 md:px-12 py-12 space-y-16">
     
     <!-- Featured Talks -->
     <section>
-      <h2 class="font-serif text-2xl sm:text-3xl text-ink font-bold mb-8 pb-3 border-b border-sand">
+      <h2 class="font-serif text-2xl sm:text-3xl text-ink font-bold mb-6 pb-3 border-b border-sand">
         Featured Talks
       </h2>
 
       <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
         {featuredTalks.map((talk) => (
-          <div class="bg-surface-container-low border-2 border-olive p-8 flex flex-col justify-between shadow-xs">
+          <div class="bg-surface-container-low border-2 border-olive p-6 sm:p-8 flex flex-col justify-between shadow-xs rounded-xs">
             <div>
               <div 
-                class="relative aspect-[16/9] overflow-hidden bg-black mb-6 cursor-pointer group border border-sand"
+                class="relative aspect-[16/9] overflow-hidden bg-black mb-5 cursor-pointer group border border-sand rounded-2xs"
                 data-youtube-id={talk.data.youtubeId}
               >
                 <img
@@ -76,8 +76,8 @@ const categoriesEn = [
                 />
                 
                 <div class="absolute inset-0 bg-gradient-to-t from-ink/70 via-transparent to-transparent flex items-center justify-center">
-                  <div class="w-16 h-16 rounded-full bg-olive text-white flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform">
-                    <span class="material-symbols-outlined text-4xl">play_arrow</span>
+                  <div class="w-14 h-14 rounded-full bg-olive text-white flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform">
+                    <span class="material-symbols-outlined text-3xl">play_arrow</span>
                   </div>
                 </div>
 
@@ -91,11 +91,11 @@ const categoriesEn = [
                 <span class="font-bold">{talk.data.date}</span>
               </div>
 
-              <h3 class="font-serif text-xl sm:text-2xl text-ink font-bold leading-tight mb-4">
+              <h3 class="font-serif text-xl sm:text-2xl text-ink font-bold leading-tight mb-3">
                 {talk.data.titleEn}
               </h3>
 
-              <p class="font-serif text-base text-ink/85 leading-relaxed mb-6">
+              <p class="font-serif text-base text-ink/85 leading-relaxed mb-6 text-justify">
                 {talk.data.summaryEn}
               </p>
             </div>
@@ -103,7 +103,7 @@ const categoriesEn = [
             <button
               type="button"
               data-youtube-id={talk.data.youtubeId}
-              class="w-full py-3.5 bg-olive hover:bg-bodrum-blue-dark text-white text-sm font-serif font-bold uppercase tracking-wider transition-colors flex items-center justify-center gap-2 shadow-xs"
+              class="w-full py-3 bg-olive hover:bg-bodrum-blue-dark text-white text-xs sm:text-sm font-serif font-bold uppercase tracking-wider transition-colors flex items-center justify-center gap-2 shadow-xs rounded-xs"
             >
               <span class="material-symbols-outlined text-base">play_circle</span>
               <span>Watch Video</span>
@@ -113,18 +113,18 @@ const categoriesEn = [
       </div>
     </section>
 
-    <!-- Past Talks -->
+    <!-- Other Talks and Archive -->
     <section>
-      <h2 class="font-serif text-2xl sm:text-3xl text-ink font-bold mb-8 pb-3 border-b border-sand">
-        Past Talks and Archive
+      <h2 class="font-serif text-2xl sm:text-3xl text-ink font-bold mb-6 pb-3 border-b border-sand">
+        Other Talks and Archive
       </h2>
 
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {pastTalks.map((talk) => (
-          <div class="bg-surface-container-low border-2 border-olive p-6 flex flex-col justify-between shadow-xs">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        {otherTalks.map((talk) => (
+          <div class="bg-surface-container-low border-2 border-olive p-6 flex flex-col justify-between shadow-xs rounded-xs">
             <div>
               <div 
-                class="relative aspect-[16/9] overflow-hidden bg-black mb-4 cursor-pointer group border border-sand"
+                class="relative aspect-[16/9] overflow-hidden bg-black mb-4 cursor-pointer group border border-sand rounded-2xs"
                 data-youtube-id={talk.data.youtubeId}
               >
                 <img
@@ -150,7 +150,7 @@ const categoriesEn = [
                 {talk.data.titleEn}
               </h3>
 
-              <p class="font-serif text-sm text-ink/75 leading-relaxed mb-4">
+              <p class="font-serif text-sm text-ink/75 leading-relaxed mb-4 text-justify">
                 {talk.data.summaryEn}
               </p>
             </div>
@@ -158,7 +158,7 @@ const categoriesEn = [
             <button
               type="button"
               data-youtube-id={talk.data.youtubeId}
-              class="w-full py-2.5 bg-parchment border border-olive text-olive hover:bg-olive hover:text-white text-xs font-serif font-bold uppercase tracking-wider transition-colors flex items-center justify-center gap-1.5"
+              class="w-full py-2.5 bg-parchment border border-olive text-olive hover:bg-olive hover:text-white text-xs font-serif font-bold uppercase tracking-wider transition-colors flex items-center justify-center gap-1.5 rounded-xs"
             >
               <span>Watch</span>
               <span class="material-symbols-outlined text-xs">arrow_forward</span>

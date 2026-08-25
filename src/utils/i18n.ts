@@ -1,7 +1,7 @@
 export const translations = {
   tr: {
     siteTitle: "Bodrum Kent Kütüphanesi",
-    siteTagline: "Bodrum’un Kültürel Hafızası İçin Yaşayan Bir Kütüphane",
+    siteTagline: "Bodrum’un Kültürel Hafızası İçin, Yaşayan Bir Kütüphane",
     home: "ANA SAYFA",
     about: "HAKKIMIZDA",
     events: "ETKİNLİKLER",
@@ -45,9 +45,18 @@ export const translations = {
       support: "DESTEK & GÖNÜLLÜ KATILIM",
       contact: "İLETİŞİM"
     },
+    navFooter: {
+      home: "Ana Sayfa",
+      about: "Hakkımızda",
+      events: "Etkinlikler",
+      talks: "Söyleşiler",
+      fisherman: "Halikarnas Balıkçısı",
+      support: "Destek & Gönüllü Katılım",
+      contact: "İletişim"
+    },
     footer: {
       navigation: "Menü",
-      socialMedia: "Sosyal Medya & İletişim",
+      socialMedia: "Sosyal Medya",
       campusAndVisit: "Yerleşke & İletişim",
       address: "Kızılağaç, Bodrum / Muğla",
       phone: "+90 (0) 542 373 97 48",
@@ -92,13 +101,13 @@ export const translations = {
     viewAll: "View All",
     subscribeNewsletter: "Stay Informed with Our Newsletter",
     subscribeButton: "SUBSCRIBE",
-    newsletterDesc: "Subscribe to receive updates on cultural programs, workshops, and announcements.",
+    newsletterDesc: "Subscribe to receive updates on cultural programs, workshops, and archival releases.",
     rightsReserved: "All rights reserved.",
     historyTitle: "Origins of the Concept",
-    historyP1: "The name and concept of Bodrum City Library were first articulated on 16.09.2019 at Dibeklihan Culture & Art Village by esteemed cultural figures.",
+    historyP1: "The name and founding concept of Bodrum City Library were first articulated on September 16, 2019, at Dibeklihan Culture & Art Village by the esteemed figures.",
     historyP2: "The name Bodrum City Library was entrusted to the Olive Seeds Library team by Mr. Sönmez Taner on September 7, 2019.",
     contactStayInTouch: "Stay in Touch",
-    contactDesc: "Reach out to us for cultural programs, collaborative projects, and general inquiries.",
+    contactDesc: "Please reach out to us for cultural programs, collaborative projects, and general inquiries.",
     nameLabel: "Full Name",
     emailLabel: "Email Address",
     phoneLabel: "Phone Number",
@@ -118,36 +127,61 @@ export const translations = {
       support: "SUPPORT & VOLUNTEER",
       contact: "CONTACT"
     },
+    navFooter: {
+      home: "Home",
+      about: "About Us",
+      events: "Events",
+      talks: "Talks",
+      fisherman: "The Fisherman of Halicarnassus",
+      support: "Support & Volunteer",
+      contact: "Contact"
+    },
     footer: {
       navigation: "Menu",
-      socialMedia: "Social Media & Contact",
+      socialMedia: "Social Media",
       campusAndVisit: "Campus & Contact",
       address: "Kizilagac, Bodrum / Mugla, Turkiye",
       phone: "+90 (0) 542 373 97 48",
       openingHours: "Tuesday – Sunday: 09:00 – 19:00",
       closedMondays: "Closed on Mondays.",
-      missionSnippet: "A living city library preserving and carrying Bodrum's historical, cultural, artistic, and literary heritage into the future",
-      kvkk: "Personal Data Protection (KVKK)",
+      missionSnippet: "A living city library preserving and carrying Bodrum's historical, cultural, and artistic heritage into the future.",
+      kvkk: "Personal Data Protection Law (KVKK)",
       privacy: "Privacy Policy",
       cookies: "Cookie Policy",
       rightsReserved: "All rights reserved."
     },
     search: {
       title: "Search",
-      placeholder: "Search library (events, books, talks...)",
+      placeholder: "Search events, archives, books...",
       all: "All",
       events: "Events",
-      books: "Works & Books",
-      talks: "Talks & Recordings",
+      books: "Books",
+      talks: "Talks",
       pages: "Pages",
-      noResults: "No results matched your search query.",
+      noResults: "No results found for your query.",
       popularSearches: "Popular Searches",
-      keyboardHint: "Enter to select, ↑↓ to navigate, ESC to close"
+      keyboardHint: "Press Enter to select, ↑↓ to navigate, ESC to close"
     }
   }
 };
 
 export type Lang = 'tr' | 'en';
+
+export interface RouteItem {
+  key: keyof typeof translations.tr.nav;
+  pathTr: string;
+  pathEn: string;
+}
+
+export const navRoutes: RouteItem[] = [
+  { key: 'home', pathTr: '/', pathEn: '/en' },
+  { key: 'about', pathTr: '/hakkimizda', pathEn: '/en/about' },
+  { key: 'events', pathTr: '/etkinlikler', pathEn: '/en/events' },
+  { key: 'talks', pathTr: '/soylesiler', pathEn: '/en/talks' },
+  { key: 'fisherman', pathTr: '/halikarnas-balikcisi', pathEn: '/en/fisherman-of-halicarnassus' },
+  { key: 'support', pathTr: '/destek', pathEn: '/en/support' },
+  { key: 'contact', pathTr: '/iletisim', pathEn: '/en/contact' }
+];
 
 export function getT(lang: Lang) {
   return translations[lang] || translations.tr;
@@ -161,39 +195,16 @@ export function getRelativeLocaleUrl(lang: Lang, path: string) {
   return `/en${cleanPath === '/' ? '' : cleanPath}`;
 }
 
-export const navRoutes = [
-  { key: 'home', pathTr: '/', pathEn: '/en' },
-  { key: 'about', pathTr: '/hakkimizda', pathEn: '/en/about' },
-  { key: 'events', pathTr: '/etkinlikler', pathEn: '/en/events' },
-  { key: 'talks', pathTr: '/soylesiler', pathEn: '/en/talks' },
-  { key: 'fisherman', pathTr: '/halikarnas-balikcisi', pathEn: '/en/fisherman-of-halicarnassus' },
-  { key: 'support', pathTr: '/destek', pathEn: '/en/support' },
-  { key: 'contact', pathTr: '/iletisim', pathEn: '/en/contact' }
-] as const;
-
-export function getEquivalentLanguageUrl(pathname: string, targetLang: 'tr' | 'en'): string {
-  const cleanPath = pathname.replace(/\/$/, '') || '/';
-
-  if (targetLang === 'en') {
-    if (cleanPath === '/' || cleanPath === '') return '/en';
-    if (cleanPath === '/hakkimizda') return '/en/about';
-    if (cleanPath === '/etkinlikler') return '/en/events';
-    if (cleanPath === '/soylesiler') return '/en/talks';
-    if (cleanPath === '/halikarnas-balikcisi') return '/en/fisherman-of-halicarnassus';
-    if (cleanPath === '/destek') return '/en/support';
-    if (cleanPath === '/iletisim') return '/en/contact';
-    if (cleanPath.startsWith('/en')) return cleanPath;
-    return `/en${cleanPath}`;
-  } else {
-    if (cleanPath === '/en' || cleanPath === '/en/') return '/';
-    if (cleanPath === '/en/about') return '/hakkimizda';
-    if (cleanPath === '/en/events') return '/etkinlikler';
-    if (cleanPath === '/en/talks') return '/soylesiler';
-    if (cleanPath === '/en/fisherman-of-halicarnassus') return '/halikarnas-balikcisi';
-    if (cleanPath === '/en/support') return '/destek';
-    if (cleanPath === '/en/contact') return '/iletisim';
-    if (cleanPath.startsWith('/en/')) return cleanPath.replace(/^\/en/, '') || '/';
-    if (cleanPath === '/en') return '/';
-    return cleanPath;
+export function getEquivalentLanguageUrl(currentPath: string, targetLang: Lang): string {
+  const cleanPath = currentPath.replace(/\/$/, '') || '/';
+  const currentRoute = navRoutes.find(
+    (r) => r.pathTr === cleanPath || r.pathEn === cleanPath
+  );
+  if (currentRoute) {
+    return targetLang === 'tr' ? currentRoute.pathTr : currentRoute.pathEn;
   }
+  if (targetLang === 'tr') {
+    return cleanPath.replace(/^\/en/, '') || '/';
+  }
+  return `/en${cleanPath === '/' ? '' : cleanPath}`;
 }

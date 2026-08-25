@@ -13,7 +13,7 @@ const t = getT(lang);
   currentPath="/"
 >
   <!-- 1. Hero & Ana Tanıtım Vitrini -->
-  <section class="relative min-h-[75vh] flex items-center justify-center py-12 md:py-20 px-5 md:px-12 overflow-hidden border-b border-sand bg-surface-bright">
+  <section class="relative min-h-[70vh] flex items-center justify-center py-10 md:py-16 px-5 md:px-12 overflow-hidden border-b border-sand bg-surface-bright">
     
     <!-- Subtle Ambient Background Layer -->
     <div class="absolute inset-0 z-0 opacity-10 pointer-events-none">
@@ -33,28 +33,29 @@ const t = getT(lang);
     <div class="relative z-10 max-w-[1280px] mx-auto w-full">
       <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
         
-        <!-- Left: Headline & 2-Paragraph Manifesto -->
+        <!-- Left: Standardized Heading & Justified Manifesto -->
         <div class="lg:col-span-7 space-y-6">
-          <!-- Scaled-down Balanced Headline -->
-          <h1 class="font-serif text-3xl sm:text-4xl lg:text-[40px] text-ink font-bold leading-[1.25] tracking-tight text-balance">
-            Bodrum’un Kültürel Hafızası İçin Yaşayan Bir Kütüphane
+          
+          <!-- Standardized Main Heading with Comma -->
+          <h1 class="font-serif text-3xl sm:text-4xl lg:text-[38px] text-ink font-bold leading-[1.25] tracking-tight">
+            Bodrum’un Kültürel Hafızası İçin, Yaşayan Bir Kütüphane
           </h1>
 
-          <!-- Main Manifesto Text: 2 Paragraphs with Exact Line Breaks -->
+          <!-- Main Manifesto Text: 2 Paragraphs with Text-Justify Balance -->
           <div class="bg-parchment border border-sand p-6 sm:p-8 rounded-xs shadow-xs space-y-4">
-            <p class="font-serif text-lg sm:text-xl text-ink/90 leading-relaxed text-balance">
+            <p class="font-serif text-lg sm:text-xl text-ink/90 leading-relaxed text-justify">
               Bodrum Kent Kütüphanesi, Bodrum’da yaşayanlar ile kenti ziyaret eden kitapseverleri, edebiyat, sanat ve bilim dünyasının değerli isimleriyle ve kitaplarıyla buluşturmayı amaçlayan, çok amaçlı ve yaşayan bir kütüphane projesidir.
             </p>
-            <p class="font-serif text-lg sm:text-xl text-ink/90 leading-relaxed text-balance">
+            <p class="font-serif text-lg sm:text-xl text-ink/90 leading-relaxed text-justify">
               Kitap merkezli etkinlikler, söyleşiler, atölyeler ve kültürel buluşmalar aracılığıyla yaşam boyu öğrenmeyi, üretimi ve paylaşımı destekleyen; Halikarnas Balıkçısı’nın Akdeniz ve Mavi Hümanizmasını koruyan, Anadolu Uygarlığı’nın değerinin altını çizen; bağımsız bir buluşma alanı olarak tasarlanmaktadır.
             </p>
           </div>
         </div>
 
-        <!-- Right: Atmospheric Heritage Photo (Direct full-color presentation) -->
+        <!-- Right: Atmospheric Heritage Photo -->
         <div class="lg:col-span-5">
           <div class="relative group">
-            <div class="relative bg-parchment border border-sand p-3 shadow-md">
+            <div class="relative bg-parchment border-2 border-olive p-3 shadow-md rounded-xs">
               <div class="aspect-[4/3] overflow-hidden bg-surface-container-high relative border border-sand/60">
                 <img
                   src="https://lh3.googleusercontent.com/aida-public/AB6AXuDQ_kg3bbgJ4ynOz1o7DQcY3YaIdeG_zUESiNKW-81FsNfEZqrXlPi-ZAYWzb2FYdKriB4ESdIgn04zGCTSrnOaQAobk2tEQSDMKK4TlQhdPdjUJk74KLsSusQUSR9nHe1QycFJgHdfJUQSr8eFa2k0wQHdX3j1D5aQBbxg9mUEAGpQs_UGA_l1geAuKfbBil5Wy-_VugN7cjAepbQ_HoOugyaLOfsfF-vsYSCOhY75Ao3sAvwHFdv3nGJYn9whKvXn8vnrP8j4yEE"
@@ -73,8 +74,8 @@ const t = getT(lang);
 
       </div>
 
-      <!-- 3 Strategic Institutional Headings & Descriptions -->
-      <div class="mt-14 pt-8 border-t border-sand grid grid-cols-1 md:grid-cols-3 gap-6 text-ink">
+      <!-- 3 Strategic Institutional Headings & Lowercase Descriptions -->
+      <div class="mt-12 pt-8 border-t border-sand grid grid-cols-1 md:grid-cols-3 gap-6 text-ink">
         
         <!-- 1. Zeytin Taneleri Kütüphanesi -->
         <div class="bg-parchment p-6 border-2 border-olive rounded-xs shadow-xs flex flex-col justify-between">
@@ -83,7 +84,7 @@ const t = getT(lang);
               Zeytin Taneleri Kütüphanesi
             </h3>
             <p class="font-serif text-base text-ink/85 leading-relaxed mb-4">
-              Çocuk, Genç, Ebeveyn ve Eğitimcilere yönelik kütüphane
+              Çocuk, genç, ebeveyn ve eğitimcilere yönelik kütüphane
             </p>
           </div>
           <div class="pt-2 border-t border-olive/20 text-xs font-serif italic text-stone-gray">
@@ -98,7 +99,7 @@ const t = getT(lang);
               Halikarnaslı Çocuklar
             </h3>
             <p class="font-serif text-base text-ink/85 leading-relaxed mb-4">
-              Her Yaşa Yönelik Sanat Çalışmaları
+              Her yaşa yönelik sanat çalışmaları
             </p>
           </div>
           <div class="pt-2 border-t border-olive/20 text-xs font-serif italic text-stone-gray">
@@ -113,7 +114,7 @@ const t = getT(lang);
               Halikarnas Kültür, Sanat, Eğitim ve Ekoloji Derneği
             </h3>
             <p class="font-serif text-base text-ink/85 leading-relaxed mb-4">
-              Tüm Çalışmalarımızın Resmĭ Çatısı
+              Tüm çalışmalarımızın resmî çatısı
             </p>
           </div>
           <div class="pt-2 border-t border-olive/20 text-xs font-serif italic text-stone-gray">

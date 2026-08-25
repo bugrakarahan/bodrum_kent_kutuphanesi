@@ -45,71 +45,92 @@ const plannedActivitiesUppercaseEn = [
   currentPath="/en/about"
 >
   <!-- 1. Origins of the Concept & Founders -->
-  <section class="py-16 md:py-24 px-5 md:px-12 bg-surface-bright border-b border-sand relative overflow-hidden">
+  <section class="py-12 md:py-16 px-5 md:px-12 bg-surface-bright border-b border-sand relative overflow-hidden">
     <div class="max-w-[1280px] mx-auto">
       
-      <div class="max-w-4xl mb-12">
-        <h1 class="font-serif text-3xl sm:text-4xl md:text-5xl text-ink font-bold leading-tight mb-6">
-          Origins of the Concept
-        </h1>
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start mb-10">
         
-        <div class="bg-parchment p-6 sm:p-8 border border-sand shadow-xs space-y-4 text-lg sm:text-xl text-ink/90 font-serif leading-relaxed">
-          <p>
-            The name and founding concept of Bodrum City Library were first articulated on <strong>September 16, 2019</strong>, at Dibeklihan Culture & Art Village by the esteemed figures listed below:
-          </p>
+        <div class="lg:col-span-7 space-y-6">
+          <h1 class="font-serif text-3xl sm:text-4xl text-ink font-bold leading-tight">
+            Origins of the Concept
+          </h1>
+          
+          <div class="bg-parchment p-6 sm:p-7 border border-sand shadow-xs space-y-4 text-lg text-ink/90 font-serif leading-relaxed">
+            <p>
+              The name and founding concept of Bodrum City Library were first articulated on <strong>September 16, 2019</strong>, at Dibeklihan Culture & Art Village by the esteemed figures listed below:
+            </p>
+          </div>
+
+          <div class="bg-parchment border border-sand p-6 shadow-xs">
+            <ul class="grid grid-cols-1 sm:grid-cols-2 gap-2.5 text-base sm:text-lg font-serif font-bold text-ink">
+              {alphabeticalBoardEn.map((name) => (
+                <li class="flex items-center gap-2.5 py-0.5">
+                  <span class="w-2 h-2 rounded-full bg-olive shrink-0"></span>
+                  <span>{name}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <!-- Light blue box for entrustment note -->
+          <div class="bg-[#EBF4FA] border border-olive/30 p-5 sm:p-6 rounded-xs shadow-2xs">
+            <p class="font-serif text-base sm:text-lg text-ink font-semibold leading-relaxed">
+              The name Bodrum City Library was entrusted to the Olive Seeds Library team by <strong>Mr. Sönmez Taner</strong> on <strong>September 7, 2019</strong>.
+            </p>
+          </div>
         </div>
-      </div>
 
-      <div class="max-w-2xl bg-parchment border border-sand p-6 sm:p-8 mb-10 shadow-xs">
-        <ul class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-lg sm:text-xl font-serif font-bold text-ink">
-          {alphabeticalBoardEn.map((name) => (
-            <li class="flex items-center gap-2.5 py-1">
-              <span class="w-2 h-2 rounded-full bg-olive shrink-0"></span>
-              <span>{name}</span>
-            </li>
-          ))}
-        </ul>
-      </div>
+        <div class="lg:col-span-5">
+          <div class="bg-parchment border-2 border-olive p-3 rounded-xs shadow-md">
+            <div class="aspect-[4/3] overflow-hidden bg-surface-container-high relative border border-sand/60">
+              <img
+                src="https://lh3.googleusercontent.com/aida-public/AB6AXuDQ_kg3bbgJ4ynOz1o7DQcY3YaIdeG_zUESiNKW-81FsNfEZqrXlPi-ZAYWzb2FYdKriB4ESdIgn04zGCTSrnOaQAobk2tEQSDMKK4TlQhdPdjUJk74KLsSusQUSR9nHe1QycFJgHdfJUQSr8eFa2k0wQHdX3j1D5aQBbxg9mUEAGpQs_UGA_l1geAuKfbBil5Wy-_VugN7cjAepbQ_HoOugyaLOfsfF-vsYSCOhY75Ao3sAvwHFdv3nGJYn9whKvXn8vnrP8j4yEE"
+                alt="Bodrum City Library Origins"
+                class="w-full h-full object-cover"
+                loading="eager"
+              />
+            </div>
+            <div class="p-2 text-center text-xs text-stone-gray font-serif italic">
+              Bodrum City Library Cultural Memory Gathering
+            </div>
+          </div>
+        </div>
 
-      <div class="max-w-4xl bg-olive/5 border border-olive/30 p-6 sm:p-8 rounded-xs">
-        <p class="font-serif text-lg sm:text-xl text-ink font-semibold leading-relaxed">
-          The name Bodrum City Library was entrusted to the Olive Seeds Library team by <strong>Mr. Sönmez Taner</strong> on <strong>September 7, 2019</strong>.
-        </p>
       </div>
 
     </div>
   </section>
 
   <!-- 2. Objectives and Planned Initiatives -->
-  <section class="py-16 md:py-24 px-5 md:px-12 bg-parchment border-b border-sand">
+  <section class="py-12 md:py-16 px-5 md:px-12 bg-parchment border-b border-sand">
     <div class="max-w-[1280px] mx-auto">
       
-      <div class="max-w-4xl mb-12">
-        <h2 class="font-serif text-3xl sm:text-4xl text-ink font-bold mb-6">
+      <div class="max-w-4xl mb-8">
+        <h2 class="font-serif text-2xl sm:text-3xl text-ink font-bold mb-6">
           Objectives and Planned Initiatives
         </h2>
 
-        <div class="bg-surface-container-low p-6 sm:p-8 border border-sand shadow-xs mb-10 space-y-4">
-          <p class="font-serif text-lg sm:text-xl text-ink/90 leading-relaxed">
+        <div class="bg-surface-container-low p-6 sm:p-7 border border-sand shadow-xs mb-8 space-y-4">
+          <p class="font-serif text-lg text-ink/90 leading-relaxed text-justify">
             Bodrum City Library is a multi-purpose, living library project designed to bring together residents and visitors with esteemed figures and works of literature, art, and science.
           </p>
-          <p class="font-serif text-lg sm:text-xl text-ink/90 leading-relaxed">
+          <p class="font-serif text-lg text-ink/90 leading-relaxed text-justify">
             Through book-centered events, talks, workshops, and cultural gatherings, it supports lifelong learning, creation, and sharing; preserving the Mediterranean and Blue Humanism of the Fisherman of Halicarnassus and highlighting the timeless value of Anatolian Civilization as an independent meeting space.
           </p>
         </div>
 
-        <p class="font-serif text-lg sm:text-xl text-ink font-bold mb-6">
+        <p class="font-serif text-base sm:text-lg text-ink font-bold mb-4">
           To this end, the library aims to conduct the following cultural initiatives on national and international scales:
         </p>
       </div>
 
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
         {plannedActivitiesUppercaseEn.map((act, index) => (
-          <div class="bg-surface-container-low p-6 border-2 border-olive rounded-xs shadow-xs flex items-start gap-4">
-            <span class="w-8 h-8 rounded-full bg-olive text-white flex items-center justify-center font-mono text-xs font-bold shrink-0 mt-0.5 shadow-xs">
+          <div class="bg-surface-container-low p-4 border border-olive rounded-xs shadow-2xs flex items-start gap-3">
+            <span class="w-6 h-6 rounded-full bg-olive text-white flex items-center justify-center font-mono text-xs font-bold shrink-0 mt-0.5 shadow-2xs">
               {String(index + 1).padStart(2, '0')}
             </span>
-            <p class="font-serif text-base sm:text-lg font-bold text-ink leading-snug">
+            <p class="font-serif text-sm sm:text-base font-bold text-ink leading-snug">
               {act}
             </p>
           </div>
