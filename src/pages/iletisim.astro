@@ -8,204 +8,206 @@ const t = getT(lang);
 
 <Layout
   title={`İletişim | ${t.siteTitle}`}
-  description="Bodrum Kent Kütüphanesi ile iletişime geçin. Etkinlikler, ortak projeler ve genel bilgi talepleriniz için bize ulaşın."
+  description="Bodrum Kent Kütüphanesi iletişim bilgileri, yerleşke konumu, telefon, e-posta ve mesaj formu."
   lang={lang}
   currentPath="/iletisim"
 >
-  <!-- 1. Hero Section -->
-  <section class="py-12 md:py-16 px-5 md:px-12 bg-surface-bright border-b border-sand">
+  <!-- Hero Header -->
+  <section class="py-10 md:py-14 px-5 md:px-12 bg-surface-bright border-b border-sand">
     <div class="max-w-[1280px] mx-auto">
       <div class="max-w-3xl">
-        <h1 class="font-serif text-3xl sm:text-4xl text-ink font-bold leading-tight mb-4">
-          Bağlantıda Kalalım
+        <h1 class="font-serif text-3xl sm:text-4xl text-ink font-bold leading-tight mb-3">
+          İletişim & Yerleşke
         </h1>
-        <p class="font-serif text-lg sm:text-xl text-ink/80 leading-relaxed">
-          Etkinlikler, çalışmalar, ortak projeler ve genel bilgi talepleriniz için lütfen bize ulaşın.
+        <p class="font-sans text-base sm:text-lg text-ink/80 leading-relaxed">
+          Kütüphanemizi ziyaret etmek, etkinliklerimize katılmak ve sorularınızı iletmek için bizimle iletişime geçebilirsiniz.
         </p>
       </div>
     </div>
   </section>
 
-  <!-- 2. Main Content Area -->
-  <section class="py-12 md:py-16 px-5 md:px-12 bg-parchment border-b border-sand">
-    <div class="max-w-[1280px] mx-auto">
-      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
-        
-        <!-- Left Column: Kütüphane Bilgileri & Kanallar -->
-        <div class="lg:col-span-5 space-y-8">
-          <div>
-            <h2 class="font-serif text-2xl sm:text-3xl text-ink font-bold leading-tight mb-2">
-              Kütüphane Bilgileri
-            </h2>
-            <p class="font-serif text-base sm:text-lg text-ink/80 leading-relaxed">
-              Ziyaret etmek, kitaplarla buluşmak, tanışmak için ve sorularınızı iletmek için iletişim kanallarımızdan bize ulaşabilirsiniz.
-            </p>
-          </div>
-
-          <div class="space-y-4 font-serif">
-            
-            <!-- GSM & Telefon -->
-            <div class="p-6 bg-surface-container-low border-2 border-olive rounded-xs flex items-start gap-4 shadow-xs">
-              <div class="w-12 h-12 rounded-full bg-olive/10 text-olive flex items-center justify-center shrink-0 mt-0.5">
-                <span class="material-symbols-outlined text-2xl">call</span>
-              </div>
-              <div>
-                <div class="text-xs uppercase tracking-wider text-stone-gray font-sans font-bold mb-1">GSM / Telefon</div>
-                <a href="tel:+905423739748" class="text-ink text-lg sm:text-xl font-bold hover:text-olive transition-colors block">
-                  +90 (0) 542 373 97 48
-                </a>
-              </div>
-            </div>
-
-            <!-- E-Posta -->
-            <div class="p-6 bg-surface-container-low border-2 border-olive rounded-xs flex items-start gap-4 shadow-xs">
-              <div class="w-12 h-12 rounded-full bg-olive/10 text-olive flex items-center justify-center shrink-0 mt-0.5">
-                <span class="material-symbols-outlined text-2xl">mail</span>
-              </div>
-              <div>
-                <div class="text-xs uppercase tracking-wider text-stone-gray font-sans font-bold mb-1">E-Posta</div>
-                <a href="mailto:bilgi@bodrumkentkutuphanesi.org" class="text-ink text-base sm:text-lg font-bold hover:text-olive transition-colors break-all block">
-                  bilgi@bodrumkentkutuphanesi.org
-                </a>
-              </div>
-            </div>
-
-            <!-- Yerleşke & Konum -->
-            <div class="p-6 bg-surface-container-low border-2 border-olive rounded-xs flex items-start gap-4 shadow-xs">
-              <div class="w-12 h-12 rounded-full bg-olive/10 text-olive flex items-center justify-center shrink-0 mt-0.5">
-                <span class="material-symbols-outlined text-2xl">location_on</span>
-              </div>
-              <div>
-                <div class="text-xs uppercase tracking-wider text-stone-gray font-sans font-bold mb-1">Yerleşke & Konum</div>
-                <p class="text-ink text-lg font-bold">Kızılağaç, Bodrum / Muğla</p>
-                <p class="text-sm text-stone-gray mt-1 font-serif">Salı – Pazar: 09:00 – 19:00 (Pazartesi günleri kapalıdır)</p>
-              </div>
-            </div>
-
-            <!-- Sosyal Medya Kanalları -->
-            <div class="p-6 bg-surface-container-low border-2 border-olive rounded-xs shadow-xs">
-              <div class="text-xs uppercase tracking-wider text-stone-gray font-sans font-bold mb-4">
-                Sosyal Medya & İletişim Kanallarımız
-              </div>
-              <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
-                <a
-                  href="https://wa.me/905423739748"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  class="flex items-center gap-2 p-3 bg-parchment border border-olive text-ink hover:bg-olive hover:text-white transition-colors text-sm font-bold"
-                >
-                  <span class="material-symbols-outlined text-lg text-olive group-hover:text-white">chat</span>
-                  <span>WhatsApp</span>
-                </a>
-
-                <a
-                  href="https://instagram.com"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  class="flex items-center gap-2 p-3 bg-parchment border border-olive text-ink hover:bg-olive hover:text-white transition-colors text-sm font-bold"
-                >
-                  <span class="material-symbols-outlined text-lg text-olive group-hover:text-white">photo_camera</span>
-                  <span>Instagram</span>
-                </a>
-
-                <a
-                  href="https://youtube.com"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  class="flex items-center gap-2 p-3 bg-parchment border border-olive text-ink hover:bg-olive hover:text-white transition-colors text-sm font-bold"
-                >
-                  <span class="material-symbols-outlined text-lg text-olive group-hover:text-white">smart_display</span>
-                  <span>YouTube</span>
-                </a>
-              </div>
-            </div>
-
-          </div>
-        </div>
-
-        <!-- Right Column: İletişim & Mesaj Formu -->
-        <div class="lg:col-span-7 bg-surface-container-low border-2 border-olive rounded-xs p-6 sm:p-10 shadow-xs">
-          <h3 class="font-serif text-2xl text-ink font-bold mb-2">
-            Bize Mesaj Gönderin
-          </h3>
-          <p class="font-serif text-base text-stone-gray mb-6">
-            Görüş, öneri veya bilgi taleplerinizi iletebilirsiniz. En kısa sürede yanıtlanacaktır.
+  <!-- Content Grid -->
+  <div class="max-w-[1280px] mx-auto px-5 md:px-12 py-10 md:py-14">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
+      
+      <!-- Left Column: Kütüphane Bilgileri (Matches Destek & Gönüllü Katılım typography) -->
+      <div class="lg:col-span-5 space-y-6">
+        <div>
+          <span class="text-xs uppercase tracking-widest text-olive font-sans font-bold block mb-2">DOĞRUDAN İLETİŞİM</span>
+          <h2 class="font-serif text-2xl sm:text-3xl text-ink font-bold leading-tight mb-3">
+            Kütüphane Bilgileri
+          </h2>
+          <p class="font-sans text-base text-ink/85 leading-relaxed">
+            Ziyaret etmek, kitaplarla buluşmak, tanışmak için ve sorularınızı iletmek için iletişim kanallarımızdan bize ulaşabilirsiniz.
           </p>
-
-          <form id="contact-form" class="space-y-4 font-serif">
-            <div>
-              <label class="block text-xs font-bold text-ink uppercase tracking-wider mb-1">Ad Soyad *</label>
-              <input 
-                type="text" 
-                required 
-                placeholder="Adınız Soyadınız"
-                class="w-full px-4 py-3 bg-parchment border border-sand text-ink text-base focus:outline-none focus:border-olive" 
-              />
-            </div>
-
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              <div>
-                <label class="block text-xs font-bold text-ink uppercase tracking-wider mb-1">E-Posta *</label>
-                <input 
-                  type="email" 
-                  required 
-                  placeholder="ornek@alanadi.com"
-                  class="w-full px-4 py-3 bg-parchment border border-sand text-ink text-base focus:outline-none focus:border-olive" 
-                />
-              </div>
-              <div>
-                <label class="block text-xs font-bold text-ink uppercase tracking-wider mb-1">Telefon</label>
-                <input 
-                  type="tel" 
-                  placeholder="05XX XXX XX XX"
-                  class="w-full px-4 py-3 bg-parchment border border-sand text-ink text-base focus:outline-none focus:border-olive" 
-                />
-              </div>
-            </div>
-
-            <div>
-              <label class="block text-xs font-bold text-ink uppercase tracking-wider mb-1">Konu *</label>
-              <input 
-                type="text" 
-                required 
-                placeholder="Mesajınızın konusu"
-                class="w-full px-4 py-3 bg-parchment border border-sand text-ink text-base focus:outline-none focus:border-olive" 
-              />
-            </div>
-
-            <div>
-              <label class="block text-xs font-bold text-ink uppercase tracking-wider mb-1">Mesajınız *</label>
-              <textarea 
-                rows="5" 
-                required 
-                placeholder="Mesajınızı detaylı olarak buraya yazabilirsiniz..."
-                class="w-full px-4 py-3 bg-parchment border border-sand text-ink text-base focus:outline-none focus:border-olive"
-              ></textarea>
-            </div>
-
-            <button 
-              type="submit" 
-              class="w-full py-4 bg-olive text-white hover:bg-bodrum-blue-dark text-base font-serif font-bold tracking-wider uppercase transition-colors shadow-xs"
-            >
-              Mesajı Gönder
-            </button>
-          </form>
         </div>
 
+        <div class="space-y-4 font-sans">
+          
+          <!-- GSM & Telefon -->
+          <div class="p-5 sm:p-6 bg-surface-container-low border-2 border-olive rounded-xs flex items-start gap-4 shadow-xs">
+            <div class="w-10 h-10 rounded-full bg-olive text-white flex items-center justify-center shrink-0 mt-0.5 shadow-2xs">
+              <span class="material-symbols-outlined text-xl">call</span>
+            </div>
+            <div>
+              <div class="text-xs uppercase tracking-wider text-stone-gray font-bold mb-1">GSM / Telefon</div>
+              <a href="tel:+905423739748" class="text-ink text-base sm:text-lg font-bold hover:text-olive transition-colors block">
+                +90 (0) 542 373 97 48
+              </a>
+            </div>
+          </div>
+
+          <!-- E-Posta -->
+          <div class="p-5 sm:p-6 bg-surface-container-low border-2 border-olive rounded-xs flex items-start gap-4 shadow-xs">
+            <div class="w-10 h-10 rounded-full bg-olive text-white flex items-center justify-center shrink-0 mt-0.5 shadow-2xs">
+              <span class="material-symbols-outlined text-xl">mail</span>
+            </div>
+            <div>
+              <div class="text-xs uppercase tracking-wider text-stone-gray font-bold mb-1">E-Posta</div>
+              <a href="mailto:bilgi@bodrumkentkutuphanesi.org" class="text-ink text-base sm:text-lg font-bold hover:text-olive transition-colors break-all block">
+                bilgi@bodrumkentkutuphanesi.org
+              </a>
+            </div>
+          </div>
+
+          <!-- Yerleşke & Konum -->
+          <div class="p-5 sm:p-6 bg-surface-container-low border-2 border-olive rounded-xs flex items-start gap-4 shadow-xs">
+            <div class="w-10 h-10 rounded-full bg-olive text-white flex items-center justify-center shrink-0 mt-0.5 shadow-2xs">
+              <span class="material-symbols-outlined text-xl">location_on</span>
+            </div>
+            <div>
+              <div class="text-xs uppercase tracking-wider text-stone-gray font-bold mb-1">Yerleşke & Konum</div>
+              <p class="text-ink text-base sm:text-lg font-bold">Kızılağaç, Bodrum / Muğla</p>
+              <p class="text-xs sm:text-sm text-stone-gray mt-1">Salı – Pazar: 10:00 – 19:00 (Pazartesi günleri kapalıdır)</p>
+            </div>
+          </div>
+
+          <!-- Sosyal Medya Kanalları -->
+          <div class="p-5 sm:p-6 bg-surface-container-low border-2 border-olive rounded-xs shadow-xs">
+            <div class="text-xs uppercase tracking-wider text-stone-gray font-bold mb-4">
+              Sosyal Medya & İletişim Kanallarımız
+            </div>
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+              <a
+                href="https://wa.me/905423739748"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="flex items-center justify-center gap-2 p-3 bg-parchment border border-olive text-ink hover:bg-olive hover:text-white transition-colors text-xs font-bold uppercase rounded-xs"
+              >
+                <span class="material-symbols-outlined text-lg text-olive group-hover:text-white">chat</span>
+                <span>WhatsApp</span>
+              </a>
+
+              <a
+                href="https://instagram.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="flex items-center justify-center gap-2 p-3 bg-parchment border border-olive text-ink hover:bg-olive hover:text-white transition-colors text-xs font-bold uppercase rounded-xs"
+              >
+                <span class="material-symbols-outlined text-lg text-olive group-hover:text-white">photo_camera</span>
+                <span>Instagram</span>
+              </a>
+
+              <a
+                href="https://youtube.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="flex items-center justify-center gap-2 p-3 bg-parchment border border-olive text-ink hover:bg-olive hover:text-white transition-colors text-xs font-bold uppercase rounded-xs"
+              >
+                <span class="material-symbols-outlined text-lg text-olive group-hover:text-white">smart_display</span>
+                <span>YouTube</span>
+              </a>
+            </div>
+          </div>
+
+        </div>
       </div>
+
+      <!-- Right Column: İletişim & Mesaj Formu -->
+      <div class="lg:col-span-7 bg-surface-container-low border-2 border-olive rounded-xs p-6 sm:p-10 shadow-xs">
+        <h3 class="font-serif text-2xl text-ink font-bold mb-2">
+          Bize Mesaj Gönderin
+        </h3>
+        <p class="font-sans text-base text-ink/85 mb-6">
+          Görüş, öneri veya bilgi taleplerinizi iletebilirsiniz. En kısa sürede yanıtlanacaktır.
+        </p>
+
+        <form id="contact-form" class="space-y-4 font-sans">
+          <div>
+            <label class="block text-xs font-bold text-ink uppercase tracking-wider mb-1">Ad Soyad *</label>
+            <input 
+              type="text" 
+              required 
+              placeholder="Adınız Soyadınız"
+              class="w-full px-4 py-2.5 bg-parchment border border-sand text-ink text-base focus:outline-none focus:border-olive rounded-xs" 
+            />
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div>
+              <label class="block text-xs font-bold text-ink uppercase tracking-wider mb-1">E-Posta *</label>
+              <input 
+                type="email" 
+                required 
+                placeholder="ornek@alanadi.com"
+                class="w-full px-4 py-2.5 bg-parchment border border-sand text-ink text-base focus:outline-none focus:border-olive rounded-xs" 
+              />
+            </div>
+            <div>
+              <label class="block text-xs font-bold text-ink uppercase tracking-wider mb-1">Telefon</label>
+              <input 
+                type="tel" 
+                placeholder="05XX XXX XX XX"
+                class="w-full px-4 py-2.5 bg-parchment border border-sand text-ink text-base focus:outline-none focus:border-olive rounded-xs" 
+              />
+            </div>
+          </div>
+
+          <div>
+            <label class="block text-xs font-bold text-ink uppercase tracking-wider mb-1">Konu</label>
+            <input 
+              type="text" 
+              placeholder="Mesajınızın konusu..."
+              class="w-full px-4 py-2.5 bg-parchment border border-sand text-ink text-base focus:outline-none focus:border-olive rounded-xs" 
+            />
+          </div>
+
+          <div>
+            <label class="block text-xs font-bold text-ink uppercase tracking-wider mb-1">Mesajınız *</label>
+            <textarea 
+              rows="5" 
+              required 
+              placeholder="Mesajınızı buraya yazınız..."
+              class="w-full px-4 py-2.5 bg-parchment border border-sand text-ink text-base focus:outline-none focus:border-olive rounded-xs"
+            ></textarea>
+          </div>
+
+          <button 
+            type="submit" 
+            class="w-full py-3.5 bg-olive text-white hover:bg-bodrum-blue-dark text-base font-sans font-bold tracking-wider uppercase transition-colors shadow-xs rounded-xs cursor-pointer"
+          >
+            Mesajı Gönder
+          </button>
+        </form>
+      </div>
+
     </div>
-  </section>
+  </div>
 </Layout>
 
 <script>
-  const form = document.getElementById('contact-form') as HTMLFormElement;
-  if (form) {
-    form.addEventListener('submit', (e) => {
+  const contactForm = document.getElementById('contact-form');
+  if (contactForm) {
+    contactForm.addEventListener('submit', (e) => {
       e.preventDefault();
       if ((window as any).showToast) {
-        (window as any).showToast('Mesajınız başarıyla iletildi. En kısa sürede sizinle iletişime geçilecektir.', 'success', 5000);
+        (window as any).showToast(
+          'Mesajınız başarıyla iletildi! Kütüphane ekibimiz en kısa sürede size dönüş yapacaktır.',
+          'success',
+          5000
+        );
       }
-      form.reset();
+      (contactForm as HTMLFormElement).reset();
     });
   }
 </script>

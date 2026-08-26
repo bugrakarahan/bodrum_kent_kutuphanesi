@@ -141,16 +141,18 @@ const pastEventCategoriesEn = [
             <div>
               <div 
                 class="aspect-[16/10] overflow-hidden bg-surface-container-high mb-4 border border-sand rounded-2xs cursor-pointer group relative"
-                onclick={`alert('${event.data.titleEn}\\n\\nPhoto archive is available at the library repository.')`}
+                data-gallery-trigger
+                data-gallery-title={event.data.titleEn}
+                data-gallery-photos={JSON.stringify(event.data.photos || [event.data.image])}
               >
                 <img
                   src={event.data.image}
                   alt={event.data.titleEn}
                   class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                 />
-                <div class="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center text-white text-xs font-sans font-bold uppercase tracking-wider gap-1">
-                  <span class="material-symbols-outlined text-base">photo_library</span>
-                  <span>View Photos</span>
+                <div class="absolute inset-0 bg-black/30 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center text-white text-xs font-sans font-bold uppercase tracking-wider gap-1.5">
+                  <span class="material-symbols-outlined text-lg">photo_library</span>
+                  <span>View Photos & Poster</span>
                 </div>
               </div>
 
@@ -181,10 +183,13 @@ const pastEventCategoriesEn = [
 
               <button
                 type="button"
-                class="px-4 py-1.5 bg-parchment border border-olive text-olive hover:bg-olive hover:text-white text-xs font-sans font-bold uppercase tracking-wider transition-colors rounded-xs shadow-2xs cursor-pointer"
-                onclick="alert('Archival photo gallery is in collection.')"
+                class="px-4 py-1.5 bg-parchment border border-olive text-olive hover:bg-olive hover:text-white text-xs font-sans font-bold uppercase tracking-wider transition-colors rounded-xs shadow-2xs cursor-pointer inline-flex items-center gap-1"
+                data-gallery-trigger
+                data-gallery-title={event.data.titleEn}
+                data-gallery-photos={JSON.stringify(event.data.photos || [event.data.image])}
               >
-                Gallery
+                <span class="material-symbols-outlined text-sm">photo_library</span>
+                <span>Gallery</span>
               </button>
             </div>
           </div>

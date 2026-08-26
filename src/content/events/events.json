@@ -19,7 +19,7 @@
   },
   {
     "id": "event-timucin-binder",
-    "title": "Antropolog Timuçin Binder ile Antik Çağ Ege’sinin Gökyüzü Mitleri",
+    "title": "Antropolog & Arkeolog Timuçin Binder ile Antik Çağ Ege’sinin Gökyüzü Mitleri",
     "titleEn": "Sky Myths of Ancient Aegean with Anthropologist Timucin Binder",
     "date": "2026-07-18",
     "displayDateTr": "18 TEMMUZ 2026",
@@ -29,9 +29,14 @@
     "categoryLabelEn": "Mythology & Ancient History",
     "locationTr": "Kütüphane Buluşma Salonu & Bahçe",
     "locationEn": "Library Hall & Garden",
-    "summaryTr": "Binlerce yıldır, insanlara sadece yol göstermekle kalmayıp aynı zamanda mitlere ve kültürlere de ilham veren yıldızların altında özel bir gece!\n\nAntropolog Timuçin Binder ile Antikçağ Ege’sinin gökyüzünde dolaşacak, yıldızları ve takımyıldızlarını tanırken onların ardındaki mitolojik öykülere, antropolojik ve tarihsel anlamlara kulak vereceğiz.",
-    "summaryEn": "A special evening under the stars that have not only guided humanity for thousands of years, but also inspired countless myths and cultures!\n\nWith Anthropologist Timucin Binder, we will wander through the ancient Aegean skies, identifying stars and constellations while listening to their mythological tales, anthropological contexts, and historical meanings.",
+    "summaryTr": "Binlerce yıldır, insanlara sadece yol göstermekle kalmayıp aynı zamanda mitlere ve kültürlere de ilham veren yıldızların altında özel bir gece!\n\nAntropolog & Arkeolog Timuçin Binder ile Antikçağ Ege’sinin gökyüzünde dolaşacak, yıldızları ve takımyıldızlarını tanırken onların ardındaki mitolojik öykülere, antropolojik ve tarihsel anlamlara kulak vereceğiz.",
+    "summaryEn": "A special evening under the stars that have not only guided humanity for thousands of years, but also inspired countless myths and cultures!\n\nWith Anthropologist & Archaeologist Timucin Binder, we will wander through the ancient Aegean skies, identifying stars and constellations while listening to their mythological tales, anthropological contexts, and historical meanings.",
     "image": "/images/drive/timucin_binder_1.jpg",
+    "photos": [
+      "/images/drive/timucin_binder_1.jpg",
+      "/images/drive/timucin_binder_2.jpg",
+      "/images/drive/etkinlik_arsiv.jpg"
+    ],
     "featured": false,
     "isPast": true
   }

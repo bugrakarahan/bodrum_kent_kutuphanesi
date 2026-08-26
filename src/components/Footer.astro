@@ -17,7 +17,7 @@ const links = navRoutes.map((route) => ({
 
 <footer class="bg-olive text-parchment border-t border-white/15 py-6 md:py-8 px-5 md:px-12">
   <div class="max-w-[1280px] mx-auto">
-    <!-- Top 4 Columns Grid (Tighter vertical layout) -->
+    <!-- Top 4 Columns Grid -->
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8 pb-6 border-b border-white/15">
       
       <!-- Column 1: Institutional Brand, Mission Statement & Designer Credit -->
@@ -44,17 +44,17 @@ const links = navRoutes.map((route) => ({
           </div>
         </div>
 
-        <!-- Designer Credit to Shellix -->
-        <div class="pt-1 text-[12px] font-sans tracking-wide text-parchment/90">
+        <!-- Designer Credit to Shellix in Uppercase -->
+        <div class="pt-1 text-[11px] sm:text-[12px] font-sans tracking-wider uppercase text-parchment/90">
           <a
             href="https://shellix.com"
             target="_blank"
             rel="noopener noreferrer"
             class="text-white font-bold underline underline-offset-2 hover:text-amber-200 transition-colors inline-block"
           >
-            Shellix
+            SHELLIX
           </a>
-          <span>{lang === 'tr' ? 'tarafından sevgiyle tasarlandı ❤️' : 'crafted with love ❤️'}</span>
+          <span>{lang === 'tr' ? 'TARAFINDAN SEVGİYLE TASARLANDI ❤️' : 'DESIGNED WITH LOVE BY SHELLIX ❤️'}</span>
         </div>
       </div>
 
@@ -136,9 +136,9 @@ const links = navRoutes.map((route) => ({
           <li class="pt-0.5">
             <a
               href="mailto:bilgi@bodrumkentkutuphanesi.org"
-              class="flex items-center gap-1.5 text-[11px] font-mono text-parchment/85 hover:text-white break-all transition-colors"
+              class="flex items-center gap-1.5 text-xs sm:text-sm font-mono text-parchment hover:text-white font-bold break-all transition-colors"
             >
-              <span class="material-symbols-outlined text-[15px] text-parchment shrink-0">mail</span>
+              <span class="material-symbols-outlined text-[17px] text-parchment shrink-0">mail</span>
               <span>bilgi@bodrumkentkutuphanesi.org</span>
             </a>
           </li>

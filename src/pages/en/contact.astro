@@ -8,187 +8,206 @@ const t = getT(lang);
 
 <Layout
   title={`Contact | ${t.siteTitle}`}
-  description="Get in touch with Bodrum City Library for events, collaboration, and general inquiries."
+  description="Bodrum City Library contact details, campus address, phone, email, and inquiry form."
   lang={lang}
   currentPath="/en/contact"
 >
-  <!-- 1. Hero Section -->
-  <section class="py-12 md:py-16 px-5 md:px-12 bg-surface-bright border-b border-sand">
+  <!-- Hero Header -->
+  <section class="py-10 md:py-14 px-5 md:px-12 bg-surface-bright border-b border-sand">
     <div class="max-w-[1280px] mx-auto">
       <div class="max-w-3xl">
-        <h1 class="font-serif text-3xl sm:text-4xl text-ink font-bold leading-tight mb-4">
-          Stay in Touch
+        <h1 class="font-serif text-3xl sm:text-4xl text-ink font-bold leading-tight mb-3">
+          Contact & Campus
         </h1>
-        <p class="font-serif text-lg sm:text-xl text-ink/80 leading-relaxed">
-          Please reach out to us for cultural programs, collaborative projects, and general inquiries.
+        <p class="font-sans text-base sm:text-lg text-ink/80 leading-relaxed">
+          Please reach out to visit our library, participate in cultural events, or submit questions.
         </p>
       </div>
     </div>
   </section>
 
-  <!-- 2. Main Content Area -->
-  <section class="py-12 md:py-16 px-5 md:px-12 bg-parchment border-b border-sand">
-    <div class="max-w-[1280px] mx-auto">
-      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
-        
-        <!-- Left Column: Info -->
-        <div class="lg:col-span-5 space-y-8">
-          <div>
-            <h2 class="font-serif text-2xl sm:text-3xl text-ink font-bold leading-tight mb-2">
-              Library Information
-            </h2>
-            <p class="font-serif text-base sm:text-lg text-ink/80 leading-relaxed">
-              You can contact us through our communication channels to visit, meet with our team, and send your questions.
-            </p>
-          </div>
-
-          <div class="space-y-4 font-serif">
-            
-            <div class="p-6 bg-surface-container-low border-2 border-olive rounded-xs flex items-start gap-4 shadow-xs">
-              <div class="w-12 h-12 rounded-full bg-olive/10 text-olive flex items-center justify-center shrink-0 mt-0.5">
-                <span class="material-symbols-outlined text-2xl">call</span>
-              </div>
-              <div>
-                <div class="text-xs uppercase tracking-wider text-stone-gray font-sans font-bold mb-1">Mobile / Phone</div>
-                <a href="tel:+905423739748" class="text-ink text-lg sm:text-xl font-bold hover:text-olive transition-colors block">
-                  +90 (0) 542 373 97 48
-                </a>
-              </div>
-            </div>
-
-            <div class="p-6 bg-surface-container-low border-2 border-olive rounded-xs flex items-start gap-4 shadow-xs">
-              <div class="w-12 h-12 rounded-full bg-olive/10 text-olive flex items-center justify-center shrink-0 mt-0.5">
-                <span class="material-symbols-outlined text-2xl">mail</span>
-              </div>
-              <div>
-                <div class="text-xs uppercase tracking-wider text-stone-gray font-sans font-bold mb-1">Email</div>
-                <a href="mailto:bilgi@bodrumkentkutuphanesi.org" class="text-ink text-base sm:text-lg font-bold hover:text-olive transition-colors break-all block">
-                  bilgi@bodrumkentkutuphanesi.org
-                </a>
-              </div>
-            </div>
-
-            <div class="p-6 bg-surface-container-low border-2 border-olive rounded-xs flex items-start gap-4 shadow-xs">
-              <div class="w-12 h-12 rounded-full bg-olive/10 text-olive flex items-center justify-center shrink-0 mt-0.5">
-                <span class="material-symbols-outlined text-2xl">location_on</span>
-              </div>
-              <div>
-                <div class="text-xs uppercase tracking-wider text-stone-gray font-sans font-bold mb-1">Campus & Location</div>
-                <p class="text-ink text-lg font-bold">Kizilagac, Bodrum / Mugla, Turkiye</p>
-                <p class="text-sm text-stone-gray mt-1 font-serif">Tuesday – Sunday: 09:00 – 19:00 (Closed on Mondays)</p>
-              </div>
-            </div>
-
-            <div class="p-6 bg-surface-container-low border-2 border-olive rounded-xs shadow-xs">
-              <div class="text-xs uppercase tracking-wider text-stone-gray font-sans font-bold mb-4">
-                Social Media & Channels
-              </div>
-              <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
-                <a
-                  href="https://wa.me/905423739748"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  class="flex items-center gap-2 p-3 bg-parchment border border-olive text-ink hover:bg-olive hover:text-white transition-colors text-sm font-bold"
-                >
-                  <span class="material-symbols-outlined text-lg text-olive group-hover:text-white">chat</span>
-                  <span>WhatsApp</span>
-                </a>
-
-                <a
-                  href="https://instagram.com"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  class="flex items-center gap-2 p-3 bg-parchment border border-olive text-ink hover:bg-olive hover:text-white transition-colors text-sm font-bold"
-                >
-                  <span class="material-symbols-outlined text-lg text-olive group-hover:text-white">photo_camera</span>
-                  <span>Instagram</span>
-                </a>
-
-                <a
-                  href="https://youtube.com"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  class="flex items-center gap-2 p-3 bg-parchment border border-olive text-ink hover:bg-olive hover:text-white transition-colors text-sm font-bold"
-                >
-                  <span class="material-symbols-outlined text-lg text-olive group-hover:text-white">smart_display</span>
-                  <span>YouTube</span>
-                </a>
-              </div>
-            </div>
-
-          </div>
-        </div>
-
-        <!-- Right Column: Form -->
-        <div class="lg:col-span-7 bg-surface-container-low border-2 border-olive rounded-xs p-6 sm:p-10 shadow-xs">
-          <h3 class="font-serif text-2xl text-ink font-bold mb-2">
-            Send Us a Message
-          </h3>
-          <p class="font-serif text-base text-stone-gray mb-6">
-            Feel free to forward your suggestions, partnership ideas, or inquiries.
+  <!-- Content Grid -->
+  <div class="max-w-[1280px] mx-auto px-5 md:px-12 py-10 md:py-14">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
+      
+      <!-- Left Column: Library Details (Matches Support page font style) -->
+      <div class="lg:col-span-5 space-y-6">
+        <div>
+          <span class="text-xs uppercase tracking-widest text-olive font-sans font-bold block mb-2">DIRECT CONTACT</span>
+          <h2 class="font-serif text-2xl sm:text-3xl text-ink font-bold leading-tight mb-3">
+            Library Information
+          </h2>
+          <p class="font-sans text-base text-ink/85 leading-relaxed">
+            Connect with our team through any of the communication channels below.
           </p>
-
-          <form id="contact-form-en" class="space-y-4 font-serif">
-            <div>
-              <label class="block text-xs font-bold text-ink uppercase tracking-wider mb-1">Full Name *</label>
-              <input 
-                type="text" 
-                required 
-                placeholder="Your Full Name"
-                class="w-full px-4 py-3 bg-parchment border border-sand text-ink text-base focus:outline-none focus:border-olive" 
-              />
-            </div>
-
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              <div>
-                <label class="block text-xs font-bold text-ink uppercase tracking-wider mb-1">Email Address *</label>
-                <input 
-                  type="email" 
-                  required 
-                  placeholder="name@domain.com"
-                  class="w-full px-4 py-3 bg-parchment border border-sand text-ink text-base focus:outline-none focus:border-olive" 
-                />
-              </div>
-              <div>
-                <label class="block text-xs font-bold text-ink uppercase tracking-wider mb-1">Phone</label>
-                <input 
-                  type="tel" 
-                  placeholder="+90 5XX XXX XX XX"
-                  class="w-full px-4 py-3 bg-parchment border border-sand text-ink text-base focus:outline-none focus:border-olive" 
-                />
-              </div>
-            </div>
-
-            <div>
-              <label class="block text-xs font-bold text-ink uppercase tracking-wider mb-1">Subject *</label>
-              <input 
-                type="text" 
-                required 
-                placeholder="Message Subject"
-                class="w-full px-4 py-3 bg-parchment border border-sand text-ink text-base focus:outline-none focus:border-olive" 
-              />
-            </div>
-
-            <div>
-              <label class="block text-xs font-bold text-ink uppercase tracking-wider mb-1">Your Message *</label>
-              <textarea 
-                rows="5" 
-                required 
-                placeholder="Your message in detail..."
-                class="w-full px-4 py-3 bg-parchment border border-sand text-ink text-base focus:outline-none focus:border-olive"
-              ></textarea>
-            </div>
-
-            <button 
-              type="submit" 
-              class="w-full py-4 bg-olive text-white hover:bg-bodrum-blue-dark text-base font-serif font-bold tracking-wider uppercase transition-colors shadow-xs"
-            >
-              Send Message
-            </button>
-          </form>
         </div>
 
+        <div class="space-y-4 font-sans">
+          
+          <!-- Phone -->
+          <div class="p-5 sm:p-6 bg-surface-container-low border-2 border-olive rounded-xs flex items-start gap-4 shadow-xs">
+            <div class="w-10 h-10 rounded-full bg-olive text-white flex items-center justify-center shrink-0 mt-0.5 shadow-2xs">
+              <span class="material-symbols-outlined text-xl">call</span>
+            </div>
+            <div>
+              <div class="text-xs uppercase tracking-wider text-stone-gray font-bold mb-1">Phone / Mobile</div>
+              <a href="tel:+905423739748" class="text-ink text-base sm:text-lg font-bold hover:text-olive transition-colors block">
+                +90 (0) 542 373 97 48
+              </a>
+            </div>
+          </div>
+
+          <!-- Email -->
+          <div class="p-5 sm:p-6 bg-surface-container-low border-2 border-olive rounded-xs flex items-start gap-4 shadow-xs">
+            <div class="w-10 h-10 rounded-full bg-olive text-white flex items-center justify-center shrink-0 mt-0.5 shadow-2xs">
+              <span class="material-symbols-outlined text-xl">mail</span>
+            </div>
+            <div>
+              <div class="text-xs uppercase tracking-wider text-stone-gray font-bold mb-1">Email</div>
+              <a href="mailto:bilgi@bodrumkentkutuphanesi.org" class="text-ink text-base sm:text-lg font-bold hover:text-olive transition-colors break-all block">
+                bilgi@bodrumkentkutuphanesi.org
+              </a>
+            </div>
+          </div>
+
+          <!-- Location -->
+          <div class="p-5 sm:p-6 bg-surface-container-low border-2 border-olive rounded-xs flex items-start gap-4 shadow-xs">
+            <div class="w-10 h-10 rounded-full bg-olive text-white flex items-center justify-center shrink-0 mt-0.5 shadow-2xs">
+              <span class="material-symbols-outlined text-xl">location_on</span>
+            </div>
+            <div>
+              <div class="text-xs uppercase tracking-wider text-stone-gray font-bold mb-1">Campus Location</div>
+              <p class="text-ink text-base sm:text-lg font-bold">Kizilagac, Bodrum / Mugla, Turkiye</p>
+              <p class="text-xs sm:text-sm text-stone-gray mt-1">Tuesday – Sunday: 10:00 – 19:00 (Closed on Mondays)</p>
+            </div>
+          </div>
+
+          <!-- Social Media Channels -->
+          <div class="p-5 sm:p-6 bg-surface-container-low border-2 border-olive rounded-xs shadow-xs">
+            <div class="text-xs uppercase tracking-wider text-stone-gray font-bold mb-4">
+              Social Media Channels
+            </div>
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+              <a
+                href="https://wa.me/905423739748"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="flex items-center justify-center gap-2 p-3 bg-parchment border border-olive text-ink hover:bg-olive hover:text-white transition-colors text-xs font-bold uppercase rounded-xs"
+              >
+                <span class="material-symbols-outlined text-lg text-olive group-hover:text-white">chat</span>
+                <span>WhatsApp</span>
+              </a>
+
+              <a
+                href="https://instagram.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="flex items-center justify-center gap-2 p-3 bg-parchment border border-olive text-ink hover:bg-olive hover:text-white transition-colors text-xs font-bold uppercase rounded-xs"
+              >
+                <span class="material-symbols-outlined text-lg text-olive group-hover:text-white">photo_camera</span>
+                <span>Instagram</span>
+              </a>
+
+              <a
+                href="https://youtube.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="flex items-center justify-center gap-2 p-3 bg-parchment border border-olive text-ink hover:bg-olive hover:text-white transition-colors text-xs font-bold uppercase rounded-xs"
+              >
+                <span class="material-symbols-outlined text-lg text-olive group-hover:text-white">smart_display</span>
+                <span>YouTube</span>
+              </a>
+            </div>
+          </div>
+
+        </div>
       </div>
+
+      <!-- Right Column: Inquiry Form -->
+      <div class="lg:col-span-7 bg-surface-container-low border-2 border-olive rounded-xs p-6 sm:p-10 shadow-xs">
+        <h3 class="font-serif text-2xl text-ink font-bold mb-2">
+          Send Us a Message
+        </h3>
+        <p class="font-sans text-base text-ink/85 mb-6">
+          Submit your questions, thoughts, or suggestions. We will respond promptly.
+        </p>
+
+        <form id="contact-form-en" class="space-y-4 font-sans">
+          <div>
+            <label class="block text-xs font-bold text-ink uppercase tracking-wider mb-1">Full Name *</label>
+            <input 
+              type="text" 
+              required 
+              placeholder="Your Full Name"
+              class="w-full px-4 py-2.5 bg-parchment border border-sand text-ink text-base focus:outline-none focus:border-olive rounded-xs" 
+            />
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div>
+              <label class="block text-xs font-bold text-ink uppercase tracking-wider mb-1">Email *</label>
+              <input 
+                type="email" 
+                required 
+                placeholder="example@domain.com"
+                class="w-full px-4 py-2.5 bg-parchment border border-sand text-ink text-base focus:outline-none focus:border-olive rounded-xs" 
+              />
+            </div>
+            <div>
+              <label class="block text-xs font-bold text-ink uppercase tracking-wider mb-1">Phone</label>
+              <input 
+                type="tel" 
+                placeholder="+90 5XX XXX XX XX"
+                class="w-full px-4 py-2.5 bg-parchment border border-sand text-ink text-base focus:outline-none focus:border-olive rounded-xs" 
+              />
+            </div>
+          </div>
+
+          <div>
+            <label class="block text-xs font-bold text-ink uppercase tracking-wider mb-1">Subject</label>
+            <input 
+              type="text" 
+              placeholder="Subject of your message..."
+              class="w-full px-4 py-2.5 bg-parchment border border-sand text-ink text-base focus:outline-none focus:border-olive rounded-xs" 
+            />
+          </div>
+
+          <div>
+            <label class="block text-xs font-bold text-ink uppercase tracking-wider mb-1">Your Message *</label>
+            <textarea 
+              rows="5" 
+              required 
+              placeholder="Write your message here..."
+              class="w-full px-4 py-2.5 bg-parchment border border-sand text-ink text-base focus:outline-none focus:border-olive rounded-xs"
+            ></textarea>
+          </div>
+
+          <button 
+            type="submit" 
+            class="w-full py-3.5 bg-olive text-white hover:bg-bodrum-blue-dark text-base font-sans font-bold tracking-wider uppercase transition-colors shadow-xs rounded-xs cursor-pointer"
+          >
+            Send Message
+          </button>
+        </form>
+      </div>
+
     </div>
-  </section>
+  </div>
 </Layout>
+
+<script>
+  const contactFormEn = document.getElementById('contact-form-en');
+  if (contactFormEn) {
+    contactFormEn.addEventListener('submit', (e) => {
+      e.preventDefault();
+      if ((window as any).showToast) {
+        (window as any).showToast(
+          'Your message has been sent successfully! Our library team will get in touch with you shortly.',
+          'success',
+          5000
+        );
+      }
+      (contactFormEn as HTMLFormElement).reset();
+    });
+  }
+</script>

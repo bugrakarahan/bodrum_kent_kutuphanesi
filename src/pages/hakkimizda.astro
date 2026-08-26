@@ -5,58 +5,58 @@ import { getT } from '../utils/i18n';
 const lang = 'tr';
 const t = getT(lang);
 
+// 11 Founding members in alphabetical order
 const alphabeticalBoard = [
   "Birol K. Yiğitcan",
   "Canan Küçükeren",
   "Deniz Öztürk",
-  "Doç. Dr. Yalçın İ. Gürkan",
   "Fikret Nesip Üçan",
   "Güldal Altuner",
   "Metin Ataç",
   "Nevra Sezer Tüfekçi",
   "Sema Sagat",
   "Sönmez Taner",
-  "Ümran Yüksel"
-];
+  "Ümran Yüksel",
+  "Doç. Dr. Yalçın İ. Gürkan"
+].sort((a, b) => a.localeCompare(b, 'tr'));
 
-const plannedActivitiesUppercase = [
-  "YAZAR SÖYLEŞİ VE İMZA GÜNLERİ",
-  "YAZI VE EDİTÖRLÜK ATÖLYELERİ",
-  "DETAYLI ATÖLYE ÇALIŞMALARI (KİTAP VE ESER İNCELEME)",
-  "KİTAP VE OKUMA KULÜPLERİ",
-  "TOPLANTI, PANEL, SEMİNER, SEMPOZYUM, KONFERANS VE FESTİVAL ORGANİZASYONLARI",
-  "KİTAP GÜNLERİ",
-  "BİLİM, FELSEFE, ARKEOLOJİ, TARİH, SOSYOLOJİ, PSİKOLOJİ, SANAT VE SANAT TARİHİ ETKİNLİKLERİ",
-  "SANAT ETKİNLİKLERİ (TİYATRO, SİNEMA, FOTOĞRAF, DANS)",
-  "KARŞILAŞTIRMALI ETKİNLİKLER (ÖRN. EDEBİYAT VE FELSEFE, EDEBİYAT VE ARKEOLOJİ)",
-  "OKUR BULUŞMALARI",
-  "KİTAP DEĞİŞİM ETKİNLİKLERİ",
-  "SERGİLER",
-  "DERGİ VE GAZETE ÇALIŞMALARI",
-  "BODRUM KONULU ÖZEL KİTAP KOLEKSİYONU / KİTAP KÖŞESİ",
-  "ULUSAL VE ULUSLARARASI KÜTÜPHANELER, STK’LAR, MÜZELER VE KÜLTÜR-SANAT MERKEZLERİ İLE ORTAK PROJELER"
+const activities = [
+  "Edebiyat, Sanat, Tarih, Felsefe, Arkeoloji, Antik Tarih, Ekoloji, Sosyoloji, Psikoloji,… vb. konularda etkinlikler (söyleşiler, paneller, konferanslar, seminerler vb.) düzenlemek,",
+  "Her yaşa yönelik okuma grupları ve atölye çalışmaları (çocuklar, gençler, yetişkinler) düzenlemek,",
+  "Kitap kulübü buluşmaları organize etmek,",
+  "Yazarlar, akademisyenler ve sanatçılarla imza günleri ve atölye çalışmaları gerçekleştirmek,",
+  "Bodrum’un sözlü tarihini ve kültürel hafızasını kayıt altına almak,",
+  "Bodrum ile ilgili kitap, belge ve arşiv malzemelerini toplamak ve araştırmacıların erişimine sunmak,",
+  "Çocuk ve gençlerin kitapla ilişkisini güçlendiren özel projeler ve atölyeler yürütmek,",
+  "Yerel ve ulusal düzeyde kütüphaneler, üniversiteler ve sivil toplum kuruluşlarıyla iş birlikleri geliştirmek,",
+  "Kütüphane bünyesinde tematik kitap kulüpleri ve tartışma platformları oluşturmak,",
+  "Dijital kütüphanecilik ve çevrim içi arşiv çalışmalarıyla bilgiye erişimi kolaylaştırmak."
 ];
 ---
 
 <Layout
   title={`Hakkımızda | ${t.siteTitle}`}
-  description="Bodrum Kent Kütüphanesi'nin doğuşu, kurucu isimleri, Halikarnas Balıkçısı mirası ve hedeflenen kültürel çalışmaları."
+  description="Bodrum Kent Kütüphanesi'nin doğuşu, kurucu isimleri, Halikarnas Balıkçısı mirası ve hedeflenen çalışmalar."
   lang={lang}
   currentPath="/hakkimizda"
 >
   <!-- 1. Fikrin Doğuşu & Kurucu İsimler -->
-  <section class="py-10 md:py-14 px-5 md:px-12 bg-surface-bright border-b border-sand relative overflow-hidden">
+  <section class="py-10 md:py-14 px-5 md:px-12 bg-surface-bright border-b border-sand">
     <div class="max-w-[1280px] mx-auto">
       
-      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start mb-6">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
         
-        <!-- Sol: Fikrin Doğuşu & Liste -->
+        <!-- Sol: Fikrin Doğuşu ve İsim Listesi -->
         <div class="lg:col-span-7 space-y-4">
+          <div class="inline-flex items-center gap-2 px-3 py-1 bg-olive text-white text-xs font-sans font-bold tracking-widest uppercase rounded-xs shadow-2xs">
+            <span>TARİHÇE</span>
+          </div>
+
           <h1 class="font-serif text-3xl sm:text-4xl text-ink font-bold leading-tight">
             Fikrin Doğuşu
           </h1>
-          
-          <div class="bg-parchment p-5 sm:p-6 border border-sand shadow-xs text-base sm:text-lg text-ink/90 font-serif leading-relaxed">
+
+          <div class="font-sans text-base sm:text-lg text-ink/90 leading-relaxed text-justify">
             <p>
               Bodrum Kent Kütüphanesi ismi ve fikri, ilk olarak, <strong>16.09.2019</strong> tarihinde, Dibeklihan Kültür ve Sanat Köyü’nde, aşağıda yer alan değerli isimler tarafından dile getirilmiştir:
             </p>
@@ -64,7 +64,7 @@ const plannedActivitiesUppercase = [
 
           <!-- Alt alta, alfabetik sıralı liste (Normal ağırlık, sıkı satır aralığı) -->
           <div class="bg-parchment border border-sand p-5 shadow-xs">
-            <ul class="grid grid-cols-1 sm:grid-cols-2 gap-1.5 text-sm sm:text-base font-serif font-normal text-ink/90">
+            <ul class="grid grid-cols-1 sm:grid-cols-2 gap-1.5 text-sm sm:text-base font-sans font-normal text-ink/90">
               {alphabeticalBoard.map((name) => (
                 <li class="flex items-center gap-2 py-0.5">
                   <span class="w-1.5 h-1.5 rounded-full bg-olive shrink-0"></span>
@@ -74,28 +74,23 @@ const plannedActivitiesUppercase = [
             </ul>
           </div>
 
-          <!-- Emanet Notu Kutusu (Üstteki isimler kutusu rengi ve border'ı ile aynı) -->
+          <!-- Emanet Notu Kutusu -->
           <div class="bg-parchment border border-sand p-4 sm:p-5 rounded-xs shadow-2xs">
-            <p class="font-serif text-sm sm:text-base text-ink font-medium leading-relaxed">
+            <p class="font-sans text-sm sm:text-base text-ink font-medium leading-relaxed">
               Bodrum Kent Kütüphanesi ismi, <strong>Sayın Sönmez Taner</strong> tarafından, <strong>7 Eylül 2019</strong> tarihinde Zeytin Taneleri Kütüphanesi ekibine emanet edilmiştir.
             </p>
           </div>
         </div>
 
-        <!-- Sağ: Mavi Zeminli BKK Logosu (İsimler kutusuyla aynı hizada) -->
-        <div class="lg:col-span-5 pt-2">
-          <div class="bg-parchment border-2 border-olive p-4 rounded-xs shadow-md">
-            <div class="aspect-square overflow-hidden bg-olive flex items-center justify-center p-6 rounded-xs border border-sand/60 shadow-inner">
-              <img
-                src="/images/logo.png"
-                alt="Bodrum Kent Kütüphanesi Logosu"
-                class="w-full h-full object-contain drop-shadow-md"
-                loading="eager"
-              />
-            </div>
-            <div class="p-2 text-center text-xs text-stone-gray font-serif italic">
-              Bodrum Kent Kütüphanesi • Kızılağaç
-            </div>
+        <!-- Sağ: Temiz, Çerçevesiz BKK Logosu -->
+        <div class="lg:col-span-5 flex items-center justify-center">
+          <div class="w-full max-w-[260px] sm:max-w-[290px] aspect-square rounded-xs overflow-hidden shadow-sm">
+            <img
+              src="/images/logo.png"
+              alt="Bodrum Kent Kütüphanesi Logosu"
+              class="w-full h-full object-contain"
+              loading="eager"
+            />
           </div>
         </div>
 
@@ -109,27 +104,27 @@ const plannedActivitiesUppercase = [
     <div class="max-w-[1280px] mx-auto">
       
       <div class="max-w-4xl mb-8">
-        <div class="inline-flex items-center gap-2 px-3 py-1 bg-olive text-white text-xs font-serif font-bold tracking-widest uppercase mb-3 rounded-xs shadow-2xs">
+        <div class="inline-flex items-center gap-2 px-3 py-1 bg-olive text-white text-xs font-sans font-bold tracking-widest uppercase mb-3 rounded-xs shadow-2xs">
           <span>KÜLTÜREL MİRAS</span>
         </div>
         <h2 class="font-serif text-2xl sm:text-3xl text-ink font-bold leading-tight mb-3">
           Halikarnas Balıkçısı Cevat Şakir Kabaağaçlı ile Mavi Hümanizma ve Anadolu Uygarlığı’nın İzinde
         </h2>
-        <p class="font-serif text-base text-ink/80 leading-relaxed text-justify">
-          Cevat Şakir Kabaağaçlı’nın Girit’ten Bodrum’a uzanan engin deniz sevgisi, Akdeniz hümanizması ve kadim Anadolu medeniyetlerine kazandırdığı ölümsüz miras kütüphanemizin temel taşıdır.
+        <p class="font-sans text-base text-ink/85 leading-relaxed text-justify">
+          Cevat Şakir Kabaağaçlı’nın Bodrum’a ve Anadolu Uygarlığı’na kattığı kültür mirası, kütüphanemizin temel taşıdır.
         </p>
       </div>
 
       <!-- 3 Özel Kutu: Mavi Hümanizma, Bodrum'u Yeşerten Kalem, Altıncı Kıta Akdeniz -->
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
         <div class="bg-parchment p-5 border-2 border-olive rounded-xs shadow-xs flex flex-col justify-between">
           <div>
             <h3 class="font-serif text-lg font-bold text-olive mb-2">Mavi Hümanizma</h3>
-            <p class="font-serif text-sm text-ink/85 leading-relaxed">
+            <p class="font-sans text-sm text-ink/85 leading-relaxed">
               Akdeniz ve Ege felsefesinin evrensel barış, doğa sevgisi ve insanlık kardeşliği temelleri.
             </p>
           </div>
-          <div class="pt-3 mt-3 border-t border-olive/20 text-xs font-serif italic text-stone-gray">
+          <div class="pt-3 mt-3 border-t border-olive/20 text-xs font-sans italic text-stone-gray">
             İçerik hazırlanmaktadır
           </div>
         </div>
@@ -137,11 +132,11 @@ const plannedActivitiesUppercase = [
         <div class="bg-parchment p-5 border-2 border-olive rounded-xs shadow-xs flex flex-col justify-between">
           <div>
             <h3 class="font-serif text-lg font-bold text-olive mb-2">Bodrum’u Yeşerten Kalem</h3>
-            <p class="font-serif text-sm text-ink/85 leading-relaxed">
+            <p class="font-sans text-sm text-ink/85 leading-relaxed">
               Cevat Şakir’in Bodrum’a diktiği yüzlerce ağaç ve bitki türüyle başlattığı doğa hareketi.
             </p>
           </div>
-          <div class="pt-3 mt-3 border-t border-olive/20 text-xs font-serif italic text-stone-gray">
+          <div class="pt-3 mt-3 border-t border-olive/20 text-xs font-sans italic text-stone-gray">
             İçerik hazırlanmaktadır
           </div>
         </div>
@@ -149,25 +144,14 @@ const plannedActivitiesUppercase = [
         <div class="bg-parchment p-5 border-2 border-olive rounded-xs shadow-xs flex flex-col justify-between">
           <div>
             <h3 class="font-serif text-lg font-bold text-olive mb-2">Altıncı Kıta Akdeniz</h3>
-            <p class="font-serif text-sm text-ink/85 leading-relaxed">
+            <p class="font-sans text-sm text-ink/85 leading-relaxed">
               Anadolu'nun kadim mitolojisi, denizcilik tarihi ve Akdeniz uygarlıklarının kökleri.
             </p>
           </div>
-          <div class="pt-3 mt-3 border-t border-olive/20 text-xs font-serif italic text-stone-gray">
+          <div class="pt-3 mt-3 border-t border-olive/20 text-xs font-sans italic text-stone-gray">
             İçerik hazırlanmaktadır
           </div>
         </div>
-      </div>
-
-      <!-- Link to 25 Books Catalog -->
-      <div class="text-center pt-2">
-        <a
-          href="/halikarnas-balikcisi"
-          class="inline-flex items-center gap-2 px-6 py-3 bg-olive hover:bg-bodrum-blue-dark text-white text-xs sm:text-sm font-serif font-bold uppercase tracking-wider transition-colors rounded-xs shadow-xs"
-        >
-          <span>25 Eserlik Kitap Kataloğu & Arşivi İnceleyin</span>
-          <span class="material-symbols-outlined text-base">arrow_forward</span>
-        </a>
       </div>
 
     </div>
@@ -178,33 +162,21 @@ const plannedActivitiesUppercase = [
     <div class="max-w-[1280px] mx-auto">
       
       <div class="max-w-4xl mb-6">
-        <h2 class="font-serif text-2xl sm:text-3xl text-ink font-bold mb-4">
+        <h2 class="font-serif text-2xl sm:text-3xl text-ink font-bold mb-3">
           Amaç ve Hedeflenen Çalışmalar
         </h2>
-
-        <!-- Main Manifesto Text: 2 Paragraphs (Justified) -->
-        <div class="bg-surface-container-low p-5 sm:p-6 border border-sand shadow-xs mb-6 space-y-3">
-          <p class="font-serif text-base sm:text-lg text-ink/90 leading-relaxed text-justify">
-            Bodrum Kent Kütüphanesi, Bodrum’da yaşayanlar ile kenti ziyaret eden kitapseverleri, edebiyat, sanat ve bilim dünyasının değerli isimleriyle ve kitaplarıyla buluşturmayı amaçlayan, çok amaçlı ve yaşayan bir kütüphane projesidir.
-          </p>
-          <p class="font-serif text-base sm:text-lg text-ink/90 leading-relaxed text-justify">
-            Kitap merkezli etkinlikler, söyleşiler, atölyeler ve kültürel buluşmalar aracılığıyla yaşam boyu öğrenmeyi, üretimi ve paylaşımı destekleyen; Halikarnas Balıkçısı’nın Akdeniz ve Mavi Hümanizmasını koruyan, Anadolu Uygarlığı’nın değerinin altını çizen; bağımsız bir buluşma alanı olarak tasarlanmaktadır.
-          </p>
-        </div>
-
-        <p class="font-serif text-sm sm:text-base text-ink font-bold mb-3">
-          Bu amaçla, ulusal ve uluslararası kapsamda, aşağıda belirtilen etkinliklerin yapılması hedeflenmektedir:
+        <p class="font-sans text-base text-ink/80 leading-relaxed">
+          Bodrum Kent Kütüphanesi’nin hayata geçirmeyi hedeflediği temel kültürel ve toplumsal faaliyet alanları:
         </p>
       </div>
 
-      <!-- 15 Maddelik Hedefler Grid (Kompakt ve zarif kutucuklar) -->
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
-        {plannedActivitiesUppercase.map((act, index) => (
-          <div class="bg-surface-container-low p-3.5 border border-olive/70 rounded-xs shadow-2xs flex items-start gap-2.5">
-            <span class="w-5 h-5 rounded-full bg-olive text-white flex items-center justify-center font-mono text-[10px] font-bold shrink-0 mt-0.5 shadow-2xs">
-              {String(index + 1).padStart(2, '0')}
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        {activities.map((act, idx) => (
+          <div class="bg-surface-container-low border-2 border-olive rounded-xs p-4 sm:p-5 flex items-start gap-3.5 shadow-xs">
+            <span class="w-6 h-6 rounded-full bg-olive text-white flex items-center justify-center font-mono text-xs font-bold shrink-0 mt-0.5 shadow-2xs">
+              {idx + 1}
             </span>
-            <p class="font-serif text-xs sm:text-sm font-bold text-ink leading-snug">
+            <p class="font-sans text-sm sm:text-base text-ink/90 leading-relaxed">
               {act}
             </p>
           </div>

@@ -18,6 +18,7 @@ const eventsCollection = defineCollection({
     summaryTr: z.string(),
     summaryEn: z.string(),
     image: z.string(),
+    photos: z.array(z.string()).optional(),
     featured: z.boolean().default(false),
     isPast: z.boolean().default(false),
     actionUrl: z.string().optional()

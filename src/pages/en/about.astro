@@ -5,65 +5,64 @@ import { getT } from '../../utils/i18n';
 const lang = 'en';
 const t = getT(lang);
 
-const alphabeticalBoardEn = [
+const alphabeticalBoard = [
   "Birol K. Yiğitcan",
   "Canan Küçükeren",
   "Deniz Öztürk",
-  "Assoc. Prof. Yalçın İ. Gürkan",
   "Fikret Nesip Üçan",
   "Güldal Altuner",
   "Metin Ataç",
   "Nevra Sezer Tüfekçi",
   "Sema Sagat",
   "Sönmez Taner",
-  "Ümran Yüksel"
-];
+  "Ümran Yüksel",
+  "Doç. Dr. Yalçın İ. Gürkan"
+].sort((a, b) => a.localeCompare(b, 'en'));
 
-const plannedActivitiesUppercaseEn = [
-  "AUTHOR TALKS AND BOOK SIGNING EVENTS",
-  "WRITING AND EDITING WORKSHOPS",
-  "DETAILED WORKSHOP STUDIES (BOOK AND LITERARY ANALYSIS)",
-  "BOOK AND READING CLUBS",
-  "MEETINGS, PANELS, SEMINARS, SYMPOSIUMS, CONFERENCES, AND FESTIVALS",
-  "BOOK FAIRS AND LITERARY DAYS",
-  "SCIENCE, PHILOSOPHY, ARCHAEOLOGY, HISTORY, SOCIOLOGY, PSYCHOLOGY, AND ART HISTORY EVENTS",
-  "ART EVENTS (THEATER, CINEMA, PHOTOGRAPHY, DANCE)",
-  "COMPARATIVE STUDIES (E.G. LITERATURE AND PHILOSOPHY, LITERATURE AND ARCHAEOLOGY)",
-  "READER GATHERINGS AND DISCUSSIONS",
-  "BOOK EXCHANGE EVENTS",
-  "EXHIBITIONS",
-  "JOURNAL AND NEWSPAPER INITIATIVES",
-  "SPECIAL BODRUM BOOK COLLECTION / READING CORNER",
-  "COLLABORATIVE PROJECTS WITH NATIONAL AND INTERNATIONAL LIBRARIES, NGOS, MUSEUMS, AND CULTURAL CENTERS"
+const activitiesEn = [
+  "Organizing cultural and scholarly events (talks, panels, conferences, seminars) across Literature, Art, History, Philosophy, Archaeology, Ecology, and Sociology,",
+  "Hosting intergenerational reading groups and interactive workshops for children, youth, and adults,",
+  "Facilitating recurring Book Club gatherings,",
+  "Conducting book signings and creative writing workshops with authors, scholars, and artists,",
+  "Documenting Bodrum's oral history and maritime cultural memory,",
+  "Curating books, historical records, and manuscripts related to Bodrum for scholarly access,",
+  "Conducting educational projects reinforcing children and youth engagement with literature,",
+  "Building collaborative networks with regional and international libraries, universities, and NGOs,",
+  "Creating thematic study circles and intellectual discourse platforms,",
+  "Expanding open access to knowledge through digital librarianship and archival preservation."
 ];
 ---
 
 <Layout
   title={`About Us | ${t.siteTitle}`}
-  description="The genesis of Bodrum City Library, our founders, the Fisherman of Halicarnassus heritage, and planned cultural initiatives."
+  description="Founding vision of Bodrum City Library, committee members, Halikarnas Balıkçısı legacy, and planned initiatives."
   lang={lang}
   currentPath="/en/about"
 >
-  <!-- 1. Origins of the Concept & Founders -->
-  <section class="py-10 md:py-14 px-5 md:px-12 bg-surface-bright border-b border-sand relative overflow-hidden">
+  <!-- 1. Origins of the Concept & Founding Members -->
+  <section class="py-10 md:py-14 px-5 md:px-12 bg-surface-bright border-b border-sand">
     <div class="max-w-[1280px] mx-auto">
       
-      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start mb-6">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
         
         <div class="lg:col-span-7 space-y-4">
+          <div class="inline-flex items-center gap-2 px-3 py-1 bg-olive text-white text-xs font-sans font-bold tracking-widest uppercase rounded-xs shadow-2xs">
+            <span>HISTORY</span>
+          </div>
+
           <h1 class="font-serif text-3xl sm:text-4xl text-ink font-bold leading-tight">
             Origins of the Concept
           </h1>
-          
-          <div class="bg-parchment p-5 sm:p-6 border border-sand shadow-xs text-base sm:text-lg text-ink/90 font-serif leading-relaxed">
+
+          <div class="font-sans text-base sm:text-lg text-ink/90 leading-relaxed text-justify">
             <p>
-              The name and founding concept of Bodrum City Library were first articulated on <strong>September 16, 2019</strong>, at Dibeklihan Culture & Art Village by the esteemed figures listed below:
+              The name and founding concept of Bodrum City Library were first articulated on <strong>September 16, 2019</strong>, at Dibeklihan Culture & Art Village by the esteemed figures:
             </p>
           </div>
 
           <div class="bg-parchment border border-sand p-5 shadow-xs">
-            <ul class="grid grid-cols-1 sm:grid-cols-2 gap-1.5 text-sm sm:text-base font-serif font-normal text-ink/90">
-              {alphabeticalBoardEn.map((name) => (
+            <ul class="grid grid-cols-1 sm:grid-cols-2 gap-1.5 text-sm sm:text-base font-sans font-normal text-ink/90">
+              {alphabeticalBoard.map((name) => (
                 <li class="flex items-center gap-2 py-0.5">
                   <span class="w-1.5 h-1.5 rounded-full bg-olive shrink-0"></span>
                   <span>{name}</span>
@@ -72,27 +71,21 @@ const plannedActivitiesUppercaseEn = [
             </ul>
           </div>
 
-          <!-- Entrustment note matching parchment background -->
           <div class="bg-parchment border border-sand p-4 sm:p-5 rounded-xs shadow-2xs">
-            <p class="font-serif text-sm sm:text-base text-ink font-medium leading-relaxed">
+            <p class="font-sans text-sm sm:text-base text-ink font-medium leading-relaxed">
               The name Bodrum City Library was entrusted to the Olive Seeds Library team by <strong>Mr. Sönmez Taner</strong> on <strong>September 7, 2019</strong>.
             </p>
           </div>
         </div>
 
-        <div class="lg:col-span-5 pt-2">
-          <div class="bg-parchment border-2 border-olive p-4 rounded-xs shadow-md">
-            <div class="aspect-square overflow-hidden bg-olive flex items-center justify-center p-6 rounded-xs border border-sand/60 shadow-inner">
-              <img
-                src="/images/logo.png"
-                alt="Bodrum City Library Emblem"
-                class="w-full h-full object-contain drop-shadow-md"
-                loading="eager"
-              />
-            </div>
-            <div class="p-2 text-center text-xs text-stone-gray font-serif italic">
-              Bodrum City Library • Kizilagac
-            </div>
+        <div class="lg:col-span-5 flex items-center justify-center">
+          <div class="w-full max-w-[260px] sm:max-w-[290px] aspect-square rounded-xs overflow-hidden shadow-sm">
+            <img
+              src="/images/logo.png"
+              alt="Bodrum City Library Logo"
+              class="w-full h-full object-contain"
+              loading="eager"
+            />
           </div>
         </div>
 
@@ -101,43 +94,43 @@ const plannedActivitiesUppercaseEn = [
     </div>
   </section>
 
-  <!-- 2. The Fisherman of Halicarnassus & Blue Humanism Section -->
+  <!-- 2. Heritage of the Fisherman & Blue Humanism -->
   <section class="py-10 md:py-14 px-5 md:px-12 bg-surface-container-low border-b border-sand">
     <div class="max-w-[1280px] mx-auto">
       
       <div class="max-w-4xl mb-8">
-        <div class="inline-flex items-center gap-2 px-3 py-1 bg-olive text-white text-xs font-serif font-bold tracking-widest uppercase mb-3 rounded-xs shadow-2xs">
+        <div class="inline-flex items-center gap-2 px-3 py-1 bg-olive text-white text-xs font-sans font-bold tracking-widest uppercase mb-3 rounded-xs shadow-2xs">
           <span>CULTURAL HERITAGE</span>
         </div>
         <h2 class="font-serif text-2xl sm:text-3xl text-ink font-bold leading-tight mb-3">
-          In the Footsteps of the Fisherman of Halicarnassus, Blue Humanism and Anatolian Civilization
+          In the Footsteps of Cevat Şakir Kabaağaçlı, Blue Humanism and Anatolian Civilization
         </h2>
-        <p class="font-serif text-base text-ink/80 leading-relaxed text-justify">
-          The maritime passion, Mediterranean humanism, and Anatolian cultural renaissance pioneered by Cevat Şakir Kabaağaçlı from Crete to Bodrum forms the cornerstone of our living library.
+        <p class="font-sans text-base text-ink/85 leading-relaxed text-justify">
+          The cultural heritage that Cevat Şakir Kabaağaçlı contributed to Bodrum and Anatolian Civilization forms the cornerstone of our library.
         </p>
       </div>
 
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
         <div class="bg-parchment p-5 border-2 border-olive rounded-xs shadow-xs flex flex-col justify-between">
           <div>
             <h3 class="font-serif text-lg font-bold text-olive mb-2">Blue Humanism</h3>
-            <p class="font-serif text-sm text-ink/85 leading-relaxed">
-              Universal peace, ecological affinity, and humanity's brotherhood rooted in Aegean philosophy.
+            <p class="font-sans text-sm text-ink/85 leading-relaxed">
+              Foundations of universal peace, nature worship, and human solidarity born from the Aegean.
             </p>
           </div>
-          <div class="pt-3 mt-3 border-t border-olive/20 text-xs font-serif italic text-stone-gray">
+          <div class="pt-3 mt-3 border-t border-olive/20 text-xs font-sans italic text-stone-gray">
             Content under preparation
           </div>
         </div>
 
         <div class="bg-parchment p-5 border-2 border-olive rounded-xs shadow-xs flex flex-col justify-between">
           <div>
-            <h3 class="font-serif text-lg font-bold text-olive mb-2">The Pen that Greened Bodrum</h3>
-            <p class="font-serif text-sm text-ink/85 leading-relaxed">
-              Botanical passion and hundreds of plant species introduced by Cevat Şakir to the peninsula.
+            <h3 class="font-serif text-lg font-bold text-olive mb-2">The Pen That Greened Bodrum</h3>
+            <p class="font-sans text-sm text-ink/85 leading-relaxed">
+              The environmental movement initiated by the hundreds of plant and tree species planted across Bodrum.
             </p>
           </div>
-          <div class="pt-3 mt-3 border-t border-olive/20 text-xs font-serif italic text-stone-gray">
+          <div class="pt-3 mt-3 border-t border-olive/20 text-xs font-sans italic text-stone-gray">
             Content under preparation
           </div>
         </div>
@@ -145,59 +138,39 @@ const plannedActivitiesUppercaseEn = [
         <div class="bg-parchment p-5 border-2 border-olive rounded-xs shadow-xs flex flex-col justify-between">
           <div>
             <h3 class="font-serif text-lg font-bold text-olive mb-2">The Sixth Continent Mediterranean</h3>
-            <p class="font-serif text-sm text-ink/85 leading-relaxed">
-              Ancient mythology, maritime chronicles, and shared Mediterranean heritage.
+            <p class="font-sans text-sm text-ink/85 leading-relaxed">
+              Ancient Anatolian mythology, maritime lore, and shared Mediterranean roots.
             </p>
           </div>
-          <div class="pt-3 mt-3 border-t border-olive/20 text-xs font-serif italic text-stone-gray">
+          <div class="pt-3 mt-3 border-t border-olive/20 text-xs font-sans italic text-stone-gray">
             Content under preparation
           </div>
         </div>
       </div>
 
-      <div class="text-center pt-2">
-        <a
-          href="/en/fisherman-of-halicarnassus"
-          class="inline-flex items-center gap-2 px-6 py-3 bg-olive hover:bg-bodrum-blue-dark text-white text-xs sm:text-sm font-serif font-bold uppercase tracking-wider transition-colors rounded-xs shadow-xs"
-        >
-          <span>Explore 25-Work Catalog & Archive</span>
-          <span class="material-symbols-outlined text-base">arrow_forward</span>
-        </a>
-      </div>
-
     </div>
   </section>
 
-  <!-- 3. Objectives and Planned Initiatives -->
+  <!-- 3. Planned Initiatives -->
   <section class="py-10 md:py-14 px-5 md:px-12 bg-parchment border-b border-sand">
     <div class="max-w-[1280px] mx-auto">
       
       <div class="max-w-4xl mb-6">
-        <h2 class="font-serif text-2xl sm:text-3xl text-ink font-bold mb-4">
-          Objectives and Planned Initiatives
+        <h2 class="font-serif text-2xl sm:text-3xl text-ink font-bold mb-3">
+          Mission & Planned Initiatives
         </h2>
-
-        <div class="bg-surface-container-low p-5 sm:p-6 border border-sand shadow-xs mb-6 space-y-3">
-          <p class="font-serif text-base sm:text-lg text-ink/90 leading-relaxed text-justify">
-            Bodrum City Library is a multi-purpose, living library project designed to bring together residents and visitors with esteemed figures and works of literature, art, and science.
-          </p>
-          <p class="font-serif text-base sm:text-lg text-ink/90 leading-relaxed text-justify">
-            Through book-centered events, talks, workshops, and cultural gatherings, it supports lifelong learning, creation, and sharing; preserving the Mediterranean and Blue Humanism of the Fisherman of Halicarnassus and highlighting the timeless value of Anatolian Civilization as an independent meeting space.
-          </p>
-        </div>
-
-        <p class="font-serif text-sm sm:text-base text-ink font-bold mb-3">
-          To this end, the library aims to conduct the following cultural initiatives on national and international scales:
+        <p class="font-sans text-base text-ink/80 leading-relaxed">
+          The core operational areas and cultural initiatives Bodrum City Library aims to realize:
         </p>
       </div>
 
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
-        {plannedActivitiesUppercaseEn.map((act, index) => (
-          <div class="bg-surface-container-low p-3.5 border border-olive/70 rounded-xs shadow-2xs flex items-start gap-2.5">
-            <span class="w-5 h-5 rounded-full bg-olive text-white flex items-center justify-center font-mono text-[10px] font-bold shrink-0 mt-0.5 shadow-2xs">
-              {String(index + 1).padStart(2, '0')}
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        {activitiesEn.map((act, idx) => (
+          <div class="bg-surface-container-low border-2 border-olive rounded-xs p-4 sm:p-5 flex items-start gap-3.5 shadow-xs">
+            <span class="w-6 h-6 rounded-full bg-olive text-white flex items-center justify-center font-mono text-xs font-bold shrink-0 mt-0.5 shadow-2xs">
+              {idx + 1}
             </span>
-            <p class="font-serif text-xs sm:text-sm font-bold text-ink leading-snug">
+            <p class="font-sans text-sm sm:text-base text-ink/90 leading-relaxed">
               {act}
             </p>
           </div>
