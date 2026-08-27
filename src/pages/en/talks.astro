@@ -6,115 +6,83 @@ import { getT } from '../../utils/i18n';
 const lang = 'en';
 const t = getT(lang);
 
-const allTalks = await getCollection('talks');
-
-const categoriesEn = [
-  "ALL", "AUTHORS", "LITERATURE", "CULTURE", "ARTS", "HISTORY", "PHILOSOPHY", "ARCHAEOLOGY", "SOCIOLOGY", "PSYCHOLOGY", "ECOLOGY", "SCIENCE"
-];
+const talks = await getCollection('talks');
 ---
 
 <Layout
   title={`Talks | ${t.siteTitle}`}
-  description="Conversations with authors, scholars, and artists illuminating our cultural and intellectual world."
+  description="Bodrum City Library recorded talks, sessions with authors, scholars, and cultural researchers."
   lang={lang}
   currentPath="/en/talks"
 >
-  <!-- Hero Section -->
-  <section class="py-10 md:py-14 px-5 md:px-12 bg-surface-bright border-b border-sand">
+  <!-- Hero Header -->
+  <section class="py-8 md:py-12 px-5 md:px-12 bg-surface-bright border-b border-sand">
     <div class="max-w-[1280px] mx-auto">
       <div class="max-w-3xl">
-        <h1 class="font-serif text-3xl sm:text-4xl text-ink font-bold leading-tight mb-3">
-          Culture, Art and Science Talks
+        <h1 class="font-serif text-2xl sm:text-3xl text-ink font-bold leading-tight mb-2.5">
+          Literature, Art and Science Talks
         </h1>
-        <p class="font-sans text-base sm:text-lg text-ink/80 leading-relaxed">
-          Video recordings of our conversations with authors, artists, scientists, and researchers who enrich our cultural, social, and scientific world.
+        <p class="font-sans text-sm sm:text-base text-ink/80 leading-relaxed">
+          Digital video archive of in-depth sessions with authors, scholars, historians, and researchers.
         </p>
       </div>
     </div>
   </section>
 
-  <!-- Category Pills Bar -->
-  <div class="border-b border-sand bg-parchment py-3.5 px-5 md:px-12 sticky top-20 z-30 overflow-x-auto">
-    <div class="max-w-[1280px] mx-auto flex items-center justify-center gap-2 min-w-max">
-      {categoriesEn.map((cat, idx) => (
-        <button
-          type="button"
-          class={`px-3 py-1.5 text-xs font-sans font-bold uppercase tracking-wider rounded-xs transition-colors shadow-2xs ${
-            idx === 0
-              ? 'bg-olive text-white ring-2 ring-olive/40'
-              : 'bg-olive text-white hover:bg-bodrum-blue-dark'
-          }`}
-        >
-          {cat}
-        </button>
-      ))}
-    </div>
-  </div>
-
-  <div class="max-w-[1280px] mx-auto px-5 md:px-12 py-10 md:py-14">
-    
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-      {allTalks.map((talk) => (
-        <div class="bg-surface-container-low border-2 border-olive p-5 flex flex-col justify-between shadow-xs rounded-xs">
+  <!-- Video Grid -->
+  <div class="max-w-[1280px] mx-auto px-5 md:px-12 py-8 md:py-12">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+      {talks.map((talk) => (
+        <div class="bg-surface-container-low border-2 border-olive rounded-xs p-5 sm:p-6 flex flex-col justify-between shadow-xs">
           <div>
-            <div 
-              class="relative aspect-[16/9] overflow-hidden bg-black mb-4 cursor-pointer group border border-sand rounded-2xs"
+            <div
+              class="aspect-video relative overflow-hidden bg-surface-container-high border border-sand cursor-pointer group rounded-2xs mb-4"
               data-youtube-id={talk.data.youtubeId}
-              data-video-title={talk.data.titleEn}
-              data-video-subtitle={talk.data.guestEn}
             >
               <img
                 src={talk.data.thumbnail}
                 alt={talk.data.titleEn}
-                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
               />
-              
-              <div class="absolute inset-0 bg-gradient-to-t from-ink/70 via-transparent to-transparent flex items-center justify-center">
-                <div class="w-12 h-12 rounded-full bg-olive text-white flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform">
-                  <span class="material-symbols-outlined text-2xl">play_arrow</span>
+              <div class="absolute inset-0 bg-ink/30 group-hover:bg-ink/10 transition-colors flex items-center justify-center">
+                <div class="w-12 h-12 rounded-full bg-olive/90 text-white flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform">
+                  <span class="material-symbols-outlined text-2xl ml-0.5">play_arrow</span>
                 </div>
               </div>
-
-              <div class="absolute bottom-2.5 right-2.5 px-2 py-0.5 bg-black/80 text-white font-mono text-[11px] rounded-xs">
+              <span class="absolute bottom-2.5 right-2.5 px-2 py-0.5 bg-ink/80 text-parchment text-xs font-mono rounded">
                 {talk.data.duration}
-              </div>
+              </span>
             </div>
 
-            <div class="flex items-center justify-between text-xs text-stone-gray font-mono mb-2 pb-1 border-b border-sand/60">
-              <span class="text-olive font-sans font-bold text-xs">{talk.data.guestEn}</span>
+            <div class="flex items-center justify-between text-xs text-stone-gray font-mono mb-2">
+              <span class="text-olive font-sans font-bold text-xs uppercase">{talk.data.guestEn}</span>
               <span class="font-bold">{talk.data.date}</span>
             </div>
 
-            <h3 class="font-serif text-lg sm:text-xl text-ink font-bold leading-snug mb-3 whitespace-pre-line">
+            <h2 class="font-serif text-base sm:text-lg text-ink font-bold mb-2.5 leading-snug whitespace-pre-line text-center">
               {talk.data.titleEn}
-            </h3>
+            </h2>
 
-            <p class="font-sans text-xs sm:text-sm text-ink/85 leading-relaxed mb-4 text-justify">
+            <p class="text-xs sm:text-sm text-ink/85 font-sans leading-relaxed mb-4 text-justify">
               {talk.data.summaryEn}
             </p>
 
             {talk.data.chapters && talk.data.chapters.length > 0 && (
-              <div class="mt-4 pt-3 border-t border-sand/80">
-                <div class="text-[11px] uppercase tracking-wider font-bold text-stone-gray mb-2 flex items-center gap-1">
-                  <span class="material-symbols-outlined text-[14px] text-olive">bookmarks</span>
-                  <span>Key Chapters (Timestamps)</span>
+              <div class="mb-4 p-3 bg-parchment border border-sand rounded-xs space-y-1.5">
+                <div class="flex items-center gap-1.5 text-xs font-sans font-bold uppercase tracking-wider text-olive">
+                  <span class="material-symbols-outlined text-sm">schedule</span>
+                  <span>Chapters & Topics</span>
                 </div>
-                <div class="space-y-1.5">
+                <div class="grid grid-cols-1 gap-1 text-xs font-sans">
                   {talk.data.chapters.map((chap) => (
                     <button
                       type="button"
+                      class="chapter-btn flex items-center justify-between p-1.5 hover:bg-olive/10 rounded text-left transition-colors cursor-pointer w-full group/chap"
                       data-youtube-id={talk.data.youtubeId}
-                      data-start-time={chap.seconds}
-                      data-video-title={talk.data.titleEn}
-                      data-video-subtitle={`${chap.time} - ${chap.titleEn}`}
-                      class="w-full text-left flex items-center justify-between px-2.5 py-1.5 bg-parchment hover:bg-bodrum-blue-light border border-sand/70 rounded-2xs text-xs transition-colors group cursor-pointer"
+                      data-start={chap.seconds}
                     >
-                      <span class="text-ink font-sans font-medium text-[12px] group-hover:text-olive truncate mr-2">
-                        {chap.titleEn}
-                      </span>
-                      <span class="font-mono text-[11px] font-bold text-olive bg-olive/10 px-1.5 py-0.5 rounded-2xs shrink-0">
-                        {chap.time}
-                      </span>
+                      <span class="text-ink/90 group-hover/chap:text-olive font-medium">{chap.titleEn}</span>
+                      <span class="font-mono text-stone-gray font-bold text-[11px] bg-sand/40 px-1.5 py-0.5 rounded">{chap.time}</span>
                     </button>
                   ))}
                 </div>
@@ -122,19 +90,33 @@ const categoriesEn = [
             )}
           </div>
 
-          <button
-            type="button"
-            data-youtube-id={talk.data.youtubeId}
-            data-video-title={talk.data.titleEn}
-            data-video-subtitle={talk.data.guestEn}
-            class="w-full py-2.5 bg-olive hover:bg-bodrum-blue-dark text-white text-xs font-sans font-bold uppercase tracking-wider transition-colors flex items-center justify-center gap-1.5 shadow-xs rounded-xs mt-4"
-          >
-            <span class="material-symbols-outlined text-sm">play_circle</span>
-            <span>Watch Full Video</span>
-          </button>
+          <div class="pt-3 border-t border-sand flex items-center justify-between">
+            <button
+              type="button"
+              class="inline-flex items-center gap-1.5 text-xs font-sans font-bold text-olive hover:text-bodrum-blue-dark uppercase tracking-wider cursor-pointer"
+              data-youtube-id={talk.data.youtubeId}
+            >
+              <span class="material-symbols-outlined text-base">play_circle</span>
+              <span>Watch Recording</span>
+            </button>
+            <span class="text-xs font-sans text-stone-gray">{talk.data.roleEn}</span>
+          </div>
         </div>
       ))}
     </div>
-
   </div>
 </Layout>
+
+<script>
+  document.querySelectorAll('.chapter-btn').forEach((btn) => {
+    btn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const target = e.currentTarget as HTMLElement;
+      const youtubeId = target.getAttribute('data-youtube-id');
+      const start = target.getAttribute('data-start') || '0';
+      if (youtubeId && (window as any).openVideoModal) {
+        (window as any).openVideoModal(youtubeId, parseInt(start, 10));
+      }
+    });
+  });
+</script>

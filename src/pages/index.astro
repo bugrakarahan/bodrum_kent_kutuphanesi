@@ -49,7 +49,7 @@ const initialGuestbookNotes = [
   currentPath="/"
 >
   <!-- 1. Hero & Ana Tanıtım Vitrini -->
-  <section class="relative min-h-[60vh] flex items-center justify-center py-10 md:py-14 px-5 md:px-12 overflow-hidden border-b border-sand bg-surface-bright">
+  <section class="relative min-h-[50vh] flex items-center justify-center py-8 md:py-12 px-5 md:px-12 overflow-hidden border-b border-sand bg-surface-bright">
     
     <!-- Subtle Ambient Background Layer -->
     <div class="absolute inset-0 z-0 opacity-10 pointer-events-none">
@@ -62,38 +62,38 @@ const initialGuestbookNotes = [
 
     <!-- Ex Libris Watermark -->
     <div class="absolute -top-10 -right-10 md:top-8 md:right-10 ex-libris-watermark select-none pointer-events-none">
-      <span class="material-symbols-outlined text-[180px] md:text-[300px] text-olive leading-none">auto_stories</span>
+      <span class="material-symbols-outlined text-[160px] md:text-[260px] text-olive leading-none">auto_stories</span>
     </div>
 
     <!-- Hero Content Container -->
     <div class="relative z-10 max-w-[1280px] mx-auto w-full">
       <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
         
-        <!-- Left: 2-Line Headline & Justified Manifesto -->
-        <div class="lg:col-span-7 space-y-5">
-          <h1 class="font-serif text-3xl sm:text-4xl lg:text-[38px] text-ink font-bold leading-[1.2] tracking-tight">
+        <!-- Left: Refined 2-Line Headline & Elegant Manifesto -->
+        <div class="lg:col-span-7 space-y-4">
+          <h1 class="font-serif text-2xl sm:text-3xl lg:text-[32px] text-ink font-bold leading-[1.25] tracking-tight">
             Bodrum’un Kültürel Hafızası İçin,<br class="hidden sm:inline" />
             Yaşayan Bir Kütüphane
           </h1>
 
-          <!-- Main Manifesto Text -->
-          <div class="bg-parchment border border-sand p-6 sm:p-7 rounded-xs shadow-xs space-y-3.5">
-            <p class="font-sans text-base sm:text-[17px] text-ink/90 leading-relaxed text-justify">
+          <!-- Main Manifesto Text with balanced size -->
+          <div class="bg-parchment border border-sand p-5 sm:p-6 rounded-xs shadow-xs space-y-3">
+            <p class="font-sans text-sm sm:text-[15px] text-ink/90 leading-relaxed text-justify">
               Bodrum Kent Kütüphanesi, Bodrum’da yaşayanlar ile kenti ziyaret eden kitapseverleri, edebiyat, sanat ve bilim dünyasının değerli isimleriyle ve kitaplarıyla buluşturmayı amaçlayan, çok amaçlı ve yaşayan bir kütüphane projesidir.
             </p>
-            <p class="font-sans text-base sm:text-[17px] text-ink/90 leading-relaxed text-justify">
+            <p class="font-sans text-sm sm:text-[15px] text-ink/90 leading-relaxed text-justify">
               Kitap merkezli etkinlikler, söyleşiler, atölyeler ve kültürel buluşmalar aracılığıyla yaşam boyu öğrenmeyi, üretimi ve paylaşımı destekleyen; Halikarnas Balıkçısı’nın Akdeniz ve Mavi Hümanizmasını koruyan, Anadolu Uygarlığı’nın değerinin altını çizen; bağımsız bir buluşma alanı olarak tasarlanmaktadır.
             </p>
           </div>
         </div>
 
-        <!-- Right: Clean, Frameless, Slightly Smaller BKK Logo -->
+        <!-- Right: Clean Oval-Cornered BKK Logo -->
         <div class="lg:col-span-5 flex items-center justify-center">
-          <div class="w-full max-w-[260px] sm:max-w-[290px] aspect-square rounded-xs overflow-hidden shadow-sm">
+          <div class="w-full max-w-[230px] sm:max-w-[260px] aspect-square rounded-xl sm:rounded-2xl overflow-hidden shadow-sm">
             <img
               src="/images/logo.png"
               alt="Bodrum Kent Kütüphanesi Logosu"
-              class="w-full h-full object-contain"
+              class="w-full h-full object-contain rounded-xl sm:rounded-2xl"
               loading="eager"
             />
           </div>
@@ -101,94 +101,94 @@ const initialGuestbookNotes = [
 
       </div>
 
-      <!-- 3 Strategic Institutional Boxes: Vertical 3:4, Larger Logos & Exact Horizontal Alignment -->
-      <div class="mt-12 pt-8 border-t border-sand grid grid-cols-1 md:grid-cols-3 gap-6 text-ink">
+      <!-- 3 Strategic Institutional Boxes: Compact, Larger Logos & Exact Horizontal Alignment -->
+      <div class="mt-10 pt-7 border-t border-sand grid grid-cols-1 md:grid-cols-3 gap-5 text-ink">
         
-        <!-- 1. Zeytin Taneleri Kütüphanesi (Dikey 3:4 Kutu) -->
-        <div class="bg-parchment p-6 border-2 border-olive rounded-xs shadow-xs flex flex-col justify-between items-center text-center min-h-[380px]">
+        <!-- 1. Zeytin Taneleri Kütüphanesi -->
+        <div class="bg-parchment p-5 border-2 border-olive rounded-xs shadow-xs flex flex-col justify-between items-center text-center min-h-[320px]">
           <!-- Title Container (Fixed Height) -->
-          <div class="h-14 flex items-center justify-center w-full">
-            <h3 class="font-serif text-xl font-bold text-olive text-center leading-snug">
+          <div class="h-12 flex items-center justify-center w-full">
+            <h3 class="font-serif text-lg sm:text-xl font-bold text-olive text-center leading-snug">
               Zeytin Taneleri Kütüphanesi
             </h3>
           </div>
 
           <!-- Large Logo Container -->
-          <div class="w-36 h-36 my-2 flex items-center justify-center overflow-hidden">
+          <div class="w-32 h-32 sm:w-36 sm:h-36 my-2 flex items-center justify-center overflow-hidden">
             <img
               src="/images/ztk_logo.png"
               alt="Zeytin Taneleri Kütüphanesi Logosu"
-              class="max-w-full max-h-full object-contain scale-110"
+              class="max-w-full max-h-full object-contain scale-115"
             />
           </div>
 
-          <!-- Description (Fixed Height for Alignment) -->
-          <div class="h-14 flex items-center justify-center w-full">
-            <p class="font-sans text-sm sm:text-base text-ink/85 leading-snug text-center">
-              Çocuk, genç, ebeveyn ve eğitimcilere yönelik kütüphane
+          <!-- 2-Line Description (Fixed Height for Alignment) -->
+          <div class="h-12 flex items-center justify-center w-full">
+            <p class="font-sans text-xs sm:text-sm text-ink/85 leading-snug text-center">
+              Çocuk, genç, ebeveyn ve<br />eğitimcilere yönelik kütüphane
             </p>
           </div>
 
           <!-- Footer Notice -->
-          <div class="pt-2.5 border-t border-olive/20 text-xs font-sans italic text-stone-gray w-full text-center">
+          <div class="pt-2 border-t border-olive/20 text-xs font-sans italic text-stone-gray w-full text-center">
             Web sayfası hazırlanmakta
           </div>
         </div>
 
-        <!-- 2. Halikarnaslı Çocuklar (Dikey 3:4 Kutu) -->
-        <div class="bg-parchment p-6 border-2 border-olive rounded-xs shadow-xs flex flex-col justify-between items-center text-center min-h-[380px]">
+        <!-- 2. Halikarnaslı Çocuklar -->
+        <div class="bg-parchment p-5 border-2 border-olive rounded-xs shadow-xs flex flex-col justify-between items-center text-center min-h-[320px]">
           <!-- Title Container (Fixed Height) -->
-          <div class="h-14 flex items-center justify-center w-full">
-            <h3 class="font-serif text-xl font-bold text-olive text-center leading-snug">
+          <div class="h-12 flex items-center justify-center w-full">
+            <h3 class="font-serif text-lg sm:text-xl font-bold text-olive text-center leading-snug">
               Halikarnaslı Çocuklar
             </h3>
           </div>
 
-          <!-- Large Logo / Artwork Container -->
-          <div class="w-36 h-36 my-2 flex items-center justify-center overflow-hidden rounded-xs border border-sand">
+          <!-- Large Artwork Container -->
+          <div class="w-32 h-32 sm:w-36 sm:h-36 my-2 flex items-center justify-center overflow-hidden rounded-xs border border-sand">
             <img
               src="/images/hc_logo.jpg"
               alt="Halikarnaslı Çocuklar Sanat Çalışmaları"
-              class="w-full h-full object-cover"
+              class="w-full h-full object-cover scale-105"
             />
           </div>
 
           <!-- Description (Fixed Height for Alignment) -->
-          <div class="h-14 flex items-center justify-center w-full">
-            <p class="font-sans text-sm sm:text-base text-ink/85 leading-snug text-center">
+          <div class="h-12 flex items-center justify-center w-full">
+            <p class="font-sans text-xs sm:text-sm text-ink/85 leading-snug text-center">
               Her yaşa yönelik sanat çalışmaları
             </p>
           </div>
 
           <!-- Footer Notice -->
-          <div class="pt-2.5 border-t border-olive/20 text-xs font-sans italic text-stone-gray w-full text-center">
+          <div class="pt-2 border-t border-olive/20 text-xs font-sans italic text-stone-gray w-full text-center">
             Web sayfası hazırlanmakta
           </div>
         </div>
 
-        <!-- 3. Halikarnas Derneği (Dikey 3:4 Kutu) -->
-        <div class="bg-parchment p-6 border-2 border-olive rounded-xs shadow-xs flex flex-col justify-between items-center text-center min-h-[380px]">
+        <!-- 3. Halikarnas Derneği -->
+        <div class="bg-parchment p-5 border-2 border-olive rounded-xs shadow-xs flex flex-col justify-between items-center text-center min-h-[320px]">
           <!-- Title Container (Fixed Height) -->
-          <div class="h-14 flex items-center justify-center w-full">
-            <h3 class="font-serif text-xl font-bold text-olive text-center leading-snug">
+          <div class="h-12 flex items-center justify-center w-full">
+            <h3 class="font-serif text-lg sm:text-xl font-bold text-olive text-center leading-snug">
               Halikarnas Kültür, Sanat, Eğitim<br />ve Ekoloji Derneği
             </h3>
           </div>
 
           <!-- Large Icon Container -->
-          <div class="w-36 h-36 my-2 flex items-center justify-center bg-olive/10 text-olive rounded-full border border-olive/30">
-            <span class="material-symbols-outlined text-5xl">account_balance</span>
+          <div class="w-32 h-32 sm:w-36 sm:h-36 my-2 flex items-center justify-center bg-olive/10 text-olive rounded-full border border-olive/30">
+            <span class="material-symbols-outlined text-4xl sm:text-5xl">account_balance</span>
           </div>
 
           <!-- Description (Fixed Height for Alignment) -->
-          <div class="h-14 flex items-center justify-center w-full">
-            <p class="font-sans text-sm sm:text-base text-ink/85 leading-snug text-center">
+          <div class="h-12 flex items-center justify-center w-full">
+            <p class="font-sans text-xs sm:text-sm text-ink/85 leading-snug text-center">
               Tüm çalışmalarımızın resmî çatısı
             </p>
           </div>
 
           <!-- Footer Notice -->
-          <div class="pt-2.5 border-t border-olive/20 text-xs font-sans italic text-stone-gray w-full text-center">
+          <div class="pt-2 border-t border-olive/20 text-xs font-sans italic text-stone-gray w-full text-center">
             Web sayfası hazırlanmakta
           </div>
         </div>
@@ -199,21 +199,21 @@ const initialGuestbookNotes = [
   </section>
 
   <!-- 2. Günün Balıkçı Alıntısı / "Merhaba" Edebiyat Vitrini -->
-  <section class="py-12 md:py-16 px-5 md:px-12 bg-surface-container-low border-b border-sand">
+  <section class="py-10 md:py-14 px-5 md:px-12 bg-surface-container-low border-b border-sand">
     <div class="max-w-[1280px] mx-auto">
-      <div class="bg-parchment border-2 border-olive rounded-xs p-8 sm:p-12 shadow-md relative overflow-hidden">
+      <div class="bg-parchment border-2 border-olive rounded-xs p-6 sm:p-10 shadow-md relative overflow-hidden">
         
         <div class="absolute -right-8 -bottom-8 opacity-5 pointer-events-none select-none">
-          <span class="material-symbols-outlined text-[200px] text-olive leading-none">format_quote</span>
+          <span class="material-symbols-outlined text-[180px] text-olive leading-none">format_quote</span>
         </div>
 
-        <div class="relative z-10 max-w-4xl mx-auto text-center space-y-6">
+        <div class="relative z-10 max-w-4xl mx-auto text-center space-y-4">
           <div class="inline-flex items-center gap-2 px-3 py-1 bg-olive/10 text-olive text-xs font-sans font-bold uppercase tracking-widest rounded-xs">
             <span class="material-symbols-outlined text-sm">auto_stories</span>
             <span>HALİKARNAS BALIKÇISI’NDAN BİR SELAM</span>
           </div>
 
-          <blockquote id="quote-display" class="font-serif italic text-xl sm:text-2xl md:text-3xl text-ink leading-relaxed">
+          <blockquote id="quote-display" class="font-serif italic text-lg sm:text-xl md:text-2xl text-ink leading-relaxed">
             "{balıkçıQuotes[0].quote}"
           </blockquote>
 
@@ -223,7 +223,7 @@ const initialGuestbookNotes = [
             <cite id="quote-source" class="not-italic text-stone-gray font-medium">{balıkçıQuotes[0].source}</cite>
           </div>
 
-          <div class="pt-2 flex items-center justify-center gap-2">
+          <div class="pt-1 flex items-center justify-center gap-2">
             <button
               type="button"
               id="next-quote-btn"
@@ -239,27 +239,27 @@ const initialGuestbookNotes = [
   </section>
 
   <!-- 3. Ziyaretçi Defteri / "Bodrum'a ve Kütüphanemize Bir Cümle Bırakın Lütfen" -->
-  <section class="py-12 md:py-16 px-5 md:px-12 bg-surface-bright border-b border-sand">
+  <section class="py-10 md:py-14 px-5 md:px-12 bg-surface-bright border-b border-sand">
     <div class="max-w-[1280px] mx-auto">
       
-      <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-start">
         
         <!-- Sol: Tanıtım ve Form -->
-        <div class="lg:col-span-5 space-y-5">
+        <div class="lg:col-span-5 space-y-4">
           <div class="inline-flex items-center gap-2 px-3 py-1 bg-olive text-white text-xs font-sans font-bold uppercase tracking-widest rounded-xs shadow-2xs">
             <span>DİJİTAL ANI DEFTERİ</span>
           </div>
 
-          <h2 class="font-serif text-2xl sm:text-3xl text-ink font-bold leading-tight">
+          <h2 class="font-serif text-xl sm:text-2xl text-ink font-bold leading-tight">
             Bodrum’a ve Kütüphanemize<br />
             Bir Cümle Bırakın Lütfen
           </h2>
 
-          <p class="font-sans text-sm sm:text-base text-ink/80 leading-relaxed text-justify">
+          <p class="font-sans text-xs sm:text-sm text-ink/80 leading-relaxed text-justify">
             Bodrum Kent Kütüphanesi, siz kitapseverlerin ve dostlarımızın ilgisiyle büyüyor! Siz de kütüphanemiz ve Bodrum için duygu, düşünce ve önerilerinizi buraya yazabilirsiniz.
           </p>
 
-          <form id="guestbook-form" class="bg-parchment border-2 border-olive p-5 rounded-xs shadow-xs space-y-3 font-sans">
+          <form id="guestbook-form" class="bg-parchment border-2 border-olive p-4 sm:p-5 rounded-xs shadow-xs space-y-3 font-sans">
             <div>
               <label class="block text-xs font-bold text-ink uppercase tracking-wider mb-1">Adınız / Rumuz *</label>
               <input
@@ -303,21 +303,21 @@ const initialGuestbookNotes = [
         </div>
 
         <!-- Sağ: Ziyaretçi Notları Akışı -->
-        <div class="lg:col-span-7 space-y-4">
+        <div class="lg:col-span-7 space-y-3.5">
           <div class="flex items-center justify-between pb-2 border-b border-sand">
-            <h3 class="font-serif text-xl font-bold text-ink">
+            <h3 class="font-serif text-lg sm:text-xl font-bold text-ink">
               Kitapseverlerin & Dostlarımızın Notları
             </h3>
             <span class="text-xs font-mono text-stone-gray font-bold">Son Notlar</span>
           </div>
 
-          <div id="guestbook-list" class="space-y-3.5">
+          <div id="guestbook-list" class="space-y-3">
             {initialGuestbookNotes.map((item) => (
-              <div class="bg-parchment border border-sand p-4 sm:p-5 rounded-xs shadow-2xs space-y-2 transition-all hover:border-olive">
-                <p class="font-serif italic text-base sm:text-lg text-ink/90 leading-relaxed">
+              <div class="bg-parchment border border-sand p-4 rounded-xs shadow-2xs space-y-1.5 transition-all hover:border-olive">
+                <p class="font-serif italic text-sm sm:text-base text-ink/90 leading-relaxed">
                   "{item.note}"
                 </p>
-                <div class="flex items-center justify-between text-xs font-sans text-stone-gray pt-2 border-t border-sand/50">
+                <div class="flex items-center justify-between text-xs font-sans text-stone-gray pt-1.5 border-t border-sand/50">
                   <span class="font-bold text-olive">{item.name} <span class="font-normal text-stone-gray/80">• {item.location}</span></span>
                   <span class="font-mono text-[11px]">{item.date}</span>
                 </div>
@@ -363,12 +363,12 @@ const initialGuestbookNotes = [
       if (!name || !note) return;
 
       const newCard = document.createElement('div');
-      newCard.className = 'bg-parchment border-2 border-olive p-4 sm:p-5 rounded-xs shadow-xs space-y-2 transition-all animate-fadeIn';
+      newCard.className = 'bg-parchment border-2 border-olive p-4 rounded-xs shadow-xs space-y-1.5 transition-all animate-fadeIn';
       newCard.innerHTML = `
-        <p class="font-serif italic text-base sm:text-lg text-ink leading-relaxed">
+        <p class="font-serif italic text-sm sm:text-base text-ink leading-relaxed">
           "${note}"
         </p>
-        <div class="flex items-center justify-between text-xs font-sans text-stone-gray pt-2 border-t border-sand/50">
+        <div class="flex items-center justify-between text-xs font-sans text-stone-gray pt-1.5 border-t border-sand/50">
           <span class="font-bold text-olive">${name} <span class="font-normal text-stone-gray/80">• ${location}</span></span>
           <span class="font-mono text-[11px] font-bold text-emerald-700 bg-emerald-50 px-1.5 py-0.5 rounded-2xs">Şimdi</span>
         </div>

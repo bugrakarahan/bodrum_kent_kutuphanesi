@@ -44,17 +44,21 @@ const links = navRoutes.map((route) => ({
           </div>
         </div>
 
-        <!-- Designer Credit to Shellix in Uppercase -->
-        <div class="pt-1 text-[11px] sm:text-[12px] font-sans tracking-wider uppercase text-parchment/90">
-          <a
-            href="https://shellix.com"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="text-white font-bold underline underline-offset-2 hover:text-amber-200 transition-colors inline-block"
-          >
-            SHELLIX
-          </a>
-          <span>{lang === 'tr' ? 'TARAFINDAN SEVGİYLE TASARLANDI ❤️' : 'DESIGNED WITH LOVE BY SHELLIX ❤️'}</span>
+        <!-- Designer Credit to Shellix in 2 Lines -->
+        <div class="pt-1 text-[11px] sm:text-[12px] font-sans tracking-wider uppercase text-parchment/90 leading-snug">
+          <div>
+            <a
+              href="https://shellix.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="text-white font-bold underline underline-offset-2 hover:text-amber-200 transition-colors inline-block"
+            >
+              SHELLIX TARAFINDAN
+            </a>
+          </div>
+          <div class="pt-0.5">
+            {lang === 'tr' ? 'SEVGİYLE TASARLANDI ❤️' : 'DESIGNED WITH LOVE ❤️'}
+          </div>
         </div>
       </div>
 
