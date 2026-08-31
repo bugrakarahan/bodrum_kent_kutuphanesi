@@ -41,22 +41,22 @@ const activities = [
   currentPath="/hakkimizda"
 >
   <!-- 1. Fikrin Doğuşu & Kurucu İsimler -->
-  <section class="py-8 md:py-12 px-5 md:px-12 bg-surface-bright border-b border-sand">
+  <section class="py-6 md:py-10 px-5 md:px-12 bg-surface-bright border-b border-sand">
     <div class="max-w-[1280px] mx-auto">
       
-      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-10 items-center">
         
         <!-- Sol: Fikrin Doğuşu ve İsim Listesi -->
-        <div class="lg:col-span-7 space-y-4">
-          <div class="inline-flex items-center gap-2 px-3 py-1 bg-olive text-white text-xs font-sans font-bold tracking-widest uppercase rounded-xs shadow-2xs">
+        <div class="lg:col-span-7 space-y-3.5">
+          <div class="inline-flex items-center gap-1.5 px-2.5 py-0.5 bg-olive text-white text-[11px] font-sans font-bold tracking-widest uppercase rounded-xs shadow-2xs">
             <span>TARİHÇE</span>
           </div>
 
-          <h1 class="font-serif text-2xl sm:text-3xl text-ink font-bold leading-tight">
+          <h1 class="font-serif text-xl sm:text-2xl text-ink font-bold leading-snug">
             Fikrin Doğuşu
           </h1>
 
-          <div class="font-sans text-sm sm:text-base text-ink/90 leading-relaxed text-justify">
+          <div class="font-sans text-xs sm:text-sm text-ink/90 leading-relaxed text-justify">
             <p>
               Bodrum Kent Kütüphanesi ismi ve fikri, ilk olarak <strong>16.09.2019</strong> tarihinde,<br class="hidden sm:inline" />
               Dibeklihan Kültür ve Sanat Köyü’nde, aşağıda yer alan değerli isimler tarafından dile getirilmiştir:
@@ -64,10 +64,10 @@ const activities = [
           </div>
 
           <!-- Alt alta, alfabetik sıralı liste -->
-          <div class="bg-parchment border border-sand p-4 sm:p-5 shadow-xs">
-            <ul class="grid grid-cols-1 sm:grid-cols-2 gap-1.5 text-xs sm:text-sm font-sans font-normal text-ink/90">
+          <div class="bg-parchment border border-sand p-3.5 sm:p-4 shadow-xs">
+            <ul class="grid grid-cols-1 sm:grid-cols-2 gap-1 text-xs font-sans font-normal text-ink/90">
               {alphabeticalBoard.map((name) => (
-                <li class="flex items-center gap-2 py-0.5">
+                <li class="flex items-center gap-1.5 py-0.5">
                   <span class="w-1.5 h-1.5 rounded-full bg-olive shrink-0"></span>
                   <span>{name}</span>
                 </li>
@@ -76,8 +76,8 @@ const activities = [
           </div>
 
           <!-- Emanet Notu Kutusu -->
-          <div class="bg-parchment border border-sand p-4 rounded-xs shadow-2xs">
-            <p class="font-sans text-xs sm:text-sm text-ink font-medium leading-relaxed">
+          <div class="bg-parchment border border-sand p-3 sm:p-3.5 rounded-xs shadow-2xs">
+            <p class="font-sans text-xs sm:text-[13px] text-ink font-medium leading-relaxed">
               Bodrum Kent Kütüphanesi ismi, <strong>Sayın Sönmez Taner</strong> tarafından, <strong>7 Eylül 2019</strong> tarihinde Zeytin Taneleri Kütüphanesi ekibine emanet edilmiştir.
             </p>
           </div>
@@ -85,7 +85,7 @@ const activities = [
 
         <!-- Sağ: Oval Kenarlı Temiz BKK Logosu -->
         <div class="lg:col-span-5 flex items-center justify-center">
-          <div class="w-full max-w-[230px] sm:max-w-[260px] aspect-square rounded-xl sm:rounded-2xl overflow-hidden shadow-sm">
+          <div class="w-full max-w-[210px] sm:max-w-[240px] aspect-square rounded-xl sm:rounded-2xl overflow-hidden shadow-sm">
             <img
               src="/images/logo.png"
               alt="Bodrum Kent Kütüphanesi Logosu"
@@ -101,55 +101,55 @@ const activities = [
   </section>
 
   <!-- 2. Halikarnas Balıkçısı ile Mavi Hümanizma ve Anadolu Uygarlığı'nın İzinde -->
-  <section class="py-8 md:py-12 px-5 md:px-12 bg-surface-container-low border-b border-sand">
+  <section class="py-6 md:py-10 px-5 md:px-12 bg-surface-container-low border-b border-sand">
     <div class="max-w-[1280px] mx-auto">
       
-      <div class="max-w-4xl mb-6">
-        <div class="inline-flex items-center gap-2 px-3 py-1 bg-olive text-white text-xs font-sans font-bold tracking-widest uppercase mb-2.5 rounded-xs shadow-2xs">
+      <div class="max-w-4xl mb-5">
+        <div class="inline-flex items-center gap-1.5 px-2.5 py-0.5 bg-olive text-white text-[11px] font-sans font-bold tracking-widest uppercase mb-2 rounded-xs shadow-2xs">
           <span>KÜLTÜREL MİRAS</span>
         </div>
-        <h2 class="font-serif text-xl sm:text-2xl text-ink font-bold leading-tight mb-2.5">
+        <h2 class="font-serif text-lg sm:text-xl text-ink font-bold leading-snug mb-2">
           Halikarnas Balıkçısı Cevat Şakir Kabaağaçlı ile Mavi Hümanizma ve Anadolu Uygarlığı’nın İzinde
         </h2>
-        <p class="font-sans text-sm sm:text-base text-ink/85 leading-relaxed text-justify">
+        <p class="font-sans text-xs sm:text-sm text-ink/85 leading-relaxed text-justify">
           Cevat Şakir Kabaağaçlı’nın Bodrum’a ve Anadolu Uygarlığı’na kattığı kültür mirası, kütüphanemizin temel taşıdır.
         </p>
       </div>
 
       <!-- 3 Özel Kutu: Mavi Hümanizma, Bodrum'u Yeşerten Kalem, Altıncı Kıta Akdeniz -->
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
-        <div class="bg-parchment p-4 sm:p-5 border-2 border-olive rounded-xs shadow-xs flex flex-col justify-between">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+        <div class="bg-parchment p-3.5 sm:p-4 border-2 border-olive rounded-xs shadow-xs flex flex-col justify-between">
           <div>
-            <h3 class="font-serif text-base sm:text-lg font-bold text-olive mb-1.5">Mavi Hümanizma</h3>
-            <p class="font-sans text-xs sm:text-sm text-ink/85 leading-relaxed">
+            <h3 class="font-serif text-sm sm:text-base font-bold text-olive mb-1">Mavi Hümanizma</h3>
+            <p class="font-sans text-xs text-ink/85 leading-relaxed">
               Akdeniz ve Ege felsefesinin evrensel barış, doğa sevgisi ve insanlık kardeşliği temelleri.
             </p>
           </div>
-          <div class="pt-2.5 mt-2.5 border-t border-olive/20 text-xs font-sans italic text-stone-gray">
+          <div class="pt-2 mt-2 border-t border-olive/20 text-[10px] font-sans italic text-stone-gray">
             İçerik hazırlanmaktadır
           </div>
         </div>
 
-        <div class="bg-parchment p-4 sm:p-5 border-2 border-olive rounded-xs shadow-xs flex flex-col justify-between">
+        <div class="bg-parchment p-3.5 sm:p-4 border-2 border-olive rounded-xs shadow-xs flex flex-col justify-between">
           <div>
-            <h3 class="font-serif text-base sm:text-lg font-bold text-olive mb-1.5">Bodrum’u Yeşerten Kalem</h3>
-            <p class="font-sans text-xs sm:text-sm text-ink/85 leading-relaxed">
+            <h3 class="font-serif text-sm sm:text-base font-bold text-olive mb-1">Bodrum’u Yeşerten Kalem</h3>
+            <p class="font-sans text-xs text-ink/85 leading-relaxed">
               Cevat Şakir’in Bodrum’a diktiği yüzlerce ağaç ve bitki türüyle başlattığı doğa hareketi.
             </p>
           </div>
-          <div class="pt-2.5 mt-2.5 border-t border-olive/20 text-xs font-sans italic text-stone-gray">
+          <div class="pt-2 mt-2 border-t border-olive/20 text-[10px] font-sans italic text-stone-gray">
             İçerik hazırlanmaktadır
           </div>
         </div>
 
-        <div class="bg-parchment p-4 sm:p-5 border-2 border-olive rounded-xs shadow-xs flex flex-col justify-between">
+        <div class="bg-parchment p-3.5 sm:p-4 border-2 border-olive rounded-xs shadow-xs flex flex-col justify-between">
           <div>
-            <h3 class="font-serif text-base sm:text-lg font-bold text-olive mb-1.5">Altıncı Kıta Akdeniz</h3>
-            <p class="font-sans text-xs sm:text-sm text-ink/85 leading-relaxed">
+            <h3 class="font-serif text-sm sm:text-base font-bold text-olive mb-1">Altıncı Kıta Akdeniz</h3>
+            <p class="font-sans text-xs text-ink/85 leading-relaxed">
               Anadolu'nun kadim mitolojisi, denizcilik tarihi ve Akdeniz uygarlıklarının kökleri.
             </p>
           </div>
-          <div class="pt-2.5 mt-2.5 border-t border-olive/20 text-xs font-sans italic text-stone-gray">
+          <div class="pt-2 mt-2 border-t border-olive/20 text-[10px] font-sans italic text-stone-gray">
             İçerik hazırlanmaktadır
           </div>
         </div>
@@ -159,22 +159,22 @@ const activities = [
   </section>
 
   <!-- 3. Amaç ve Hedeflenen Çalışmalar -->
-  <section class="py-8 md:py-12 px-5 md:px-12 bg-parchment border-b border-sand">
+  <section class="py-6 md:py-10 px-5 md:px-12 bg-parchment border-b border-sand">
     <div class="max-w-[1280px] mx-auto">
       
-      <div class="max-w-4xl mb-6">
-        <h2 class="font-serif text-xl sm:text-2xl text-ink font-bold mb-2">
+      <div class="max-w-4xl mb-5">
+        <h2 class="font-serif text-lg sm:text-xl text-ink font-bold mb-2">
           Amaç ve Hedeflenen Çalışmalar
         </h2>
       </div>
 
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-3.5">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
         {activities.map((act, idx) => (
-          <div class="bg-surface-container-low border-2 border-olive rounded-xs p-3.5 sm:p-4 flex items-start gap-3 shadow-xs">
-            <span class="w-5 h-5 rounded-full bg-olive text-white flex items-center justify-center font-mono text-[11px] font-bold shrink-0 mt-0.5 shadow-2xs">
+          <div class="bg-surface-container-low border-2 border-olive rounded-xs p-3 sm:p-3.5 flex items-start gap-2.5 shadow-xs">
+            <span class="w-4.5 h-4.5 rounded-full bg-olive text-white flex items-center justify-center font-mono text-[10px] font-bold shrink-0 mt-0.5 shadow-2xs">
               {idx + 1}
             </span>
-            <p class="font-sans text-xs sm:text-sm text-ink/90 leading-relaxed">
+            <p class="font-sans text-xs text-ink/90 leading-relaxed">
               {act}
             </p>
           </div>

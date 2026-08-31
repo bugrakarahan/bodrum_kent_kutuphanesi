@@ -101,39 +101,39 @@ const wishlistItems = [
   lang={lang}
   currentPath="/destek"
 >
-  <!-- Hero Section -->
-  <section class="py-8 md:py-12 px-5 md:px-12 bg-surface-bright border-b border-sand">
+  <!-- Hero Header (Standardized Scale) -->
+  <section class="py-6 md:py-10 px-5 md:px-12 bg-surface-bright border-b border-sand">
     <div class="max-w-[1280px] mx-auto">
       <div class="max-w-3xl">
-        <h1 class="font-serif text-2xl sm:text-3xl text-ink font-bold leading-tight mb-2.5">
+        <h1 class="font-serif text-xl sm:text-2xl text-ink font-bold leading-snug mb-2">
           Destek & Gönüllü Katılım
         </h1>
-        <p class="font-sans text-sm sm:text-base text-ink/80 leading-relaxed">
+        <p class="font-sans text-xs sm:text-sm text-ink/80 leading-relaxed">
           Bodrum’un kültürel belleğini ve geleceğini birlikte inşa etmek, bilginin ışığını çoğaltmak için siz de bu ortak hayale katılabilirsiniz.
         </p>
       </div>
     </div>
   </section>
 
-  <div class="max-w-[1280px] mx-auto px-5 md:px-12 py-8 md:py-12 space-y-12">
+  <div class="max-w-[1280px] mx-auto px-5 md:px-12 py-6 md:py-10 space-y-10">
     
     <!-- 1. Bu Hayale Neden Ortak Olmalısınız? -->
     <section>
-      <h2 class="font-serif text-xl sm:text-2xl text-ink font-bold mb-6 pb-2.5 border-b border-sand">
+      <h2 class="font-serif text-lg sm:text-xl text-ink font-bold mb-4 pb-2 border-b border-sand">
         Bu Hayale Neden Ortak Olmalısınız?
       </h2>
 
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
         {whyJoinUs.map((item, index) => (
-          <div class="bg-surface-container-low border-2 border-olive rounded-xs p-5 sm:p-6 flex items-start gap-3.5 shadow-xs">
-            <span class="w-7 h-7 rounded-full bg-olive text-white flex items-center justify-center font-mono text-xs font-bold shrink-0 mt-0.5 shadow-xs">
+          <div class="bg-surface-container-low border-2 border-olive rounded-xs p-4 sm:p-5 flex items-start gap-3 shadow-xs">
+            <span class="w-6 h-6 rounded-full bg-olive text-white flex items-center justify-center font-mono text-[11px] font-bold shrink-0 mt-0.5 shadow-xs">
               {index + 1}
             </span>
             <div>
-              <h3 class="font-serif text-base sm:text-lg text-ink font-bold mb-1.5 leading-snug">
+              <h3 class="font-serif text-sm sm:text-base text-ink font-bold mb-1 leading-snug">
                 {item.title}
               </h3>
-              <p class="font-sans text-xs sm:text-sm text-ink/85 leading-relaxed">
+              <p class="font-sans text-xs text-ink/85 leading-relaxed">
                 {item.desc}
               </p>
             </div>
@@ -144,48 +144,47 @@ const wishlistItems = [
 
     <!-- 2. Şeffaf İmece & İhtiyaç Panosu -->
     <section>
-      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-5 pb-2.5 border-b border-sand">
+      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-4 pb-2 border-b border-sand">
         <div>
-          <span class="text-xs uppercase tracking-widest text-olive font-sans font-bold block mb-1">ŞEFFAF İMECE</span>
-          <h2 class="font-serif text-xl sm:text-2xl text-ink font-bold">
+          <span class="text-[11px] uppercase tracking-widest text-olive font-sans font-bold block mb-0.5">ŞEFFAF İMECE</span>
+          <h2 class="font-serif text-lg sm:text-xl text-ink font-bold">
             Kütüphanemizin İmece İhtiyaçları
           </h2>
         </div>
-        <span class="text-xs font-sans text-stone-gray">
+        <span class="text-[11px] font-sans text-stone-gray">
           Doğrudan somut bir ihtiyacı üstlenerek kütüphanemize güç verebilirsiniz.
         </span>
       </div>
 
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
         {wishlistItems.map((wish) => (
-          <div class="bg-parchment border-2 border-olive rounded-xs p-5 flex flex-col justify-between shadow-xs hover:shadow-md transition-all">
+          <div class="bg-parchment border-2 border-olive rounded-xs p-4 flex flex-col justify-between shadow-xs hover:shadow-md transition-all">
             <div>
-              <div class="flex items-center justify-between gap-2 mb-2.5">
-                <span class="px-2.5 py-0.5 bg-olive/10 text-olive text-[11px] font-sans font-bold uppercase rounded-2xs">
+              <div class="flex items-center justify-between gap-2 mb-2">
+                <span class="px-2 py-0.5 bg-olive/10 text-olive text-[10px] font-sans font-bold uppercase rounded-2xs">
                   {wish.category}
                 </span>
-                <span class="px-2.5 py-0.5 bg-amber-100 text-amber-900 text-[11px] font-sans font-bold rounded-2xs">
+                <span class="px-2 py-0.5 bg-amber-100 text-amber-900 text-[10px] font-sans font-bold rounded-2xs">
                   {wish.status}
                 </span>
               </div>
 
-              <!-- Refined Downscaled Title -->
-              <h3 class="font-serif text-base sm:text-lg font-bold text-ink mb-1.5">
+              <h3 class="font-serif text-sm sm:text-base font-bold text-ink mb-1">
                 {wish.title}
               </h3>
 
-              <p class="font-sans text-xs sm:text-sm text-ink/80 leading-relaxed mb-3.5">
+              <p class="font-sans text-xs text-ink/80 leading-relaxed mb-3">
                 {wish.desc}
               </p>
             </div>
 
             <button
               type="button"
-              class="btn-fulfill-wish w-full py-2 bg-olive hover:bg-bodrum-blue-dark text-white text-xs font-sans font-bold uppercase tracking-wider rounded-xs transition-colors shadow-2xs flex items-center justify-center gap-1.5 cursor-pointer mt-1"
+              class="btn-fulfill-wish w-full py-1.5 bg-olive hover:bg-bodrum-blue-dark text-white text-[11px] font-sans font-bold uppercase tracking-wider rounded-xs transition-colors shadow-2xs flex items-center justify-center gap-1 cursor-pointer mt-1"
               data-wish-select={wish.selectValue}
               data-wish-title={wish.title}
             >
-              <span class="material-symbols-outlined text-sm">volunteer_activism</span>
+              <span class="material-symbols-outlined text-xs">volunteer_activism</span>
               <span>Bu İhtiyacı Üstlen / Destek Ol</span>
             </button>
           </div>
@@ -195,21 +194,21 @@ const wishlistItems = [
 
     <!-- 3. Ne Tür Desteklerde Bulunabilirsiniz? -->
     <section>
-      <h2 class="font-serif text-xl sm:text-2xl text-ink font-bold mb-6 pb-2.5 border-b border-sand">
+      <h2 class="font-serif text-lg sm:text-xl text-ink font-bold mb-4 pb-2 border-b border-sand">
         Ne Tür Desteklerde Bulunabilirsiniz?
       </h2>
 
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-3.5">
         {supportTypes.map((item) => (
-          <div class="bg-parchment border-2 border-olive rounded-xs p-4 sm:p-5 flex flex-col justify-between hover:shadow-md transition-all shadow-xs">
+          <div class="bg-parchment border-2 border-olive rounded-xs p-3.5 flex flex-col justify-between hover:shadow-md transition-all shadow-xs">
             <div>
-              <div class="w-8 h-8 rounded-full bg-olive/10 text-olive flex items-center justify-center mb-3">
-                <span class="material-symbols-outlined text-xl">favorite</span>
+              <div class="w-7 h-7 rounded-full bg-olive/10 text-olive flex items-center justify-center mb-2">
+                <span class="material-symbols-outlined text-base">favorite</span>
               </div>
-              <h3 class="font-serif text-base font-bold text-ink mb-1.5 leading-snug">
+              <h3 class="font-serif text-sm font-bold text-ink mb-1 leading-snug">
                 {item.title}
               </h3>
-              <p class="font-sans text-xs sm:text-sm text-ink/80 leading-relaxed">
+              <p class="font-sans text-xs text-ink/80 leading-relaxed">
                 {item.desc}
               </p>
             </div>
@@ -219,119 +218,119 @@ const wishlistItems = [
     </section>
 
     <!-- 4. Doğrudan İletişim & Başvuru Formu -->
-    <section id="basvuru-alani" class="bg-surface-container-low border-2 border-olive rounded-xs p-6 sm:p-10 shadow-xs">
-      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-start">
+    <section id="basvuru-alani" class="bg-surface-container-low border-2 border-olive rounded-xs p-5 sm:p-8 shadow-xs">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-start">
         
         <!-- Sol Taraf: Doğrudan İletişim -->
-        <div class="lg:col-span-5 space-y-5">
+        <div class="lg:col-span-5 space-y-4">
           <div>
-            <span class="text-xs uppercase tracking-widest text-olive font-sans font-bold block mb-1.5">DOĞRUDAN İLETİŞİM</span>
-            <h3 class="font-serif text-xl sm:text-2xl text-ink font-bold leading-tight mb-2">
+            <span class="text-[11px] uppercase tracking-widest text-olive font-sans font-bold block mb-1">DOĞRUDAN İLETİŞİM</span>
+            <h3 class="font-serif text-base sm:text-lg text-ink font-bold leading-snug mb-1.5">
               Kütüphane Yetkilimiz ile Görüşün
             </h3>
-            <p class="font-sans text-xs sm:text-sm text-ink/85 leading-relaxed">
+            <p class="font-sans text-xs text-ink/85 leading-relaxed">
               Katkıda bulunmak istediğiniz destek ile ilgili bize doğrudan ulaşabilirsiniz.
             </p>
           </div>
 
-          <div class="space-y-3.5 pt-3 border-t border-sand">
-            <div class="flex items-center gap-3.5">
-              <div class="w-9 h-9 rounded-full bg-olive text-white flex items-center justify-center shrink-0 shadow-2xs">
-                <span class="material-symbols-outlined text-lg">call</span>
+          <div class="space-y-2.5 pt-2.5 border-t border-sand">
+            <div class="flex items-center gap-3">
+              <div class="w-8 h-8 rounded-full bg-olive text-white flex items-center justify-center shrink-0 shadow-2xs">
+                <span class="material-symbols-outlined text-base">call</span>
               </div>
               <div>
-                <div class="text-xs text-stone-gray font-sans font-bold uppercase tracking-wider">Telefon</div>
-                <a href="tel:+905423739748" class="text-ink font-bold text-sm sm:text-base hover:text-olive transition-colors">
+                <div class="text-[10px] text-stone-gray font-sans font-bold uppercase tracking-wider">Telefon</div>
+                <a href="tel:+905423739748" class="text-ink font-bold text-xs sm:text-sm hover:text-olive transition-colors">
                   +90 (0) 542 373 97 48
                 </a>
               </div>
             </div>
 
-            <div class="flex items-center gap-3.5">
-              <div class="w-9 h-9 rounded-full bg-olive text-white flex items-center justify-center shrink-0 shadow-2xs">
-                <span class="material-symbols-outlined text-lg">mail</span>
+            <div class="flex items-center gap-3">
+              <div class="w-8 h-8 rounded-full bg-olive text-white flex items-center justify-center shrink-0 shadow-2xs">
+                <span class="material-symbols-outlined text-base">mail</span>
               </div>
               <div>
-                <div class="text-xs text-stone-gray font-sans font-bold uppercase tracking-wider">E-Posta</div>
-                <a href="mailto:bilgi@bodrumkentkutuphanesi.org" class="text-ink font-bold text-sm sm:text-base hover:text-olive transition-colors break-all">
+                <div class="text-[10px] text-stone-gray font-sans font-bold uppercase tracking-wider">E-Posta</div>
+                <a href="mailto:bilgi@bodrumkentkutuphanesi.org" class="text-ink font-bold text-xs sm:text-sm hover:text-olive transition-colors break-all">
                   bilgi@bodrumkentkutuphanesi.org
                 </a>
               </div>
             </div>
 
-            <div class="flex items-center gap-3.5">
-              <div class="w-9 h-9 rounded-full bg-olive text-white flex items-center justify-center shrink-0 shadow-2xs">
-                <span class="material-symbols-outlined text-lg">location_on</span>
+            <div class="flex items-center gap-3">
+              <div class="w-8 h-8 rounded-full bg-olive text-white flex items-center justify-center shrink-0 shadow-2xs">
+                <span class="material-symbols-outlined text-base">location_on</span>
               </div>
               <div>
-                <div class="text-xs text-stone-gray font-sans font-bold uppercase tracking-wider">Yerleşke</div>
-                <span class="text-ink font-bold text-sm sm:text-base">Kızılağaç, Bodrum / Muğla</span>
+                <div class="text-[10px] text-stone-gray font-sans font-bold uppercase tracking-wider">Yerleşke</div>
+                <span class="text-ink font-bold text-xs sm:text-sm">Kızılağaç, Bodrum / Muğla</span>
               </div>
             </div>
           </div>
 
-          <div class="p-4 bg-parchment border border-sand rounded-xs space-y-2">
-            <h4 class="font-serif font-bold text-ink text-sm">Sponsorluk & Kurumsal Katılım</h4>
-            <p class="text-xs text-ink/80 font-sans leading-relaxed">
+          <div class="p-3 bg-parchment border border-sand rounded-xs space-y-1.5">
+            <h4 class="font-serif font-bold text-ink text-xs sm:text-sm">Sponsorluk & Kurumsal Katılım</h4>
+            <p class="text-[11px] text-ink/80 font-sans leading-relaxed">
               Kütüphane salonu, atölye veya yayın sponsorlukları için detaylı dosyamızı inceleyebilir, resmi kurum protokolleri talep edebilirsiniz.
             </p>
             <a
               href="/sponsorluk-dosyasi"
-              class="inline-flex items-center gap-1 text-xs font-sans font-bold text-olive hover:underline uppercase tracking-wider pt-1"
+              class="inline-flex items-center gap-1 text-[11px] font-sans font-bold text-olive hover:underline uppercase tracking-wider pt-0.5"
             >
               <span>Sponsorluk Dosyasını İnceleyin</span>
-              <span class="material-symbols-outlined text-sm">arrow_forward</span>
+              <span class="material-symbols-outlined text-xs">arrow_forward</span>
             </a>
           </div>
         </div>
 
         <!-- Sağ Taraf: Destek ve Gönüllü Katılım Formu -->
-        <div class="lg:col-span-7 bg-parchment border-2 border-olive rounded-xs p-5 sm:p-8 shadow-xs">
-          <h3 class="font-serif text-xl sm:text-2xl text-ink font-bold mb-1.5">
+        <div class="lg:col-span-7 bg-parchment border-2 border-olive rounded-xs p-4 sm:p-6 shadow-xs">
+          <h3 class="font-serif text-base sm:text-lg text-ink font-bold mb-1">
             Destek ve Gönüllü Katılım Başvuru Formu
           </h3>
-          <p class="font-sans text-xs sm:text-sm text-ink/85 mb-5">
+          <p class="font-sans text-xs text-ink/85 mb-4">
             Bilgilerinizi ve destek sunmak istediğiniz alanı iletin, sizinle iletişime geçelim.
           </p>
 
-          <form id="support-form" class="space-y-3.5 font-sans">
+          <form id="support-form" class="space-y-3 font-sans">
             <div>
-              <label class="block text-xs font-bold text-ink uppercase tracking-wider mb-1">Ad Soyad *</label>
+              <label class="block text-[11px] font-bold text-ink uppercase tracking-wider mb-0.5">Ad Soyad *</label>
               <input 
                 type="text" 
                 required 
                 placeholder="Adınız Soyadınız"
-                class="w-full px-3.5 py-2 bg-surface-bright border border-sand text-ink text-sm focus:outline-none focus:border-olive rounded-xs" 
+                class="w-full px-3 py-1.5 bg-surface-bright border border-sand text-ink text-xs focus:outline-none focus:border-olive rounded-xs" 
               />
             </div>
 
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
               <div>
-                <label class="block text-xs font-bold text-ink uppercase tracking-wider mb-1">E-Posta *</label>
+                <label class="block text-[11px] font-bold text-ink uppercase tracking-wider mb-0.5">E-Posta *</label>
                 <input 
                   type="email" 
                   required 
                   placeholder="ornek@alanadi.com"
-                  class="w-full px-3.5 py-2 bg-surface-bright border border-sand text-ink text-sm focus:outline-none focus:border-olive rounded-xs" 
+                  class="w-full px-3 py-1.5 bg-surface-bright border border-sand text-ink text-xs focus:outline-none focus:border-olive rounded-xs" 
                 />
               </div>
               <div>
-                <label class="block text-xs font-bold text-ink uppercase tracking-wider mb-1">Telefon / GSM *</label>
+                <label class="block text-[11px] font-bold text-ink uppercase tracking-wider mb-0.5">Telefon / GSM *</label>
                 <input 
                   type="tel" 
                   required
                   placeholder="05XX XXX XX XX"
-                  class="w-full px-3.5 py-2 bg-surface-bright border border-sand text-ink text-sm focus:outline-none focus:border-olive rounded-xs" 
+                  class="w-full px-3 py-1.5 bg-surface-bright border border-sand text-ink text-xs focus:outline-none focus:border-olive rounded-xs" 
                 />
               </div>
             </div>
 
             <div>
-              <label class="block text-xs font-bold text-ink uppercase tracking-wider mb-1">Destek / Katkı Türü *</label>
+              <label class="block text-[11px] font-bold text-ink uppercase tracking-wider mb-0.5">Destek / Katkı Türü *</label>
               <select 
                 id="support-type-select"
                 required
-                class="w-full px-3.5 py-2 bg-surface-bright border border-sand text-ink text-sm focus:outline-none focus:border-olive rounded-xs"
+                class="w-full px-3 py-1.5 bg-surface-bright border border-sand text-ink text-xs focus:outline-none focus:border-olive rounded-xs"
               >
                 <option value="">Lütfen katkı türünü seçiniz...</option>
                 <option value="kitap">Kitap Bağışı</option>
@@ -346,26 +345,26 @@ const wishlistItems = [
             </div>
 
             <div>
-              <label class="block text-xs font-bold text-ink uppercase tracking-wider mb-1">Katkı & İş Birliği Detayları / Notunuz *</label>
+              <label class="block text-[11px] font-bold text-ink uppercase tracking-wider mb-0.5">Katkı & İş Birliği Detayları / Notunuz *</label>
               <textarea 
                 id="support-details-textarea"
-                rows="4" 
+                rows="3" 
                 required 
                 placeholder="Hangi alanda, nasıl bir katkı veya iş birliği sağlamak istediğinizi kısaca açıklayınız..."
-                class="w-full px-3.5 py-2 bg-surface-bright border border-sand text-ink text-sm focus:outline-none focus:border-olive rounded-xs"
+                class="w-full px-3 py-1.5 bg-surface-bright border border-sand text-ink text-xs focus:outline-none focus:border-olive rounded-xs"
               ></textarea>
             </div>
 
-            <div class="flex items-start gap-2 pt-1">
-              <input type="checkbox" id="kvkk" required class="mt-1 accent-olive cursor-pointer" />
-              <label for="kvkk" class="text-[11px] text-stone-gray leading-tight">
+            <div class="flex items-start gap-2 pt-0.5">
+              <input type="checkbox" id="kvkk" required class="mt-0.5 accent-olive cursor-pointer" />
+              <label for="kvkk" class="text-[10px] text-stone-gray leading-tight">
                 Kişisel verilerimin Bodrum Kent Kütüphanesi iletişim süreçleri kapsamında işlenmesini onaylıyorum.
               </label>
             </div>
 
             <button 
               type="submit" 
-              class="w-full py-3 bg-olive text-white hover:bg-bodrum-blue-dark text-xs font-sans font-bold tracking-wider uppercase transition-colors shadow-xs rounded-xs cursor-pointer"
+              class="w-full py-2.5 bg-olive text-white hover:bg-bodrum-blue-dark text-xs font-sans font-bold tracking-wider uppercase transition-colors shadow-xs rounded-xs cursor-pointer"
             >
               Destek Başvurusunu İlet
             </button>
@@ -379,7 +378,6 @@ const wishlistItems = [
 </Layout>
 
 <script>
-  // Wishlist auto-selection helper
   document.querySelectorAll('.btn-fulfill-wish').forEach((btn) => {
     btn.addEventListener('click', (e) => {
       const target = e.currentTarget as HTMLElement;

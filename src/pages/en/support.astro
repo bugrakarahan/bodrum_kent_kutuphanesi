@@ -102,38 +102,38 @@ const wishlistItemsEn = [
   currentPath="/en/support"
 >
   <!-- Hero Section -->
-  <section class="py-8 md:py-12 px-5 md:px-12 bg-surface-bright border-b border-sand">
+  <section class="py-6 md:py-10 px-5 md:px-12 bg-surface-bright border-b border-sand">
     <div class="max-w-[1280px] mx-auto">
       <div class="max-w-3xl">
-        <h1 class="font-serif text-2xl sm:text-3xl text-ink font-bold leading-tight mb-2.5">
+        <h1 class="font-serif text-xl sm:text-2xl text-ink font-bold leading-snug mb-2">
           Support & Volunteering
         </h1>
-        <p class="font-sans text-sm sm:text-base text-ink/80 leading-relaxed">
+        <p class="font-sans text-xs sm:text-sm text-ink/80 leading-relaxed">
           Join this shared vision to build Bodrum's cultural memory and illuminate knowledge for generations to come.
         </p>
       </div>
     </div>
   </section>
 
-  <div class="max-w-[1280px] mx-auto px-5 md:px-12 py-8 md:py-12 space-y-12">
+  <div class="max-w-[1280px] mx-auto px-5 md:px-12 py-6 md:py-10 space-y-10">
     
     <!-- 1. Why Join Us -->
     <section>
-      <h2 class="font-serif text-xl sm:text-2xl text-ink font-bold mb-6 pb-2.5 border-b border-sand">
+      <h2 class="font-serif text-lg sm:text-xl text-ink font-bold mb-4 pb-2 border-b border-sand">
         Why Should You Join This Vision?
       </h2>
 
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
         {whyJoinUsEn.map((item, index) => (
-          <div class="bg-surface-container-low border-2 border-olive rounded-xs p-5 sm:p-6 flex items-start gap-3.5 shadow-xs">
-            <span class="w-7 h-7 rounded-full bg-olive text-white flex items-center justify-center font-mono text-xs font-bold shrink-0 mt-0.5 shadow-xs">
+          <div class="bg-surface-container-low border-2 border-olive rounded-xs p-4 sm:p-5 flex items-start gap-3 shadow-xs">
+            <span class="w-6 h-6 rounded-full bg-olive text-white flex items-center justify-center font-mono text-[11px] font-bold shrink-0 mt-0.5 shadow-xs">
               {index + 1}
             </span>
             <div>
-              <h3 class="font-serif text-base sm:text-lg text-ink font-bold mb-1.5 leading-snug">
+              <h3 class="font-serif text-sm sm:text-base text-ink font-bold mb-1 leading-snug">
                 {item.title}
               </h3>
-              <p class="font-sans text-xs sm:text-sm text-ink/85 leading-relaxed">
+              <p class="font-sans text-xs text-ink/85 leading-relaxed">
                 {item.desc}
               </p>
             </div>
@@ -144,47 +144,47 @@ const wishlistItemsEn = [
 
     <!-- 2. Transparent Needs Board -->
     <section>
-      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-5 pb-2.5 border-b border-sand">
+      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-4 pb-2 border-b border-sand">
         <div>
-          <span class="text-xs uppercase tracking-widest text-olive font-sans font-bold block mb-1">TRANSPARENT NEEDS</span>
-          <h2 class="font-serif text-xl sm:text-2xl text-ink font-bold">
+          <span class="text-[11px] uppercase tracking-widest text-olive font-sans font-bold block mb-0.5">TRANSPARENT NEEDS</span>
+          <h2 class="font-serif text-lg sm:text-xl text-ink font-bold">
             Community Needs Board
           </h2>
         </div>
-        <span class="text-xs font-sans text-stone-gray">
+        <span class="text-[11px] font-sans text-stone-gray">
           Sponsor a concrete need to empower our community library directly.
         </span>
       </div>
 
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
         {wishlistItemsEn.map((wish) => (
-          <div class="bg-parchment border-2 border-olive rounded-xs p-5 flex flex-col justify-between shadow-xs hover:shadow-md transition-all">
+          <div class="bg-parchment border-2 border-olive rounded-xs p-4 flex flex-col justify-between shadow-xs hover:shadow-md transition-all">
             <div>
-              <div class="flex items-center justify-between gap-2 mb-2.5">
-                <span class="px-2.5 py-0.5 bg-olive/10 text-olive text-[11px] font-sans font-bold uppercase rounded-2xs">
+              <div class="flex items-center justify-between gap-2 mb-2">
+                <span class="px-2 py-0.5 bg-olive/10 text-olive text-[10px] font-sans font-bold uppercase rounded-2xs">
                   {wish.category}
                 </span>
-                <span class="px-2.5 py-0.5 bg-amber-100 text-amber-900 text-[11px] font-sans font-bold rounded-2xs">
+                <span class="px-2 py-0.5 bg-amber-100 text-amber-900 text-[10px] font-sans font-bold rounded-2xs">
                   {wish.status}
                 </span>
               </div>
 
-              <h3 class="font-serif text-base sm:text-lg font-bold text-ink mb-1.5">
+              <h3 class="font-serif text-sm sm:text-base font-bold text-ink mb-1">
                 {wish.title}
               </h3>
 
-              <p class="font-sans text-xs sm:text-sm text-ink/80 leading-relaxed mb-3.5">
+              <p class="font-sans text-xs text-ink/80 leading-relaxed mb-3">
                 {wish.desc}
               </p>
             </div>
 
             <button
               type="button"
-              class="btn-fulfill-wish-en w-full py-2 bg-olive hover:bg-bodrum-blue-dark text-white text-xs font-sans font-bold uppercase tracking-wider rounded-xs transition-colors shadow-2xs flex items-center justify-center gap-1.5 cursor-pointer mt-1"
+              class="btn-fulfill-wish-en w-full py-1.5 bg-olive hover:bg-bodrum-blue-dark text-white text-[11px] font-sans font-bold uppercase tracking-wider rounded-xs transition-colors shadow-2xs flex items-center justify-center gap-1 cursor-pointer mt-1"
               data-wish-select={wish.selectValue}
               data-wish-title={wish.title}
             >
-              <span class="material-symbols-outlined text-sm">volunteer_activism</span>
+              <span class="material-symbols-outlined text-xs">volunteer_activism</span>
               <span>Sponsor This Need</span>
             </button>
           </div>
@@ -194,21 +194,21 @@ const wishlistItemsEn = [
 
     <!-- 3. Support Types -->
     <section>
-      <h2 class="font-serif text-xl sm:text-2xl text-ink font-bold mb-6 pb-2.5 border-b border-sand">
+      <h2 class="font-serif text-lg sm:text-xl text-ink font-bold mb-4 pb-2 border-b border-sand">
         How Can You Support?
       </h2>
 
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-3.5">
         {supportTypesEn.map((item) => (
-          <div class="bg-parchment border-2 border-olive rounded-xs p-4 sm:p-5 flex flex-col justify-between hover:shadow-md transition-all shadow-xs">
+          <div class="bg-parchment border-2 border-olive rounded-xs p-3.5 flex flex-col justify-between hover:shadow-md transition-all shadow-xs">
             <div>
-              <div class="w-8 h-8 rounded-full bg-olive/10 text-olive flex items-center justify-center mb-3">
-                <span class="material-symbols-outlined text-xl">favorite</span>
+              <div class="w-7 h-7 rounded-full bg-olive/10 text-olive flex items-center justify-center mb-2">
+                <span class="material-symbols-outlined text-base">favorite</span>
               </div>
-              <h3 class="font-serif text-base font-bold text-ink mb-1.5 leading-snug">
+              <h3 class="font-serif text-sm font-bold text-ink mb-1 leading-snug">
                 {item.title}
               </h3>
-              <p class="font-sans text-xs sm:text-sm text-ink/80 leading-relaxed">
+              <p class="font-sans text-xs text-ink/80 leading-relaxed">
                 {item.desc}
               </p>
             </div>
@@ -218,103 +218,103 @@ const wishlistItemsEn = [
     </section>
 
     <!-- 4. Contact & Form -->
-    <section id="support-form-section" class="bg-surface-container-low border-2 border-olive rounded-xs p-6 sm:p-10 shadow-xs">
-      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-start">
+    <section id="support-form-section" class="bg-surface-container-low border-2 border-olive rounded-xs p-5 sm:p-8 shadow-xs">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-start">
         
-        <div class="lg:col-span-5 space-y-5">
+        <div class="lg:col-span-5 space-y-4">
           <div>
-            <span class="text-xs uppercase tracking-widest text-olive font-sans font-bold block mb-1.5">DIRECT CONTACT</span>
-            <h3 class="font-serif text-xl sm:text-2xl text-ink font-bold leading-tight mb-2">
+            <span class="text-[11px] uppercase tracking-widest text-olive font-sans font-bold block mb-1">DIRECT CONTACT</span>
+            <h3 class="font-serif text-base sm:text-lg text-ink font-bold leading-snug mb-1.5">
               Speak with Our Library Representative
             </h3>
-            <p class="font-sans text-xs sm:text-sm text-ink/85 leading-relaxed">
+            <p class="font-sans text-xs text-ink/85 leading-relaxed">
               Reach out directly regarding donations, partnerships, or collaborative programs.
             </p>
           </div>
 
-          <div class="space-y-3.5 pt-3 border-t border-sand">
-            <div class="flex items-center gap-3.5">
-              <div class="w-9 h-9 rounded-full bg-olive text-white flex items-center justify-center shrink-0 shadow-2xs">
-                <span class="material-symbols-outlined text-lg">call</span>
+          <div class="space-y-2.5 pt-2.5 border-t border-sand">
+            <div class="flex items-center gap-3">
+              <div class="w-8 h-8 rounded-full bg-olive text-white flex items-center justify-center shrink-0 shadow-2xs">
+                <span class="material-symbols-outlined text-base">call</span>
               </div>
               <div>
-                <div class="text-xs text-stone-gray font-sans font-bold uppercase tracking-wider">Phone</div>
-                <a href="tel:+905423739748" class="text-ink font-bold text-sm sm:text-base hover:text-olive transition-colors">
+                <div class="text-[10px] text-stone-gray font-sans font-bold uppercase tracking-wider">Phone</div>
+                <a href="tel:+905423739748" class="text-ink font-bold text-xs sm:text-sm hover:text-olive transition-colors">
                   +90 (0) 542 373 97 48
                 </a>
               </div>
             </div>
 
-            <div class="flex items-center gap-3.5">
-              <div class="w-9 h-9 rounded-full bg-olive text-white flex items-center justify-center shrink-0 shadow-2xs">
-                <span class="material-symbols-outlined text-lg">mail</span>
+            <div class="flex items-center gap-3">
+              <div class="w-8 h-8 rounded-full bg-olive text-white flex items-center justify-center shrink-0 shadow-2xs">
+                <span class="material-symbols-outlined text-base">mail</span>
               </div>
               <div>
-                <div class="text-xs text-stone-gray font-sans font-bold uppercase tracking-wider">Email</div>
-                <a href="mailto:bilgi@bodrumkentkutuphanesi.org" class="text-ink font-bold text-sm sm:text-base hover:text-olive transition-colors break-all">
+                <div class="text-[10px] text-stone-gray font-sans font-bold uppercase tracking-wider">Email</div>
+                <a href="mailto:bilgi@bodrumkentkutuphanesi.org" class="text-ink font-bold text-xs sm:text-sm hover:text-olive transition-colors break-all">
                   bilgi@bodrumkentkutuphanesi.org
                 </a>
               </div>
             </div>
 
-            <div class="flex items-center gap-3.5">
-              <div class="w-9 h-9 rounded-full bg-olive text-white flex items-center justify-center shrink-0 shadow-2xs">
-                <span class="material-symbols-outlined text-lg">location_on</span>
+            <div class="flex items-center gap-3">
+              <div class="w-8 h-8 rounded-full bg-olive text-white flex items-center justify-center shrink-0 shadow-2xs">
+                <span class="material-symbols-outlined text-base">location_on</span>
               </div>
               <div>
-                <div class="text-xs text-stone-gray font-sans font-bold uppercase tracking-wider">Campus</div>
-                <span class="text-ink font-bold text-sm sm:text-base">Kizilagac, Bodrum / Mugla, Turkiye</span>
+                <div class="text-[10px] text-stone-gray font-sans font-bold uppercase tracking-wider">Campus</div>
+                <span class="text-ink font-bold text-xs sm:text-sm">Kizilagac, Bodrum / Mugla, Turkiye</span>
               </div>
             </div>
           </div>
         </div>
 
-        <div class="lg:col-span-7 bg-parchment border-2 border-olive rounded-xs p-5 sm:p-8 shadow-xs">
-          <h3 class="font-serif text-xl sm:text-2xl text-ink font-bold mb-1.5">
+        <div class="lg:col-span-7 bg-parchment border-2 border-olive rounded-xs p-4 sm:p-6 shadow-xs">
+          <h3 class="font-serif text-base sm:text-lg text-ink font-bold mb-1">
             Support & Volunteering Application Form
           </h3>
-          <p class="font-sans text-xs sm:text-sm text-ink/85 mb-5">
+          <p class="font-sans text-xs text-ink/85 mb-4">
             Submit your contact details and support preferences; we will get in touch with you shortly.
           </p>
 
-          <form id="support-form-en" class="space-y-3.5 font-sans">
+          <form id="support-form-en" class="space-y-3 font-sans">
             <div>
-              <label class="block text-xs font-bold text-ink uppercase tracking-wider mb-1">Full Name *</label>
+              <label class="block text-[11px] font-bold text-ink uppercase tracking-wider mb-0.5">Full Name *</label>
               <input 
                 type="text" 
                 required 
                 placeholder="Your Full Name"
-                class="w-full px-3.5 py-2 bg-surface-bright border border-sand text-ink text-sm focus:outline-none focus:border-olive rounded-xs" 
+                class="w-full px-3 py-1.5 bg-surface-bright border border-sand text-ink text-xs focus:outline-none focus:border-olive rounded-xs" 
               />
             </div>
 
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
               <div>
-                <label class="block text-xs font-bold text-ink uppercase tracking-wider mb-1">Email *</label>
+                <label class="block text-[11px] font-bold text-ink uppercase tracking-wider mb-0.5">Email *</label>
                 <input 
                   type="email" 
                   required 
                   placeholder="example@domain.com"
-                  class="w-full px-3.5 py-2 bg-surface-bright border border-sand text-ink text-sm focus:outline-none focus:border-olive rounded-xs" 
+                  class="w-full px-3 py-1.5 bg-surface-bright border border-sand text-ink text-xs focus:outline-none focus:border-olive rounded-xs" 
                 />
               </div>
               <div>
-                <label class="block text-xs font-bold text-ink uppercase tracking-wider mb-1">Phone / Mobile *</label>
+                <label class="block text-[11px] font-bold text-ink uppercase tracking-wider mb-0.5">Phone / Mobile *</label>
                 <input 
                   type="tel" 
                   required
                   placeholder="+90 5XX XXX XX XX"
-                  class="w-full px-3.5 py-2 bg-surface-bright border border-sand text-ink text-sm focus:outline-none focus:border-olive rounded-xs" 
+                  class="w-full px-3 py-1.5 bg-surface-bright border border-sand text-ink text-xs focus:outline-none focus:border-olive rounded-xs" 
                 />
               </div>
             </div>
 
             <div>
-              <label class="block text-xs font-bold text-ink uppercase tracking-wider mb-1">Support Category *</label>
+              <label class="block text-[11px] font-bold text-ink uppercase tracking-wider mb-0.5">Support Category *</label>
               <select 
                 id="support-type-select-en"
                 required
-                class="w-full px-3.5 py-2 bg-surface-bright border border-sand text-ink text-sm focus:outline-none focus:border-olive rounded-xs"
+                class="w-full px-3 py-1.5 bg-surface-bright border border-sand text-ink text-xs focus:outline-none focus:border-olive rounded-xs"
               >
                 <option value="">Select support type...</option>
                 <option value="kitap">Book Donation</option>
@@ -329,19 +329,19 @@ const wishlistItemsEn = [
             </div>
 
             <div>
-              <label class="block text-xs font-bold text-ink uppercase tracking-wider mb-1">Collaboration Notes *</label>
+              <label class="block text-[11px] font-bold text-ink uppercase tracking-wider mb-0.5">Collaboration Notes *</label>
               <textarea 
                 id="support-details-textarea-en"
-                rows="4" 
+                rows="3" 
                 required 
                 placeholder="Describe your suggested contribution..."
-                class="w-full px-3.5 py-2 bg-surface-bright border border-sand text-ink text-sm focus:outline-none focus:border-olive rounded-xs"
+                class="w-full px-3 py-1.5 bg-surface-bright border border-sand text-ink text-xs focus:outline-none focus:border-olive rounded-xs"
               ></textarea>
             </div>
 
             <button 
               type="submit" 
-              class="w-full py-3 bg-olive text-white hover:bg-bodrum-blue-dark text-xs font-sans font-bold tracking-wider uppercase transition-colors shadow-xs rounded-xs cursor-pointer"
+              class="w-full py-2.5 bg-olive text-white hover:bg-bodrum-blue-dark text-xs font-sans font-bold tracking-wider uppercase transition-colors shadow-xs rounded-xs cursor-pointer"
             >
               Submit Application
             </button>

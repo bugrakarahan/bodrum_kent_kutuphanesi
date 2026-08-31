@@ -53,17 +53,17 @@ const switchUrl = currentRouteObj
         class="w-10 h-10 object-contain rounded-xs border border-white/25 bg-white/5 shadow-2xs group-hover:scale-105 transition-transform"
       />
       
-      <span class="font-serif text-lg sm:text-xl font-bold tracking-tight text-white whitespace-nowrap">
+      <span class="font-serif text-base sm:text-lg font-bold tracking-tight text-white whitespace-nowrap">
         {t.siteTitle}
       </span>
     </a>
 
-    <!-- 2. Center: Desktop Navigation Links (Clean, modern Plus Jakarta Sans typography) -->
-    <nav class="hidden lg:flex items-center justify-center gap-3.5 xl:gap-6 flex-1 px-2" aria-label="Ana Menü">
+    <!-- 2. Center: Desktop Navigation Links (Refined typography) -->
+    <nav class="hidden lg:flex items-center justify-center gap-3 xl:gap-5 flex-1 px-2" aria-label="Ana Menü">
       {links.map((link) => (
         <a
           href={link.href}
-          class={`font-sans text-[12.5px] xl:text-[13.5px] uppercase tracking-wider font-semibold text-center transition-all duration-150 py-1 px-1 whitespace-nowrap ${
+          class={`font-sans text-[11px] xl:text-[12px] uppercase tracking-wider font-semibold text-center transition-all duration-150 py-1 px-1 whitespace-nowrap ${
             link.isActive
               ? 'text-white border-b-2 border-white font-bold'
               : 'text-parchment/80 hover:text-white hover:border-b border-white/40'

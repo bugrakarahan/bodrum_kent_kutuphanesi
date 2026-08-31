@@ -13,88 +13,88 @@ const t = getT(lang);
   currentPath="/en/contact"
 >
   <!-- Hero Header -->
-  <section class="py-8 md:py-12 px-5 md:px-12 bg-surface-bright border-b border-sand">
+  <section class="py-6 md:py-10 px-5 md:px-12 bg-surface-bright border-b border-sand">
     <div class="max-w-[1280px] mx-auto">
       <div class="max-w-3xl">
-        <h1 class="font-serif text-2xl sm:text-3xl text-ink font-bold leading-tight mb-2.5">
+        <h1 class="font-serif text-xl sm:text-2xl text-ink font-bold leading-snug mb-2">
           Contact & Campus
         </h1>
-        <p class="font-sans text-sm sm:text-base text-ink/80 leading-relaxed">
+        <p class="font-sans text-xs sm:text-sm text-ink/80 leading-relaxed">
           Please reach out to visit our library, participate in cultural events, or submit questions.
         </p>
       </div>
     </div>
   </section>
 
-  <!-- Content Grid -->
-  <div class="max-w-[1280px] mx-auto px-5 md:px-12 py-8 md:py-12">
-    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+  <!-- Content Grid: Aligned via items-stretch -->
+  <div class="max-w-[1280px] mx-auto px-5 md:px-12 py-6 md:py-10">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-stretch">
       
-      <!-- Left Column: Library Details (Matches Support page font style) -->
-      <div class="lg:col-span-5 space-y-5">
+      <!-- Left Column: Library Information -->
+      <div class="lg:col-span-5 flex flex-col justify-between space-y-4">
         <div>
-          <span class="text-xs uppercase tracking-widest text-olive font-sans font-bold block mb-1.5">DIRECT CONTACT</span>
-          <h2 class="font-serif text-xl sm:text-2xl text-ink font-bold leading-tight mb-2">
+          <span class="text-[11px] uppercase tracking-widest text-olive font-sans font-bold block mb-1">DIRECT CONTACT</span>
+          <h2 class="font-serif text-base sm:text-lg text-ink font-bold leading-snug mb-1.5">
             Library Information
           </h2>
-          <p class="font-sans text-xs sm:text-sm text-ink/85 leading-relaxed">
+          <p class="font-sans text-xs text-ink/85 leading-relaxed">
             Connect with our team through any of the communication channels below.
           </p>
         </div>
 
-        <div class="space-y-3.5 font-sans">
+        <div class="space-y-3 font-sans flex-1 flex flex-col justify-between">
           
           <!-- Phone -->
-          <div class="p-4 sm:p-5 bg-surface-container-low border-2 border-olive rounded-xs flex items-start gap-3.5 shadow-xs">
-            <div class="w-9 h-9 rounded-full bg-olive text-white flex items-center justify-center shrink-0 mt-0.5 shadow-2xs">
-              <span class="material-symbols-outlined text-lg">call</span>
+          <div class="p-3.5 sm:p-4 bg-surface-container-low border-2 border-olive rounded-xs flex items-start gap-3 shadow-xs">
+            <div class="w-8 h-8 rounded-full bg-olive text-white flex items-center justify-center shrink-0 mt-0.5 shadow-2xs">
+              <span class="material-symbols-outlined text-base">call</span>
             </div>
             <div>
-              <div class="text-xs uppercase tracking-wider text-stone-gray font-bold mb-0.5">Phone / Mobile</div>
-              <a href="tel:+905423739748" class="text-ink text-sm sm:text-base font-bold hover:text-olive transition-colors block">
+              <div class="text-[10px] uppercase tracking-wider text-stone-gray font-bold">Phone / Mobile</div>
+              <a href="tel:+905423739748" class="text-ink text-xs sm:text-sm font-bold hover:text-olive transition-colors block mt-0.5">
                 +90 (0) 542 373 97 48
               </a>
             </div>
           </div>
 
           <!-- Email -->
-          <div class="p-4 sm:p-5 bg-surface-container-low border-2 border-olive rounded-xs flex items-start gap-3.5 shadow-xs">
-            <div class="w-9 h-9 rounded-full bg-olive text-white flex items-center justify-center shrink-0 mt-0.5 shadow-2xs">
-              <span class="material-symbols-outlined text-lg">mail</span>
+          <div class="p-3.5 sm:p-4 bg-surface-container-low border-2 border-olive rounded-xs flex items-start gap-3 shadow-xs">
+            <div class="w-8 h-8 rounded-full bg-olive text-white flex items-center justify-center shrink-0 mt-0.5 shadow-2xs">
+              <span class="material-symbols-outlined text-base">mail</span>
             </div>
             <div>
-              <div class="text-xs uppercase tracking-wider text-stone-gray font-bold mb-0.5">Email</div>
-              <a href="mailto:bilgi@bodrumkentkutuphanesi.org" class="text-ink text-sm sm:text-base font-bold hover:text-olive transition-colors break-all block">
+              <div class="text-[10px] uppercase tracking-wider text-stone-gray font-bold">Email</div>
+              <a href="mailto:bilgi@bodrumkentkutuphanesi.org" class="text-ink text-xs sm:text-sm font-bold hover:text-olive transition-colors break-all block mt-0.5">
                 bilgi@bodrumkentkutuphanesi.org
               </a>
             </div>
           </div>
 
           <!-- Location -->
-          <div class="p-4 sm:p-5 bg-surface-container-low border-2 border-olive rounded-xs flex items-start gap-3.5 shadow-xs">
-            <div class="w-9 h-9 rounded-full bg-olive text-white flex items-center justify-center shrink-0 mt-0.5 shadow-2xs">
-              <span class="material-symbols-outlined text-lg">location_on</span>
+          <div class="p-3.5 sm:p-4 bg-surface-container-low border-2 border-olive rounded-xs flex items-start gap-3 shadow-xs">
+            <div class="w-8 h-8 rounded-full bg-olive text-white flex items-center justify-center shrink-0 mt-0.5 shadow-2xs">
+              <span class="material-symbols-outlined text-base">location_on</span>
             </div>
             <div>
-              <div class="text-xs uppercase tracking-wider text-stone-gray font-bold mb-0.5">Campus Location</div>
-              <p class="text-ink text-sm sm:text-base font-bold">Kizilagac, Bodrum / Mugla, Turkiye</p>
-              <p class="text-xs text-stone-gray mt-0.5">Tuesday – Sunday: 10:00 – 19:00 (Closed on Mondays)</p>
+              <div class="text-[10px] uppercase tracking-wider text-stone-gray font-bold">Campus Location</div>
+              <p class="text-ink text-xs sm:text-sm font-bold mt-0.5">Kizilagac, Bodrum / Mugla, Turkiye</p>
+              <p class="text-[11px] text-stone-gray mt-0.5">Tuesday – Sunday: 10:00 – 19:00 (Closed on Mondays)</p>
             </div>
           </div>
 
-          <!-- Social Media Channels -->
-          <div class="p-4 sm:p-5 bg-surface-container-low border-2 border-olive rounded-xs shadow-xs">
-            <div class="text-xs uppercase tracking-wider text-stone-gray font-bold mb-3">
+          <!-- Social Media Channels (Bottom Box) -->
+          <div class="p-3.5 sm:p-4 bg-surface-container-low border-2 border-olive rounded-xs shadow-xs">
+            <div class="text-[10px] uppercase tracking-wider text-stone-gray font-bold mb-2">
               Social Media Channels
             </div>
-            <div class="grid grid-cols-1 sm:grid-cols-3 gap-2.5">
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-2">
               <a
                 href="https://wa.me/905423739748"
                 target="_blank"
                 rel="noopener noreferrer"
-                class="flex items-center justify-center gap-1.5 p-2.5 bg-parchment border border-olive text-ink hover:bg-olive hover:text-white transition-colors text-xs font-bold uppercase rounded-xs"
+                class="flex items-center justify-center gap-1.5 p-2 bg-parchment border border-olive text-ink hover:bg-olive hover:text-white transition-colors text-[11px] font-bold uppercase rounded-xs"
               >
-                <span class="material-symbols-outlined text-base text-olive group-hover:text-white">chat</span>
+                <span class="material-symbols-outlined text-sm text-olive group-hover:text-white">chat</span>
                 <span>WhatsApp</span>
               </a>
 
@@ -102,9 +102,9 @@ const t = getT(lang);
                 href="https://instagram.com"
                 target="_blank"
                 rel="noopener noreferrer"
-                class="flex items-center justify-center gap-1.5 p-2.5 bg-parchment border border-olive text-ink hover:bg-olive hover:text-white transition-colors text-xs font-bold uppercase rounded-xs"
+                class="flex items-center justify-center gap-1.5 p-2 bg-parchment border border-olive text-ink hover:bg-olive hover:text-white transition-colors text-[11px] font-bold uppercase rounded-xs"
               >
-                <span class="material-symbols-outlined text-base text-olive group-hover:text-white">photo_camera</span>
+                <span class="material-symbols-outlined text-sm text-olive group-hover:text-white">photo_camera</span>
                 <span>Instagram</span>
               </a>
 
@@ -112,9 +112,9 @@ const t = getT(lang);
                 href="https://youtube.com"
                 target="_blank"
                 rel="noopener noreferrer"
-                class="flex items-center justify-center gap-1.5 p-2.5 bg-parchment border border-olive text-ink hover:bg-olive hover:text-white transition-colors text-xs font-bold uppercase rounded-xs"
+                class="flex items-center justify-center gap-1.5 p-2 bg-parchment border border-olive text-ink hover:bg-olive hover:text-white transition-colors text-[11px] font-bold uppercase rounded-xs"
               >
-                <span class="material-symbols-outlined text-base text-olive group-hover:text-white">smart_display</span>
+                <span class="material-symbols-outlined text-sm text-olive group-hover:text-white">smart_display</span>
                 <span>YouTube</span>
               </a>
             </div>
@@ -124,71 +124,73 @@ const t = getT(lang);
       </div>
 
       <!-- Right Column: Inquiry Form -->
-      <div class="lg:col-span-7 bg-surface-container-low border-2 border-olive rounded-xs p-5 sm:p-8 shadow-xs">
-        <h3 class="font-serif text-xl sm:text-2xl text-ink font-bold mb-1.5">
-          Send Us a Message
-        </h3>
-        <p class="font-sans text-xs sm:text-sm text-ink/85 mb-5">
-          Submit your questions, thoughts, or suggestions. We will respond promptly.
-        </p>
+      <div class="lg:col-span-7 bg-surface-container-low border-2 border-olive rounded-xs p-5 sm:p-7 shadow-xs flex flex-col justify-between">
+        <div>
+          <h3 class="font-serif text-base sm:text-lg text-ink font-bold mb-1">
+            Send Us a Message
+          </h3>
+          <p class="font-sans text-xs text-ink/85 mb-4">
+            Submit your questions, thoughts, or suggestions. We will respond promptly.
+          </p>
 
-        <form id="contact-form-en" class="space-y-3.5 font-sans">
-          <div>
-            <label class="block text-xs font-bold text-ink uppercase tracking-wider mb-1">Full Name *</label>
-            <input 
-              type="text" 
-              required 
-              placeholder="Your Full Name"
-              class="w-full px-3.5 py-2 bg-parchment border border-sand text-ink text-sm focus:outline-none focus:border-olive rounded-xs" 
-            />
-          </div>
-
-          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
+          <form id="contact-form-en" class="space-y-3 font-sans">
             <div>
-              <label class="block text-xs font-bold text-ink uppercase tracking-wider mb-1">Email *</label>
+              <label class="block text-[11px] font-bold text-ink uppercase tracking-wider mb-0.5">Full Name *</label>
               <input 
-                type="email" 
+                type="text" 
                 required 
-                placeholder="example@domain.com"
-                class="w-full px-3.5 py-2 bg-parchment border border-sand text-ink text-sm focus:outline-none focus:border-olive rounded-xs" 
+                placeholder="Your Full Name"
+                class="w-full px-3 py-1.5 bg-parchment border border-sand text-ink text-xs focus:outline-none focus:border-olive rounded-xs" 
               />
             </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+              <div>
+                <label class="block text-[11px] font-bold text-ink uppercase tracking-wider mb-0.5">Email *</label>
+                <input 
+                  type="email" 
+                  required 
+                  placeholder="example@domain.com"
+                  class="w-full px-3 py-1.5 bg-parchment border border-sand text-ink text-xs focus:outline-none focus:border-olive rounded-xs" 
+                />
+              </div>
+              <div>
+                <label class="block text-[11px] font-bold text-ink uppercase tracking-wider mb-0.5">Phone</label>
+                <input 
+                  type="tel" 
+                  placeholder="+90 5XX XXX XX XX"
+                  class="w-full px-3 py-1.5 bg-parchment border border-sand text-ink text-xs focus:outline-none focus:border-olive rounded-xs" 
+                />
+              </div>
+            </div>
+
             <div>
-              <label class="block text-xs font-bold text-ink uppercase tracking-wider mb-1">Phone</label>
+              <label class="block text-[11px] font-bold text-ink uppercase tracking-wider mb-0.5">Subject</label>
               <input 
-                type="tel" 
-                placeholder="+90 5XX XXX XX XX"
-                class="w-full px-3.5 py-2 bg-parchment border border-sand text-ink text-sm focus:outline-none focus:border-olive rounded-xs" 
+                type="text" 
+                placeholder="Subject of your message..."
+                class="w-full px-3 py-1.5 bg-parchment border border-sand text-ink text-xs focus:outline-none focus:border-olive rounded-xs" 
               />
             </div>
-          </div>
 
-          <div>
-            <label class="block text-xs font-bold text-ink uppercase tracking-wider mb-1">Subject</label>
-            <input 
-              type="text" 
-              placeholder="Subject of your message..."
-              class="w-full px-3.5 py-2 bg-parchment border border-sand text-ink text-sm focus:outline-none focus:border-olive rounded-xs" 
-            />
-          </div>
+            <div>
+              <label class="block text-[11px] font-bold text-ink uppercase tracking-wider mb-0.5">Your Message *</label>
+              <textarea 
+                rows="5" 
+                required 
+                placeholder="Write your message here..."
+                class="w-full px-3 py-1.5 bg-parchment border border-sand text-ink text-xs focus:outline-none focus:border-olive rounded-xs"
+              ></textarea>
+            </div>
 
-          <div>
-            <label class="block text-xs font-bold text-ink uppercase tracking-wider mb-1">Your Message *</label>
-            <textarea 
-              rows="4" 
-              required 
-              placeholder="Write your message here..."
-              class="w-full px-3.5 py-2 bg-parchment border border-sand text-ink text-sm focus:outline-none focus:border-olive rounded-xs"
-            ></textarea>
-          </div>
-
-          <button 
-            type="submit" 
-            class="w-full py-3 bg-olive text-white hover:bg-bodrum-blue-dark text-xs font-sans font-bold tracking-wider uppercase transition-colors shadow-xs rounded-xs cursor-pointer"
-          >
-            Send Message
-          </button>
-        </form>
+            <button 
+              type="submit" 
+              class="w-full py-2.5 bg-olive text-white hover:bg-bodrum-blue-dark text-xs font-sans font-bold tracking-wider uppercase transition-colors shadow-xs rounded-xs cursor-pointer mt-1"
+            >
+              Send Message
+            </button>
+          </form>
+        </div>
       </div>
 
     </div>

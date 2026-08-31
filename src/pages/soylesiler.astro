@@ -15,29 +15,29 @@ const talks = await getCollection('talks');
   lang={lang}
   currentPath="/soylesiler"
 >
-  <!-- Hero Header -->
-  <section class="py-8 md:py-12 px-5 md:px-12 bg-surface-bright border-b border-sand">
+  <!-- Hero Header (Standardized Scale) -->
+  <section class="py-6 md:py-10 px-5 md:px-12 bg-surface-bright border-b border-sand">
     <div class="max-w-[1280px] mx-auto">
       <div class="max-w-3xl">
-        <h1 class="font-serif text-2xl sm:text-3xl text-ink font-bold leading-tight mb-2.5">
+        <h1 class="font-serif text-xl sm:text-2xl text-ink font-bold leading-snug mb-2">
           Edebiyat, Sanat ve Bilim Söyleşileri
         </h1>
-        <p class="font-sans text-sm sm:text-base text-ink/80 leading-relaxed">
+        <p class="font-sans text-xs sm:text-sm text-ink/80 leading-relaxed">
           Edebiyatçılar, akademisyenler, tarihçiler ve araştırmacılarla gerçekleştirdiğimiz derinlikli dijital video söyleşi arşivimiz.
         </p>
       </div>
     </div>
   </section>
 
-  <!-- Video Grid -->
-  <div class="max-w-[1280px] mx-auto px-5 md:px-12 py-8 md:py-12">
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+  <!-- Video Grid: 4-Column Compact & Scalable Layout -->
+  <div class="max-w-[1280px] mx-auto px-5 md:px-12 py-6 md:py-10">
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5">
       {talks.map((talk) => (
-        <div class="bg-surface-container-low border-2 border-olive rounded-xs p-5 sm:p-6 flex flex-col justify-between shadow-xs">
+        <div class="bg-surface-container-low border-2 border-olive rounded-xs p-3.5 sm:p-4 flex flex-col justify-between shadow-xs hover:shadow-md transition-shadow">
           <div>
-            <!-- Video Thumbnail with YouTube Trigger and Duration Overlay -->
+            <!-- Compact Video Thumbnail with YouTube Trigger -->
             <div
-              class="aspect-video relative overflow-hidden bg-surface-container-high border border-sand cursor-pointer group rounded-2xs mb-4"
+              class="aspect-video relative overflow-hidden bg-surface-container-high border border-sand cursor-pointer group rounded-2xs mb-3"
               data-youtube-id={talk.data.youtubeId}
             >
               <img
@@ -46,47 +46,47 @@ const talks = await getCollection('talks');
                 class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
               />
               <div class="absolute inset-0 bg-ink/30 group-hover:bg-ink/10 transition-colors flex items-center justify-center">
-                <div class="w-12 h-12 rounded-full bg-olive/90 text-white flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform">
-                  <span class="material-symbols-outlined text-2xl ml-0.5">play_arrow</span>
+                <div class="w-9 h-9 rounded-full bg-olive/90 text-white flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform">
+                  <span class="material-symbols-outlined text-xl ml-0.5">play_arrow</span>
                 </div>
               </div>
-              <span class="absolute bottom-2.5 right-2.5 px-2 py-0.5 bg-ink/80 text-parchment text-xs font-mono rounded">
+              <span class="absolute bottom-1.5 right-1.5 px-1.5 py-0.5 bg-ink/85 text-parchment text-[10px] font-mono rounded">
                 {talk.data.duration}
               </span>
             </div>
 
             <!-- Meta Information -->
-            <div class="flex items-center justify-between text-xs text-stone-gray font-mono mb-2">
-              <span class="text-olive font-sans font-bold text-xs uppercase">{talk.data.guestTr}</span>
-              <span class="font-bold">{talk.data.date}</span>
+            <div class="flex items-center justify-between text-[11px] text-stone-gray font-mono mb-1.5">
+              <span class="text-olive font-sans font-bold text-[11px] uppercase truncate mr-1">{talk.data.guestTr}</span>
+              <span class="font-bold shrink-0">{talk.data.date}</span>
             </div>
 
-            <!-- Talk Title: Refined, Compact & 2 Lines -->
-            <h2 class="font-serif text-base sm:text-lg text-ink font-bold mb-2.5 leading-snug whitespace-pre-line text-center">
+            <!-- Talk Title: Compact, Centered & Balanced -->
+            <h2 class="font-serif text-sm sm:text-base text-ink font-bold mb-2 leading-snug whitespace-pre-line text-center">
               {talk.data.titleTr}
             </h2>
 
-            <p class="text-xs sm:text-sm text-ink/85 font-sans leading-relaxed mb-4 text-justify">
+            <p class="text-xs text-ink/85 font-sans leading-relaxed mb-3 text-justify line-clamp-4">
               {talk.data.summaryTr}
             </p>
 
-            <!-- Video Chapters / Konu Başlıkları Timeline (if available) -->
+            <!-- Video Chapters / Konu Başlıkları Timeline (Compact) -->
             {talk.data.chapters && talk.data.chapters.length > 0 && (
-              <div class="mb-4 p-3 bg-parchment border border-sand rounded-xs space-y-1.5">
-                <div class="flex items-center gap-1.5 text-xs font-sans font-bold uppercase tracking-wider text-olive">
-                  <span class="material-symbols-outlined text-sm">schedule</span>
-                  <span>Bölümler / Konu Başlıkları</span>
+              <div class="mb-3 p-2 bg-parchment border border-sand rounded-xs space-y-1">
+                <div class="flex items-center gap-1 text-[10px] font-sans font-bold uppercase tracking-wider text-olive">
+                  <span class="material-symbols-outlined text-xs">schedule</span>
+                  <span>Bölümler</span>
                 </div>
-                <div class="grid grid-cols-1 gap-1 text-xs font-sans">
+                <div class="grid grid-cols-1 gap-0.5 text-[11px] font-sans">
                   {talk.data.chapters.map((chap) => (
                     <button
                       type="button"
-                      class="chapter-btn flex items-center justify-between p-1.5 hover:bg-olive/10 rounded text-left transition-colors cursor-pointer w-full group/chap"
+                      class="chapter-btn flex items-center justify-between p-1 hover:bg-olive/10 rounded text-left transition-colors cursor-pointer w-full group/chap"
                       data-youtube-id={talk.data.youtubeId}
                       data-start={chap.seconds}
                     >
-                      <span class="text-ink/90 group-hover/chap:text-olive font-medium">{chap.titleTr}</span>
-                      <span class="font-mono text-stone-gray font-bold text-[11px] bg-sand/40 px-1.5 py-0.5 rounded">{chap.time}</span>
+                      <span class="text-ink/90 group-hover/chap:text-olive font-medium truncate mr-1">{chap.titleTr}</span>
+                      <span class="font-mono text-stone-gray font-bold text-[10px] bg-sand/40 px-1 py-0.2 rounded shrink-0">{chap.time}</span>
                     </button>
                   ))}
                 </div>
@@ -94,16 +94,16 @@ const talks = await getCollection('talks');
             )}
           </div>
 
-          <div class="pt-3 border-t border-sand flex items-center justify-between">
+          <div class="pt-2.5 border-t border-sand flex items-center justify-between">
             <button
               type="button"
-              class="inline-flex items-center gap-1.5 text-xs font-sans font-bold text-olive hover:text-bodrum-blue-dark uppercase tracking-wider cursor-pointer"
+              class="inline-flex items-center gap-1 text-[11px] font-sans font-bold text-olive hover:text-bodrum-blue-dark uppercase tracking-wider cursor-pointer"
               data-youtube-id={talk.data.youtubeId}
             >
-              <span class="material-symbols-outlined text-base">play_circle</span>
-              <span>Söyleşiyi İzle</span>
+              <span class="material-symbols-outlined text-sm">play_circle</span>
+              <span>İzle</span>
             </button>
-            <span class="text-xs font-sans text-stone-gray">{talk.data.roleTr}</span>
+            <span class="text-[11px] font-sans text-stone-gray truncate ml-1">{talk.data.roleTr}</span>
           </div>
         </div>
       ))}
@@ -112,7 +112,6 @@ const talks = await getCollection('talks');
 </Layout>
 
 <script>
-  // Handle Chapter Clicks with Start Seconds
   document.querySelectorAll('.chapter-btn').forEach((btn) => {
     btn.addEventListener('click', (e) => {
       e.stopPropagation();
