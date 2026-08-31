@@ -68,7 +68,7 @@ const initialGuestbookNotesEn = [
     <div class="relative z-10 max-w-[1280px] mx-auto w-full">
       <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-10 items-center">
         
-        <!-- Left: Refined Scaled-Down Headline & Manifesto -->
+        <!-- Left: Headline & Manifesto -->
         <div class="lg:col-span-7 space-y-3.5">
           <h1 class="font-serif text-xl sm:text-2xl text-ink font-bold leading-snug tracking-tight">
             A Living Library Dedicated to<br class="hidden sm:inline" />
@@ -99,86 +99,94 @@ const initialGuestbookNotesEn = [
 
       </div>
 
-      <!-- 3 Institutional Boxes: Compact, Full-Fitted & Symmetrical -->
-      <div class="mt-8 pt-6 border-t border-sand grid grid-cols-1 md:grid-cols-3 gap-4 text-ink">
-        
-        <!-- 1. Olive Seeds Library -->
-        <div class="bg-parchment p-3.5 sm:p-4 border-2 border-olive rounded-xs shadow-xs flex flex-col justify-between items-center text-center">
-          <div class="h-10 flex items-center justify-center w-full">
-            <h3 class="font-serif text-sm sm:text-base font-bold text-olive text-center leading-snug">
-              Olive Seeds Library
-            </h3>
+      <!-- 3 Institutional Boxes: Vertical 3:4 Aspect Ratio Frames -->
+      <div class="mt-8 pt-6 border-t border-sand">
+        <div class="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-5 text-ink">
+          
+          <!-- 1. Olive Seeds Library (Vertical 3:4) -->
+          <div class="bg-parchment p-4 border-2 border-olive rounded-xs shadow-xs flex flex-col justify-between items-center text-center max-w-[280px] w-full mx-auto">
+            <div class="h-10 flex items-center justify-center w-full">
+              <h3 class="font-serif text-sm sm:text-base font-bold text-olive text-center leading-snug">
+                Olive Seeds Library
+              </h3>
+            </div>
+
+            <!-- Vertical 3:4 Frame -->
+            <div class="aspect-[3/4] w-36 sm:w-40 my-2 flex items-center justify-center overflow-hidden rounded-xs border border-sand bg-white/60 p-1">
+              <img
+                src="/images/ztk_logo.png"
+                alt="Olive Seeds Library Logo"
+                class="w-full h-full object-contain"
+              />
+            </div>
+
+            <div class="h-11 flex items-center justify-center w-full">
+              <p class="font-sans text-[11px] sm:text-xs text-ink/85 leading-snug text-center">
+                Library initiative for children, youth,<br />parents, and educators
+              </p>
+            </div>
+
+            <div class="pt-2 border-t border-olive/20 text-[10px] sm:text-[11px] font-sans italic text-stone-gray w-full text-center">
+              Web page under preparation
+            </div>
           </div>
 
-          <div class="w-36 h-36 sm:w-40 sm:h-40 my-1.5 flex items-center justify-center overflow-hidden">
-            <img
-              src="/images/ztk_logo.png"
-              alt="Olive Seeds Library Logo"
-              class="max-w-full max-h-full object-contain scale-120"
-            />
+          <!-- 2. Children of Halicarnassus (Vertical 3:4) -->
+          <div class="bg-parchment p-4 border-2 border-olive rounded-xs shadow-xs flex flex-col justify-between items-center text-center max-w-[280px] w-full mx-auto">
+            <div class="h-10 flex items-center justify-center w-full">
+              <h3 class="font-serif text-sm sm:text-base font-bold text-olive text-center leading-snug">
+                Children of Halicarnassus
+              </h3>
+            </div>
+
+            <!-- Vertical 3:4 Frame -->
+            <div class="aspect-[3/4] w-36 sm:w-40 my-2 flex items-center justify-center overflow-hidden rounded-xs border border-sand bg-white/60 p-1">
+              <img
+                src="/images/hc_logo.jpg"
+                alt="Children of Halicarnassus Arts Program"
+                class="w-full h-full object-contain"
+              />
+            </div>
+
+            <div class="h-11 flex items-center justify-center w-full">
+              <p class="font-sans text-[11px] sm:text-xs text-ink/85 leading-snug text-center">
+                Arts and cultural workshops<br />for all ages
+              </p>
+            </div>
+
+            <div class="pt-2 border-t border-olive/20 text-[10px] sm:text-[11px] font-sans italic text-stone-gray w-full text-center">
+              Web page under preparation
+            </div>
           </div>
 
-          <div class="h-10 flex items-center justify-center w-full">
-            <p class="font-sans text-[11px] sm:text-xs text-ink/85 leading-snug text-center">
-              Library initiative for children, youth,<br />parents, and educators
-            </p>
+          <!-- 3. Halicarnassus Association (Vertical 3:4) -->
+          <div class="bg-parchment p-4 border-2 border-olive rounded-xs shadow-xs flex flex-col justify-between items-center text-center max-w-[280px] w-full mx-auto">
+            <div class="h-10 flex items-center justify-center w-full">
+              <h3 class="font-serif text-sm sm:text-base font-bold text-olive text-center leading-snug">
+                Halicarnassus Culture, Arts, Education<br />& Ecology Association
+              </h3>
+            </div>
+
+            <!-- Vertical 3:4 Shield Frame -->
+            <div class="aspect-[3/4] w-36 sm:w-40 my-2 flex flex-col items-center justify-center overflow-hidden rounded-xs border border-sand bg-olive/5 text-olive p-2">
+              <div class="w-16 h-16 rounded-full bg-olive/10 border-2 border-olive flex items-center justify-center mb-1">
+                <span class="material-symbols-outlined text-3xl text-olive">account_balance</span>
+              </div>
+              <span class="font-serif font-bold text-[10px] uppercase tracking-wider text-center text-olive">Official Umbrella</span>
+            </div>
+
+            <div class="h-11 flex items-center justify-center w-full">
+              <p class="font-sans text-[11px] sm:text-xs text-ink/85 leading-snug text-center">
+                Official institutional umbrella<br />for all our initiatives
+              </p>
+            </div>
+
+            <div class="pt-2 border-t border-olive/20 text-[10px] sm:text-[11px] font-sans italic text-stone-gray w-full text-center">
+              Web page under preparation
+            </div>
           </div>
 
-          <div class="pt-1.5 border-t border-olive/20 text-[10px] sm:text-[11px] font-sans italic text-stone-gray w-full text-center">
-            Web page under preparation
-          </div>
         </div>
-
-        <!-- 2. Children of Halicarnassus -->
-        <div class="bg-parchment p-3.5 sm:p-4 border-2 border-olive rounded-xs shadow-xs flex flex-col justify-between items-center text-center">
-          <div class="h-10 flex items-center justify-center w-full">
-            <h3 class="font-serif text-sm sm:text-base font-bold text-olive text-center leading-snug">
-              Children of Halicarnassus
-            </h3>
-          </div>
-
-          <div class="w-36 h-36 sm:w-40 sm:h-40 my-1.5 flex items-center justify-center overflow-hidden rounded-xs border border-sand">
-            <img
-              src="/images/hc_logo.jpg"
-              alt="Children of Halicarnassus Arts Program"
-              class="w-full h-full object-cover scale-110"
-            />
-          </div>
-
-          <div class="h-10 flex items-center justify-center w-full">
-            <p class="font-sans text-[11px] sm:text-xs text-ink/85 leading-snug text-center">
-              Arts and cultural workshops for all ages
-            </p>
-          </div>
-
-          <div class="pt-1.5 border-t border-olive/20 text-[10px] sm:text-[11px] font-sans italic text-stone-gray w-full text-center">
-            Web page under preparation
-          </div>
-        </div>
-
-        <!-- 3. Halicarnassus Association -->
-        <div class="bg-parchment p-3.5 sm:p-4 border-2 border-olive rounded-xs shadow-xs flex flex-col justify-between items-center text-center">
-          <div class="h-10 flex items-center justify-center w-full">
-            <h3 class="font-serif text-sm sm:text-base font-bold text-olive text-center leading-snug">
-              Halicarnassus Culture, Arts, Education<br />& Ecology Association
-            </h3>
-          </div>
-
-          <div class="w-36 h-36 sm:w-40 sm:h-40 my-1.5 flex items-center justify-center bg-olive/10 text-olive rounded-full border border-olive/30">
-            <span class="material-symbols-outlined text-4xl sm:text-5xl">account_balance</span>
-          </div>
-
-          <div class="h-10 flex items-center justify-center w-full">
-            <p class="font-sans text-[11px] sm:text-xs text-ink/85 leading-snug text-center">
-              Official institutional umbrella for all our initiatives
-            </p>
-          </div>
-
-          <div class="pt-1.5 border-t border-olive/20 text-[10px] sm:text-[11px] font-sans italic text-stone-gray w-full text-center">
-            Web page under preparation
-          </div>
-        </div>
-
       </div>
 
     </div>
@@ -240,8 +248,9 @@ const initialGuestbookNotesEn = [
             and Our Library
           </h2>
 
-          <p class="font-sans text-xs text-ink/80 leading-relaxed text-justify">
-            Bodrum City Library flourishes through the interest and support of book lovers and friends! You can share your feelings, thoughts, and suggestions for our library and Bodrum here.
+          <p class="font-sans text-xs text-ink/80 leading-relaxed">
+            Bodrum City Library flourishes through the interest and support of book lovers and friends.<br />
+            Please share your thoughts, suggestions, and wishes for our library and Bodrum here.
           </p>
 
           <form id="guestbook-form-en" class="bg-parchment border-2 border-olive p-3.5 sm:p-4 rounded-xs shadow-xs space-y-2.5 font-sans">
@@ -302,8 +311,8 @@ const initialGuestbookNotesEn = [
                   "{item.note}"
                 </p>
                 <div class="flex items-center justify-between text-[11px] font-sans text-stone-gray pt-1 border-t border-sand/50">
-                  <span class="font-bold text-olive">{item.name} <span class="font-normal text-stone-gray/80">• {item.location}</span></span>
-                  <span class="font-mono text-[10px]">{item.date}</span>
+                  <span class="font-bold text-olive">${item.name} <span class="font-normal text-stone-gray/80">• ${item.location}</span></span>
+                  <span class="font-mono text-[10px]">${item.date}</span>
                 </div>
               </div>
             ))}

@@ -57,6 +57,7 @@ const talksCollection = defineCollection({
     category: z.enum(['author', 'historian', 'artist', 'archaeologist']),
     duration: z.string(),
     date: z.string(),
+    dateEn: z.string().optional(),
     youtubeId: z.string(),
     thumbnail: z.string(),
     summaryTr: z.string(),

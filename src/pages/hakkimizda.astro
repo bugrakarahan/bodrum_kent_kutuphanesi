@@ -63,21 +63,21 @@ const activities = [
             </p>
           </div>
 
-          <!-- Alt alta, alfabetik sıralı liste -->
-          <div class="bg-parchment border border-sand p-3.5 sm:p-4 shadow-xs">
-            <ul class="grid grid-cols-1 sm:grid-cols-2 gap-1 text-xs font-sans font-normal text-ink/90">
+          <!-- Alt alta, alfabetik sıralı liste (Üstteki cümleyle birebir aynı büyüklükte: text-xs sm:text-sm) -->
+          <div class="bg-parchment border border-sand p-4 shadow-xs">
+            <ul class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs sm:text-sm font-sans font-medium text-ink">
               {alphabeticalBoard.map((name) => (
-                <li class="flex items-center gap-1.5 py-0.5">
-                  <span class="w-1.5 h-1.5 rounded-full bg-olive shrink-0"></span>
-                  <span>{name}</span>
+                <li class="flex items-center gap-2 py-0.5">
+                  <span class="w-2 h-2 rounded-full bg-olive shrink-0"></span>
+                  <span class="font-semibold">{name}</span>
                 </li>
               ))}
             </ul>
           </div>
 
           <!-- Emanet Notu Kutusu -->
-          <div class="bg-parchment border border-sand p-3 sm:p-3.5 rounded-xs shadow-2xs">
-            <p class="font-sans text-xs sm:text-[13px] text-ink font-medium leading-relaxed">
+          <div class="bg-parchment border border-sand p-3.5 rounded-xs shadow-2xs">
+            <p class="font-sans text-xs sm:text-sm text-ink font-medium leading-relaxed">
               Bodrum Kent Kütüphanesi ismi, <strong>Sayın Sönmez Taner</strong> tarafından, <strong>7 Eylül 2019</strong> tarihinde Zeytin Taneleri Kütüphanesi ekibine emanet edilmiştir.
             </p>
           </div>
@@ -116,11 +116,11 @@ const activities = [
         </p>
       </div>
 
-      <!-- 3 Özel Kutu: Mavi Hümanizma, Bodrum'u Yeşerten Kalem, Altıncı Kıta Akdeniz -->
+      <!-- 3 Özel Kutu -->
       <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-        <div class="bg-parchment p-3.5 sm:p-4 border-2 border-olive rounded-xs shadow-xs flex flex-col justify-between">
+        <div class="bg-parchment p-4 border-2 border-olive rounded-xs shadow-xs flex flex-col justify-between">
           <div>
-            <h3 class="font-serif text-sm sm:text-base font-bold text-olive mb-1">Mavi Hümanizma</h3>
+            <h3 class="font-serif text-sm sm:text-base font-bold text-olive mb-1.5">Mavi Hümanizma</h3>
             <p class="font-sans text-xs text-ink/85 leading-relaxed">
               Akdeniz ve Ege felsefesinin evrensel barış, doğa sevgisi ve insanlık kardeşliği temelleri.
             </p>
@@ -130,9 +130,9 @@ const activities = [
           </div>
         </div>
 
-        <div class="bg-parchment p-3.5 sm:p-4 border-2 border-olive rounded-xs shadow-xs flex flex-col justify-between">
+        <div class="bg-parchment p-4 border-2 border-olive rounded-xs shadow-xs flex flex-col justify-between">
           <div>
-            <h3 class="font-serif text-sm sm:text-base font-bold text-olive mb-1">Bodrum’u Yeşerten Kalem</h3>
+            <h3 class="font-serif text-sm sm:text-base font-bold text-olive mb-1.5">Bodrum’u Yeşerten Kalem</h3>
             <p class="font-sans text-xs text-ink/85 leading-relaxed">
               Cevat Şakir’in Bodrum’a diktiği yüzlerce ağaç ve bitki türüyle başlattığı doğa hareketi.
             </p>
@@ -142,9 +142,9 @@ const activities = [
           </div>
         </div>
 
-        <div class="bg-parchment p-3.5 sm:p-4 border-2 border-olive rounded-xs shadow-xs flex flex-col justify-between">
+        <div class="bg-parchment p-4 border-2 border-olive rounded-xs shadow-xs flex flex-col justify-between">
           <div>
-            <h3 class="font-serif text-sm sm:text-base font-bold text-olive mb-1">Altıncı Kıta Akdeniz</h3>
+            <h3 class="font-serif text-sm sm:text-base font-bold text-olive mb-1.5">Altıncı Kıta Akdeniz</h3>
             <p class="font-sans text-xs text-ink/85 leading-relaxed">
               Anadolu'nun kadim mitolojisi, denizcilik tarihi ve Akdeniz uygarlıklarının kökleri.
             </p>
@@ -158,7 +158,7 @@ const activities = [
     </div>
   </section>
 
-  <!-- 3. Amaç ve Hedeflenen Çalışmalar -->
+  <!-- 3. Amaç ve Hedeflenen Çalışmalar (Cümleler Bold / Koyu Yapıldı) -->
   <section class="py-6 md:py-10 px-5 md:px-12 bg-parchment border-b border-sand">
     <div class="max-w-[1280px] mx-auto">
       
@@ -168,13 +168,14 @@ const activities = [
         </h2>
       </div>
 
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-3.5">
         {activities.map((act, idx) => (
-          <div class="bg-surface-container-low border-2 border-olive rounded-xs p-3 sm:p-3.5 flex items-start gap-2.5 shadow-xs">
-            <span class="w-4.5 h-4.5 rounded-full bg-olive text-white flex items-center justify-center font-mono text-[10px] font-bold shrink-0 mt-0.5 shadow-2xs">
+          <div class="bg-surface-container-low border-2 border-olive rounded-xs p-3.5 sm:p-4 flex items-start gap-3 shadow-xs">
+            <span class="w-5 h-5 rounded-full bg-olive text-white flex items-center justify-center font-mono text-[11px] font-bold shrink-0 mt-0.5 shadow-2xs">
               {idx + 1}
             </span>
-            <p class="font-sans text-xs text-ink/90 leading-relaxed">
+            <!-- Koyu / Bold Yazı Standardı -->
+            <p class="font-sans text-xs sm:text-sm font-bold text-ink leading-relaxed">
               {act}
             </p>
           </div>
