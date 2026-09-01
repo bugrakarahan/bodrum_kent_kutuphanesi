@@ -5,6 +5,7 @@ import SearchModal from '../components/SearchModal.astro';
 import VideoModal from '../components/VideoModal.astro';
 import BookDetailModal from '../components/BookDetailModal.astro';
 import EventGalleryModal from '../components/EventGalleryModal.astro';
+import EventDetailModal from '../components/EventDetailModal.astro';
 import { getT, getEquivalentLanguageUrl, type Lang } from '../utils/i18n';
 import '../styles/global.css';
 
@@ -126,6 +127,9 @@ const ogImage = image.startsWith('http') ? image : new URL(image, siteBase).toSt
 
     <!-- Interactive Event Photo Gallery Modal -->
     <EventGalleryModal lang={lang} />
+
+    <!-- Interactive Event Detail Modal -->
+    <EventDetailModal lang={lang} />
 
     <!-- Toast Notifications Container -->
     <div

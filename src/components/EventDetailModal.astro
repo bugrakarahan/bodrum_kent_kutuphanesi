@@ -1,0 +1,316 @@
+---
+import type { Lang } from '../utils/i18n';
+
+export interface Props {
+  lang?: Lang;
+}
+
+const { lang = 'tr' } = Astro.props;
+---
+
+<!-- Event Detail Modal Backdrop & Dialog -->
+<div
+  id="event-detail-backdrop"
+  class="fixed inset-0 z-50 bg-ink/80 backdrop-blur-md flex items-center justify-center p-4 sm:p-6 opacity-0 pointer-events-none transition-all duration-300"
+  role="dialog"
+  aria-modal="true"
+  aria-labelledby="event-detail-title"
+>
+  <div
+    id="event-detail-container"
+    class="w-full max-w-2xl bg-parchment border-2 border-olive rounded-xs shadow-2xl overflow-hidden flex flex-col transform scale-95 transition-all duration-300 max-h-[90vh]"
+  >
+    <!-- Modal Header -->
+    <div class="px-5 py-4 bg-surface-container-high border-b border-sand flex items-center justify-between">
+      <div class="flex items-center gap-2 overflow-hidden mr-3">
+        <span class="material-symbols-outlined text-olive text-xl shrink-0">event_note</span>
+        <span id="event-detail-category" class="px-2.5 py-0.5 bg-olive text-white text-[11px] font-sans font-bold uppercase tracking-wider rounded-2xs">
+          ETKİNLİK DETAYI
+        </span>
+      </div>
+
+      <button
+        type="button"
+        id="event-detail-close-btn"
+        class="p-1.5 rounded text-stone-gray hover:text-ink hover:bg-black/5 transition-colors cursor-pointer"
+        aria-label="Kapat"
+      >
+        <span class="material-symbols-outlined text-2xl">close</span>
+      </button>
+    </div>
+
+    <!-- Modal Scrollable Body -->
+    <div class="p-5 sm:p-6 overflow-y-auto space-y-4 font-sans text-ink">
+      
+      <!-- Date & Venue Bar -->
+      <div class="flex flex-wrap items-center justify-between gap-2 p-3 bg-surface-container-low border border-sand/80 rounded-2xs text-xs">
+        <div class="flex items-center gap-1.5 font-bold text-olive">
+          <span class="material-symbols-outlined text-base">calendar_month</span>
+          <span id="event-detail-date" class="font-mono">--</span>
+        </div>
+        <div class="flex items-center gap-1.5 text-stone-gray">
+          <span class="material-symbols-outlined text-base">location_on</span>
+          <span id="event-detail-location" class="font-medium">--</span>
+        </div>
+      </div>
+
+      <!-- Title -->
+      <h2 id="event-detail-title" class="font-serif text-lg sm:text-xl font-bold text-ink leading-snug">
+        Etkinlik Başlığı
+      </h2>
+
+      <!-- Image & Description Section -->
+      <div class="grid grid-cols-1 sm:grid-cols-12 gap-4 items-start">
+        
+        <!-- Poster / Cover Image -->
+        <div id="event-detail-img-wrapper" class="sm:col-span-4 aspect-[3/4] bg-surface-container-high border border-sand rounded-2xs overflow-hidden shadow-xs relative group cursor-pointer">
+          <img
+            id="event-detail-img"
+            src=""
+            alt="Etkinlik Görseli"
+            class="w-full h-full object-contain"
+          />
+        </div>
+
+        <!-- Description Paragraphs -->
+        <div id="event-detail-desc" class="sm:col-span-8 text-xs sm:text-[13px] text-ink/90 leading-relaxed space-y-2.5 text-justify whitespace-pre-line">
+          <!-- Injected via JavaScript -->
+        </div>
+
+      </div>
+
+      <!-- Action & Calendar Bar -->
+      <div class="pt-4 border-t border-sand flex flex-wrap items-center justify-between gap-3">
+        
+        <div class="flex flex-wrap items-center gap-2">
+          <!-- Google Calendar Button -->
+          <a
+            id="event-detail-gcal-btn"
+            href="#"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="px-3 py-1.5 bg-olive text-white hover:bg-bodrum-blue-dark text-xs font-bold uppercase tracking-wider transition-colors rounded-xs shadow-2xs inline-flex items-center gap-1"
+          >
+            <span class="material-symbols-outlined text-sm">calendar_month</span>
+            <span>{lang === 'tr' ? 'Google Takvime Ekle' : 'Add to Google Calendar'}</span>
+          </a>
+
+          <!-- Apple / Outlook .ICS Download Button -->
+          <button
+            type="button"
+            id="event-detail-ics-btn"
+            class="px-3 py-1.5 bg-parchment border border-olive text-olive hover:bg-olive hover:text-white text-xs font-bold uppercase tracking-wider transition-colors rounded-xs shadow-2xs inline-flex items-center gap-1 cursor-pointer"
+          >
+            <span class="material-symbols-outlined text-sm">download</span>
+            <span>{lang === 'tr' ? 'Apple / Outlook (.ics)' : 'Apple / Outlook (.ics)'}</span>
+          </button>
+        </div>
+
+        <div class="flex items-center gap-2">
+          <!-- Gallery Trigger Button (if event has gallery photos) -->
+          <button
+            type="button"
+            id="event-detail-gallery-btn"
+            class="hidden px-3 py-1.5 bg-primary text-white hover:bg-primary/90 text-xs font-bold uppercase tracking-wider transition-colors rounded-xs shadow-2xs items-center gap-1 cursor-pointer"
+          >
+            <span class="material-symbols-outlined text-sm">photo_library</span>
+            <span>{lang === 'tr' ? 'Fotoğrafları Gör' : 'View Photos'}</span>
+          </button>
+
+          <!-- WhatsApp RSVP / Info Button -->
+          <a
+            id="event-detail-wa-btn"
+            href="https://wa.me/905423739748"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="px-3 py-1.5 bg-emerald-700 hover:bg-emerald-800 text-white text-xs font-bold uppercase tracking-wider transition-colors rounded-xs shadow-2xs inline-flex items-center gap-1"
+          >
+            <span class="material-symbols-outlined text-sm">chat</span>
+            <span>WhatsApp</span>
+          </a>
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+</div>
+
+<script>
+  // ICS File Generator Utility
+  function downloadICS(title: string, description: string, location: string, startDateStr: string) {
+    let dtStart = '20260915T150000Z';
+    let dtEnd = '20260915T170000Z';
+
+    if (startDateStr) {
+      const cleanDate = startDateStr.replace(/-/g, '');
+      if (cleanDate.length === 8) {
+        dtStart = `${cleanDate}T160000Z`;
+        dtEnd = `${cleanDate}T180000Z`;
+      }
+    }
+
+    const icsContent = [
+      'BEGIN:VCALENDAR',
+      'VERSION:2.0',
+      'PRODID:-//Bodrum Kent Kutuphanesi//Events//TR',
+      'CALSCALE:GREGORIAN',
+      'METHOD:PUBLISH',
+      'BEGIN:VEVENT',
+      `SUMMARY:${title.replace(/\n/g, ' ')}`,
+      `DESCRIPTION:${description.replace(/\n/g, '\\n')}`,
+      `LOCATION:${location}`,
+      `DTSTART:${dtStart}`,
+      `DTEND:${dtEnd}`,
+      'STATUS:CONFIRMED',
+      'END:VEVENT',
+      'END:VCALENDAR'
+    ].join('\r\n');
+
+    const blob = new Blob([icsContent], { type: 'text/calendar;charset=utf-8' });
+    const link = document.createElement('a');
+    link.href = window.URL.createObjectURL(blob);
+    link.setAttribute('download', `${title.slice(0, 20).replace(/\s+/g, '_')}.ics`);
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  }
+
+  function setupEventDetailModal() {
+    const backdrop = document.getElementById('event-detail-backdrop');
+    const container = document.getElementById('event-detail-container');
+    const closeBtn = document.getElementById('event-detail-close-btn');
+    const titleEl = document.getElementById('event-detail-title');
+    const categoryEl = document.getElementById('event-detail-category');
+    const dateEl = document.getElementById('event-detail-date');
+    const locationEl = document.getElementById('event-detail-location');
+    const descEl = document.getElementById('event-detail-desc');
+    const imgEl = document.getElementById('event-detail-img') as HTMLImageElement | null;
+    const gcalBtn = document.getElementById('event-detail-gcal-btn') as HTMLAnchorElement | null;
+    const icsBtn = document.getElementById('event-detail-ics-btn');
+    const galleryBtn = document.getElementById('event-detail-gallery-btn');
+    const waBtn = document.getElementById('event-detail-wa-btn') as HTMLAnchorElement | null;
+
+    if (!backdrop || !container) return;
+
+    let currentEventData: any = null;
+
+    function openModal(data: {
+      title: string;
+      category: string;
+      date: string;
+      displayDate: string;
+      location: string;
+      summary: string;
+      image: string;
+      photos?: string[];
+    }) {
+      currentEventData = data;
+
+      if (titleEl) titleEl.textContent = data.title;
+      if (categoryEl) categoryEl.textContent = data.category;
+      if (dateEl) dateEl.textContent = data.displayDate || data.date;
+      if (locationEl) locationEl.textContent = data.location || 'Bodrum Kent Kütüphanesi';
+      if (descEl) descEl.textContent = data.summary;
+      if (imgEl) imgEl.src = data.image;
+
+      // Google Calendar Link Format
+      if (gcalBtn) {
+        const cleanDate = (data.date || '2026-09-15').replace(/-/g, '');
+        const gcalUrl = new URL('https://calendar.google.com/calendar/render');
+        gcalUrl.searchParams.set('action', 'TEMPLATE');
+        gcalUrl.searchParams.set('text', data.title);
+        gcalUrl.searchParams.set('details', data.summary);
+        gcalUrl.searchParams.set('location', data.location || 'Bodrum Kent Kütüphanesi, Kızılağaç / Bodrum');
+        gcalUrl.searchParams.set('dates', `${cleanDate}T170000Z/${cleanDate}T190000Z`);
+        gcalBtn.href = gcalUrl.toString();
+      }
+
+      // WhatsApp RSVP Link
+      if (waBtn) {
+        const msg = encodeURIComponent(`Merhaba, "${data.title}" etkinliği hakkında bilgi almak istiyorum.`);
+        waBtn.href = `https://wa.me/905423739748?text=${msg}`;
+      }
+
+      // Gallery button toggle
+      if (galleryBtn) {
+        if (data.photos && data.photos.length > 0) {
+          galleryBtn.classList.remove('hidden');
+          galleryBtn.classList.add('inline-flex');
+          galleryBtn.onclick = () => {
+            closeModal();
+            if ((window as any).openEventGallery) {
+              (window as any).openEventGallery(data.photos, data.title);
+            }
+          };
+        } else {
+          galleryBtn.classList.add('hidden');
+          galleryBtn.classList.remove('inline-flex');
+        }
+      }
+
+      backdrop?.classList.remove('opacity-0', 'pointer-events-none');
+      backdrop?.classList.add('opacity-100');
+      container?.classList.remove('scale-95');
+      container?.classList.add('scale-100');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeModal() {
+      backdrop?.classList.add('opacity-0', 'pointer-events-none');
+      backdrop?.classList.remove('opacity-100');
+      container?.classList.add('scale-95');
+      container?.classList.remove('scale-100');
+      document.body.style.overflow = '';
+    }
+
+    if (icsBtn) {
+      icsBtn.addEventListener('click', () => {
+        if (currentEventData) {
+          downloadICS(
+            currentEventData.title,
+            currentEventData.summary,
+            currentEventData.location || 'Bodrum Kent Kütüphanesi',
+            currentEventData.date
+          );
+        }
+      });
+    }
+
+    // Global helper export
+    (window as any).openEventDetail = openModal;
+
+    document.addEventListener('click', (e) => {
+      const trigger = (e.target as HTMLElement).closest('[data-event-detail-trigger]');
+      if (trigger) {
+        e.preventDefault();
+        try {
+          const raw = trigger.getAttribute('data-event-data');
+          if (raw) {
+            const data = JSON.parse(raw);
+            openModal(data);
+          }
+        } catch (err) {
+          console.error('Error opening event detail modal:', err);
+        }
+      }
+    });
+
+    closeBtn?.addEventListener('click', closeModal);
+    backdrop.addEventListener('click', (e) => {
+      if (e.target === backdrop) closeModal();
+    });
+
+    window.addEventListener('keydown', (e) => {
+      if (!backdrop.classList.contains('opacity-100')) return;
+      if (e.key === 'Escape') {
+        e.preventDefault();
+        closeModal();
+      }
+    });
+  }
+
+  setupEventDetailModal();
+  document.addEventListener('astro:page-load', setupEventDetailModal);
+</script>
