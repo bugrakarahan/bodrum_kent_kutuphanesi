@@ -7,22 +7,22 @@ export default {
       colors: {
         parchment: '#FCFBF8', // Duru krem zemin
         ink: '#111827',       // Koyu metin
-        olive: '#005B94',     // Bodrum mavisi
-        'bodrum-blue': '#005B94', // Bodrum mavisi
-        'bodrum-blue-light': '#EBF3F9',
-        'bodrum-blue-dark': '#00436E',
+        olive: '#1B368F',     // Canlı Bodrum Kent Kütüphanesi Logosu Mavisi
+        'bodrum-blue': '#1B368F', // Canlı Bodrum Mavisi
+        'bodrum-blue-light': '#E8EEFB',
+        'bodrum-blue-dark': '#14296D',
         sand: '#EAE5DB',      // Ayırıcı ton
         'stone-gray': '#555A64',
-        primary: '#005B94',
-        'primary-container': '#EBF3F9',
+        primary: '#1B368F',
+        'primary-container': '#E8EEFB',
         'on-primary': '#ffffff',
-        'on-primary-container': '#005B94',
+        'on-primary-container': '#1B368F',
         secondary: '#374151',
         'secondary-container': '#EAE5DB',
         'on-secondary': '#ffffff',
         'on-secondary-container': '#1F2937',
-        tertiary: '#003A61',
-        'tertiary-container': '#002640',
+        tertiary: '#14296D',
+        'tertiary-container': '#0D1B48',
         'surface-bright': '#FFFFFF',
         'surface-dim': '#E8E3D9',
         'surface-container-lowest': '#FFFFFF',
