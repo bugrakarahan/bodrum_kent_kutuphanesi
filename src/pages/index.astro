@@ -5,20 +5,11 @@ import { getT } from '../utils/i18n';
 const lang = 'tr';
 const t = getT(lang);
 
-const balıkçıQuotes = [
-  {
-    quote: "Yokuş başına geldiğinde Bodrum'u göreceksin, sanma ki sen geldiğin gibi gideceksin. Senden öncekiler de böyleydiler; akıllarını hep Bodrum'da bırakıp gittiler...",
-    source: "Mavi Sürgün"
-  },
-  {
-    quote: "Deniz, insanın içindeki sonsuzluğu uyandırır. Akdeniz'e bir kere gönül veren, artık karanın dar kalıplarına sığamaz.",
-    source: "Merhaba Akdeniz"
-  },
-  {
-    quote: "Bizim hümanizmamız masa başında değil, Ege'nin tuzlu sularında ve Anadolu'nun bin yıllık kadim toprağında yoğrulmuştur.",
-    source: "Altıncı Kıta Akdeniz"
-  }
-];
+const balikciArrivalQuote = {
+  title: "HALİKARNAS BALIKÇISI’NIN BODRUM’A İLK GELDİĞİ AN",
+  quote: "En nihayet yokuşun tepesine gelmiştik… Yüreğim çarpıyor. Kaç aydır buraya gelmeye uğraşıyordum yahu!” Tepedeki bir dönemeci dönünce, “şırrrak”, “guuuurr” diye Arşipel’in koyu çividisi ölçülmez açıklıklara kadar yayılıverdi… bir derinlik vardı sonsuz. Akşamın çividisinde koyulaşan koca Arşipel -eski deniz- varlığını bana öyle bir heybetle bildirdi. Masmavi bir gürleyişti o… berrak bir açıklığa uzuyor da uzuyordu… hilâl şeklinde iki liman, ortada da kaleyi taşıyan yarımada…",
+  source: "MAVİ SÜRGÜN – HALİKARNAS BALIKÇISI"
+};
 
 const initialGuestbookNotes = [
   {
@@ -87,15 +78,17 @@ const initialGuestbookNotes = [
           </div>
         </div>
 
-        <!-- Right: Clean Oval-Cornered BKK Logo -->
+        <!-- Right: Bodrum Mavisi Paralel Oval Çerçeve İçinde BKK Logosu -->
         <div class="lg:col-span-5 flex items-center justify-center">
-          <div class="w-full max-w-[210px] sm:max-w-[240px] aspect-square rounded-xl sm:rounded-2xl overflow-hidden shadow-sm">
-            <img
-              src="/images/logo.png"
-              alt="Bodrum Kent Kütüphanesi Logosu"
-              class="w-full h-full object-contain rounded-xl sm:rounded-2xl"
-              loading="eager"
-            />
+          <div class="p-2 sm:p-2.5 rounded-[28px] sm:rounded-[36px] border-2 border-olive bg-parchment shadow-sm inline-block">
+            <div class="w-full max-w-[200px] sm:max-w-[230px] aspect-square rounded-[22px] sm:rounded-[30px] overflow-hidden">
+              <img
+                src="/images/logo.png"
+                alt="Bodrum Kent Kütüphanesi Logosu"
+                class="w-full h-full object-contain rounded-[22px] sm:rounded-[30px]"
+                loading="eager"
+              />
+            </div>
           </div>
         </div>
 
@@ -144,7 +137,7 @@ const initialGuestbookNotes = [
             <!-- Dikey 3:4 Logo Çerçevesi -->
             <div class="aspect-[3/4] w-36 sm:w-40 my-2 flex items-center justify-center overflow-hidden rounded-xs border border-sand bg-white/60 p-1">
               <img
-                src="/images/hc_logo.jpg"
+                src="/images/hc_logo.png"
                 alt="Halikarnaslı Çocuklar Sanat Çalışmaları"
                 class="w-full h-full object-contain"
               />
@@ -161,11 +154,12 @@ const initialGuestbookNotes = [
             </div>
           </div>
 
-          <!-- 3. Halikarnas Derneği (Dikey 3:4) -->
+          <!-- 3. Halikarnas Derneği (Dikey 3:4 & 2 Satır Başlık + Üyelik Linki) -->
           <div class="bg-parchment p-4 border-2 border-olive rounded-xs shadow-xs flex flex-col justify-between items-center text-center max-w-[280px] w-full mx-auto">
             <div class="h-10 flex items-center justify-center w-full">
               <h3 class="font-serif text-sm sm:text-base font-bold text-olive text-center leading-snug">
-                Halikarnas Kültür, Sanat, Eğitim<br />ve Ekoloji Derneği
+                Halikarnas Kültür, Sanat,<br />
+                Eğitim ve Ekoloji Derneği
               </h3>
             </div>
 
@@ -178,9 +172,12 @@ const initialGuestbookNotes = [
             </div>
 
             <div class="h-11 flex items-center justify-center w-full">
-              <p class="font-sans text-[11px] sm:text-xs text-ink/85 leading-snug text-center">
-                Tüm çalışmalarımızın<br />resmî çatısı
-              </p>
+              <a
+                href="/destek#basvuru-alani"
+                class="font-sans text-[11px] sm:text-xs text-olive font-bold hover:underline leading-snug text-center block transition-colors"
+              >
+                Derneğimize üye olmak<br />için lütfen tıklayınız
+              </a>
             </div>
 
             <div class="pt-2 border-t border-olive/20 text-[10px] sm:text-[11px] font-sans italic text-stone-gray w-full text-center">
@@ -194,7 +191,7 @@ const initialGuestbookNotes = [
     </div>
   </section>
 
-  <!-- 2. Günün Balıkçı Alıntısı -->
+  <!-- 2. Halikarnas Balıkçısı’nın Bodrum’a İlk Geldiği An Vitrini -->
   <section class="py-8 md:py-10 px-5 md:px-12 bg-surface-container-low border-b border-sand">
     <div class="max-w-[1280px] mx-auto">
       <div class="bg-parchment border-2 border-olive rounded-xs p-5 sm:p-8 shadow-md relative overflow-hidden">
@@ -204,30 +201,19 @@ const initialGuestbookNotes = [
         </div>
 
         <div class="relative z-10 max-w-3xl mx-auto text-center space-y-3">
-          <div class="inline-flex items-center gap-1.5 px-2.5 py-0.5 bg-olive/10 text-olive text-[11px] font-sans font-bold uppercase tracking-widest rounded-xs">
+          <div class="inline-flex items-center gap-1.5 px-3 py-1 bg-olive text-white text-[11px] sm:text-xs font-sans font-bold uppercase tracking-widest rounded-xs shadow-2xs">
             <span class="material-symbols-outlined text-xs">auto_stories</span>
-            <span>HALİKARNAS BALIKÇISI’NDAN BİR SELAM</span>
+            <span>{balikciArrivalQuote.title}</span>
           </div>
 
-          <blockquote id="quote-display" class="font-serif italic text-base sm:text-lg text-ink leading-relaxed">
-            "{balıkçıQuotes[0].quote}"
+          <blockquote class="font-serif italic text-base sm:text-lg text-ink leading-relaxed text-justify sm:text-center">
+            "{balikciArrivalQuote.quote}"
           </blockquote>
 
-          <div class="flex items-center justify-center gap-2 text-xs font-sans">
-            <span class="font-bold text-olive font-serif text-sm">Cevat Şakir Kabaağaçlı</span>
-            <span class="text-stone-gray">•</span>
-            <cite id="quote-source" class="not-italic text-stone-gray font-medium">{balıkçıQuotes[0].source}</cite>
-          </div>
-
-          <div class="pt-1 flex items-center justify-center gap-2">
-            <button
-              type="button"
-              id="next-quote-btn"
-              class="px-3.5 py-1.5 bg-olive text-white hover:bg-bodrum-blue-dark text-[11px] font-sans font-bold uppercase tracking-wider rounded-xs transition-colors shadow-2xs flex items-center gap-1 cursor-pointer"
-            >
-              <span class="material-symbols-outlined text-xs">refresh</span>
-              <span>Başka Bir Alıntı Göster</span>
-            </button>
+          <div class="flex items-center justify-center gap-2 text-xs font-sans pt-1">
+            <cite class="not-italic text-olive font-bold font-serif text-sm tracking-wide">
+              {balikciArrivalQuote.source}
+            </cite>
           </div>
         </div>
       </div>
@@ -330,20 +316,7 @@ const initialGuestbookNotes = [
   </section>
 </Layout>
 
-<script is:inline define:vars={{ balıkçıQuotes }}>
-  let quoteIndex = 0;
-  const quoteDisplay = document.getElementById('quote-display');
-  const quoteSource = document.getElementById('quote-source');
-  const nextQuoteBtn = document.getElementById('next-quote-btn');
-
-  if (nextQuoteBtn && quoteDisplay && quoteSource) {
-    nextQuoteBtn.addEventListener('click', () => {
-      quoteIndex = (quoteIndex + 1) % balıkçıQuotes.length;
-      quoteDisplay.textContent = `"${balıkçıQuotes[quoteIndex].quote}"`;
-      quoteSource.textContent = balıkçıQuotes[quoteIndex].source;
-    });
-  }
-
+<script is:inline>
   const guestbookForm = document.getElementById('guestbook-form');
   const guestbookList = document.getElementById('guestbook-list');
 

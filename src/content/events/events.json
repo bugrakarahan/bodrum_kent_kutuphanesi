@@ -29,13 +29,21 @@
     "categoryLabelEn": "Mythology & Ancient History",
     "locationTr": "Kütüphane Buluşma Salonu & Bahçe",
     "locationEn": "Library Hall & Garden",
-    "summaryTr": "Binlerce yıldır, insanlara sadece yol göstermekle kalmayıp aynı zamanda mitlere ve kültürlere de ilham veren yıldズların altında özel bir gece!\n\nAntropolog & Arkeolog Timuçin Binder ile Antikçağ Ege’sinin gökyüzünde dolaşacak, yıldızları ve takımyıldızlarını tanırken onların ardındaki mitolojik öykülere, antropolojik ve tarihsel anlamlara kulak vereceğiz.",
+    "summaryTr": "Binlerce yıldır, insanlara sadece yol göstermekle kalmayıp aynı zamanda mitlere ve kültürlere de ilham veren yıldızların altında özel bir gece!\n\nAntropolog & Arkeolog Timuçin Binder ile Antikçağ Ege’sinin gökyüzünde dolaşacak, yıldızları ve takımyıldızlarını tanırken onların ardındaki mitolojik öykülere, antropolojik ve tarihsel anlamlara kulak vereceğiz.",
     "summaryEn": "A special evening under the stars that have not only guided humanity for thousands of years, but also inspired countless myths and cultures!\n\nWith Anthropologist & Archaeologist Timucin Binder, we will wander through the ancient Aegean skies, identifying stars and constellations while listening to their mythological tales, anthropological contexts, and historical meanings.",
-    "image": "/images/drive/timucin_binder_1.jpg",
+    "image": "/images/drive/timucin_gallery/01_afis_timucin_binder.jpg",
     "photos": [
-      "/images/drive/timucin_binder_1.jpg",
-      "/images/drive/timucin_binder_2.jpg",
-      "/images/drive/etkinlik_arsiv.jpg"
+      "/images/drive/timucin_gallery/01_afis_timucin_binder.jpg",
+      "/images/drive/timucin_gallery/02_ana_fotograf.jpg",
+      "/images/drive/timucin_gallery/03_uzaktan_soylesi.jpg",
+      "/images/drive/timucin_gallery/04_yakindan_soylesi.jpg",
+      "/images/drive/timucin_gallery/05_timucin_ozlem_saner.jpg",
+      "/images/drive/timucin_gallery/06_katilimcilar_1.jpg",
+      "/images/drive/timucin_gallery/07_katilimcilar_2.jpg",
+      "/images/drive/timucin_gallery/08_katilimcilar_3.jpg",
+      "/images/drive/timucin_gallery/09_katilimcilar_4.jpg",
+      "/images/drive/timucin_gallery/10_katilimcilar_5.jpg",
+      "/images/drive/timucin_gallery/11_katilimci_yildiz.jpg"
     ],
     "featured": false,
     "isPast": true

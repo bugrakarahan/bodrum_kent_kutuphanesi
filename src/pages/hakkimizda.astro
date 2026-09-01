@@ -20,17 +20,18 @@ const alphabeticalBoard = [
   "Doç. Dr. Yalçın İ. Gürkan"
 ].sort((a, b) => a.localeCompare(b, 'tr'));
 
+// Cümle sonlarındaki tüm virgül ve noktalar kaldırılmış 10 hedef maddesi
 const activities = [
-  "Edebiyat, Sanat, Tarih, Felsefe, Arkeoloji, Antik Tarih, Ekoloji, Sosyoloji, Psikoloji,… vb. konularda etkinlikler (söyleşiler, paneller, konferanslar, seminerler vb.) düzenlemek,",
-  "Her yaşa yönelik okuma grupları ve atölye çalışmaları (çocuklar, gençler, yetişkinler) düzenlemek,",
-  "Kitap kulübü buluşmaları organize etmek,",
-  "Yazarlar, akademisyenler ve sanatçılarla imza günleri ve atölye çalışmaları gerçekleştirmek,",
-  "Bodrum’un sözlü tarihini ve kültürel hafızasını kayıt altına almak,",
-  "Bodrum ile ilgili kitap, belge ve arşiv malzemelerini toplamak ve araştırmacıların erişimine sunmak,",
-  "Çocuk ve gençlerin kitapla ilişkisini güçlendiren özel projeler ve atölyeler yürütmek,",
-  "Yerel ve ulusal düzeyde kütüphaneler, üniversiteler ve sivil toplum kuruluşlarıyla iş birlikleri geliştirmek,",
-  "Kütüphane bünyesinde tematik kitap kulüpleri ve tartışma platformları oluşturmak,",
-  "Dijital kütüphanecilik ve çevrim içi arşiv çalışmalarıyla bilgiye erişimi kolaylaştırmak."
+  "Edebiyat, Sanat, Tarih, Felsefe, Arkeoloji, Antik Tarih, Ekoloji, Sosyoloji, Psikoloji,… vb. konularda etkinlikler (söyleşiler, paneller, konferanslar, seminerler vb.) düzenlemek",
+  "Her yaşa yönelik okuma grupları ve atölye çalışmaları (çocuklar, gençler, yetişkinler) düzenlemek",
+  "Kitap kulübü buluşmaları organize etmek",
+  "Yazarlar, akademisyenler ve sanatçılarla imza günleri ve atölye çalışmaları gerçekleştirmek",
+  "Bodrum’un sözlü tarihini ve kültürel hafızasını kayıt altına almak",
+  "Bodrum ile ilgili kitap, belge ve arşiv malzemelerini toplamak ve araştırmacıların erişimine sunmak",
+  "Çocuk ve gençlerin kitapla ilişkisini güçlendiren özel projeler ve atölyeler yürütmek",
+  "Yerel ve ulusal düzeyde kütüphaneler, üniversiteler ve sivil toplum kuruluşlarıyla iş birlikleri geliştirmek",
+  "Kütüphane bünyesinde tematik kitap kulüpleri ve tartışma platformları oluşturmak",
+  "Dijital kütüphanecilik ve çevrim içi arşiv çalışmalarıyla bilgiye erişimi kolaylaştırmak"
 ];
 ---
 
@@ -63,7 +64,7 @@ const activities = [
             </p>
           </div>
 
-          <!-- Alt alta, alfabetik sıralı liste (Üstteki cümleyle birebir aynı büyüklükte: text-xs sm:text-sm) -->
+          <!-- Alt alta, alfabetik sıralı liste -->
           <div class="bg-parchment border border-sand p-4 shadow-xs">
             <ul class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs sm:text-sm font-sans font-medium text-ink">
               {alphabeticalBoard.map((name) => (
@@ -83,15 +84,17 @@ const activities = [
           </div>
         </div>
 
-        <!-- Sağ: Oval Kenarlı Temiz BKK Logosu -->
+        <!-- Sağ: Bodrum Mavisi Paralel Oval Çerçeve İçinde BKK Logosu -->
         <div class="lg:col-span-5 flex items-center justify-center">
-          <div class="w-full max-w-[210px] sm:max-w-[240px] aspect-square rounded-xl sm:rounded-2xl overflow-hidden shadow-sm">
-            <img
-              src="/images/logo.png"
-              alt="Bodrum Kent Kütüphanesi Logosu"
-              class="w-full h-full object-contain rounded-xl sm:rounded-2xl"
-              loading="eager"
-            />
+          <div class="p-2 sm:p-2.5 rounded-[28px] sm:rounded-[36px] border-2 border-olive bg-parchment shadow-sm inline-block">
+            <div class="w-full max-w-[200px] sm:max-w-[230px] aspect-square rounded-[22px] sm:rounded-[30px] overflow-hidden">
+              <img
+                src="/images/logo.png"
+                alt="Bodrum Kent Kütüphanesi Logosu"
+                class="w-full h-full object-contain rounded-[22px] sm:rounded-[30px]"
+                loading="eager"
+              />
+            </div>
           </div>
         </div>
 
@@ -158,7 +161,7 @@ const activities = [
     </div>
   </section>
 
-  <!-- 3. Amaç ve Hedeflenen Çalışmalar (Cümleler Bold / Koyu Yapıldı) -->
+  <!-- 3. Amaç ve Hedeflenen Çalışmalar (Cümle sonundaki virgül ve noktalar kaldırıldı) -->
   <section class="py-6 md:py-10 px-5 md:px-12 bg-parchment border-b border-sand">
     <div class="max-w-[1280px] mx-auto">
       
@@ -174,7 +177,6 @@ const activities = [
             <span class="w-5 h-5 rounded-full bg-olive text-white flex items-center justify-center font-mono text-[11px] font-bold shrink-0 mt-0.5 shadow-2xs">
               {idx + 1}
             </span>
-            <!-- Koyu / Bold Yazı Standardı -->
             <p class="font-sans text-xs sm:text-sm font-bold text-ink leading-relaxed">
               {act}
             </p>

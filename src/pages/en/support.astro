@@ -11,105 +11,105 @@ const whyJoinUsEn = [
     desc: "We are building an independent cultural sanctuary that documents and transmits the town's ancient memory, oral history, and Mediterranean identity."
   },
   {
-    title: "To support children and youth access to literature, arts, and science",
-    desc: "Through the Olive Seeds Library and Children of Halicarnassus initiatives, we nourish the critical thinking of younger generations."
+    title: "To support access to books, art, and science for children and youth",
+    desc: "Through the Olive Seeds Library and Children of Halicarnassus initiatives, we nourish young minds with curiosity and critical thinking."
   },
   {
-    title: "To create direct engagements with literature, arts, and science",
-    desc: "We organize living workshops and recorded talks uniting Bodrum residents with prominent authors, scholars, and researchers."
+    title: "To create direct encounters with literature, arts, and science",
+    desc: "We organize living workshops, book club sessions, and panels bringing authors, academics, and artists around the same table."
   },
   {
-    title: "To build an active, creative, and collaborative Bodrum community",
-    desc: "Replacing passive consumption with creation and solidarity, we establish a permanent intellectual cornerstone."
+    title: "To foster a living, producing, and sharing community in Bodrum",
+    desc: "Replacing passive consumption with cultural creation, and isolation with collective solidarity."
   }
 ];
 
 const supportTypesEn = [
   {
     title: "Book Donations",
-    desc: "Donate quality books and academic publications to our general collection and the Olive Seeds Library."
+    desc: "Donate curated literature, historical studies, and children's books to our library collections."
   },
   {
-    title: "Expertise & Speaking",
-    desc: "Contribute by leading workshops, panel talks, or seminars in your area of expertise."
+    title: "Knowledge & Expertise / Speaker",
+    desc: "Lead a workshop, panel, or seminar in your field of expertise."
   },
   {
-    title: "Institutional Sponsorship",
-    desc: "Provide individual or corporate patronage for physical furnishing, archival releases, or cultural programs."
+    title: "Financial & Corporate Sponsorship",
+    desc: "Support our physical study spaces, event series, or scholarly publications."
   },
   {
-    title: "Volunteering",
-    desc: "Join our active volunteer network in event coordination, digital archiving, and children's workshops."
+    title: "Volunteer Participation",
+    desc: "Volunteer for event management, archival cataloging, children's workshops, or digital media."
   },
   {
-    title: "Research & Archive Materials",
-    desc: "Contribute historical documents, manuscripts, and photographs related to Bodrum and the Fisherman."
+    title: "Artwork Donation",
+    desc: "Donate paintings or sculptures to support our cause, or contribute proceeds from your artistic or literary works to our association."
   },
   {
-    title: "Venues & Equipment",
-    desc: "Support cultural programs through audio-visual hardware, workshop supplies, or venue provision."
+    title: "Venue & Equipment Support",
+    desc: "Offer event spaces, AV equipment, or art workshop materials."
   },
   {
-    title: "National / Global Networks",
-    desc: "Bridge partnerships with international libraries, academic institutions, and cultural NGOs."
+    title: "National / International Networking",
+    desc: "Help connect our library with cultural foundations, universities, and international institutions."
   },
   {
-    title: "Other Collaborations",
-    desc: "Propose custom projects, exhibitions, or distinctive contributions to our team."
+    title: "Other Contributions",
+    desc: "Share your custom initiative, idea, or partnership model with us."
   }
 ];
 
 const wishlistItemsEn = [
   {
     id: "wish-1",
-    category: "Books & Archives",
-    title: "Fisherman First Editions & Rare Bodrum Works",
-    desc: "Original vintage editions (1940–1970) and regional historical treatises for our Rare Collection Room.",
-    status: "Seeking",
+    category: "BOOKS & ARCHIVES",
+    title: "BOOKS & ARCHIVES",
+    desc: "Historical records, books, original manuscripts, and photographs related to Halicarnassus, Bodrum history, and Cevat Şakir Kabaağaçlı for our special archive.",
+    status: "Seeking Solidarity",
     selectValue: "kitap"
   },
   {
     id: "wish-2",
-    category: "Children & Arts",
-    title: "Olive Seeds Children's Workshop Supplies",
-    desc: "Wooden seating cushions, easels, watercolor sets, and curated juvenile literature classics.",
-    status: "In Progress",
+    category: "CHILDREN & YOUTH",
+    title: "CHILDREN & YOUTH",
+    desc: "An all-weather outdoor event tent for Olive Seeds Library educational workshops.",
+    status: "Seeking Solidarity",
     selectValue: "mekan"
   },
   {
     id: "wish-3",
-    category: "Digital & Recording",
-    title: "Oral History & Interview Recording Gear",
-    desc: "Wireless lavalier microphone kit for preserving testimonies of veteran divers, captains, and writers.",
-    status: "Seeking",
+    category: "CHILDREN & ART",
+    title: "CHILDREN & ART",
+    desc: "Colorful 50x50 cm floor cushions and 15 child-sized tabletop painting easels for Children of Halicarnassus art workshops.",
+    status: "Seeking Solidarity",
     selectValue: "mekan"
   },
   {
     id: "wish-4",
-    category: "Campus & Garden",
-    title: "Courtyard Reading Benches & Tables",
-    desc: "Weather-resistant wooden furniture for open-air reading hours and garden recitals in Kizilagac.",
-    status: "Community Drive",
-    selectValue: "maddi"
+    category: "OTHER ESSENTIALS",
+    title: "OTHER ESSENTIALS",
+    desc: "Portable folding chairs for cultural events (15 children and 15 adult chairs).",
+    status: "Seeking Solidarity",
+    selectValue: "mekan"
   }
 ];
 ---
 
 <Layout
-  title={`Support & Volunteering | ${t.siteTitle}`}
-  description="Support Bodrum City Library, volunteer, and shape Bodrum's cultural future."
+  title={`Support & Volunteer | ${t.siteTitle}`}
+  description="Support Bodrum City Library, volunteer your skills, and take part in Bodrum's intellectual future."
   lang={lang}
   currentPath="/en/support"
 >
-  <!-- Hero Section -->
+  <!-- Hero Header -->
   <section class="py-6 md:py-10 px-5 md:px-12 bg-surface-bright border-b border-sand">
     <div class="max-w-[1280px] mx-auto">
       <div class="max-w-3xl">
         <h1 class="font-serif text-xl sm:text-2xl text-ink font-bold leading-snug mb-2">
-          Support & Volunteering
+          Support & Community Solidarity
         </h1>
         <p class="font-sans text-xs sm:text-sm text-ink/80 leading-relaxed">
-          Join this shared vision to build Bodrum's cultural memory and illuminate knowledge for generations to come.
+          Join us in building Bodrum's cultural memory and collective intellectual future.
         </p>
       </div>
     </div>
@@ -117,10 +117,10 @@ const wishlistItemsEn = [
 
   <div class="max-w-[1280px] mx-auto px-5 md:px-12 py-6 md:py-10 space-y-10">
     
-    <!-- 1. Why Join Us -->
+    <!-- 1. Why Support This Vision -->
     <section>
       <h2 class="font-serif text-lg sm:text-xl text-ink font-bold mb-4 pb-2 border-b border-sand">
-        Why Should You Join This Vision?
+        Why Join This Cultural Dream?
       </h2>
 
       <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -142,60 +142,58 @@ const wishlistItemsEn = [
       </div>
     </section>
 
-    <!-- 2. Transparent Needs Board -->
+    <!-- 2. Transparent Solidarity Wishlist (max-w-4xl) -->
     <section>
-      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-4 pb-2 border-b border-sand">
-        <div>
-          <span class="text-[11px] uppercase tracking-widest text-olive font-sans font-bold block mb-0.5">TRANSPARENT NEEDS</span>
-          <h2 class="font-serif text-lg sm:text-xl text-ink font-bold">
-            Community Needs Board
-          </h2>
+      <div class="max-w-4xl mx-auto">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-4 pb-2 border-b border-sand">
+          <div>
+            <span class="text-[11px] uppercase tracking-widest text-olive font-sans font-bold block mb-0.5">COMMUNITY SOLIDARITY</span>
+            <h2 class="font-serif text-lg sm:text-xl text-ink font-bold">
+              Current Library Wishlist
+            </h2>
+          </div>
+          <span class="text-[11px] font-sans text-stone-gray">
+            Directly sponsor an essential physical need to empower our community space.
+          </span>
         </div>
-        <span class="text-[11px] font-sans text-stone-gray">
-          Sponsor a concrete need to empower our community library directly.
-        </span>
-      </div>
 
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-        {wishlistItemsEn.map((wish) => (
-          <div class="bg-parchment border-2 border-olive rounded-xs p-4 flex flex-col justify-between shadow-xs hover:shadow-md transition-all">
-            <div>
-              <div class="flex items-center justify-between gap-2 mb-2">
-                <span class="px-2 py-0.5 bg-olive/10 text-olive text-[10px] font-sans font-bold uppercase rounded-2xs">
-                  {wish.category}
-                </span>
-                <span class="px-2 py-0.5 bg-amber-100 text-amber-900 text-[10px] font-sans font-bold rounded-2xs">
-                  {wish.status}
-                </span>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          {wishlistItemsEn.map((wish) => (
+            <div class="bg-parchment border-2 border-olive rounded-xs p-4 flex flex-col justify-between shadow-xs hover:shadow-md transition-all">
+              <div>
+                <div class="flex items-center justify-between gap-2 mb-2">
+                  <span class="px-2.5 py-0.5 bg-olive text-white text-[11px] font-sans font-bold uppercase tracking-wider rounded-2xs">
+                    {wish.category}
+                  </span>
+                  <span class="px-2 py-0.5 bg-amber-100 text-amber-900 text-[10px] font-sans font-bold rounded-2xs">
+                    {wish.status}
+                  </span>
+                </div>
+
+                <p class="font-sans text-xs sm:text-[13px] text-ink/90 font-medium leading-relaxed my-2">
+                  {wish.desc}
+                </p>
               </div>
 
-              <h3 class="font-serif text-sm sm:text-base font-bold text-ink mb-1">
-                {wish.title}
-              </h3>
-
-              <p class="font-sans text-xs text-ink/80 leading-relaxed mb-3">
-                {wish.desc}
-              </p>
+              <button
+                type="button"
+                class="btn-fulfill-wish w-full py-1.5 bg-olive hover:bg-bodrum-blue-dark text-white text-[11px] font-sans font-bold uppercase tracking-wider rounded-xs transition-colors shadow-2xs flex items-center justify-center gap-1 cursor-pointer mt-2"
+                data-wish-select={wish.selectValue}
+                data-wish-title={wish.category}
+              >
+                <span class="material-symbols-outlined text-xs">volunteer_activism</span>
+                <span>Fulfill This Need</span>
+              </button>
             </div>
-
-            <button
-              type="button"
-              class="btn-fulfill-wish-en w-full py-1.5 bg-olive hover:bg-bodrum-blue-dark text-white text-[11px] font-sans font-bold uppercase tracking-wider rounded-xs transition-colors shadow-2xs flex items-center justify-center gap-1 cursor-pointer mt-1"
-              data-wish-select={wish.selectValue}
-              data-wish-title={wish.title}
-            >
-              <span class="material-symbols-outlined text-xs">volunteer_activism</span>
-              <span>Sponsor This Need</span>
-            </button>
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
     </section>
 
-    <!-- 3. Support Types -->
+    <!-- 3. Ways to Contribute -->
     <section>
       <h2 class="font-serif text-lg sm:text-xl text-ink font-bold mb-4 pb-2 border-b border-sand">
-        How Can You Support?
+        Ways You Can Contribute
       </h2>
 
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-3.5">
@@ -217,18 +215,19 @@ const wishlistItemsEn = [
       </div>
     </section>
 
-    <!-- 4. Contact & Form -->
+    <!-- 4. Contact & Application Form -->
     <section id="support-form-section" class="bg-surface-container-low border-2 border-olive rounded-xs p-5 sm:p-8 shadow-xs">
       <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-start">
         
+        <!-- Left Side: Direct Contact -->
         <div class="lg:col-span-5 space-y-4">
           <div>
             <span class="text-[11px] uppercase tracking-widest text-olive font-sans font-bold block mb-1">DIRECT CONTACT</span>
             <h3 class="font-serif text-base sm:text-lg text-ink font-bold leading-snug mb-1.5">
-              Speak with Our Library Representative
+              Speak with Our Coordinators
             </h3>
             <p class="font-sans text-xs text-ink/85 leading-relaxed">
-              Reach out directly regarding donations, partnerships, or collaborative programs.
+              Reach out directly regarding partnership opportunities and contributions.
             </p>
           </div>
 
@@ -262,19 +261,20 @@ const wishlistItemsEn = [
                 <span class="material-symbols-outlined text-base">location_on</span>
               </div>
               <div>
-                <div class="text-[10px] text-stone-gray font-sans font-bold uppercase tracking-wider">Campus</div>
+                <div class="text-[10px] text-stone-gray font-sans font-bold uppercase tracking-wider">Location</div>
                 <span class="text-ink font-bold text-xs sm:text-sm">Kizilagac, Bodrum / Mugla, Turkiye</span>
               </div>
             </div>
           </div>
         </div>
 
+        <!-- Right Side: Form -->
         <div class="lg:col-span-7 bg-parchment border-2 border-olive rounded-xs p-4 sm:p-6 shadow-xs">
           <h3 class="font-serif text-base sm:text-lg text-ink font-bold mb-1">
-            Support & Volunteering Application Form
+            Support & Volunteer Application Form
           </h3>
           <p class="font-sans text-xs text-ink/85 mb-4">
-            Submit your contact details and support preferences; we will get in touch with you shortly.
+            Please share your details and how you would like to contribute.
           </p>
 
           <form id="support-form-en" class="space-y-3 font-sans">
@@ -290,19 +290,19 @@ const wishlistItemsEn = [
 
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
               <div>
-                <label class="block text-[11px] font-bold text-ink uppercase tracking-wider mb-0.5">Email *</label>
+                <label class="block text-[11px] font-bold text-ink uppercase tracking-wider mb-0.5">Email Address *</label>
                 <input 
                   type="email" 
                   required 
-                  placeholder="example@domain.com"
+                  placeholder="name@domain.com"
                   class="w-full px-3 py-1.5 bg-surface-bright border border-sand text-ink text-xs focus:outline-none focus:border-olive rounded-xs" 
                 />
               </div>
               <div>
-                <label class="block text-[11px] font-bold text-ink uppercase tracking-wider mb-0.5">Phone / Mobile *</label>
+                <label class="block text-[11px] font-bold text-ink uppercase tracking-wider mb-0.5">Phone Number *</label>
                 <input 
                   type="tel" 
-                  required
+                  required 
                   placeholder="+90 5XX XXX XX XX"
                   class="w-full px-3 py-1.5 bg-surface-bright border border-sand text-ink text-xs focus:outline-none focus:border-olive rounded-xs" 
                 />
@@ -310,31 +310,31 @@ const wishlistItemsEn = [
             </div>
 
             <div>
-              <label class="block text-[11px] font-bold text-ink uppercase tracking-wider mb-0.5">Support Category *</label>
+              <label class="block text-[11px] font-bold text-ink uppercase tracking-wider mb-0.5">Contribution Category *</label>
               <select 
                 id="support-type-select-en"
                 required
                 class="w-full px-3 py-1.5 bg-surface-bright border border-sand text-ink text-xs focus:outline-none focus:border-olive rounded-xs"
               >
-                <option value="">Select support type...</option>
-                <option value="kitap">Book Donation</option>
-                <option value="uzmanlik">Knowledge & Expertise</option>
-                <option value="maddi">Institutional / Financial Sponsorship</option>
-                <option value="gonullu">Volunteering</option>
-                <option value="arastirma">Research & Archival Material</option>
-                <option value="mekan">Venue & Equipment</option>
-                <option value="baglanti">National / Global Networks</option>
-                <option value="diger">Other Collaborations</option>
+                <option value="">Please select a category...</option>
+                <option value="kitap">Book Donations</option>
+                <option value="uzmanlik">Knowledge & Speaking</option>
+                <option value="maddi">Financial / Corporate Support</option>
+                <option value="gonullu">Volunteer (Events, Archives, Workshops)</option>
+                <option value="eser">Artwork Donation (Paintings, Sculptures)</option>
+                <option value="mekan">Venue & Materials</option>
+                <option value="baglanti">National / International Networking</option>
+                <option value="diger">Other Contributions</option>
               </select>
             </div>
 
             <div>
-              <label class="block text-[11px] font-bold text-ink uppercase tracking-wider mb-0.5">Collaboration Notes *</label>
+              <label class="block text-[11px] font-bold text-ink uppercase tracking-wider mb-0.5">Contribution Details / Message *</label>
               <textarea 
                 id="support-details-textarea-en"
                 rows="3" 
                 required 
-                placeholder="Describe your suggested contribution..."
+                placeholder="Describe how you would like to support or collaborate..."
                 class="w-full px-3 py-1.5 bg-surface-bright border border-sand text-ink text-xs focus:outline-none focus:border-olive rounded-xs"
               ></textarea>
             </div>
@@ -343,7 +343,7 @@ const wishlistItemsEn = [
               type="submit" 
               class="w-full py-2.5 bg-olive text-white hover:bg-bodrum-blue-dark text-xs font-sans font-bold tracking-wider uppercase transition-colors shadow-xs rounded-xs cursor-pointer"
             >
-              Submit Application
+              Submit Support Application
             </button>
           </form>
         </div>
@@ -355,7 +355,7 @@ const wishlistItemsEn = [
 </Layout>
 
 <script>
-  document.querySelectorAll('.btn-fulfill-wish-en').forEach((btn) => {
+  document.querySelectorAll('.btn-fulfill-wish').forEach((btn) => {
     btn.addEventListener('click', (e) => {
       const target = e.currentTarget as HTMLElement;
       const selectVal = target.getAttribute('data-wish-select');
@@ -370,7 +370,7 @@ const wishlistItemsEn = [
       }
 
       if (textEl && wishTitle) {
-        textEl.value = `[Community Need]: I would like to support "${wishTitle}". `;
+        textEl.value = `[Solidarity Wishlist]: I would like to support the need for "${wishTitle}". `;
         textEl.focus();
       }
 
@@ -386,7 +386,7 @@ const wishlistItemsEn = [
       e.preventDefault();
       if ((window as any).showToast) {
         (window as any).showToast(
-          'Your support application has been received! Thank you for contributing to Bodrum’s cultural heritage.',
+          'Your support application has been received! Thank you for contributing to Bodrum City Library.',
           'success',
           6000
         );

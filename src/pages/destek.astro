@@ -42,8 +42,8 @@ const supportTypes = [
     desc: "Etkinlik organizasyonu, arşivleme, çocuk atölyeleri, kütüphane düzeni veya dijital içerik üretiminde gönüllü olabilirsiniz."
   },
   {
-    title: "Araştırma & Arşiv Desteği",
-    desc: "Bodrum tarihi, Halikarnas Balıkçısı veya Ege kültürüyle ilgili belge, fotoğraf ve arşiv belgelerini kütüphanemize kazandırabilirsiniz."
+    title: "Eser Bağışı",
+    desc: "Destek için resim veya heykel eserlerinizi bağışlayabilir, veya sanat ve kitap çalışmalarınızın gelirinden derneğimize bağışta bulunabilirsiniz."
   },
   {
     title: "Mekân, Ekipman ve Malzeme Desteği",
@@ -59,38 +59,39 @@ const supportTypes = [
   }
 ];
 
+// Güncellenmiş 4 Temel İmece İhtiyacı
 const wishlistItems = [
   {
     id: "wish-1",
-    category: "Kitap & Arşiv",
-    title: "Halikarnas Balıkçısı İlk Baskıları & Nadir Bodrum Eserleri",
-    desc: "Kütüphanemiz Özel Arşiv Odası için 1940-1970 arası döneme ait orijinal baskılar ve Bodrum tarihçesi yayınları.",
-    status: "Aranıyor",
+    category: "KİTAP & ARŞİV",
+    title: "KİTAP & ARŞİV",
+    desc: "Kütüphanemizin özel arşivi için Halikarnas-Bodrum tarihi/kültürü ve Cevat Şakir Kabaağaçlı ile ilgili kitap, belge; orijinal eser, fotoğraf ve arşiv belgeleri.",
+    status: "İmece Aranıyor",
     selectValue: "kitap"
   },
   {
     id: "wish-2",
-    category: "Çocuk & Sanat",
-    title: "Zeytin Taneleri Kütüphanesi Çocuk Atölyesi Malzemeleri",
-    desc: "Ahşap oturma minderleri, resim şövaleleri, suluboya takımları ve temel çocuk edebiyatı klasikleri seti.",
-    status: "Devam Ediyor",
+    category: "ÇOCUK & GENÇ KİTAP",
+    title: "ÇOCUK & GENÇ KİTAP",
+    desc: "Zeytin Taneleri Kütüphanesi etkinlikleri için, açık havada kullanılabilecek etkinlik çadırı.",
+    status: "İmece Aranıyor",
     selectValue: "mekan"
   },
   {
     id: "wish-3",
-    category: "Dijital & Kayıt",
-    title: "Sözlü Tarih & Söyleşi Dijital Kayıt Seti",
-    desc: "Bodrum’un süngercileri, kaptanları ve yazarlarıyla yapılan arşiv kayıtları için kablosuz yaka mikrofonu seti.",
-    status: "Aranıyor",
+    category: "ÇOCUK & SANAT",
+    title: "ÇOCUK & SANAT",
+    desc: "Halikarnaslı Çocuklar Sanat Atölyesi için renkli, 50x50 renkli minderler ve çocuklara uygun, küçük şövaleler (15 adet).",
+    status: "İmece Aranıyor",
     selectValue: "mekan"
   },
   {
     id: "wish-4",
-    category: "Yerleşke & Bahçe",
-    title: "Açık Hava Okuma ve Sohbet Bahçesi Ahşap Bankları",
-    desc: "Kızılağaç yerleşkemizde ağaç altı okuma saatleri ve küçük dinletiler için dayanıklı ahşap bank ve masa düzeni.",
-    status: "İmece Aşamasında",
-    selectValue: "maddi"
+    category: "DİĞER",
+    title: "DİĞER",
+    desc: "Etkinliklerde kullanılmak üzere açılır/kapanır, taşınması kolay sandalyeler (Çocuk ve yetişkin için ayrı ayrı 15 adet).",
+    status: "İmece Aranıyor",
+    selectValue: "mekan"
   }
 ];
 ---
@@ -142,53 +143,51 @@ const wishlistItems = [
       </div>
     </section>
 
-    <!-- 2. Şeffaf İmece & İhtiyaç Panosu -->
+    <!-- 2. Şeffaf İmece & İhtiyaç Panosu (Kompakt Genişlik: max-w-4xl) -->
     <section>
-      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-4 pb-2 border-b border-sand">
-        <div>
-          <span class="text-[11px] uppercase tracking-widest text-olive font-sans font-bold block mb-0.5">ŞEFFAF İMECE</span>
-          <h2 class="font-serif text-lg sm:text-xl text-ink font-bold">
-            Kütüphanemizin İmece İhtiyaçları
-          </h2>
+      <div class="max-w-4xl mx-auto">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-4 pb-2 border-b border-sand">
+          <div>
+            <span class="text-[11px] uppercase tracking-widest text-olive font-sans font-bold block mb-0.5">ŞEFFAF İMECE</span>
+            <h2 class="font-serif text-lg sm:text-xl text-ink font-bold">
+              Kütüphanemizin İmece İhtiyaçları
+            </h2>
+          </div>
+          <span class="text-[11px] font-sans text-stone-gray">
+            Doğrudan somut bir ihtiyacı üstlenerek kütüphanemize güç verebilirsiniz.
+          </span>
         </div>
-        <span class="text-[11px] font-sans text-stone-gray">
-          Doğrudan somut bir ihtiyacı üstlenerek kütüphanemize güç verebilirsiniz.
-        </span>
-      </div>
 
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-        {wishlistItems.map((wish) => (
-          <div class="bg-parchment border-2 border-olive rounded-xs p-4 flex flex-col justify-between shadow-xs hover:shadow-md transition-all">
-            <div>
-              <div class="flex items-center justify-between gap-2 mb-2">
-                <span class="px-2 py-0.5 bg-olive/10 text-olive text-[10px] font-sans font-bold uppercase rounded-2xs">
-                  {wish.category}
-                </span>
-                <span class="px-2 py-0.5 bg-amber-100 text-amber-900 text-[10px] font-sans font-bold rounded-2xs">
-                  {wish.status}
-                </span>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          {wishlistItems.map((wish) => (
+            <div class="bg-parchment border-2 border-olive rounded-xs p-4 flex flex-col justify-between shadow-xs hover:shadow-md transition-all">
+              <div>
+                <div class="flex items-center justify-between gap-2 mb-2">
+                  <span class="px-2.5 py-0.5 bg-olive text-white text-[11px] font-sans font-bold uppercase tracking-wider rounded-2xs">
+                    {wish.category}
+                  </span>
+                  <span class="px-2 py-0.5 bg-amber-100 text-amber-900 text-[10px] font-sans font-bold rounded-2xs">
+                    {wish.status}
+                  </span>
+                </div>
+
+                <p class="font-sans text-xs sm:text-[13px] text-ink/90 font-medium leading-relaxed my-2">
+                  {wish.desc}
+                </p>
               </div>
 
-              <h3 class="font-serif text-sm sm:text-base font-bold text-ink mb-1">
-                {wish.title}
-              </h3>
-
-              <p class="font-sans text-xs text-ink/80 leading-relaxed mb-3">
-                {wish.desc}
-              </p>
+              <button
+                type="button"
+                class="btn-fulfill-wish w-full py-1.5 bg-olive hover:bg-bodrum-blue-dark text-white text-[11px] font-sans font-bold uppercase tracking-wider rounded-xs transition-colors shadow-2xs flex items-center justify-center gap-1 cursor-pointer mt-2"
+                data-wish-select={wish.selectValue}
+                data-wish-title={wish.category}
+              >
+                <span class="material-symbols-outlined text-xs">volunteer_activism</span>
+                <span>Bu İhtiyacı Üstlen / Destek Ol</span>
+              </button>
             </div>
-
-            <button
-              type="button"
-              class="btn-fulfill-wish w-full py-1.5 bg-olive hover:bg-bodrum-blue-dark text-white text-[11px] font-sans font-bold uppercase tracking-wider rounded-xs transition-colors shadow-2xs flex items-center justify-center gap-1 cursor-pointer mt-1"
-              data-wish-select={wish.selectValue}
-              data-wish-title={wish.title}
-            >
-              <span class="material-symbols-outlined text-xs">volunteer_activism</span>
-              <span>Bu İhtiyacı Üstlen / Destek Ol</span>
-            </button>
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
     </section>
 
@@ -284,7 +283,7 @@ const wishlistItems = [
           </div>
         </div>
 
-        <!-- Sağ Taraf: Destek ve Gönüllü Katılım Formu -->
+        <!-- Sağ Taraf: Destek ve Gönüllü Katılım Formu (Eser Bağışı Seçenekli) -->
         <div class="lg:col-span-7 bg-parchment border-2 border-olive rounded-xs p-4 sm:p-6 shadow-xs">
           <h3 class="font-serif text-base sm:text-lg text-ink font-bold mb-1">
             Destek ve Gönüllü Katılım Başvuru Formu
@@ -318,7 +317,7 @@ const wishlistItems = [
                 <label class="block text-[11px] font-bold text-ink uppercase tracking-wider mb-0.5">Telefon / GSM *</label>
                 <input 
                   type="tel" 
-                  required
+                  required 
                   placeholder="05XX XXX XX XX"
                   class="w-full px-3 py-1.5 bg-surface-bright border border-sand text-ink text-xs focus:outline-none focus:border-olive rounded-xs" 
                 />
@@ -337,7 +336,7 @@ const wishlistItems = [
                 <option value="uzmanlik">Bilgi ve Uzmanlık / Konuşmacı</option>
                 <option value="maddi">Maddi / Kurumsal Destek</option>
                 <option value="gonullu">Gönüllü Katılım (Etkinlik, Arşiv, Atölye)</option>
-                <option value="arastirma">Araştırma & Arşiv Desteği</option>
+                <option value="eser">Eser Bağışı (Resim, Heykel veya Sanat Geliri)</option>
                 <option value="mekan">Mekân, Ekipman ve Malzeme Desteği</option>
                 <option value="baglanti">Ulusal / Uluslararası Bağlantı</option>
                 <option value="diger">Diğer Katkılar</option>

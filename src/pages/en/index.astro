@@ -5,20 +5,11 @@ import { getT } from '../../utils/i18n';
 const lang = 'en';
 const t = getT(lang);
 
-const balıkçıQuotesEn = [
-  {
-    quote: "When you reach the top of the hill, you will see Bodrum. Don't think you will leave as you came. Those before you were the same; they all left their minds behind in Bodrum...",
-    source: "The Blue Exile"
-  },
-  {
-    quote: "The sea awakens the infinity within man. Once you give your heart to the Mediterranean, you can no longer fit into the narrow confines of the land.",
-    source: "Hello Mediterranean"
-  },
-  {
-    quote: "Our humanism was not crafted at a desk, but forged in the salty waters of the Aegean and the millennial soil of Anatolia.",
-    source: "The Sixth Continent Mediterranean"
-  }
-];
+const balikciArrivalQuoteEn = {
+  title: "THE MOMENT THE FISHERMAN OF HALICARNASSUS FIRST ARRIVED IN BODRUM",
+  quote: "At last, we had reached the top of the slope… My heart was pounding. For how many months had I struggled to come here! Turning a bend at the summit, with a roaring splash and rumble, the deep indigo of the Archipelago spread out into immeasurable expanses… there was an infinite depth. In the evening indigo, the vast Archipelago—the ancient sea—declared its existence to me with such majesty. It was an azure roar… stretching endlessly into clear openness… two crescent-shaped harbors, and in the middle, the peninsula carrying the castle…",
+  source: "THE BLUE EXILE – THE FISHERMAN OF HALICARNASSUS"
+};
 
 const initialGuestbookNotesEn = [
   {
@@ -85,15 +76,17 @@ const initialGuestbookNotesEn = [
           </div>
         </div>
 
-        <!-- Right: Clean Oval-Cornered Logo -->
+        <!-- Right: Parallel Oval Framed Logo -->
         <div class="lg:col-span-5 flex items-center justify-center">
-          <div class="w-full max-w-[210px] sm:max-w-[240px] aspect-square rounded-xl sm:rounded-2xl overflow-hidden shadow-sm">
-            <img
-              src="/images/logo.png"
-              alt="Bodrum City Library Logo"
-              class="w-full h-full object-contain rounded-xl sm:rounded-2xl"
-              loading="eager"
-            />
+          <div class="p-2 sm:p-2.5 rounded-[28px] sm:rounded-[36px] border-2 border-olive bg-parchment shadow-sm inline-block">
+            <div class="w-full max-w-[200px] sm:max-w-[230px] aspect-square rounded-[22px] sm:rounded-[30px] overflow-hidden">
+              <img
+                src="/images/logo.png"
+                alt="Bodrum City Library Logo"
+                class="w-full h-full object-contain rounded-[22px] sm:rounded-[30px]"
+                loading="eager"
+              />
+            </div>
           </div>
         </div>
 
@@ -142,7 +135,7 @@ const initialGuestbookNotesEn = [
             <!-- Vertical 3:4 Frame -->
             <div class="aspect-[3/4] w-36 sm:w-40 my-2 flex items-center justify-center overflow-hidden rounded-xs border border-sand bg-white/60 p-1">
               <img
-                src="/images/hc_logo.jpg"
+                src="/images/hc_logo.png"
                 alt="Children of Halicarnassus Arts Program"
                 class="w-full h-full object-contain"
               />
@@ -163,7 +156,8 @@ const initialGuestbookNotesEn = [
           <div class="bg-parchment p-4 border-2 border-olive rounded-xs shadow-xs flex flex-col justify-between items-center text-center max-w-[280px] w-full mx-auto">
             <div class="h-10 flex items-center justify-center w-full">
               <h3 class="font-serif text-sm sm:text-base font-bold text-olive text-center leading-snug">
-                Halicarnassus Culture, Arts, Education<br />& Ecology Association
+                Halicarnassus Culture, Arts,<br />
+                Education & Ecology Association
               </h3>
             </div>
 
@@ -176,9 +170,12 @@ const initialGuestbookNotesEn = [
             </div>
 
             <div class="h-11 flex items-center justify-center w-full">
-              <p class="font-sans text-[11px] sm:text-xs text-ink/85 leading-snug text-center">
-                Official institutional umbrella<br />for all our initiatives
-              </p>
+              <a
+                href="/en/support#support-form-section"
+                class="font-sans text-[11px] sm:text-xs text-olive font-bold hover:underline leading-snug text-center block transition-colors"
+              >
+                Click here to become a member<br />of our association
+              </a>
             </div>
 
             <div class="pt-2 border-t border-olive/20 text-[10px] sm:text-[11px] font-sans italic text-stone-gray w-full text-center">
@@ -192,7 +189,7 @@ const initialGuestbookNotesEn = [
     </div>
   </section>
 
-  <!-- 2. Daily Fisherman Quote -->
+  <!-- 2. The Moment the Fisherman First Arrived in Bodrum -->
   <section class="py-8 md:py-10 px-5 md:px-12 bg-surface-container-low border-b border-sand">
     <div class="max-w-[1280px] mx-auto">
       <div class="bg-parchment border-2 border-olive rounded-xs p-5 sm:p-8 shadow-md relative overflow-hidden">
@@ -202,30 +199,19 @@ const initialGuestbookNotesEn = [
         </div>
 
         <div class="relative z-10 max-w-3xl mx-auto text-center space-y-3">
-          <div class="inline-flex items-center gap-1.5 px-2.5 py-0.5 bg-olive/10 text-olive text-[11px] font-sans font-bold uppercase tracking-widest rounded-xs">
+          <div class="inline-flex items-center gap-1.5 px-3 py-1 bg-olive text-white text-[11px] sm:text-xs font-sans font-bold uppercase tracking-widest rounded-xs shadow-2xs">
             <span class="material-symbols-outlined text-xs">auto_stories</span>
-            <span>A GREETING FROM THE FISHERMAN OF HALICARNASSUS</span>
+            <span>{balikciArrivalQuoteEn.title}</span>
           </div>
 
-          <blockquote id="quote-display-en" class="font-serif italic text-base sm:text-lg text-ink leading-relaxed">
-            "{balıkçıQuotesEn[0].quote}"
+          <blockquote class="font-serif italic text-base sm:text-lg text-ink leading-relaxed text-justify sm:text-center">
+            "{balikciArrivalQuoteEn.quote}"
           </blockquote>
 
-          <div class="flex items-center justify-center gap-2 text-xs font-sans">
-            <span class="font-bold text-olive font-serif text-sm">Cevat Şakir Kabaağaçlı</span>
-            <span class="text-stone-gray">•</span>
-            <cite id="quote-source-en" class="not-italic text-stone-gray font-medium">{balıkçıQuotesEn[0].source}</cite>
-          </div>
-
-          <div class="pt-1 flex items-center justify-center gap-2">
-            <button
-              type="button"
-              id="next-quote-btn-en"
-              class="px-3.5 py-1.5 bg-olive text-white hover:bg-bodrum-blue-dark text-[11px] font-sans font-bold uppercase tracking-wider rounded-xs transition-colors shadow-2xs flex items-center gap-1 cursor-pointer"
-            >
-              <span class="material-symbols-outlined text-xs">refresh</span>
-              <span>Display Another Quote</span>
-            </button>
+          <div class="flex items-center justify-center gap-2 text-xs font-sans pt-1">
+            <cite class="not-italic text-olive font-bold font-serif text-sm tracking-wide">
+              {balikciArrivalQuoteEn.source}
+            </cite>
           </div>
         </div>
       </div>
@@ -325,20 +311,7 @@ const initialGuestbookNotesEn = [
   </section>
 </Layout>
 
-<script is:inline define:vars={{ balıkçıQuotesEn }}>
-  let quoteIndexEn = 0;
-  const quoteDisplayEn = document.getElementById('quote-display-en');
-  const quoteSourceEn = document.getElementById('quote-source-en');
-  const nextQuoteBtnEn = document.getElementById('next-quote-btn-en');
-
-  if (nextQuoteBtnEn && quoteDisplayEn && quoteSourceEn) {
-    nextQuoteBtnEn.addEventListener('click', () => {
-      quoteIndexEn = (quoteIndexEn + 1) % balıkçıQuotesEn.length;
-      quoteDisplayEn.textContent = `"${balıkçıQuotesEn[quoteIndexEn].quote}"`;
-      quoteSourceEn.textContent = balıkçıQuotesEn[quoteIndexEn].source;
-    });
-  }
-
+<script is:inline>
   const guestbookFormEn = document.getElementById('guestbook-form-en');
   const guestbookListEn = document.getElementById('guestbook-list-en');
 
