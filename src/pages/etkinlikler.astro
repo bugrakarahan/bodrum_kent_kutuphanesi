@@ -21,7 +21,7 @@ const pastEventCategories = [
   lang={lang}
   currentPath="/etkinlikler"
 >
-  <!-- Hero Header -->
+  <!-- Hero Header (Standardized Scale) -->
   <section class="py-6 md:py-10 px-5 md:px-12 bg-surface-bright border-b border-sand">
     <div class="max-w-[1280px] mx-auto">
       <div class="max-w-3xl">
@@ -38,13 +38,13 @@ const pastEventCategories = [
   <!-- Main Content Area -->
   <div class="max-w-[1280px] mx-auto px-5 md:px-12 py-6 md:py-10 space-y-12">
     
-    <!-- 1. Gelecek Etkinlikler (Sola Yerleştirilmiş Dikey 3:4 Izgara Düzeni) -->
+    <!-- 1. Gelecek Etkinlikler Section (Birebir Önceki Beğenilen Haline Geri Getirildi) -->
     <section>
       <h2 class="font-serif text-lg sm:text-xl text-ink font-bold mb-4 pb-2 border-b border-sand">
         Gelecek Etkinlikler
       </h2>
 
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div class="max-w-2xl mx-auto space-y-6">
         {upcomingEvents.map((event) => {
           const eventPayload = JSON.stringify({
             title: event.data.title,
@@ -58,73 +58,92 @@ const pastEventCategories = [
           });
 
           return (
-            <div class="bg-surface-container-low border-2 border-olive p-4 sm:p-5 flex flex-col justify-between shadow-xs rounded-xs">
-              <div>
-                <!-- Dikey 3:4 Görsel -->
-                <div 
-                  class="aspect-[3/4] w-full bg-parchment border-2 border-olive p-1.5 rounded-xs shadow-sm cursor-pointer group mb-3.5 relative overflow-hidden"
-                  data-event-detail-trigger
-                  data-event-data={eventPayload}
-                  title="Etkinlik Detaylarını Görüntüle"
-                >
-                  <div class="w-full h-full overflow-hidden bg-surface-container-high relative border border-sand/60 rounded-2xs flex items-center justify-center">
-                    <img
-                      src={event.data.image}
-                      alt="Bodrum Kent Kütüphanesi Kitap Kulübü"
-                      class="w-full h-full object-contain group-hover:scale-105 transition-transform duration-300"
-                    />
-                  </div>
-                  <div class="absolute inset-0 bg-black/30 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center text-white text-xs font-sans font-bold uppercase tracking-wider gap-1">
-                    <span class="material-symbols-outlined text-sm">open_in_new</span>
-                    <span>Detayları Gör</span>
-                  </div>
+            <div class="bg-surface-container-low border-2 border-olive p-5 sm:p-6 shadow-xs rounded-xs">
+              <div class="space-y-4">
+                
+                <!-- Category Badge & Date -->
+                <div class="flex items-center justify-between gap-2 border-b border-sand pb-3">
+                  <span class="inline-block px-2.5 py-0.5 bg-olive text-white text-[11px] font-sans uppercase tracking-widest font-bold rounded-2xs">
+                    {event.data.categoryLabelTr}
+                  </span>
+                  <span class="text-xs font-mono text-stone-gray font-bold">
+                    {event.data.displayDateTr}
+                  </span>
                 </div>
 
-                <div class="flex items-center justify-between text-xs text-stone-gray font-mono mb-2">
-                  <span class="text-olive font-sans font-bold text-xs uppercase">{event.data.categoryLabelTr}</span>
-                  <span class="font-bold">{event.data.displayDateTr}</span>
-                </div>
-
-                <h3 class="font-serif text-base sm:text-lg text-ink font-bold leading-snug mb-2.5">
+                <!-- Event Title -->
+                <h3 class="font-serif text-lg sm:text-xl text-ink font-bold leading-snug text-center sm:text-left">
                   {event.data.title}
                 </h3>
 
-                <div class="space-y-2 text-xs sm:text-[13px] text-ink/85 font-sans leading-relaxed text-justify mb-4">
+                <!-- Descriptive Editorial Body -->
+                <div class="space-y-3 text-ink/90 font-sans text-xs sm:text-[13px] leading-relaxed text-justify">
                   <p>
                     Zihinleri ve düşünce yapılarını zorlayan, ezber bozan, farklı bir kitap kulübü olmayı hedefliyoruz. Seçeceğimiz kitaplar ve bu kitaplardan yola çıkarak konuşacağımız konular da aynı şekilde farklı, sorgulayıcı ve düşündürücü olacak.
                   </p>
+                  <p>
+                    Burada herkesin aynı şeyi düşündüğü bir sohbet değil, farklı düşüncelerin ve görüşlerin çarpıştığı, sağlam tartışmaların yaşandığı bir ortam istiyoruz. Çünkü iyi bir kitap, yalnızca okunup biten değil, zihnimizde yeni sorular bırakan kitaptır.
+                  </p>
+
+                  <!-- Dikey 3:4 Canva Görseli Ortalanmış ve Boyutlandırılmış -->
+                  <div class="my-4 flex flex-col items-center">
+                    <div 
+                      class="w-full max-w-[280px] sm:max-w-[320px] aspect-[3/4] bg-parchment border-2 border-olive p-1.5 rounded-xs shadow-sm cursor-pointer group"
+                      data-event-detail-trigger
+                      data-event-data={eventPayload}
+                      title="Etkinlik Detaylarını ve Takvim Seçeneklerini Görüntüle"
+                    >
+                      <div class="w-full h-full overflow-hidden bg-surface-container-high relative border border-sand/60 rounded-2xs flex items-center justify-center">
+                        <img
+                          src={event.data.image}
+                          alt="Bodrum Kent Kütüphanesi Kitap Kulübü"
+                          class="w-full h-full object-contain group-hover:scale-105 transition-transform duration-300"
+                        />
+                      </div>
+                      <div class="pt-1.5 text-center text-[11px] text-stone-gray font-sans italic flex items-center justify-center gap-1">
+                        <span>Bodrum Kent Kütüphanesi • Kitap Kulübü</span>
+                        <span class="material-symbols-outlined text-xs text-olive">open_in_new</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  <p>
+                    Tartışmalarımızın sonunda belki daha önce hiç düşünmediğimiz bir şeyi düşünecek, belki bir fikrimizi değiştirecek, belki de dünyaya başka bir pencereden bakmaya başlayacağız. Kısacası, yalnızca kitapları değil, düşüncelerimizi de masaya yatıracağız.
+                  </p>
+
                   <p class="font-bold text-olive">
                     Değişmeye, sorgulamaya ve birlikte düşünmeye hazırsanız, sizi Kitap Kulübümüze bekliyoruz!
                   </p>
                 </div>
-              </div>
 
-              <!-- Action Buttons -->
-              <div class="pt-3 border-t border-sand space-y-2">
-                <div class="flex items-center gap-2">
-                  <a
-                    href="https://wa.me/905423739748?text=Merhaba,%20Bodrum%20Kent%20K%C3%BCt%C3%BCphanesi%20Kitap%20Kul%C3%BCb%C3%BCne%20kat%C4%B1lmak%20istiyorum."
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    class="flex-1 py-2 bg-olive hover:bg-bodrum-blue-dark text-white text-xs font-sans font-bold tracking-wider uppercase transition-colors shadow-xs rounded-xs inline-flex items-center justify-center gap-1"
-                  >
-                    <span class="material-symbols-outlined text-sm">chat</span>
-                    <span>KATILIN</span>
-                  </a>
+                <!-- Action Buttons & Notice -->
+                <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pt-4 mt-4 border-t border-sand">
+                  <div class="flex flex-wrap items-center gap-2">
+                    <a
+                      href="https://wa.me/905423739748?text=Merhaba,%20Bodrum%20Kent%20K%C3%BCt%C3%BCphanesi%20Kitap%20Kul%C3%BCb%C3%BCne%20kat%C4%B1lmak%20istiyorum."
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      class="px-3.5 py-2 bg-olive hover:bg-bodrum-blue-dark text-white text-xs font-sans font-bold tracking-wider uppercase transition-colors shadow-xs shrink-0 rounded-xs inline-flex items-center gap-1.5"
+                    >
+                      <span class="material-symbols-outlined text-sm">chat</span>
+                      <span>KİTAP KULÜBÜMÜZE KATILIN</span>
+                    </a>
 
-                  <button
-                    type="button"
-                    class="flex-1 py-2 bg-parchment border border-olive text-olive hover:bg-olive hover:text-white text-xs font-sans font-bold tracking-wider uppercase transition-colors shadow-xs rounded-xs inline-flex items-center justify-center gap-1 cursor-pointer"
-                    data-event-detail-trigger
-                    data-event-data={eventPayload}
-                  >
-                    <span class="material-symbols-outlined text-sm">event_note</span>
-                    <span>DETAY</span>
-                  </button>
-                </div>
+                    <!-- Detay & Takvim Trigger -->
+                    <button
+                      type="button"
+                      class="px-3.5 py-2 bg-parchment border border-olive text-olive hover:bg-olive hover:text-white text-xs font-sans font-bold tracking-wider uppercase transition-colors shadow-xs shrink-0 rounded-xs inline-flex items-center gap-1 cursor-pointer"
+                      data-event-detail-trigger
+                      data-event-data={eventPayload}
+                    >
+                      <span class="material-symbols-outlined text-sm">calendar_month</span>
+                      <span>Takvime Ekle / Detay</span>
+                    </button>
+                  </div>
 
-                <div class="text-[10px] font-sans italic text-stone-gray text-center">
-                  Duyurular WhatsApp ve Instagram'da paylaşılacaktır.
+                  <span class="text-[11px] sm:text-xs font-sans italic text-ink/80 leading-snug">
+                    Duyuru ve ilk buluşma tarihi Instagram ve WhatsApp Kanalımızda paylaşılacaktır.
+                  </span>
                 </div>
               </div>
             </div>
@@ -133,7 +152,7 @@ const pastEventCategories = [
       </div>
     </section>
 
-    <!-- 2. Geçmiş Etkinlikler (Sola Yerleştirilmiş Dikey 3:4 Izgara Düzeni) -->
+    <!-- 2. Geçmiş Etkinlikler Section (Sola Yerleştirilmiş Dikey 3:4 Kart ve Fotoğraf) -->
     <section>
       <h2 class="font-serif text-lg sm:text-xl text-ink font-bold mb-3 pb-2 border-b border-sand">
         Geçmiş Etkinlikler
@@ -152,7 +171,7 @@ const pastEventCategories = [
         ))}
       </div>
 
-      <!-- Sola yerleştirilmiş 3 sütunlu ızgara: Yeni etkinlikler sağdaki sütunlara eklenecek -->
+      <!-- 3 Sütunlu Izgara (Sola Yaslı, Yeni Etkinlikler Sağına Eklenecek) -->
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {pastEvents.map((event) => {
           const eventPayload = JSON.stringify({
@@ -167,11 +186,11 @@ const pastEventCategories = [
           });
 
           return (
-            <div class="bg-surface-container-low border-2 border-olive p-4 sm:p-5 flex flex-col justify-between shadow-xs rounded-xs">
+            <div class="bg-surface-container-low border-2 border-olive p-4 sm:p-5 flex flex-col justify-between shadow-xs rounded-xs w-full max-w-[360px]">
               <div>
-                <!-- Dikey 3:4 Afiş -->
+                <!-- Dikey 3:4 Afiş Fotoğrafı -->
                 <div 
-                  class="aspect-[3/4] w-full overflow-hidden bg-surface-container-high border-2 border-olive rounded-xs mb-3.5 cursor-pointer group relative shadow-sm"
+                  class="aspect-[3/4] w-full overflow-hidden bg-surface-container-high border-2 border-olive rounded-xs mb-3 cursor-pointer group relative shadow-sm"
                   data-gallery-trigger
                   data-gallery-title={event.data.title}
                   data-gallery-photos={JSON.stringify(event.data.photos || [event.data.image])}
@@ -188,24 +207,24 @@ const pastEventCategories = [
                   </div>
                 </div>
 
-                <div class="flex items-center justify-between text-xs text-stone-gray font-mono mb-2">
+                <div class="flex items-center justify-between text-[11px] text-stone-gray font-mono mb-2">
                   <span class="text-olive font-sans font-bold text-xs uppercase">{event.data.categoryLabelTr}</span>
                   <span class="font-bold">{event.data.displayDateTr}</span>
                 </div>
 
-                <h3 class="font-serif text-base sm:text-lg text-ink font-bold mb-2.5 leading-snug text-center">
+                <h3 class="font-serif text-base sm:text-lg text-ink font-bold mb-2 leading-snug text-center">
                   Antropolog & Arkeolog<br />
                   <span class="text-olive font-bold">Timuçin Binder ile</span><br />
                   Antik Çağ Ege’sinin Gökyüzü Mitleri
                 </h3>
 
-                <div class="text-xs text-ink/85 font-sans leading-relaxed mb-4 space-y-2 whitespace-pre-line text-justify">
-                  {event.data.summaryTr}
-                </div>
+                <p class="text-xs text-ink/85 font-sans leading-relaxed text-justify mb-3 line-clamp-4">
+                  Antik Çağ Ege gökyüzü mitolojisi, yıldızlar, takımyıldızlar ve antik denizcilerin yön bulma kadim bilgeliği üzerine söyleşi ve atölye buluşması.
+                </p>
               </div>
 
               <!-- Action Bar -->
-              <div class="flex items-center justify-center gap-2.5 pt-3 border-t border-sand">
+              <div class="flex items-center justify-center gap-2 pt-3 border-t border-sand">
                 <button
                   type="button"
                   class="flex-1 py-2 bg-olive text-white hover:bg-bodrum-blue-dark text-xs font-sans font-bold uppercase tracking-wider transition-colors rounded-xs shadow-2xs cursor-pointer inline-flex items-center justify-center gap-1"
@@ -213,7 +232,7 @@ const pastEventCategories = [
                   data-event-data={eventPayload}
                 >
                   <span class="material-symbols-outlined text-sm">event_note</span>
-                  <span>Detay</span>
+                  <span>Detay & Bilgi</span>
                 </button>
 
                 <button
@@ -224,7 +243,7 @@ const pastEventCategories = [
                   data-gallery-photos={JSON.stringify(event.data.photos || [event.data.image])}
                 >
                   <span class="material-symbols-outlined text-sm">photo_library</span>
-                  <span>Fotoğraflar</span>
+                  <span>Fotoğraflar (11)</span>
                 </button>
               </div>
             </div>
