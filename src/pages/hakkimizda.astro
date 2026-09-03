@@ -48,14 +48,14 @@ const activitiesRight = [
   lang={lang}
   currentPath="/hakkimizda"
 >
-  <!-- 1. Fikrin Doğuşu & Kurucu İsimler -->
+  <!-- 1. Fikrin Doğuşu & Kurucu İsimler (Orijinal Haline Geri Getirildi) -->
   <section class="py-6 md:py-10 px-5 md:px-12 bg-surface-bright border-b border-sand">
     <div class="max-w-[1280px] mx-auto">
       
       <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-10 items-center">
         
         <!-- Sol: Fikrin Doğuşu ve İsim Listesi -->
-        <div class="lg:col-span-8 space-y-4">
+        <div class="lg:col-span-7 space-y-3.5">
           <div class="inline-flex items-center gap-1.5 px-2.5 py-0.5 bg-olive text-white text-[11px] font-sans font-bold tracking-widest uppercase rounded-xs shadow-2xs">
             <span>TARİHÇE</span>
           </div>
@@ -64,40 +64,37 @@ const activitiesRight = [
             Fikrin Doğuşu
           </h1>
 
-          <div class="bg-parchment border border-sand p-4 sm:p-5 rounded-xs shadow-xs space-y-2.5 text-justify">
-            <p class="font-sans text-xs sm:text-sm text-ink/90 leading-relaxed">
-              Bodrum Kent Kütüphanesi ismi ve fikri, ilk olarak <strong>16.09.2019</strong> tarihinde Dibeklihan Kültür ve Sanat Köyü’nde dile getirilmiştir.
-            </p>
-            <p class="font-sans text-xs sm:text-sm text-ink/90 leading-relaxed">
-              Bodrum Kent Kütüphanesi ismi, <strong>Sayın Sönmez Taner</strong> tarafından Zeytin Taneleri Kütüphanesi ekibine emanet edilmiştir: <strong>07.09.2019</strong>.
-            </p>
-            <p class="font-sans text-xs sm:text-sm text-ink/90 leading-relaxed">
-              Kütüphanenin kurulması için, <strong>Bodrum Kent Kütüphanesi Girişimi</strong> oluşturulmuş ve bu isim altında çalışmalara başlanmıştır.
+          <div class="font-sans text-xs sm:text-sm text-ink/90 leading-relaxed text-justify">
+            <p>
+              Bodrum Kent Kütüphanesi ismi ve fikri, ilk olarak <strong>16.09.2019</strong> tarihinde,<br class="hidden sm:inline" />
+              Dibeklihan Kültür ve Sanat Köyü’nde, aşağıda yer alan değerli isimler tarafından dile getirilmiştir:
             </p>
           </div>
 
-          <!-- Girişim Kurulu / Kurucu İsimler (Alfabetik Sıralı) -->
-          <div class="pt-2">
-            <h2 class="font-serif text-sm sm:text-base font-bold text-olive mb-2 flex items-center gap-1.5">
-              <span class="material-symbols-outlined text-base">groups</span>
-              <span>Girişim Kurulu Üyeleri (Alfabetik Sırayla)</span>
-            </h2>
-            
-            <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-2 text-xs font-sans text-ink/90">
+          <!-- Alt alta, alfabetik sıralı liste -->
+          <div class="bg-parchment border border-sand p-4 shadow-xs">
+            <ul class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs sm:text-sm font-sans font-medium text-ink">
               {alphabeticalBoard.map((name) => (
-                <div class="bg-parchment px-2.5 py-1.5 border border-sand rounded-xs shadow-2xs flex items-center gap-1.5">
-                  <span class="w-1.5 h-1.5 rounded-full bg-olive shrink-0"></span>
-                  <span class="font-medium text-[11px] sm:text-xs truncate">{name}</span>
-                </div>
+                <li class="flex items-center gap-2 py-0.5">
+                  <span class="w-2 h-2 rounded-full bg-olive shrink-0"></span>
+                  <span class="font-semibold">{name}</span>
+                </li>
               ))}
-            </div>
+            </ul>
+          </div>
+
+          <!-- Emanet Notu Kutusu -->
+          <div class="bg-parchment border border-sand p-3.5 rounded-xs shadow-2xs">
+            <p class="font-sans text-xs sm:text-sm text-ink font-medium leading-relaxed">
+              Bodrum Kent Kütüphanesi ismi, <strong>Sayın Sönmez Taner</strong> tarafından, <strong>7 Eylül 2019</strong> tarihinde Zeytin Taneleri Kütüphanesi ekibine emanet edilmiştir.
+            </p>
           </div>
         </div>
 
         <!-- Sağ: Bodrum Mavisi Paralel Oval Çerçeve İçinde BKK Logosu -->
-        <div class="lg:col-span-4 flex items-center justify-center">
+        <div class="lg:col-span-5 flex items-center justify-center">
           <div class="p-2 sm:p-2.5 rounded-[28px] sm:rounded-[36px] border-2 border-olive bg-parchment shadow-sm inline-block">
-            <div class="w-full max-w-[190px] sm:max-w-[210px] aspect-square rounded-[22px] sm:rounded-[30px] overflow-hidden">
+            <div class="w-full max-w-[200px] sm:max-w-[230px] aspect-square rounded-[22px] sm:rounded-[30px] overflow-hidden">
               <img
                 src="/images/logo.png"
                 alt="Bodrum Kent Kütüphanesi Logosu"
@@ -113,7 +110,7 @@ const activitiesRight = [
     </div>
   </section>
 
-  <!-- 2. Halikarnas Balıkçısı Mirası (4 Kutu, Her Biri 8 cm Genişliğinde, Sayfaya Ortalanmış) -->
+  <!-- 2. Halikarnas Balıkçısı Mirası (4 Kutu, Her Biri 8 cm, Başlıklar ve Yazarlar Mavi Renkte) -->
   <section class="py-6 md:py-10 px-5 md:px-12 bg-surface-container-low border-b border-sand">
     <div class="max-w-[1280px] mx-auto">
       
@@ -135,10 +132,10 @@ const activitiesRight = [
         <!-- 1. Sıra: 2 Kutu -->
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
           
-          <!-- 1. Halikarnas Balıkçısı’nın Mirası (Yazıya Tıklanabilir Bağlantı) -->
+          <!-- 1. Halikarnas Balıkçısı’nın Mirası (Başlık & İsim Mavi Renkte) -->
           <div class="bg-parchment p-4 border-2 border-olive rounded-xs shadow-xs flex flex-col justify-between">
             <div>
-              <h3 class="font-serif text-sm sm:text-base font-bold text-olive mb-1">
+              <h3 class="font-serif text-sm sm:text-base font-bold text-[#1B368F] mb-1">
                 Halikarnas Balıkçısı’nın Mirası
               </h3>
               
@@ -146,11 +143,11 @@ const activitiesRight = [
                 href="https://docs.google.com/document/d/1vBvrur9NpObZtPdcvLyTgcN4qkPI1B9T4q3Lle8VEsY/edit?tab=t.0"
                 target="_blank"
                 rel="noopener noreferrer"
-                class="inline-flex items-center gap-1 text-xs sm:text-[13px] font-bold text-ink hover:text-olive transition-colors mb-1.5 underline decoration-olive/40 underline-offset-2"
+                class="inline-flex items-center gap-1 text-sm sm:text-[15px] font-bold text-[#1B368F] hover:underline transition-colors mb-1.5 underline decoration-[#1B368F]/40 underline-offset-2"
                 title="Sönmez Taner ve Rüştü Tezcan'ın yazısını okuyun"
               >
-                <span>Sönmez Taner - Rüştü Tezcan</span>
-                <span class="material-symbols-outlined text-xs text-olive">open_in_new</span>
+                <span>Sönmez Taner – Rüştü Tezcan</span>
+                <span class="material-symbols-outlined text-xs text-[#1B368F]">open_in_new</span>
               </a>
 
               <p class="font-sans text-xs text-ink/85 leading-relaxed">
@@ -163,7 +160,7 @@ const activitiesRight = [
                 href="https://docs.google.com/document/d/1vBvrur9NpObZtPdcvLyTgcN4qkPI1B9T4q3Lle8VEsY/edit?tab=t.0"
                 target="_blank"
                 rel="noopener noreferrer"
-                class="text-olive font-bold hover:underline inline-flex items-center gap-1"
+                class="text-[#1B368F] font-bold hover:underline inline-flex items-center gap-1"
               >
                 <span>Yazıyı Oku</span>
                 <span class="material-symbols-outlined text-xs">arrow_outward</span>
@@ -172,14 +169,14 @@ const activitiesRight = [
             </div>
           </div>
 
-          <!-- 2. Altıncı Kıta Akdeniz -->
+          <!-- 2. Altıncı Kıta Akdeniz (Başlık & İsim Mavi Renkte) -->
           <div class="bg-parchment p-4 border-2 border-olive rounded-xs shadow-xs flex flex-col justify-between">
             <div>
-              <h3 class="font-serif text-sm sm:text-base font-bold text-olive mb-1">
+              <h3 class="font-serif text-sm sm:text-base font-bold text-[#1B368F] mb-1">
                 Altıncı Kıta Akdeniz
               </h3>
               
-              <div class="text-xs sm:text-[13px] font-bold text-ink mb-1.5">
+              <div class="text-sm sm:text-[15px] font-bold text-[#1B368F] mb-1.5">
                 Ayşe Temiz
               </div>
 
@@ -197,14 +194,14 @@ const activitiesRight = [
         <!-- 2. Sıra: 2 Kutu -->
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
           
-          <!-- 3. Yazar Halikarnas Balıkçısı -->
+          <!-- 3. Yazar Halikarnas Balıkçısı (Başlık & İsim Mavi Renkte) -->
           <div class="bg-parchment p-4 border-2 border-olive rounded-xs shadow-xs flex flex-col justify-between">
             <div>
-              <h3 class="font-serif text-sm sm:text-base font-bold text-olive mb-1">
+              <h3 class="font-serif text-sm sm:text-base font-bold text-[#1B368F] mb-1">
                 Yazar Halikarnas Balıkçısı
               </h3>
 
-              <div class="text-xs sm:text-[13px] font-bold text-ink mb-1.5">
+              <div class="text-sm sm:text-[15px] font-bold text-[#1B368F] mb-1.5">
                 Hatice Yücel
               </div>
 
@@ -218,14 +215,14 @@ const activitiesRight = [
             </div>
           </div>
 
-          <!-- 4. Bodrum’u Yeşerten Kalem -->
+          <!-- 4. Bodrum’u Yeşerten Kalem (Başlık & İsim Mavi Renkte) -->
           <div class="bg-parchment p-4 border-2 border-olive rounded-xs shadow-xs flex flex-col justify-between">
             <div>
-              <h3 class="font-serif text-sm sm:text-base font-bold text-olive mb-1">
+              <h3 class="font-serif text-sm sm:text-base font-bold text-[#1B368F] mb-1">
                 Bodrum’u Yeşerten Kalem
               </h3>
 
-              <div class="text-xs sm:text-[13px] font-bold text-ink mb-1.5">
+              <div class="text-sm sm:text-[15px] font-bold text-[#1B368F] mb-1.5">
                 İ.Hatice Orman
               </div>
 
@@ -245,7 +242,7 @@ const activitiesRight = [
     </div>
   </section>
 
-  <!-- 3. Amaç ve Hedeflenen Çalışmalar (14 Madde, 2 Sıra Halinde Solda 7, Sağda 7 - Her Kutunun Genişliği ~10 cm) -->
+  <!-- 3. Amaç ve Hedeflenen Çalışmalar (14 Madde, Yazı Boyutu Başlıktan Az Küçük Seviyeye Büyütüldü) -->
   <section class="py-6 md:py-10 px-5 md:px-12 bg-parchment border-b border-sand">
     <div class="max-w-[1280px] mx-auto">
       
@@ -261,11 +258,11 @@ const activitiesRight = [
         <!-- Sol Sütun: 1 - 7 Maddeler -->
         <div class="space-y-3">
           {activitiesLeft.map((act) => (
-            <div class="bg-surface-container-low border-2 border-olive rounded-xs p-3 flex items-start gap-2.5 shadow-xs">
-              <span class="w-5 h-5 rounded-full bg-olive text-white flex items-center justify-center font-mono text-[11px] font-bold shrink-0 mt-0.5 shadow-2xs">
+            <div class="bg-surface-container-low border-2 border-olive rounded-xs p-3.5 flex items-start gap-2.5 shadow-xs">
+              <span class="w-6 h-6 rounded-full bg-[#1B368F] text-white flex items-center justify-center font-mono text-xs font-bold shrink-0 mt-0.5 shadow-2xs">
                 {act.num}
               </span>
-              <p class="font-sans text-xs sm:text-[13px] font-bold text-ink leading-snug">
+              <p class="font-sans text-sm sm:text-[15px] font-semibold text-ink leading-snug">
                 {act.text}
               </p>
             </div>
@@ -275,11 +272,11 @@ const activitiesRight = [
         <!-- Sağ Sütun: 8 - 14 Maddeler -->
         <div class="space-y-3">
           {activitiesRight.map((act) => (
-            <div class="bg-surface-container-low border-2 border-olive rounded-xs p-3 flex items-start gap-2.5 shadow-xs">
-              <span class="w-5 h-5 rounded-full bg-olive text-white flex items-center justify-center font-mono text-[11px] font-bold shrink-0 mt-0.5 shadow-2xs">
+            <div class="bg-surface-container-low border-2 border-olive rounded-xs p-3.5 flex items-start gap-2.5 shadow-xs">
+              <span class="w-6 h-6 rounded-full bg-[#1B368F] text-white flex items-center justify-center font-mono text-xs font-bold shrink-0 mt-0.5 shadow-2xs">
                 {act.num}
               </span>
-              <p class="font-sans text-xs sm:text-[13px] font-bold text-ink leading-snug">
+              <p class="font-sans text-sm sm:text-[15px] font-semibold text-ink leading-snug">
                 {act.text}
               </p>
             </div>

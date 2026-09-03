@@ -46,13 +46,13 @@ const activitiesRightEn = [
   lang={lang}
   currentPath="/en/about"
 >
-  <!-- 1. Genesis & Founding Committee -->
+  <!-- 1. Genesis & Founding Committee (Restored Original Content) -->
   <section class="py-6 md:py-10 px-5 md:px-12 bg-surface-bright border-b border-sand">
     <div class="max-w-[1280px] mx-auto">
       
       <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-10 items-center">
         
-        <div class="lg:col-span-8 space-y-4">
+        <div class="lg:col-span-7 space-y-3.5">
           <div class="inline-flex items-center gap-1.5 px-2.5 py-0.5 bg-olive text-white text-[11px] font-sans font-bold tracking-widest uppercase rounded-xs shadow-2xs">
             <span>HISTORY</span>
           </div>
@@ -61,38 +61,36 @@ const activitiesRightEn = [
             Genesis of the Idea
           </h1>
 
-          <div class="bg-parchment border border-sand p-4 sm:p-5 rounded-xs shadow-xs space-y-2.5 text-justify">
-            <p class="font-sans text-xs sm:text-sm text-ink/90 leading-relaxed">
-              The name and founding concept of Bodrum City Library were first articulated on <strong>16.09.2019</strong> at Dibeklihan Culture & Art Village.
-            </p>
-            <p class="font-sans text-xs sm:text-sm text-ink/90 leading-relaxed">
-              The name was entrusted to the Olive Seeds Library team by <strong>Mr. Sönmez Taner</strong> on <strong>07.09.2019</strong>.
-            </p>
-            <p class="font-sans text-xs sm:text-sm text-ink/90 leading-relaxed">
-              To establish the library, the <strong>Bodrum City Library Initiative</strong> was formed and work commenced under this banner.
+          <div class="font-sans text-xs sm:text-sm text-ink/90 leading-relaxed text-justify">
+            <p>
+              The name and founding concept of Bodrum City Library were first articulated on <strong>16.09.2019</strong>,<br class="hidden sm:inline" />
+              at Dibeklihan Culture & Art Village by the esteemed individuals listed below:
             </p>
           </div>
 
-          <div class="pt-2">
-            <h2 class="font-serif text-sm sm:text-base font-bold text-olive mb-2 flex items-center gap-1.5">
-              <span class="material-symbols-outlined text-base">groups</span>
-              <span>Founding Committee Members (Alphabetical)</span>
-            </h2>
-            
-            <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-2 text-xs font-sans text-ink/90">
+          <!-- Alphabetical List -->
+          <div class="bg-parchment border border-sand p-4 shadow-xs">
+            <ul class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs sm:text-sm font-sans font-medium text-ink">
               {alphabeticalBoard.map((name) => (
-                <div class="bg-parchment px-2.5 py-1.5 border border-sand rounded-xs shadow-2xs flex items-center gap-1.5">
-                  <span class="w-1.5 h-1.5 rounded-full bg-olive shrink-0"></span>
-                  <span class="font-medium text-[11px] sm:text-xs truncate">{name}</span>
-                </div>
+                <li class="flex items-center gap-2 py-0.5">
+                  <span class="w-2 h-2 rounded-full bg-olive shrink-0"></span>
+                  <span class="font-semibold">{name}</span>
+                </li>
               ))}
-            </div>
+            </ul>
+          </div>
+
+          <!-- Entrustment Note Box -->
+          <div class="bg-parchment border border-sand p-3.5 rounded-xs shadow-2xs">
+            <p class="font-sans text-xs sm:text-sm text-ink font-medium leading-relaxed">
+              The name Bodrum City Library was entrusted to the Olive Seeds Library team by <strong>Mr. Sönmez Taner</strong> on <strong>September 7, 2019</strong>.
+            </p>
           </div>
         </div>
 
-        <div class="lg:col-span-4 flex items-center justify-center">
+        <div class="lg:col-span-5 flex items-center justify-center">
           <div class="p-2 sm:p-2.5 rounded-[28px] sm:rounded-[36px] border-2 border-olive bg-parchment shadow-sm inline-block">
-            <div class="w-full max-w-[190px] sm:max-w-[210px] aspect-square rounded-[22px] sm:rounded-[30px] overflow-hidden">
+            <div class="w-full max-w-[200px] sm:max-w-[230px] aspect-square rounded-[22px] sm:rounded-[30px] overflow-hidden">
               <img
                 src="/images/logo.png"
                 alt="Bodrum City Library Logo"
@@ -108,7 +106,7 @@ const activitiesRightEn = [
     </div>
   </section>
 
-  <!-- 2. Heritage of the Fisherman (4 Boxes, ~8 cm Width, Centered) -->
+  <!-- 2. Heritage of the Fisherman (4 Boxes, Blue Titles & Authors) -->
   <section class="py-6 md:py-10 px-5 md:px-12 bg-surface-container-low border-b border-sand">
     <div class="max-w-[1280px] mx-auto">
       
@@ -130,10 +128,10 @@ const activitiesRightEn = [
         <!-- Row 1: 2 Boxes -->
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
           
-          <!-- 1. The Fisherman's Heritage -->
+          <!-- 1. The Fisherman's Heritage (Blue Title & Authors) -->
           <div class="bg-parchment p-4 border-2 border-olive rounded-xs shadow-xs flex flex-col justify-between">
             <div>
-              <h3 class="font-serif text-sm sm:text-base font-bold text-olive mb-1">
+              <h3 class="font-serif text-sm sm:text-base font-bold text-[#1B368F] mb-1">
                 The Fisherman's Heritage
               </h3>
 
@@ -141,11 +139,11 @@ const activitiesRightEn = [
                 href="https://docs.google.com/document/d/1vBvrur9NpObZtPdcvLyTgcN4qkPI1B9T4q3Lle8VEsY/edit?tab=t.0"
                 target="_blank"
                 rel="noopener noreferrer"
-                class="inline-flex items-center gap-1 text-xs sm:text-[13px] font-bold text-ink hover:text-olive transition-colors mb-1.5 underline decoration-olive/40 underline-offset-2"
+                class="inline-flex items-center gap-1 text-sm sm:text-[15px] font-bold text-[#1B368F] hover:underline transition-colors mb-1.5 underline decoration-[#1B368F]/40 underline-offset-2"
                 title="Read the article by Sönmez Taner and Rüştü Tezcan"
               >
-                <span>Sönmez Taner - Rüştü Tezcan</span>
-                <span class="material-symbols-outlined text-xs text-olive">open_in_new</span>
+                <span>Sönmez Taner – Rüştü Tezcan</span>
+                <span class="material-symbols-outlined text-xs text-[#1B368F]">open_in_new</span>
               </a>
 
               <p class="font-sans text-xs text-ink/85 leading-relaxed">
@@ -158,7 +156,7 @@ const activitiesRightEn = [
                 href="https://docs.google.com/document/d/1vBvrur9NpObZtPdcvLyTgcN4qkPI1B9T4q3Lle8VEsY/edit?tab=t.0"
                 target="_blank"
                 rel="noopener noreferrer"
-                class="text-olive font-bold hover:underline inline-flex items-center gap-1"
+                class="text-[#1B368F] font-bold hover:underline inline-flex items-center gap-1"
               >
                 <span>Read Essay</span>
                 <span class="material-symbols-outlined text-xs">arrow_outward</span>
@@ -167,14 +165,14 @@ const activitiesRightEn = [
             </div>
           </div>
 
-          <!-- 2. The Sixth Continent Mediterranean -->
+          <!-- 2. The Sixth Continent Mediterranean (Blue Title & Author) -->
           <div class="bg-parchment p-4 border-2 border-olive rounded-xs shadow-xs flex flex-col justify-between">
             <div>
-              <h3 class="font-serif text-sm sm:text-base font-bold text-olive mb-1">
+              <h3 class="font-serif text-sm sm:text-base font-bold text-[#1B368F] mb-1">
                 The Sixth Continent Mediterranean
               </h3>
 
-              <div class="text-xs sm:text-[13px] font-bold text-ink mb-1.5">
+              <div class="text-sm sm:text-[15px] font-bold text-[#1B368F] mb-1.5">
                 Ayşe Temiz
               </div>
 
@@ -192,14 +190,14 @@ const activitiesRightEn = [
         <!-- Row 2: 2 Boxes -->
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
           
-          <!-- 3. The Author Fisherman of Halicarnassus -->
+          <!-- 3. The Author Fisherman of Halicarnassus (Blue Title & Author) -->
           <div class="bg-parchment p-4 border-2 border-olive rounded-xs shadow-xs flex flex-col justify-between">
             <div>
-              <h3 class="font-serif text-sm sm:text-base font-bold text-olive mb-1">
+              <h3 class="font-serif text-sm sm:text-base font-bold text-[#1B368F] mb-1">
                 The Author Fisherman of Halicarnassus
               </h3>
 
-              <div class="text-xs sm:text-[13px] font-bold text-ink mb-1.5">
+              <div class="text-sm sm:text-[15px] font-bold text-[#1B368F] mb-1.5">
                 Hatice Yücel
               </div>
 
@@ -213,14 +211,14 @@ const activitiesRightEn = [
             </div>
           </div>
 
-          <!-- 4. The Pen That Greened Bodrum -->
+          <!-- 4. The Pen That Greened Bodrum (Blue Title & Author) -->
           <div class="bg-parchment p-4 border-2 border-olive rounded-xs shadow-xs flex flex-col justify-between">
             <div>
-              <h3 class="font-serif text-sm sm:text-base font-bold text-olive mb-1">
+              <h3 class="font-serif text-sm sm:text-base font-bold text-[#1B368F] mb-1">
                 The Pen That Greened Bodrum
               </h3>
 
-              <div class="text-xs sm:text-[13px] font-bold text-ink mb-1.5">
+              <div class="text-sm sm:text-[15px] font-bold text-[#1B368F] mb-1.5">
                 İ.Hatice Orman
               </div>
 
@@ -240,7 +238,7 @@ const activitiesRightEn = [
     </div>
   </section>
 
-  <!-- 3. Mission & Planned Initiatives (14 Items in 2 Columns of 7) -->
+  <!-- 3. Mission & Planned Initiatives (Enlarged Text Size) -->
   <section class="py-6 md:py-10 px-5 md:px-12 bg-parchment border-b border-sand">
     <div class="max-w-[1280px] mx-auto">
       
@@ -255,11 +253,11 @@ const activitiesRightEn = [
         
         <div class="space-y-3">
           {activitiesLeftEn.map((act) => (
-            <div class="bg-surface-container-low border-2 border-olive rounded-xs p-3 flex items-start gap-2.5 shadow-xs">
-              <span class="w-5 h-5 rounded-full bg-olive text-white flex items-center justify-center font-mono text-[11px] font-bold shrink-0 mt-0.5 shadow-2xs">
+            <div class="bg-surface-container-low border-2 border-olive rounded-xs p-3.5 flex items-start gap-2.5 shadow-xs">
+              <span class="w-6 h-6 rounded-full bg-[#1B368F] text-white flex items-center justify-center font-mono text-xs font-bold shrink-0 mt-0.5 shadow-2xs">
                 {act.num}
               </span>
-              <p class="font-sans text-xs sm:text-[13px] font-bold text-ink leading-snug">
+              <p class="font-sans text-sm sm:text-[15px] font-semibold text-ink leading-snug">
                 {act.text}
               </p>
             </div>
@@ -268,11 +266,11 @@ const activitiesRightEn = [
 
         <div class="space-y-3">
           {activitiesRightEn.map((act) => (
-            <div class="bg-surface-container-low border-2 border-olive rounded-xs p-3 flex items-start gap-2.5 shadow-xs">
-              <span class="w-5 h-5 rounded-full bg-olive text-white flex items-center justify-center font-mono text-[11px] font-bold shrink-0 mt-0.5 shadow-2xs">
+            <div class="bg-surface-container-low border-2 border-olive rounded-xs p-3.5 flex items-start gap-2.5 shadow-xs">
+              <span class="w-6 h-6 rounded-full bg-[#1B368F] text-white flex items-center justify-center font-mono text-xs font-bold shrink-0 mt-0.5 shadow-2xs">
                 {act.num}
               </span>
-              <p class="font-sans text-xs sm:text-[13px] font-bold text-ink leading-snug">
+              <p class="font-sans text-sm sm:text-[15px] font-semibold text-ink leading-snug">
                 {act.text}
               </p>
             </div>

@@ -166,12 +166,13 @@ const initialGuestbookNotes = [
               </h3>
             </div>
 
-            <!-- Eşit Ebatta Kurumsal Çatı Çerçevesi (w-32 sm:w-36) -->
-            <div class="aspect-square w-32 sm:w-36 my-2 flex flex-col items-center justify-center overflow-hidden rounded-xs border border-sand bg-olive/5 text-olive p-1.5 shadow-2xs">
-              <div class="w-10 h-10 sm:w-11 sm:h-11 rounded-full bg-olive/10 border-2 border-olive flex items-center justify-center mb-1">
-                <span class="material-symbols-outlined text-xl sm:text-2xl text-olive">account_balance</span>
-              </div>
-              <span class="font-serif font-bold text-[9px] sm:text-[10px] uppercase tracking-wider text-center text-olive leading-tight">Kurumsal Çatı</span>
+            <!-- Eşit Ebatta Logo Çerçevesi (Diğer İki Logo İle Birebir Aynı Boyut) -->
+            <div class="aspect-square w-32 sm:w-36 my-2 flex items-center justify-center overflow-hidden rounded-xs border border-sand bg-white/70 p-1.5 shadow-2xs">
+              <img
+                src="/images/dernek_logo.png"
+                alt="Halikarnas Kültür, Sanat, Eğitim ve Ekoloji Derneği Logosu"
+                class="w-full h-full object-contain"
+              />
             </div>
 
             <div class="h-11 flex items-center justify-center w-full">
@@ -194,22 +195,22 @@ const initialGuestbookNotes = [
     </div>
   </section>
 
-  <!-- 2. Halikarnas Balıkçısı’nın Bodrum’a İlk Geldiği An (Geniş ve Ortalanmış Tablo Şablonu Düzeni) -->
+  <!-- 2. Halikarnas Balıkçısı’nın Bodrum’a İlk Geldiği An (Tam 14 cm Genişliğinde Ortalanmış Çerçeve) -->
   <section class="py-6 md:py-8 px-5 md:px-12 bg-surface-container-low border-b border-sand">
     <div class="max-w-[1280px] mx-auto">
-      <div class="w-full max-w-[1180px] mx-auto bg-parchment border-2 border-olive rounded-xs p-6 sm:p-7 md:p-8 shadow-md relative overflow-hidden text-center">
+      <div class="w-full max-w-[530px] mx-auto bg-parchment border-2 border-olive rounded-xs p-5 sm:p-6 shadow-md relative overflow-hidden text-center">
         
         <div class="absolute -right-5 -bottom-5 opacity-5 pointer-events-none select-none">
-          <span class="material-symbols-outlined text-[150px] text-olive leading-none">format_quote</span>
+          <span class="material-symbols-outlined text-[130px] text-olive leading-none">format_quote</span>
         </div>
 
-        <div class="relative z-10 space-y-3.5">
-          <div class="inline-flex items-center gap-1.5 px-3.5 py-1 bg-olive text-white text-[11px] sm:text-xs font-sans font-bold uppercase tracking-widest rounded-xs shadow-2xs">
+        <div class="relative z-10 space-y-3">
+          <div class="inline-flex items-center gap-1.5 px-3 py-1 bg-olive text-white text-[11px] sm:text-xs font-sans font-bold uppercase tracking-widest rounded-xs shadow-2xs">
             <span class="material-symbols-outlined text-xs">auto_stories</span>
             <span>{balikciArrivalQuote.title}</span>
           </div>
 
-          <blockquote class="font-serif italic text-sm sm:text-[15px] md:text-base text-ink leading-relaxed text-justify sm:text-center px-2 sm:px-6 md:px-10">
+          <blockquote class="font-serif italic text-sm sm:text-[15px] text-ink leading-relaxed text-justify sm:text-center px-1 sm:px-3">
             "{balikciArrivalQuote.quote}"
           </blockquote>
 
