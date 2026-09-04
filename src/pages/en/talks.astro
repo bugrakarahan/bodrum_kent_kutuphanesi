@@ -145,6 +145,9 @@ function getSortTimestamp(talkId: string) {
               <div
                 class="aspect-video relative overflow-hidden bg-surface-container-high border border-sand cursor-pointer group rounded-2xs mb-3.5 shrink-0"
                 data-youtube-id={talk.data.youtubeId}
+                data-video-title={talk.data.titleEn.replace(/\n/g, ' ')}
+                data-video-subtitle={talk.data.guestEn}
+                data-chapters={JSON.stringify(talk.data.chapters || [])}
               >
                 <img
                   src={talk.data.thumbnail}
@@ -195,6 +198,10 @@ function getSortTimestamp(talkId: string) {
                         class="chapter-btn flex items-center justify-between p-1 hover:bg-olive/10 rounded text-left transition-colors cursor-pointer w-full group/chap"
                         data-youtube-id={talk.data.youtubeId}
                         data-start={chap.seconds}
+                        data-start-time={chap.seconds}
+                        data-video-title={talk.data.titleEn.replace(/\n/g, ' ')}
+                        data-video-subtitle={`${chap.titleEn} (${chap.time})`}
+                        data-chapters={JSON.stringify(talk.data.chapters || [])}
                       >
                         <span class="text-ink/90 group-hover/chap:text-olive font-medium truncate mr-2">{chap.titleEn}</span>
                         <span class="font-mono text-stone-gray font-bold text-[11px] bg-sand/40 px-1.5 py-0.5 rounded shrink-0">{chap.time}</span>
@@ -211,6 +218,9 @@ function getSortTimestamp(talkId: string) {
                 type="button"
                 class="inline-flex items-center gap-1.5 text-xs font-sans font-bold text-olive hover:text-bodrum-blue-dark uppercase tracking-wider cursor-pointer"
                 data-youtube-id={talk.data.youtubeId}
+                data-video-title={talk.data.titleEn.replace(/\n/g, ' ')}
+                data-video-subtitle={talk.data.guestEn}
+                data-chapters={JSON.stringify(talk.data.chapters || [])}
               >
                 <span class="material-symbols-outlined text-base">play_circle</span>
                 <span>Watch</span>
@@ -238,10 +248,14 @@ function getSortTimestamp(talkId: string) {
     btn.addEventListener('click', (e) => {
       e.stopPropagation();
       const target = e.currentTarget as HTMLElement;
-      const youtubeId = target.getAttribute('data-youtube-id');
-      const start = target.getAttribute('data-start') || '0';
+      const youtubeId = target.getAttribute('data-youtube-id') || '';
+      const startStr = target.getAttribute('data-start-time') || target.getAttribute('data-start') || '0';
+      const start = parseInt(startStr, 10);
+      const title = target.getAttribute('data-video-title') || '';
+      const subtitle = target.getAttribute('data-video-subtitle') || '';
+      const chapters = target.getAttribute('data-chapters') || '';
       if (youtubeId && (window as any).openVideoModal) {
-        (window as any).openVideoModal(youtubeId, parseInt(start, 10));
+        (window as any).openVideoModal(youtubeId, title, subtitle, start, chapters);
       }
     });
   });

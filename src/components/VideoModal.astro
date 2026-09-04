@@ -51,9 +51,23 @@ const t = getT(lang);
       ></iframe>
     </div>
 
+    <!-- Modal Chapters Bar -->
+    <div
+      id="video-modal-chapters-container"
+      class="hidden px-4 py-2.5 bg-primary-container border-b border-sand/15 overflow-x-auto"
+    >
+      <div class="flex items-center gap-2">
+        <span class="text-[10px] font-sans font-bold uppercase tracking-wider text-sand/60 flex items-center gap-1 shrink-0">
+          <span class="material-symbols-outlined text-xs text-olive">schedule</span>
+          <span>Bölümler:</span>
+        </span>
+        <div id="video-modal-chapters-list" class="flex items-center gap-1.5 flex-nowrap shrink-0"></div>
+      </div>
+    </div>
+
     <!-- Modal Footer / Captions -->
-    <div class="px-4 py-2 bg-primary-container/90 flex items-center justify-between text-xs text-sand/70">
-      <span id="video-modal-caption" class="truncate font-sans">
+    <div class="px-4 py-2.5 bg-primary-container/90 flex items-center justify-between text-xs text-sand/70">
+      <span id="video-modal-caption" class="truncate font-sans font-medium text-sand/90">
         Bodrum Kent Kütüphanesi Arşivi
       </span>
       <span class="font-mono text-[11px] shrink-0 text-sand/50">
@@ -71,15 +85,97 @@ const t = getT(lang);
     const iframe = document.getElementById('video-modal-iframe') as HTMLIFrameElement | null;
     const titleEl = document.getElementById('video-modal-title');
     const captionEl = document.getElementById('video-modal-caption');
+    const chaptersContainer = document.getElementById('video-modal-chapters-container');
+    const chaptersList = document.getElementById('video-modal-chapters-list');
 
     if (!backdrop || !container || !iframe) return;
 
     let previousActiveElement: HTMLElement | null = null;
+    let currentVideoId = '';
 
-    function openModal(youtubeId: string, title?: string, subtitle?: string, startTime?: number) {
+    function renderChapters(_youtubeId: string, chaptersData?: any, activeSeconds?: number) {
+      if (!chaptersContainer || !chaptersList) return;
+
+      let chapters: any[] = [];
+      if (typeof chaptersData === 'string' && chaptersData.trim().length > 0) {
+        try {
+          chapters = JSON.parse(chaptersData);
+        } catch (e) {
+          chapters = [];
+        }
+      } else if (Array.isArray(chaptersData)) {
+        chapters = chaptersData;
+      }
+
+      if (chapters.length === 0) {
+        chaptersContainer.classList.add('hidden');
+        chaptersList.innerHTML = '';
+        return;
+      }
+
+      chaptersContainer.classList.remove('hidden');
+      chaptersList.innerHTML = '';
+
+      chapters.forEach((chap) => {
+        const sec = typeof chap.seconds === 'number' ? chap.seconds : parseInt(chap.seconds, 10) || 0;
+        const btn = document.createElement('button');
+        btn.type = 'button';
+        const isActive = activeSeconds !== undefined && Math.abs(activeSeconds - sec) < 2;
+
+        btn.className = `px-2.5 py-1 rounded text-xs font-sans transition-colors inline-flex items-center gap-1.5 shrink-0 cursor-pointer ${
+          isActive
+            ? 'bg-olive text-white font-bold ring-1 ring-white/30'
+            : 'bg-white/10 hover:bg-olive/80 hover:text-white text-sand/90 font-medium'
+        }`;
+
+        const titleText = chap.titleTr || chap.titleEn || chap.title || '';
+        const timeText = chap.time || '';
+
+        btn.innerHTML = `<span>${titleText}</span><span class="font-mono text-[10px] opacity-75 bg-black/20 px-1 py-0.5 rounded">${timeText}</span>`;
+
+        btn.addEventListener('click', (e) => {
+          e.preventDefault();
+          jumpToTime(sec, titleText, timeText);
+        });
+
+        chaptersList.appendChild(btn);
+      });
+    }
+
+    function jumpToTime(seconds: number, chapterTitle?: string, chapterTime?: string) {
+      if (!iframe || !currentVideoId) return;
+      const startParam = seconds > 0 ? `&start=${seconds}` : '';
+      iframe.src = `https://www.youtube-nocookie.com/embed/${encodeURIComponent(currentVideoId)}?autoplay=1&rel=0&modestbranding=1&enablejsapi=1${startParam}`;
+
+      if (captionEl && chapterTitle) {
+        captionEl.textContent = `${chapterTitle} (${chapterTime || ''})`;
+      }
+
+      // Update active state on chapter buttons
+      if (chaptersList) {
+        const btns = chaptersList.querySelectorAll('button');
+        btns.forEach((b) => {
+          b.classList.remove('bg-olive', 'text-white', 'font-bold', 'ring-1', 'ring-white/30');
+          b.classList.add('bg-white/10', 'text-sand/90', 'font-medium');
+        });
+      }
+    }
+
+    function openModal(
+      youtubeId: string,
+      titleOrStartTime?: string | number,
+      subtitleOrTitle?: string,
+      startTimeParam?: number,
+      chaptersData?: any
+    ) {
       if (!youtubeId || !iframe) return;
 
+      currentVideoId = youtubeId;
       previousActiveElement = document.activeElement as HTMLElement | null;
+
+      let title = typeof titleOrStartTime === 'string' ? titleOrStartTime : undefined;
+      let subtitle = subtitleOrTitle;
+      let startTime = typeof titleOrStartTime === 'number' ? titleOrStartTime : startTimeParam;
 
       if (titleEl && title) {
         titleEl.textContent = title;
@@ -88,9 +184,12 @@ const t = getT(lang);
         captionEl.textContent = subtitle;
       }
 
-      const startParam = startTime ? `&start=${encodeURIComponent(String(startTime))}` : '';
-      // Safe embed url with nocookie, autoplay and rel=0
-      iframe.src = `https://www.youtube-nocookie.com/embed/${encodeURIComponent(youtubeId)}?autoplay=1&rel=0&modestbranding=1${startParam}`;
+      const sec = (typeof startTime === 'number' && startTime > 0) ? startTime : 0;
+      const startParam = sec > 0 ? `&start=${encodeURIComponent(String(sec))}` : '';
+
+      iframe.src = `https://www.youtube-nocookie.com/embed/${encodeURIComponent(youtubeId)}?autoplay=1&rel=0&modestbranding=1&enablejsapi=1${startParam}`;
+
+      renderChapters(youtubeId, chaptersData, sec);
 
       backdrop?.classList.remove('opacity-0', 'pointer-events-none');
       backdrop?.classList.add('opacity-100');
@@ -102,10 +201,10 @@ const t = getT(lang);
     }
 
     function closeModal() {
-      // Clear iframe src immediately so video playback stops
       if (iframe) {
         iframe.src = '';
       }
+      currentVideoId = '';
 
       backdrop?.classList.add('opacity-0', 'pointer-events-none');
       backdrop?.classList.remove('opacity-100');
@@ -118,10 +217,31 @@ const t = getT(lang);
       }
     }
 
+    // Expose openVideoModal and closeVideoModal on window
+    (window as any).openVideoModal = (
+      youtubeId: string,
+      startOrTitle?: number | string,
+      subtitle?: string,
+      startTime?: number,
+      chapters?: any
+    ) => {
+      openModal(youtubeId, startOrTitle, subtitle, startTime, chapters);
+    };
+
+    (window as any).closeVideoModal = () => {
+      closeModal();
+    };
+
     // Listen for custom dispatch event
     window.addEventListener('open-video-modal', ((e: CustomEvent) => {
       if (e.detail) {
-        openModal(e.detail.youtubeId || e.detail.videoId, e.detail.title, e.detail.subtitle, e.detail.startTime);
+        openModal(
+          e.detail.youtubeId || e.detail.videoId,
+          e.detail.title || e.detail.startTime,
+          e.detail.subtitle,
+          e.detail.startTime,
+          e.detail.chapters
+        );
       }
     }) as EventListener);
 
@@ -133,9 +253,10 @@ const t = getT(lang);
         const youtubeId = target.getAttribute('data-youtube-id') || '';
         const title = target.getAttribute('data-video-title') || '';
         const subtitle = target.getAttribute('data-video-subtitle') || '';
-        const startTimeStr = target.getAttribute('data-start-time');
+        const startTimeStr = target.getAttribute('data-start-time') || target.getAttribute('data-start');
         const startTime = startTimeStr ? parseInt(startTimeStr, 10) : undefined;
-        openModal(youtubeId, title, subtitle, startTime);
+        const chapters = target.getAttribute('data-chapters') || '';
+        openModal(youtubeId, title, subtitle, startTime, chapters);
       }
     });
 
