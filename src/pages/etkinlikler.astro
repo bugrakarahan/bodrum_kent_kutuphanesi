@@ -190,8 +190,8 @@ const pastEventCategories = [
         ))}
       </div>
 
-      <!-- 3 Sütunlu Izgara (Sola Yaslı, Çerçeve Yüksekliği Dikey 3:4 Oranında) -->
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <!-- 3 Sütunlu Izgara (Eski ve Yeni Hali Yan Yana Karşılaştırma) -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 items-start">
         {pastEvents.map((event) => {
           const eventPayload = JSON.stringify({
             title: event.data.title,
@@ -205,66 +205,152 @@ const pastEventCategories = [
           });
 
           return (
-            <div class="bg-surface-container-low border-2 border-olive p-3.5 sm:p-4 flex flex-col justify-between shadow-xs rounded-xs w-full max-w-[340px] aspect-[3/4]">
-              <div>
-                <!-- Afiş Fotoğrafı -->
-                <div 
-                  class="h-[210px] w-full overflow-hidden bg-surface-container-high border-2 border-olive rounded-xs mb-2 cursor-pointer group relative shadow-sm"
-                  data-gallery-trigger
-                  data-gallery-title={event.data.title}
-                  data-gallery-photos={JSON.stringify(event.data.photos || [event.data.image])}
-                  title="11 Fotoğraflı Galeriyi İnceleyin"
-                >
-                  <img
-                    src={event.data.image}
-                    alt={event.data.title}
-                    class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-300"
-                  />
-                  <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center text-white text-xs font-sans font-bold uppercase tracking-wider gap-1.5 p-2 text-center">
-                    <span class="material-symbols-outlined text-base">photo_library</span>
-                    <span>Fotoğrafları Gör (11)</span>
+            <>
+              <!-- 1. ESKİ HALİ (Orijinal Düzen: Afiş 3:4 Tam Boyut, Ferah ve Rahat Okunabilir) -->
+              <div class="w-full max-w-[360px] flex flex-col">
+                <div class="mb-2 flex items-center justify-between">
+                  <span class="inline-flex items-center gap-1 px-2.5 py-0.5 bg-olive text-white text-[11px] font-sans font-bold uppercase tracking-wider rounded-2xs shadow-2xs">
+                    <span class="material-symbols-outlined text-xs">history</span>
+                    <span>Eski Hali (Orijinal Düzen)</span>
+                  </span>
+                  <span class="text-[11px] text-olive font-bold font-sans">Önerilen</span>
+                </div>
+
+                <div class="bg-surface-container-low border-2 border-olive p-4 sm:p-5 flex flex-col justify-between shadow-xs rounded-xs w-full">
+                  <div>
+                    <!-- Dikey 3:4 Afiş Fotoğrafı (Tamamen Görünür) -->
+                    <div 
+                      class="aspect-[3/4] w-full overflow-hidden bg-surface-container-high border-2 border-olive rounded-xs mb-3 cursor-pointer group relative shadow-sm"
+                      data-gallery-trigger
+                      data-gallery-title={event.data.title}
+                      data-gallery-photos={JSON.stringify(event.data.photos || [event.data.image])}
+                      title="11 Fotoğraflı Galeriyi İnceleyin"
+                    >
+                      <img
+                        src={event.data.image}
+                        alt={event.data.title}
+                        class="w-full h-full object-contain group-hover:scale-105 transition-transform duration-300"
+                      />
+                      <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center text-white text-xs font-sans font-bold uppercase tracking-wider gap-1.5 p-2 text-center">
+                        <span class="material-symbols-outlined text-base">photo_library</span>
+                        <span>Fotoğrafları Gör (11)</span>
+                      </div>
+                    </div>
+
+                    <div class="flex items-center justify-between text-[11px] text-stone-gray font-mono mb-2">
+                      <span class="text-olive font-sans font-bold text-xs uppercase">{event.data.categoryLabelTr}</span>
+                      <span class="font-bold">{event.data.displayDateTr}</span>
+                    </div>
+
+                    <h3 class="font-serif text-base sm:text-lg text-ink font-bold mb-2 leading-snug text-center">
+                      Antropolog & Arkeolog<br />
+                      <span class="text-olive font-bold">Timuçin Binder ile</span><br />
+                      Antik Çağ Ege’sinin Gökyüzü Mitleri
+                    </h3>
+
+                    <p class="text-xs text-ink/85 font-sans leading-relaxed text-justify mb-3">
+                      Antik Çağ Ege gökyüzü mitolojisi, yıldızlar, takımyıldızlar ve antik denizcilerin yön bulma kadim bilgeliği üzerine söyleşi ve atölye buluşması.
+                    </p>
+                  </div>
+
+                  <!-- Action Bar -->
+                  <div class="flex items-center justify-center gap-2 pt-3 border-t border-sand">
+                    <button
+                      type="button"
+                      class="flex-1 py-2 bg-olive text-white hover:bg-bodrum-blue-dark text-xs font-sans font-bold uppercase tracking-wider transition-colors rounded-xs shadow-2xs cursor-pointer inline-flex items-center justify-center gap-1"
+                      data-event-detail-trigger
+                      data-event-data={eventPayload}
+                    >
+                      <span class="material-symbols-outlined text-sm">event_note</span>
+                      <span>Detay & Bilgi</span>
+                    </button>
+
+                    <button
+                      type="button"
+                      class="flex-1 py-2 bg-parchment border border-olive text-olive hover:bg-olive hover:text-white text-xs font-sans font-bold uppercase tracking-wider transition-colors rounded-xs shadow-2xs cursor-pointer inline-flex items-center justify-center gap-1"
+                      data-gallery-trigger
+                      data-gallery-title={event.data.title}
+                      data-gallery-photos={JSON.stringify(event.data.photos || [event.data.image])}
+                    >
+                      <span class="material-symbols-outlined text-sm">photo_library</span>
+                      <span>Fotoğraflar (11)</span>
+                    </button>
                   </div>
                 </div>
+              </div>
 
-                <div class="flex items-center justify-between text-[10px] text-stone-gray font-mono mb-1">
-                  <span class="text-olive font-sans font-bold uppercase">{event.data.categoryLabelTr}</span>
-                  <span class="font-bold">{event.data.displayDateTr}</span>
+              <!-- 2. YENİ HALİ (Dikey 3:4 Kompakt Çerçeve Düzeni) -->
+              <div class="w-full max-w-[360px] flex flex-col">
+                <div class="mb-2 flex items-center justify-between">
+                  <span class="inline-flex items-center gap-1 px-2.5 py-0.5 bg-stone-gray text-white text-[11px] font-sans font-bold uppercase tracking-wider rounded-2xs shadow-2xs">
+                    <span class="material-symbols-outlined text-xs">aspect_ratio</span>
+                    <span>Yeni Hali (Dikey 3:4 Çerçeve)</span>
+                  </span>
+                  <span class="text-[11px] text-stone-gray font-bold font-sans">Kompakt</span>
                 </div>
 
-                <h3 class="font-serif text-sm sm:text-base text-ink font-bold mb-1 leading-snug text-center line-clamp-2">
-                  Antropolog & Arkeolog Timuçin Binder ile<br />
-                  <span class="text-olive font-bold">Antik Çağ Ege’sinin Gökyüzü Mitleri</span>
-                </h3>
+                <div class="bg-surface-container-low border-2 border-olive p-3.5 sm:p-4 flex flex-col justify-between shadow-xs rounded-xs w-full max-w-[340px] aspect-[3/4]">
+                  <div>
+                    <!-- Afiş Fotoğrafı (Kırpılmadan Tam Görünür) -->
+                    <div 
+                      class="h-[210px] w-full overflow-hidden bg-surface-container-high border-2 border-olive rounded-xs mb-2 cursor-pointer group relative shadow-sm flex items-center justify-center"
+                      data-gallery-trigger
+                      data-gallery-title={event.data.title}
+                      data-gallery-photos={JSON.stringify(event.data.photos || [event.data.image])}
+                      title="11 Fotoğraflı Galeriyi İnceleyin"
+                    >
+                      <img
+                        src={event.data.image}
+                        alt={event.data.title}
+                        class="w-full h-full object-contain group-hover:scale-105 transition-transform duration-300"
+                      />
+                      <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center text-white text-xs font-sans font-bold uppercase tracking-wider gap-1.5 p-2 text-center">
+                        <span class="material-symbols-outlined text-base">photo_library</span>
+                        <span>Fotoğrafları Gör (11)</span>
+                      </div>
+                    </div>
 
-                <p class="text-[11px] text-ink/85 font-sans leading-snug text-justify line-clamp-2">
-                  Antik Çağ Ege gökyüzü mitolojisi, yıldızlar, takımyıldızlar ve antik denizcilerin yön bulma kadim bilgeliği üzerine söyleşi ve atölye.
-                </p>
+                    <div class="flex items-center justify-between text-[10px] text-stone-gray font-mono mb-1">
+                      <span class="text-olive font-sans font-bold uppercase">{event.data.categoryLabelTr}</span>
+                      <span class="font-bold">{event.data.displayDateTr}</span>
+                    </div>
+
+                    <h3 class="font-serif text-sm sm:text-base text-ink font-bold mb-1 leading-snug text-center line-clamp-2">
+                      Antropolog & Arkeolog Timuçin Binder ile<br />
+                      <span class="text-olive font-bold">Antik Çağ Ege’sinin Gökyüzü Mitleri</span>
+                    </h3>
+
+                    <p class="text-[11px] text-ink/85 font-sans leading-snug text-justify line-clamp-2">
+                      Antik Çağ Ege gökyüzü mitolojisi, yıldızlar, takımyıldızlar ve antik denizcilerin yön bulma kadim bilgeliği üzerine söyleşi ve atölye.
+                    </p>
+                  </div>
+
+                  <!-- Action Bar -->
+                  <div class="flex items-center justify-center gap-2 pt-2.5 border-t border-sand">
+                    <button
+                      type="button"
+                      class="flex-1 py-1.5 bg-olive text-white hover:bg-bodrum-blue-dark text-[11px] font-sans font-bold uppercase tracking-wider transition-colors rounded-xs shadow-2xs cursor-pointer inline-flex items-center justify-center gap-1"
+                      data-event-detail-trigger
+                      data-event-data={eventPayload}
+                    >
+                      <span class="material-symbols-outlined text-sm">event_note</span>
+                      <span>Detay & Bilgi</span>
+                    </button>
+
+                    <button
+                      type="button"
+                      class="flex-1 py-1.5 bg-parchment border border-olive text-olive hover:bg-olive hover:text-white text-[11px] font-sans font-bold uppercase tracking-wider transition-colors rounded-xs shadow-2xs cursor-pointer inline-flex items-center justify-center gap-1"
+                      data-gallery-trigger
+                      data-gallery-title={event.data.title}
+                      data-gallery-photos={JSON.stringify(event.data.photos || [event.data.image])}
+                    >
+                      <span class="material-symbols-outlined text-sm">photo_library</span>
+                      <span>Fotoğraflar (11)</span>
+                    </button>
+                  </div>
+                </div>
               </div>
-
-              <!-- Action Bar -->
-              <div class="flex items-center justify-center gap-2 pt-2.5 border-t border-sand">
-                <button
-                  type="button"
-                  class="flex-1 py-1.5 bg-olive text-white hover:bg-bodrum-blue-dark text-[11px] font-sans font-bold uppercase tracking-wider transition-colors rounded-xs shadow-2xs cursor-pointer inline-flex items-center justify-center gap-1"
-                  data-event-detail-trigger
-                  data-event-data={eventPayload}
-                >
-                  <span class="material-symbols-outlined text-sm">event_note</span>
-                  <span>Detay & Bilgi</span>
-                </button>
-
-                <button
-                  type="button"
-                  class="flex-1 py-1.5 bg-parchment border border-olive text-olive hover:bg-olive hover:text-white text-[11px] font-sans font-bold uppercase tracking-wider transition-colors rounded-xs shadow-2xs cursor-pointer inline-flex items-center justify-center gap-1"
-                  data-gallery-trigger
-                  data-gallery-title={event.data.title}
-                  data-gallery-photos={JSON.stringify(event.data.photos || [event.data.image])}
-                >
-                  <span class="material-symbols-outlined text-sm">photo_library</span>
-                  <span>Fotoğraflar (11)</span>
-                </button>
-              </div>
-            </div>
+            </>
           );
         })}
       </div>

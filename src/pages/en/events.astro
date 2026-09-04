@@ -184,7 +184,8 @@ const pastEventCategoriesEn = [
         ))}
       </div>
 
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <!-- 3-column Grid (Side-by-side Comparison of Original vs Compact) -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 items-start">
         {pastEvents.map((event) => {
           const eventPayload = JSON.stringify({
             title: event.data.titleEn,
@@ -198,64 +199,148 @@ const pastEventCategoriesEn = [
           });
 
           return (
-            <div class="bg-surface-container-low border-2 border-olive p-3.5 sm:p-4 flex flex-col justify-between shadow-xs rounded-xs w-full max-w-[340px] aspect-[3/4]">
-              <div>
-                <div 
-                  class="h-[210px] w-full overflow-hidden bg-surface-container-high border-2 border-olive rounded-xs mb-2 cursor-pointer group relative shadow-sm"
-                  data-gallery-trigger
-                  data-gallery-title={event.data.titleEn}
-                  data-gallery-photos={JSON.stringify(event.data.photos || [event.data.image])}
-                  title="View 11 Photos Archive"
-                >
-                  <img
-                    src={event.data.image}
-                    alt={event.data.titleEn}
-                    class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-300"
-                  />
-                  <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center text-white text-xs font-sans font-bold uppercase tracking-wider gap-1.5 p-2 text-center">
-                    <span class="material-symbols-outlined text-base">photo_library</span>
-                    <span>View Photos (11)</span>
+            <>
+              <!-- 1. ORIGINAL VERSION (Full 3:4 Poster & Comfortable Reading) -->
+              <div class="w-full max-w-[360px] flex flex-col">
+                <div class="mb-2 flex items-center justify-between">
+                  <span class="inline-flex items-center gap-1 px-2.5 py-0.5 bg-olive text-white text-[11px] font-sans font-bold uppercase tracking-wider rounded-2xs shadow-2xs">
+                    <span class="material-symbols-outlined text-xs">history</span>
+                    <span>Original Version</span>
+                  </span>
+                  <span class="text-[11px] text-olive font-bold font-sans">Recommended</span>
+                </div>
+
+                <div class="bg-surface-container-low border-2 border-olive p-4 sm:p-5 flex flex-col justify-between shadow-xs rounded-xs w-full">
+                  <div>
+                    <div 
+                      class="aspect-[3/4] w-full overflow-hidden bg-surface-container-high border-2 border-olive rounded-xs mb-3 cursor-pointer group relative shadow-sm"
+                      data-gallery-trigger
+                      data-gallery-title={event.data.titleEn}
+                      data-gallery-photos={JSON.stringify(event.data.photos || [event.data.image])}
+                      title="View 11 Photos Archive"
+                    >
+                      <img
+                        src={event.data.image}
+                        alt={event.data.titleEn}
+                        class="w-full h-full object-contain group-hover:scale-105 transition-transform duration-300"
+                      />
+                      <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center text-white text-xs font-sans font-bold uppercase tracking-wider gap-1.5 p-2 text-center">
+                        <span class="material-symbols-outlined text-base">photo_library</span>
+                        <span>View Photos (11)</span>
+                      </div>
+                    </div>
+
+                    <div class="flex items-center justify-between text-[11px] text-stone-gray font-mono mb-2">
+                      <span class="text-olive font-sans font-bold text-xs uppercase">{event.data.categoryLabelEn}</span>
+                      <span class="font-bold">{event.data.displayDateEn}</span>
+                    </div>
+
+                    <h3 class="font-serif text-base sm:text-lg text-ink font-bold mb-2 leading-snug text-center">
+                      Anthropologist & Archaeologist<br />
+                      <span class="text-olive font-bold">Timuçin Binder with</span><br />
+                      Sky Myths of Ancient Aegean
+                    </h3>
+
+                    <p class="text-xs text-ink/85 font-sans leading-relaxed text-justify mb-3">
+                      Talk and workshop on Ancient Aegean sky mythology, constellations, and ancient maritime celestial navigation.
+                    </p>
+                  </div>
+
+                  <div class="flex items-center justify-center gap-2 pt-3 border-t border-sand">
+                    <button
+                      type="button"
+                      class="flex-1 py-2 bg-olive text-white hover:bg-bodrum-blue-dark text-xs font-sans font-bold uppercase tracking-wider transition-colors rounded-xs shadow-2xs cursor-pointer inline-flex items-center justify-center gap-1"
+                      data-event-detail-trigger
+                      data-event-data={eventPayload}
+                    >
+                      <span class="material-symbols-outlined text-sm">event_note</span>
+                      <span>Details</span>
+                    </button>
+
+                    <button
+                      type="button"
+                      class="flex-1 py-2 bg-parchment border border-olive text-olive hover:bg-olive hover:text-white text-xs font-sans font-bold uppercase tracking-wider transition-colors rounded-xs shadow-2xs cursor-pointer inline-flex items-center justify-center gap-1"
+                      data-gallery-trigger
+                      data-gallery-title={event.data.titleEn}
+                      data-gallery-photos={JSON.stringify(event.data.photos || [event.data.image])}
+                    >
+                      <span class="material-symbols-outlined text-sm">photo_library</span>
+                      <span>Photos (11)</span>
+                    </button>
                   </div>
                 </div>
+              </div>
 
-                <div class="flex items-center justify-between text-[10px] text-stone-gray font-mono mb-1">
-                  <span class="text-olive font-sans font-bold uppercase">{event.data.categoryLabelEn}</span>
-                  <span class="font-bold">{event.data.displayDateEn}</span>
+              <!-- 2. ALTERNATIVE VERSION (Compact 3:4 Proportional Frame) -->
+              <div class="w-full max-w-[360px] flex flex-col">
+                <div class="mb-2 flex items-center justify-between">
+                  <span class="inline-flex items-center gap-1 px-2.5 py-0.5 bg-stone-gray text-white text-[11px] font-sans font-bold uppercase tracking-wider rounded-2xs shadow-2xs">
+                    <span class="material-symbols-outlined text-xs">aspect_ratio</span>
+                    <span>Compact 3:4 Frame</span>
+                  </span>
+                  <span class="text-[11px] text-stone-gray font-bold font-sans">Compact</span>
                 </div>
 
-                <h3 class="font-serif text-sm sm:text-base text-ink font-bold mb-1 leading-snug text-center line-clamp-2">
-                  Anthropologist & Archaeologist Timuçin Binder with<br />
-                  <span class="text-olive font-bold">Sky Myths of Ancient Aegean</span>
-                </h3>
+                <div class="bg-surface-container-low border-2 border-olive p-3.5 sm:p-4 flex flex-col justify-between shadow-xs rounded-xs w-full max-w-[340px] aspect-[3/4]">
+                  <div>
+                    <div 
+                      class="h-[210px] w-full overflow-hidden bg-surface-container-high border-2 border-olive rounded-xs mb-2 cursor-pointer group relative shadow-sm flex items-center justify-center"
+                      data-gallery-trigger
+                      data-gallery-title={event.data.titleEn}
+                      data-gallery-photos={JSON.stringify(event.data.photos || [event.data.image])}
+                      title="View 11 Photos Archive"
+                    >
+                      <img
+                        src={event.data.image}
+                        alt={event.data.titleEn}
+                        class="w-full h-full object-contain group-hover:scale-105 transition-transform duration-300"
+                      />
+                      <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center text-white text-xs font-sans font-bold uppercase tracking-wider gap-1.5 p-2 text-center">
+                        <span class="material-symbols-outlined text-base">photo_library</span>
+                        <span>View Photos (11)</span>
+                      </div>
+                    </div>
 
-                <p class="text-[11px] text-ink/85 font-sans leading-snug text-justify line-clamp-2">
-                  Talk and workshop on Ancient Aegean sky mythology, constellations, and ancient maritime celestial navigation.
-                </p>
+                    <div class="flex items-center justify-between text-[10px] text-stone-gray font-mono mb-1">
+                      <span class="text-olive font-sans font-bold uppercase">{event.data.categoryLabelEn}</span>
+                      <span class="font-bold">{event.data.displayDateEn}</span>
+                    </div>
+
+                    <h3 class="font-serif text-sm sm:text-base text-ink font-bold mb-1 leading-snug text-center line-clamp-2">
+                      Anthropologist & Archaeologist Timuçin Binder with<br />
+                      <span class="text-olive font-bold">Sky Myths of Ancient Aegean</span>
+                    </h3>
+
+                    <p class="text-[11px] text-ink/85 font-sans leading-snug text-justify line-clamp-2">
+                      Talk and workshop on Ancient Aegean sky mythology, constellations, and ancient maritime celestial navigation.
+                    </p>
+                  </div>
+
+                  <div class="flex items-center justify-center gap-2 pt-2.5 border-t border-sand">
+                    <button
+                      type="button"
+                      class="flex-1 py-1.5 bg-olive text-white hover:bg-bodrum-blue-dark text-[11px] font-sans font-bold uppercase tracking-wider transition-colors rounded-xs shadow-2xs cursor-pointer inline-flex items-center justify-center gap-1"
+                      data-event-detail-trigger
+                      data-event-data={eventPayload}
+                    >
+                      <span class="material-symbols-outlined text-sm">event_note</span>
+                      <span>Details</span>
+                    </button>
+
+                    <button
+                      type="button"
+                      class="flex-1 py-1.5 bg-parchment border border-olive text-olive hover:bg-olive hover:text-white text-[11px] font-sans font-bold uppercase tracking-wider transition-colors rounded-xs shadow-2xs cursor-pointer inline-flex items-center justify-center gap-1"
+                      data-gallery-trigger
+                      data-gallery-title={event.data.titleEn}
+                      data-gallery-photos={JSON.stringify(event.data.photos || [event.data.image])}
+                    >
+                      <span class="material-symbols-outlined text-sm">photo_library</span>
+                      <span>Photos (11)</span>
+                    </button>
+                  </div>
+                </div>
               </div>
-
-              <div class="flex items-center justify-center gap-2 pt-2.5 border-t border-sand">
-                <button
-                  type="button"
-                  class="flex-1 py-1.5 bg-olive text-white hover:bg-bodrum-blue-dark text-[11px] font-sans font-bold uppercase tracking-wider transition-colors rounded-xs shadow-2xs cursor-pointer inline-flex items-center justify-center gap-1"
-                  data-event-detail-trigger
-                  data-event-data={eventPayload}
-                >
-                  <span class="material-symbols-outlined text-sm">event_note</span>
-                  <span>Details</span>
-                </button>
-
-                <button
-                  type="button"
-                  class="flex-1 py-1.5 bg-parchment border border-olive text-olive hover:bg-olive hover:text-white text-[11px] font-sans font-bold uppercase tracking-wider transition-colors rounded-xs shadow-2xs cursor-pointer inline-flex items-center justify-center gap-1"
-                  data-gallery-trigger
-                  data-gallery-title={event.data.titleEn}
-                  data-gallery-photos={JSON.stringify(event.data.photos || [event.data.image])}
-                >
-                  <span class="material-symbols-outlined text-sm">photo_library</span>
-                  <span>Photos (11)</span>
-                </button>
-              </div>
-            </div>
+            </>
           );
         })}
       </div>
