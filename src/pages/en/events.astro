@@ -1,5 +1,7 @@
 ---
 import Layout from '../../layouts/Layout.astro';
+import EventDetailModal from '../../components/EventDetailModal.astro';
+import EventGalleryModal from '../../components/EventGalleryModal.astro';
 import { getCollection } from 'astro:content';
 import { getT } from '../../utils/i18n';
 
@@ -7,29 +9,39 @@ const lang = 'en';
 const t = getT(lang);
 
 const allEvents = await getCollection('events');
-const upcomingEvents = allEvents.filter((e) => !e.data.isPast);
-const pastEvents = allEvents.filter((e) => e.data.isPast);
+const upcomingEvents = allEvents.filter(e => !e.data.isPast);
+const pastEvents = allEvents.filter(e => e.data.isPast);
 
 const pastEventCategoriesEn = [
-  "ALL", "LITERATURE", "CULTURE", "ARTS", "HISTORY", "PHILOSOPHY", "ARCHAEOLOGY", "SOCIOLOGY", "PSYCHOLOGY", "ECOLOGY", "SCIENCE"
+  "All",
+  "Literature & Poetry",
+  "History & Oral History",
+  "Mythology & Ancient History",
+  "Philosophy & Thought",
+  "Archaeology & Heritage",
+  "Ecology & Nature",
+  "Children & Youth"
 ];
 ---
 
 <Layout
   title={`Events | ${t.siteTitle}`}
-  description="Bodrum City Library events, book club, talks, and cultural gatherings."
+  description="Discover conferences, literature workshops, reading circles, and cultural archives at Bodrum City Library."
   lang={lang}
   currentPath="/en/events"
 >
-  <!-- Hero Header -->
+  <!-- Page Header -->
   <section class="py-6 md:py-10 px-5 md:px-12 bg-surface-bright border-b border-sand">
     <div class="max-w-[1280px] mx-auto">
-      <div class="max-w-3xl">
-        <h1 class="font-serif text-xl sm:text-2xl text-ink font-bold leading-snug mb-2">
-          Events in the Light of Knowledge and Art
+      <div class="max-w-3xl space-y-2">
+        <div class="inline-flex items-center gap-1.5 px-2.5 py-0.5 bg-olive text-white text-[11px] font-sans font-bold tracking-widest uppercase rounded-xs shadow-2xs">
+          <span>CULTURE & PROGRAMMING</span>
+        </div>
+        <h1 class="font-serif text-2xl sm:text-3xl md:text-4xl text-ink font-bold leading-tight">
+          Events & Programs
         </h1>
         <p class="font-sans text-xs sm:text-sm text-ink/80 leading-relaxed">
-          We look forward to welcoming you to our events in Literature, History, Archaeology, Philosophy, Sociology, and Arts…
+          Join our open public talks, reading circles, workshops, and historical symposiums across Bodrum.
         </p>
       </div>
     </div>
@@ -38,13 +50,14 @@ const pastEventCategoriesEn = [
   <!-- Main Content Area -->
   <div class="max-w-[1280px] mx-auto px-5 md:px-12 py-6 md:py-10 space-y-12">
     
-    <!-- 1. Upcoming Events (Restored to Centered Layout) -->
+    <!-- 1. Upcoming Events (Left-aligned Horizontal Card) -->
     <section>
       <h2 class="font-serif text-lg sm:text-xl text-ink font-bold mb-4 pb-2 border-b border-sand">
         Upcoming Events
       </h2>
 
-      <div class="max-w-2xl mx-auto space-y-6">
+      <!-- Left-aligned Horizontal Card -->
+      <div class="w-full max-w-4xl text-left space-y-6">
         {upcomingEvents.map((event) => {
           const eventPayload = JSON.stringify({
             title: event.data.titleEn,
@@ -58,67 +71,38 @@ const pastEventCategoriesEn = [
           });
 
           return (
-            <div class="bg-surface-container-low border-2 border-olive p-5 sm:p-6 shadow-xs rounded-xs">
-              <div class="space-y-4">
+            <div class="bg-surface-container-low border-2 border-olive p-4 sm:p-6 shadow-xs rounded-xs">
+              <div class="grid grid-cols-1 md:grid-cols-12 gap-5 sm:gap-6 items-start">
                 
-                <div class="flex items-center justify-between gap-2 border-b border-sand pb-3">
-                  <span class="inline-block px-2.5 py-0.5 bg-olive text-white text-[11px] font-sans uppercase tracking-widest font-bold rounded-2xs">
-                    {event.data.categoryLabelEn}
-                  </span>
-                  <span class="text-xs font-mono text-stone-gray font-bold">
-                    {event.data.displayDateEn}
-                  </span>
-                </div>
-
-                <h3 class="font-serif text-lg sm:text-xl text-ink font-bold leading-snug text-center sm:text-left">
-                  {event.data.titleEn}
-                </h3>
-
-                <div class="space-y-3 text-ink/90 font-sans text-xs sm:text-[13px] leading-relaxed text-justify">
-                  <p>
-                    We aim to be a distinctive book club that challenges conventional thinking. The books we select and the topics we discuss will be thought-provoking and inquisitive.
-                  </p>
-                  <p>
-                    We seek an environment of vigorous and constructive debate where differing viewpoints meet. If you are ready to explore, question, and reflect together, you are warmly invited to our Book Club!
-                  </p>
-
-                  <div class="mt-4 mb-2 flex flex-col items-center">
-                    <div 
-                      class="w-full max-w-[280px] sm:max-w-[320px] aspect-[3/4] bg-parchment border-2 border-olive p-1.5 rounded-xs shadow-sm cursor-pointer group"
-                      data-event-detail-trigger
-                      data-event-data={eventPayload}
-                      title="View Event Details and Calendar Export"
-                    >
-                      <div class="w-full h-full overflow-hidden bg-surface-container-high relative border border-sand/60 rounded-2xs flex items-center justify-center">
-                        <img
-                          src={event.data.image}
-                          alt="Bodrum City Library Book Club"
-                          class="w-full h-full object-contain group-hover:scale-105 transition-transform duration-300"
-                        />
-                      </div>
-                      <div class="pt-1.5 text-center text-[11px] text-stone-gray font-sans italic flex items-center justify-center gap-1">
-                        <span>Bodrum City Library • Book Club</span>
-                        <span class="material-symbols-outlined text-xs text-olive">open_in_new</span>
-                      </div>
+                <!-- Left Column: 3:4 Photo & Action Buttons -->
+                <div class="md:col-span-5 lg:col-span-4 flex flex-col items-center md:items-start shrink-0">
+                  <div 
+                    class="w-full max-w-[240px] sm:max-w-[260px] aspect-[3/4] bg-parchment border-2 border-olive p-1 rounded-xs shadow-sm cursor-pointer group"
+                    data-event-detail-trigger
+                    data-event-data={eventPayload}
+                    title="View Event Details and Calendar Export"
+                  >
+                    <div class="w-full h-full overflow-hidden bg-surface-container-high relative border border-sand/60 rounded-2xs flex items-center justify-center">
+                      <img
+                        src={event.data.image}
+                        alt={event.data.titleEn}
+                        class="w-full h-full object-contain group-hover:scale-105 transition-transform duration-300"
+                      />
                     </div>
                   </div>
 
-                  <p class="!mt-5">
-                    Through lively debate, we will explore not only books but our underlying paradigms and perspectives.
-                  </p>
+                  <div class="pt-1.5 text-center md:text-left text-[11px] text-stone-gray font-sans italic flex items-center justify-center md:justify-start gap-1 w-full max-w-[240px] sm:max-w-[260px]">
+                    <span>Bodrum City Library • Book Club</span>
+                    <span class="material-symbols-outlined text-xs text-olive">open_in_new</span>
+                  </div>
 
-                  <p class="font-bold text-olive">
-                    If you are ready to change, question, and reflect together, join our Book Club!
-                  </p>
-                </div>
-
-                <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pt-4 mt-4 border-t border-sand">
-                  <div class="flex flex-wrap items-center gap-2">
+                  <!-- Buttons directly under photo -->
+                  <div class="mt-3.5 flex flex-col gap-2 w-full max-w-[240px] sm:max-w-[260px]">
                     <a
                       href="https://wa.me/905423739748?text=Hello,%20I%20would%20like%20to%20join%20the%20Bodrum%20City%20Library%20Book%20Club."
                       target="_blank"
                       rel="noopener noreferrer"
-                      class="px-3.5 py-2 bg-olive hover:bg-bodrum-blue-dark text-white text-xs font-sans font-bold tracking-wider uppercase transition-colors shadow-xs shrink-0 rounded-xs inline-flex items-center gap-1.5"
+                      class="w-full py-2 bg-olive hover:bg-bodrum-blue-dark text-white text-[11px] font-sans font-bold tracking-wider uppercase transition-colors shadow-xs rounded-xs inline-flex items-center justify-center gap-1.5"
                     >
                       <span class="material-symbols-outlined text-sm">chat</span>
                       <span>JOIN OUR BOOK CLUB</span>
@@ -126,19 +110,55 @@ const pastEventCategoriesEn = [
 
                     <button
                       type="button"
-                      class="px-3.5 py-2 bg-parchment border border-olive text-olive hover:bg-olive hover:text-white text-xs font-sans font-bold tracking-wider uppercase transition-colors shadow-xs shrink-0 rounded-xs inline-flex items-center gap-1 cursor-pointer"
+                      class="w-full py-2 bg-parchment border border-olive text-olive hover:bg-olive hover:text-white text-[11px] font-sans font-bold tracking-wider uppercase transition-colors shadow-xs rounded-xs inline-flex items-center justify-center gap-1 cursor-pointer"
                       data-event-detail-trigger
                       data-event-data={eventPayload}
                     >
                       <span class="material-symbols-outlined text-sm">calendar_month</span>
-                      <span>Add to Calendar / Details</span>
+                      <span>ADD TO CALENDAR</span>
                     </button>
                   </div>
-
-                  <span class="text-[11px] sm:text-xs font-sans italic text-ink/80 leading-snug">
-                    Schedule and updates announced via WhatsApp & Instagram.
-                  </span>
                 </div>
+
+                <!-- Right Column: Title, Body, and Notice -->
+                <div class="md:col-span-7 lg:col-span-8 flex flex-col justify-between h-full">
+                  <div>
+                    <div class="flex items-center justify-between gap-2 border-b border-sand pb-2 mb-3">
+                      <span class="inline-block px-2.5 py-0.5 bg-olive text-white text-[11px] font-sans uppercase tracking-widest font-bold rounded-2xs">
+                        {event.data.categoryLabelEn}
+                      </span>
+                      <span class="text-xs font-mono text-stone-gray font-bold">
+                        {event.data.displayDateEn}
+                      </span>
+                    </div>
+
+                    <h3 class="font-serif text-lg sm:text-xl text-ink font-bold leading-snug mb-3">
+                      {event.data.titleEn}
+                    </h3>
+
+                    <div class="space-y-2.5 text-ink/90 font-sans text-xs sm:text-[13px] leading-relaxed text-justify">
+                      <p>
+                        We aim to be a distinctive book club that challenges conventional thinking. The books we select and the topics we discuss will be thought-provoking and inquisitive.
+                      </p>
+                      <p>
+                        We seek an environment of vigorous and constructive debate where differing viewpoints meet. If you are ready to explore, question, and reflect together, you are warmly invited to our Book Club!
+                      </p>
+                      <p>
+                        Through lively debate, we will explore not only books but our underlying paradigms and perspectives.
+                      </p>
+                      <p class="font-bold text-olive">
+                        If you are ready to change, question, and reflect together, join our Book Club!
+                      </p>
+                    </div>
+                  </div>
+
+                  <div class="pt-3.5 mt-4 border-t border-sand">
+                    <p class="text-xs sm:text-[13px] font-sans italic text-ink/90 leading-snug font-medium">
+                      Meeting dates and each month's featured book are announced via our Instagram page and WhatsApp channel.
+                    </p>
+                  </div>
+                </div>
+
               </div>
             </div>
           );
@@ -146,7 +166,7 @@ const pastEventCategoriesEn = [
       </div>
     </section>
 
-    <!-- 2. Past Events (Left-aligned 3-column Grid with Vertical 3:4 Cards) -->
+    <!-- 2. Past Events (Vertical 3:4 Proportional Card) -->
     <section>
       <h2 class="font-serif text-lg sm:text-xl text-ink font-bold mb-3 pb-2 border-b border-sand">
         Past Events
@@ -178,10 +198,10 @@ const pastEventCategoriesEn = [
           });
 
           return (
-            <div class="bg-surface-container-low border-2 border-olive p-4 sm:p-5 flex flex-col justify-between shadow-xs rounded-xs w-full max-w-[360px]">
+            <div class="bg-surface-container-low border-2 border-olive p-3.5 sm:p-4 flex flex-col justify-between shadow-xs rounded-xs w-full max-w-[340px] aspect-[3/4]">
               <div>
                 <div 
-                  class="aspect-[3/4] w-full overflow-hidden bg-surface-container-high border-2 border-olive rounded-xs mb-3 cursor-pointer group relative shadow-sm"
+                  class="h-[210px] w-full overflow-hidden bg-surface-container-high border-2 border-olive rounded-xs mb-2 cursor-pointer group relative shadow-sm"
                   data-gallery-trigger
                   data-gallery-title={event.data.titleEn}
                   data-gallery-photos={JSON.stringify(event.data.photos || [event.data.image])}
@@ -190,7 +210,7 @@ const pastEventCategoriesEn = [
                   <img
                     src={event.data.image}
                     alt={event.data.titleEn}
-                    class="w-full h-full object-contain group-hover:scale-105 transition-transform duration-300"
+                    class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-300"
                   />
                   <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center text-white text-xs font-sans font-bold uppercase tracking-wider gap-1.5 p-2 text-center">
                     <span class="material-symbols-outlined text-base">photo_library</span>
@@ -198,26 +218,25 @@ const pastEventCategoriesEn = [
                   </div>
                 </div>
 
-                <div class="flex items-center justify-between text-[11px] text-stone-gray font-mono mb-2">
-                  <span class="text-olive font-sans font-bold text-xs uppercase">{event.data.categoryLabelEn}</span>
+                <div class="flex items-center justify-between text-[10px] text-stone-gray font-mono mb-1">
+                  <span class="text-olive font-sans font-bold uppercase">{event.data.categoryLabelEn}</span>
                   <span class="font-bold">{event.data.displayDateEn}</span>
                 </div>
 
-                <h3 class="font-serif text-base sm:text-lg text-ink font-bold mb-2 leading-snug text-center">
-                  Anthropologist & Archaeologist<br />
-                  <span class="text-olive font-bold">Timuçin Binder with</span><br />
-                  Sky Myths of Ancient Aegean
+                <h3 class="font-serif text-sm sm:text-base text-ink font-bold mb-1 leading-snug text-center line-clamp-2">
+                  Anthropologist & Archaeologist Timuçin Binder with<br />
+                  <span class="text-olive font-bold">Sky Myths of Ancient Aegean</span>
                 </h3>
 
-                <p class="text-xs text-ink/85 font-sans leading-relaxed text-justify mb-3 line-clamp-4">
-                  Talk and workshop on Ancient Aegean sky mythology, stars, constellations, and the ancient navigational wisdom of mariners.
+                <p class="text-[11px] text-ink/85 font-sans leading-snug text-justify line-clamp-2">
+                  Talk and workshop on Ancient Aegean sky mythology, constellations, and ancient maritime celestial navigation.
                 </p>
               </div>
 
-              <div class="flex items-center justify-center gap-2 pt-3 border-t border-sand">
+              <div class="flex items-center justify-center gap-2 pt-2.5 border-t border-sand">
                 <button
                   type="button"
-                  class="flex-1 py-2 bg-olive text-white hover:bg-bodrum-blue-dark text-xs font-sans font-bold uppercase tracking-wider transition-colors rounded-xs shadow-2xs cursor-pointer inline-flex items-center justify-center gap-1"
+                  class="flex-1 py-1.5 bg-olive text-white hover:bg-bodrum-blue-dark text-[11px] font-sans font-bold uppercase tracking-wider transition-colors rounded-xs shadow-2xs cursor-pointer inline-flex items-center justify-center gap-1"
                   data-event-detail-trigger
                   data-event-data={eventPayload}
                 >
@@ -227,13 +246,13 @@ const pastEventCategoriesEn = [
 
                 <button
                   type="button"
-                  class="flex-1 py-2 bg-parchment border border-olive text-olive hover:bg-olive hover:text-white text-xs font-sans font-bold uppercase tracking-wider transition-colors rounded-xs shadow-2xs cursor-pointer inline-flex items-center justify-center gap-1"
+                  class="flex-1 py-1.5 bg-parchment border border-olive text-olive hover:bg-olive hover:text-white text-[11px] font-sans font-bold uppercase tracking-wider transition-colors rounded-xs shadow-2xs cursor-pointer inline-flex items-center justify-center gap-1"
                   data-gallery-trigger
                   data-gallery-title={event.data.titleEn}
                   data-gallery-photos={JSON.stringify(event.data.photos || [event.data.image])}
                 >
                   <span class="material-symbols-outlined text-sm">photo_library</span>
-                  <span>Photos</span>
+                  <span>Photos (11)</span>
                 </button>
               </div>
             </div>
@@ -243,4 +262,7 @@ const pastEventCategoriesEn = [
     </section>
 
   </div>
+
+  <EventDetailModal lang={lang} />
+  <EventGalleryModal />
 </Layout>
