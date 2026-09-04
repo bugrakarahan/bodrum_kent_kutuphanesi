@@ -86,6 +86,7 @@
     "summaryEn": "Fantastic realism in modern literature, memories, dreams, and Bodrum's inspiring creative atmosphere.",
     "featured": false,
     "chapters": [
+      { "time": "00:15", "seconds": 15, "titleTr": "Giriş & Yazarlık Serüveni", "titleEn": "Introduction & Writing Journey" },
       { "time": "06:15", "seconds": 375, "titleTr": "Büyülü Gerçekçilik & Düşler", "titleEn": "Magical Realism & Dreams" },
       { "time": "24:45", "seconds": 1485, "titleTr": "Halikarnas İlhamı ve Anılar", "titleEn": "Halicarnassus Inspiration" }
     ]

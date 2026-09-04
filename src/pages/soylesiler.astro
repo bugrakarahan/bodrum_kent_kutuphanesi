@@ -124,8 +124,8 @@ function getSortTimestamp(talkId: string) {
       </div>
     </div>
 
-    <!-- 3 Sütunlu Birleşik Video Izgarası (Üste 3'lü Başlayan Düzen) -->
-    <div id="talks-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 items-start">
+    <!-- 3 Sütunlu Birleşik Video Izgarası (Kutular Tam Hizalı ve Eşit Yükseklikte) -->
+    <div id="talks-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
       {allTalks.map((talk) => {
         const durSec = parseDurationToSeconds(talk.data.duration);
         const sortTime = getSortTimestamp(talk.data.id);
@@ -133,17 +133,17 @@ function getSortTimestamp(talkId: string) {
 
         return (
           <div
-            class="talk-card bg-surface-container-low border-2 border-olive rounded-xs p-4 sm:p-5 flex flex-col justify-between shadow-xs hover:shadow-md transition-all w-full"
+            class="talk-card bg-surface-container-low border-2 border-olive rounded-xs p-4 sm:p-5 flex flex-col justify-between shadow-xs hover:shadow-md transition-all w-full h-full"
             data-category={talk.data.category}
             data-timestamp={sortTime}
             data-title={talk.data.titleTr.replace(/\n/g, ' ')}
             data-duration={durSec}
             data-search={searchCorpus}
           >
-            <div>
+            <div class="flex-1 flex flex-col">
               <!-- Video Thumbnail with YouTube Trigger -->
               <div
-                class="aspect-video relative overflow-hidden bg-surface-container-high border border-sand cursor-pointer group rounded-2xs mb-3.5"
+                class="aspect-video relative overflow-hidden bg-surface-container-high border border-sand cursor-pointer group rounded-2xs mb-3.5 shrink-0"
                 data-youtube-id={talk.data.youtubeId}
               >
                 <img
@@ -161,22 +161,27 @@ function getSortTimestamp(talkId: string) {
                 </span>
               </div>
 
-              <!-- Meta Information: Moderatör ve Tarih -->
-              <div class="flex items-center justify-between text-xs text-stone-gray font-mono mb-2">
-                <span class="text-olive font-sans font-bold text-xs uppercase">{talk.data.guestTr}</span>
+              <!-- Meta Information: Moderatör ve Tarih (Sabit Yükseklik) -->
+              <div class="flex items-center justify-between text-xs text-stone-gray font-mono mb-2 h-5 shrink-0">
+                <span class="text-olive font-sans font-bold text-xs uppercase truncate mr-2">{talk.data.guestTr}</span>
                 <span class="font-bold shrink-0">{talk.data.date}</span>
               </div>
 
-              <!-- Talk Title -->
-              <h2 class="font-serif text-base sm:text-lg text-ink font-bold mb-2.5 leading-snug whitespace-pre-line text-center">
-                {talk.data.titleTr}
-              </h2>
+              <!-- Talk Title (Kutular Arası Tam Hizalı Sabit Yükseklik) -->
+              <div class="h-[68px] sm:h-[74px] flex items-center justify-center mb-2.5 shrink-0">
+                <h2 class="font-serif text-base sm:text-lg text-ink font-bold leading-snug whitespace-pre-line text-center">
+                  {talk.data.titleTr}
+                </h2>
+              </div>
 
-              <p class="text-xs sm:text-[13px] text-ink/85 font-sans leading-relaxed mb-3.5 text-justify">
-                {talk.data.summaryTr}
-              </p>
+              <!-- Summary (Kutular Arası Tam Hizalı Sabit Yükseklik) -->
+              <div class="h-[64px] sm:h-[70px] mb-3.5 shrink-0">
+                <p class="text-xs sm:text-[13px] text-ink/85 font-sans leading-relaxed text-justify line-clamp-3">
+                  {talk.data.summaryTr}
+                </p>
+              </div>
 
-              <!-- Video Chapters Timeline -->
+              <!-- Video Chapters Timeline (Tüm Söyleşilerde 3 Bölüm Eşit Yükseklikte) -->
               {talk.data.chapters && talk.data.chapters.length > 0 && (
                 <div class="mb-3.5 p-2.5 bg-parchment border border-sand rounded-xs space-y-1">
                   <div class="flex items-center gap-1 text-[10px] font-sans font-bold uppercase tracking-wider text-olive mb-1">
@@ -200,8 +205,8 @@ function getSortTimestamp(talkId: string) {
               )}
             </div>
 
-            <!-- Bottom Action Bar -->
-            <div class="pt-3 border-t border-sand flex items-center justify-between">
+            <!-- Bottom Action Bar (Kutuların Alt Çizgisinde Birebir Hizalı) -->
+            <div class="pt-3 border-t border-sand flex items-center justify-between shrink-0">
               <button
                 type="button"
                 class="inline-flex items-center gap-1.5 text-xs font-sans font-bold text-olive hover:text-bodrum-blue-dark uppercase tracking-wider cursor-pointer"
@@ -266,10 +271,10 @@ function getSortTimestamp(talkId: string) {
       const matchesSearch = !searchQuery || searchText.includes(searchQuery);
 
       if (matchesCategory && matchesSearch) {
-        card.style.display = 'flex';
+        card.classList.remove('hidden');
         visibleCards.push(card);
       } else {
-        card.style.display = 'none';
+        card.classList.add('hidden');
       }
     });
 
