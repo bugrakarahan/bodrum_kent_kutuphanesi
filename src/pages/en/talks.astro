@@ -7,8 +7,21 @@ const lang = 'en';
 const t = getT(lang);
 
 const allTalks = await getCollection('talks');
-const topRowTalks = allTalks.filter((t) => t.data.id === 'talk-timucin-binder-1');
-const bottomRowTalks = allTalks.filter((t) => t.data.id !== 'talk-timucin-binder-1');
+
+function parseDurationToSeconds(dur: string) {
+  const parts = dur.split(':').map(Number);
+  if (parts.length === 2) return parts[0] * 60 + parts[1];
+  if (parts.length === 3) return parts[0] * 3600 + parts[1] * 60 + parts[2];
+  return 0;
+}
+
+function getSortTimestamp(talkId: string) {
+  if (talkId === 'talk-timucin-binder-1') return 1768953600; // 2026-01-21 12:00
+  if (talkId === 'talk-timucin-binder-2') return 1768950000; // 2026-01-21 11:00
+  if (talkId === 'talk-mine-sogut') return 1737936000;       // 2025-01-27
+  if (talkId === 'talk-nazli-eray') return 1732320000;       // 2024-11-23
+  return 0;
+}
 ---
 
 <Layout
@@ -20,8 +33,11 @@ const bottomRowTalks = allTalks.filter((t) => t.data.id !== 'talk-timucin-binder
   <!-- Hero Header -->
   <section class="py-6 md:py-10 px-5 md:px-12 bg-surface-bright border-b border-sand">
     <div class="max-w-[1280px] mx-auto">
-      <div class="max-w-3xl">
-        <h1 class="font-serif text-xl sm:text-2xl text-ink font-bold leading-snug mb-2">
+      <div class="max-w-3xl space-y-2">
+        <div class="inline-flex items-center gap-1.5 px-2.5 py-0.5 bg-olive text-white text-[11px] font-sans font-bold tracking-widest uppercase rounded-xs shadow-2xs">
+          <span>DIGITAL ARCHIVE & TALKS</span>
+        </div>
+        <h1 class="font-serif text-2xl sm:text-3xl md:text-4xl text-ink font-bold leading-tight">
           Literature, Art and Science Talks
         </h1>
         <p class="font-sans text-xs sm:text-sm text-ink/80 leading-relaxed">
@@ -31,92 +47,101 @@ const bottomRowTalks = allTalks.filter((t) => t.data.id !== 'talk-timucin-binder
     </div>
   </section>
 
-  <!-- Video Rows Container -->
-  <div class="max-w-[1280px] mx-auto px-5 md:px-12 py-6 md:py-10 space-y-8">
+  <!-- Video Container -->
+  <div class="max-w-[1280px] mx-auto px-5 md:px-12 py-6 md:py-10">
     
-    <!-- Top Row: Timucin Binder Part 1 -->
-    <div>
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {topRowTalks.map((talk) => (
-          <div class="bg-surface-container-low border-2 border-olive rounded-xs p-4 sm:p-5 flex flex-col justify-between shadow-xs hover:shadow-md transition-shadow">
-            <div>
-              <div
-                class="aspect-video relative overflow-hidden bg-surface-container-high border border-sand cursor-pointer group rounded-2xs mb-3.5"
-                data-youtube-id={talk.data.youtubeId}
-              >
-                <img
-                  src={talk.data.thumbnail}
-                  alt={talk.data.titleEn}
-                  class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-                />
-                <div class="absolute inset-0 bg-ink/30 group-hover:bg-ink/10 transition-colors flex items-center justify-center">
-                  <div class="w-10 h-10 rounded-full bg-olive/90 text-white flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform">
-                    <span class="material-symbols-outlined text-2xl ml-0.5">play_arrow</span>
-                  </div>
-                </div>
-                <span class="absolute bottom-2 right-2 px-2 py-0.5 bg-ink/85 text-parchment text-[11px] font-mono rounded">
-                  {talk.data.duration}
-                </span>
-              </div>
+    <!-- Filter, Search & Sort Control Bar -->
+    <div class="bg-surface-container-low border-2 border-olive rounded-xs p-4 sm:p-5 shadow-xs mb-8">
+      <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-4">
+        
+        <!-- Category Filter Buttons -->
+        <div class="flex flex-wrap items-center gap-1.5" id="category-filters">
+          <button
+            type="button"
+            data-filter="all"
+            class="filter-btn active px-3.5 py-1.5 bg-olive text-white text-xs font-sans font-bold uppercase tracking-wider rounded-xs transition-colors cursor-pointer shadow-2xs"
+          >
+            All
+          </button>
+          <button
+            type="button"
+            data-filter="archaeologist"
+            class="filter-btn px-3.5 py-1.5 bg-parchment text-ink border border-olive hover:bg-olive hover:text-white text-xs font-sans font-bold uppercase tracking-wider rounded-xs transition-colors cursor-pointer"
+          >
+            Archaeology & Anthropology
+          </button>
+          <button
+            type="button"
+            data-filter="author"
+            class="filter-btn px-3.5 py-1.5 bg-parchment text-ink border border-olive hover:bg-olive hover:text-white text-xs font-sans font-bold uppercase tracking-wider rounded-xs transition-colors cursor-pointer"
+          >
+            Literature & Writing
+          </button>
+        </div>
 
-              <div class="flex items-center justify-between text-xs text-stone-gray font-mono mb-2">
-                <span class="text-olive font-sans font-bold text-xs uppercase">{talk.data.guestEn}</span>
-                <span class="font-bold shrink-0">{talk.data.dateEn || talk.data.date}</span>
-              </div>
-
-              <h2 class="font-serif text-base sm:text-lg text-ink font-bold mb-2.5 leading-snug whitespace-pre-line text-center">
-                {talk.data.titleEn}
-              </h2>
-
-              <p class="text-xs sm:text-[13px] text-ink/85 font-sans leading-relaxed mb-3.5 text-justify">
-                {talk.data.summaryEn}
-              </p>
-
-              {talk.data.chapters && talk.data.chapters.length > 0 && (
-                <div class="mb-3.5 p-2.5 bg-parchment border border-sand rounded-xs space-y-1">
-                  <div class="flex items-center gap-1 text-[10px] font-sans font-bold uppercase tracking-wider text-olive mb-1">
-                    <span class="material-symbols-outlined text-xs">schedule</span>
-                    <span>Chapters</span>
-                  </div>
-                  <div class="grid grid-cols-1 gap-1 text-xs font-sans">
-                    {talk.data.chapters.map((chap) => (
-                      <button
-                        type="button"
-                        class="chapter-btn flex items-center justify-between p-1 hover:bg-olive/10 rounded text-left transition-colors cursor-pointer w-full group/chap"
-                        data-youtube-id={talk.data.youtubeId}
-                        data-start={chap.seconds}
-                      >
-                        <span class="text-ink/90 group-hover/chap:text-olive font-medium truncate mr-2">{chap.titleEn}</span>
-                        <span class="font-mono text-stone-gray font-bold text-[11px] bg-sand/40 px-1.5 py-0.5 rounded shrink-0">{chap.time}</span>
-                      </button>
-                    ))}
-                  </div>
-                </div>
-              )}
-            </div>
-
-            <div class="pt-3 border-t border-sand flex items-center justify-between">
-              <button
-                type="button"
-                class="inline-flex items-center gap-1.5 text-xs font-sans font-bold text-olive hover:text-bodrum-blue-dark uppercase tracking-wider cursor-pointer"
-                data-youtube-id={talk.data.youtubeId}
-              >
-                <span class="material-symbols-outlined text-base">play_circle</span>
-                <span>Watch</span>
-              </button>
-              <span class="text-xs font-sans text-stone-gray">{talk.data.roleEn}</span>
-            </div>
+        <!-- Search and Sort -->
+        <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
+          <!-- Search Input -->
+          <div class="relative">
+            <span class="material-symbols-outlined absolute left-2.5 top-1/2 -translate-y-1/2 text-stone-gray text-base pointer-events-none">search</span>
+            <input
+              type="text"
+              id="talks-search"
+              placeholder="Search talks or guests..."
+              class="w-full sm:w-56 pl-8 pr-3 py-1.5 bg-white border border-sand rounded-xs text-xs font-sans text-ink placeholder:text-stone-gray focus:outline-none focus:border-olive"
+            />
           </div>
-        ))}
+
+          <!-- Sort -->
+          <div class="flex items-center gap-1.5 shrink-0">
+            <label for="talks-sort" class="text-xs font-sans text-stone-gray whitespace-nowrap">
+              Sort:
+            </label>
+            <select
+              id="talks-sort"
+              class="px-2.5 py-1.5 bg-white border border-sand rounded-xs text-xs font-sans text-ink font-bold focus:outline-none focus:border-olive cursor-pointer"
+            >
+              <option value="date-desc">Newest First</option>
+              <option value="date-asc">Oldest First</option>
+              <option value="title-asc">Title (A - Z)</option>
+              <option value="duration-desc">Duration (Long - Short)</option>
+            </select>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Count & Reset -->
+      <div class="mt-3.5 pt-3 border-t border-sand flex items-center justify-between text-xs text-stone-gray font-sans">
+        <span id="results-count">Showing <strong>{allTalks.length}</strong> talks</span>
+        <button
+          type="button"
+          id="reset-filters"
+          class="text-olive hover:underline font-bold hidden cursor-pointer"
+        >
+          Reset Filters
+        </button>
       </div>
     </div>
 
-    <!-- Bottom Row: 3 Talks -->
-    <div>
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {bottomRowTalks.map((talk) => (
-          <div class="bg-surface-container-low border-2 border-olive rounded-xs p-4 sm:p-5 flex flex-col justify-between shadow-xs hover:shadow-md transition-shadow">
+    <!-- Unified 3-column Grid (3 on Top Row) -->
+    <div id="talks-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 items-start">
+      {allTalks.map((talk) => {
+        const durSec = parseDurationToSeconds(talk.data.duration);
+        const sortTime = getSortTimestamp(talk.data.id);
+        const searchCorpus = `${talk.data.titleEn} ${talk.data.guestEn} ${talk.data.roleEn} ${talk.data.summaryEn}`.toLowerCase();
+
+        return (
+          <div
+            class="talk-card bg-surface-container-low border-2 border-olive rounded-xs p-4 sm:p-5 flex flex-col justify-between shadow-xs hover:shadow-md transition-all w-full"
+            data-category={talk.data.category}
+            data-timestamp={sortTime}
+            data-title={talk.data.titleEn.replace(/\n/g, ' ')}
+            data-duration={durSec}
+            data-search={searchCorpus}
+          >
             <div>
+              <!-- Video Thumbnail with YouTube Trigger -->
               <div
                 class="aspect-video relative overflow-hidden bg-surface-container-high border border-sand cursor-pointer group rounded-2xs mb-3.5"
                 data-youtube-id={talk.data.youtubeId}
@@ -136,11 +161,13 @@ const bottomRowTalks = allTalks.filter((t) => t.data.id !== 'talk-timucin-binder
                 </span>
               </div>
 
+              <!-- Meta Information -->
               <div class="flex items-center justify-between text-xs text-stone-gray font-mono mb-2">
                 <span class="text-olive font-sans font-bold text-xs uppercase">{talk.data.guestEn}</span>
                 <span class="font-bold shrink-0">{talk.data.dateEn || talk.data.date}</span>
               </div>
 
+              <!-- Talk Title -->
               <h2 class="font-serif text-base sm:text-lg text-ink font-bold mb-2.5 leading-snug whitespace-pre-line text-center">
                 {talk.data.titleEn}
               </h2>
@@ -149,6 +176,7 @@ const bottomRowTalks = allTalks.filter((t) => t.data.id !== 'talk-timucin-binder
                 {talk.data.summaryEn}
               </p>
 
+              <!-- Video Chapters Timeline -->
               {talk.data.chapters && talk.data.chapters.length > 0 && (
                 <div class="mb-3.5 p-2.5 bg-parchment border border-sand rounded-xs space-y-1">
                   <div class="flex items-center gap-1 text-[10px] font-sans font-bold uppercase tracking-wider text-olive mb-1">
@@ -172,6 +200,7 @@ const bottomRowTalks = allTalks.filter((t) => t.data.id !== 'talk-timucin-binder
               )}
             </div>
 
+            <!-- Bottom Action Bar -->
             <div class="pt-3 border-t border-sand flex items-center justify-between">
               <button
                 type="button"
@@ -184,7 +213,14 @@ const bottomRowTalks = allTalks.filter((t) => t.data.id !== 'talk-timucin-binder
               <span class="text-xs font-sans text-stone-gray">{talk.data.roleEn}</span>
             </div>
           </div>
-        ))}
+        );
+      })}
+
+      <!-- No Results State -->
+      <div id="no-results" class="hidden col-span-full py-12 text-center bg-surface-container-low border border-sand rounded-xs">
+        <span class="material-symbols-outlined text-4xl text-stone-gray mb-2">videocam_off</span>
+        <p class="font-serif text-base text-ink font-bold">No talks found matching your criteria.</p>
+        <p class="text-xs text-stone-gray font-sans mt-1">Try another search keyword or reset the active filter.</p>
       </div>
     </div>
 
@@ -192,6 +228,7 @@ const bottomRowTalks = allTalks.filter((t) => t.data.id !== 'talk-timucin-binder
 </Layout>
 
 <script>
+  // Chapter Button Click Handler
   document.querySelectorAll('.chapter-btn').forEach((btn) => {
     btn.addEventListener('click', (e) => {
       e.stopPropagation();
@@ -202,5 +239,125 @@ const bottomRowTalks = allTalks.filter((t) => t.data.id !== 'talk-timucin-binder
         (window as any).openVideoModal(youtubeId, parseInt(start, 10));
       }
     });
+  });
+
+  // Client-side Filter, Search and Sort Engine
+  const filterButtons = document.querySelectorAll<HTMLButtonElement>('.filter-btn');
+  const searchInput = document.getElementById('talks-search') as HTMLInputElement | null;
+  const sortSelect = document.getElementById('talks-sort') as HTMLSelectElement | null;
+  const gridContainer = document.getElementById('talks-grid');
+  const cards = Array.from(document.querySelectorAll<HTMLElement>('.talk-card'));
+  const resultsCount = document.getElementById('results-count');
+  const noResults = document.getElementById('no-results');
+  const resetBtn = document.getElementById('reset-filters');
+
+  let currentFilter = 'all';
+  let searchQuery = '';
+  let currentSort = 'date-desc';
+
+  function applyFilterAndSort() {
+    let visibleCards: HTMLElement[] = [];
+
+    cards.forEach((card) => {
+      const category = card.getAttribute('data-category') || '';
+      const searchText = card.getAttribute('data-search') || '';
+
+      const matchesCategory = currentFilter === 'all' || category === currentFilter;
+      const matchesSearch = !searchQuery || searchText.includes(searchQuery);
+
+      if (matchesCategory && matchesSearch) {
+        card.style.display = 'flex';
+        visibleCards.push(card);
+      } else {
+        card.style.display = 'none';
+      }
+    });
+
+    visibleCards.sort((a, b) => {
+      if (currentSort === 'date-desc') {
+        return Number(b.getAttribute('data-timestamp') || 0) - Number(a.getAttribute('data-timestamp') || 0);
+      }
+      if (currentSort === 'date-asc') {
+        return Number(a.getAttribute('data-timestamp') || 0) - Number(b.getAttribute('data-timestamp') || 0);
+      }
+      if (currentSort === 'title-asc') {
+        const titleA = (a.getAttribute('data-title') || '').toLowerCase();
+        const titleB = (b.getAttribute('data-title') || '').toLowerCase();
+        return titleA.localeCompare(titleB);
+      }
+      if (currentSort === 'duration-desc') {
+        return Number(b.getAttribute('data-duration') || 0) - Number(a.getAttribute('data-duration') || 0);
+      }
+      return 0;
+    });
+
+    visibleCards.forEach((card) => {
+      gridContainer?.appendChild(card);
+    });
+
+    if (resultsCount) {
+      resultsCount.innerHTML = `Showing <strong>${visibleCards.length}</strong> talks`;
+    }
+
+    if (noResults) {
+      if (visibleCards.length === 0) {
+        noResults.classList.remove('hidden');
+        gridContainer?.appendChild(noResults);
+      } else {
+        noResults.classList.add('hidden');
+      }
+    }
+
+    if (resetBtn) {
+      if (currentFilter !== 'all' || searchQuery.length > 0) {
+        resetBtn.classList.remove('hidden');
+      } else {
+        resetBtn.classList.add('hidden');
+      }
+    }
+  }
+
+  filterButtons.forEach((btn) => {
+    btn.addEventListener('click', () => {
+      filterButtons.forEach((b) => {
+        b.classList.remove('active', 'bg-olive', 'text-white');
+        b.classList.add('bg-parchment', 'text-ink');
+      });
+      btn.classList.add('active', 'bg-olive', 'text-white');
+      btn.classList.remove('bg-parchment', 'text-ink');
+
+      currentFilter = btn.getAttribute('data-filter') || 'all';
+      applyFilterAndSort();
+    });
+  });
+
+  searchInput?.addEventListener('input', (e) => {
+    searchQuery = (e.target as HTMLInputElement).value.trim().toLowerCase();
+    applyFilterAndSort();
+  });
+
+  sortSelect?.addEventListener('change', (e) => {
+    currentSort = (e.target as HTMLSelectElement).value;
+    applyFilterAndSort();
+  });
+
+  resetBtn?.addEventListener('click', () => {
+    currentFilter = 'all';
+    searchQuery = '';
+    if (searchInput) searchInput.value = '';
+    if (sortSelect) sortSelect.value = 'date-desc';
+    currentSort = 'date-desc';
+
+    filterButtons.forEach((b) => {
+      if (b.getAttribute('data-filter') === 'all') {
+        b.classList.add('active', 'bg-olive', 'text-white');
+        b.classList.remove('bg-parchment', 'text-ink');
+      } else {
+        b.classList.remove('active', 'bg-olive', 'text-white');
+        b.classList.add('bg-parchment', 'text-ink');
+      }
+    });
+
+    applyFilterAndSort();
   });
 </script>
